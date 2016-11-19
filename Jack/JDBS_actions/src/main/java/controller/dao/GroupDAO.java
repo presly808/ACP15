@@ -106,10 +106,37 @@ public class GroupDAO implements CommonDAO<Group, Integer> {
         String SQLquery = "";
 
         if (null != groupName) {
-            SQLquery = "SELECT * FROM groups WHERE groups.id = " + groupName + ";";
+            //SQLquery = "SELECT * FROM groups WHERE groups.id = " + groupName + ";";
+            SQLquery = "SELECT * FROM groups WHERE groups.id = ?";
         }
 
         return getGroupBySQLquery(SQLquery);
+    }
+
+
+    private Group getGroupBySQLquery(String SQLquery, String groupName) {
+
+        if (null == SQLquery || groupName == null) {
+            throw new NullPointerException("Передан пустой SQLquery");
+        }
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQLquery);
+             ResultSet resultSet = preparedStatement.getResultSet()) {
+
+            Group group = new Group();
+            while (resultSet.next()) {
+
+                group.setId(resultSet.getInt("id"));
+                group.setName(resultSet.getString("name"));
+
+            }
+
+            return group;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
@@ -137,5 +164,6 @@ public class GroupDAO implements CommonDAO<Group, Integer> {
             return null;
         }
     }
+
 
 }
