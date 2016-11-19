@@ -187,7 +187,7 @@ public class CRUDQuerySubjectTest {
         assertThat(testSubject.getCategory().getId(), equalTo(addedSubject.getCategory().getId()));
         assertThat(testSubject.getCategory().getTitle(), equalTo(addedSubject.getCategory().getTitle()));
         assertThat(testSubject.getDescription(), equalTo(addedSubject.getDescription()));
-        assertThat(testSubject, not(equalTo(addedSubject)));
+        assertThat(testSubject, equalTo(addedSubject));
     }
 
     @Test

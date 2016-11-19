@@ -71,7 +71,7 @@ public class CRUDGroupAndStudentTest {
 
         assertEquals(testGroup.getId(), addedGroup.getId());
         assertEquals(testGroup.getName(), addedGroup.getName());
-        assertNotEquals(testGroup, addedGroup);
+        assertEquals(testGroup, addedGroup);
 
         //test error when read invalid
         int invalidId = -1;
@@ -159,7 +159,7 @@ public class CRUDGroupAndStudentTest {
 
         assertEquals(testStudent.getId(), addedStudent.getId());
         assertEquals(testStudent.getName(), addedStudent.getName());
-        assertNotEquals(testStudent, addedStudent);
+        assertEquals(testStudent, addedStudent);
 
         //test error when read invalid student
         int invalidStudentId = -1;

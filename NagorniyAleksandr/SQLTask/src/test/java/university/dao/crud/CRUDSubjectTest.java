@@ -59,7 +59,7 @@ public class CRUDSubjectTest {
         assertEquals(testSubject.getCategory().getId(), addedSubject.getCategory().getId());
         assertEquals(testSubject.getCategory().getTitle(), addedSubject.getCategory().getTitle());
         assertEquals(testSubject.getDescription(), addedSubject.getDescription());
-        assertNotEquals(testSubject, addedSubject);
+        assertEquals(testSubject, addedSubject);
 
         //test error when read invalid
         int invalidSubjectId = -1;

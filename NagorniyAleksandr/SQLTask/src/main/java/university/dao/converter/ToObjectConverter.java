@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by nagornyyalek on 18.11.2016.
- */
 public class ToObjectConverter {
 
     public static Student getOneStudentFromResultSet(ResultSet resultSet) throws SQLException {
@@ -68,10 +65,10 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int studentId = resultSet.getInt("id");
-            String studentName = resultSet.getString("name");
-            int groupId = resultSet.getInt("id");
-            String groupName = resultSet.getString("name");
+            int studentId = resultSet.getInt(1);
+            String studentName = resultSet.getString(2);
+            int groupId = resultSet.getInt(3);
+            String groupName = resultSet.getString(4);
 
             result.add(new Student(studentId, studentName,
                     new Group(groupId, groupName)));

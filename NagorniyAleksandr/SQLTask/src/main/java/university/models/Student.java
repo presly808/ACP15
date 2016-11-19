@@ -1,8 +1,5 @@
 package university.models;
 
-/**
- * Created by aleksandrnagorniy on 12.11.16.
- */
 public class Student {
 
     private int id;
@@ -40,5 +37,35 @@ public class Student {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", group=" + group +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (id != student.id) return false;
+        if (name != null ? !name.equals(student.name) : student.name != null) return false;
+        return group != null ? group.equals(student.group) : student.group == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        return result;
     }
 }

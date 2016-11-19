@@ -5,7 +5,6 @@ import university.exceptions.*;
 import university.jdbc.DBConnector;
 import university.models.*;
 
-import javax.management.InstanceNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,8 +103,7 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Student> getStudentOfGroup(Group group) throws
-            GroupNotFoundException, SQLException {
+    public List<Student> getStudentOfGroup(Group group) throws SQLException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -120,9 +118,7 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Group> getGroupsBySubject(Subject subject, int offset, int length)
-            throws
-            InstanceNotFoundException, SQLException {
+    public List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws SQLException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -212,14 +208,13 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws SQLException
-             {
+    public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws SQLException {
 
         return getTeachersWithExperienceMoreThanYears(3);
     }
 
     @Override
-    public List<Subject> getListOfSubjectsByCategory(SubjectCategory category) throws InstanceNotFoundException, SQLException {
+    public List<Subject> getListOfSubjectsByCategory(SubjectCategory category) throws SQLException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT id, name, category_id " +
@@ -235,7 +230,7 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Subject> getListOfSubjectsByCategory(String categoryName) throws InstanceNotFoundException, SQLException {
+    public List<Subject> getListOfSubjectsByCategory(String categoryName) throws SQLException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT subjects.id, subjects.name, subjects.category_id " +
@@ -253,7 +248,7 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Subject> getListOfHumanitarianSubjects() throws InstanceNotFoundException, SQLException {
+    public List<Subject> getListOfHumanitarianSubjects() throws SQLException {
         return getListOfSubjectsByCategory("Humanities");
     }
 

@@ -133,7 +133,7 @@ public class CRUDQueryGroupTest {
 
         assertThat(testGroup.getId(), equalTo(groupFromDB.getId()));
         assertThat(testGroup.getName(), equalTo(groupFromDB.getName()));
-        assertThat(testGroup, not(equalTo(groupFromDB)));
+        assertThat(testGroup, equalTo(groupFromDB));
     }
 
     @Test

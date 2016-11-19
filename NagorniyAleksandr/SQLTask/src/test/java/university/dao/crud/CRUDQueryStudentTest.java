@@ -160,7 +160,7 @@ public class CRUDQueryStudentTest {
 
         assertThat(testStudent.getId(), equalTo(addedStudent.getId()));
         assertThat(testStudent.getName(), equalTo(addedStudent.getName()));
-        assertThat(testStudent, not(equalTo(addedStudent)));
+        assertThat(testStudent, equalTo(addedStudent));
     }
 
     @Test

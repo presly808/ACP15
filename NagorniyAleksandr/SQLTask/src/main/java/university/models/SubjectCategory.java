@@ -1,8 +1,6 @@
 package university.models;
 
-/**
- * Created by nagornyyalek on 15.11.2016.
- */
+
 public class SubjectCategory {
 
     private int id;
@@ -39,5 +37,24 @@ public class SubjectCategory {
         sb.append(", title='").append(title).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SubjectCategory that = (SubjectCategory) o;
+
+        if (id != that.id) return false;
+        return title != null ? title.equals(that.title) : that.title == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
     }
 }

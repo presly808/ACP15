@@ -3,18 +3,12 @@ package university.dao.crud;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
-import university.exceptions.GroupAlreadyExistsException;
-import university.exceptions.GroupNotFoundException;
-import university.exceptions.StudentNotFoundException;
 import university.exceptions.TeacherNotFoundException;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorMySQL;
-import university.models.Group;
-import university.models.Student;
 import university.models.Teacher;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by nagornyyalek on 17.11.2016.
@@ -52,7 +46,7 @@ public class CRUDTeacherTest {
         assertEquals(testTeacher.getId(), addedTeacher.getId());
         assertEquals(testTeacher.getName(), addedTeacher.getName());
         assertEquals(testTeacher.getExperience(), addedTeacher.getExperience());
-        assertNotEquals(testTeacher, addedTeacher);
+        assertEquals(testTeacher, addedTeacher);
 
         //test error when read invalid teacher(id)
         int invalidId = -1;

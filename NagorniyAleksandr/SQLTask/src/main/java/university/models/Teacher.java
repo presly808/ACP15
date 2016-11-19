@@ -1,8 +1,5 @@
 package university.models;
 
-/**
- * Created by aleksandrnagorniy on 12.11.16.
- */
 public class Teacher {
 
     private int id;
@@ -49,5 +46,26 @@ public class Teacher {
                 ", name='" + name + '\'' +
                 ", experience='" + experience + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Teacher teacher = (Teacher) o;
+
+        if (id != teacher.id) return false;
+        if (experience != teacher.experience) return false;
+        return name != null ? name.equals(teacher.name) : teacher.name == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + experience;
+        return result;
     }
 }

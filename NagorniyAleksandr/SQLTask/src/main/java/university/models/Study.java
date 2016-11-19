@@ -1,8 +1,5 @@
 package university.models;
 
-/**
- * Created by aleksandrnagorniy on 12.11.16.
- */
 public class Study {
 
     private Group group;
@@ -49,5 +46,26 @@ public class Study {
                 ", subject=" + subject +
                 ", teacher=" + teacher +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Study study = (Study) o;
+
+        if (group != null ? !group.equals(study.group) : study.group != null) return false;
+        if (subject != null ? !subject.equals(study.subject) : study.subject != null) return false;
+        return teacher != null ? teacher.equals(study.teacher) : study.teacher == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = group != null ? group.hashCode() : 0;
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
+        return result;
     }
 }

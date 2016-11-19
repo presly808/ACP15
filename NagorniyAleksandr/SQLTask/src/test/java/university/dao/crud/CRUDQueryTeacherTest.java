@@ -128,7 +128,7 @@ public class CRUDQueryTeacherTest {
         assertThat(testTeacher.getId(), equalTo(addedTeacher.getId()));
         assertThat(testTeacher.getName(), equalTo(addedTeacher.getName()));
         assertThat(testTeacher.getExperience(), equalTo(addedTeacher.getExperience()));
-        assertThat(testTeacher, not(equalTo(addedTeacher)));
+        assertThat(testTeacher, equalTo(addedTeacher));
     }
 
     @Test
