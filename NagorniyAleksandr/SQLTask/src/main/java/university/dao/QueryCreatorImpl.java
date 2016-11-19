@@ -34,8 +34,8 @@ public class QueryCreatorImpl implements QueryCreator {
                              "FROM students " +
                              "LEFT JOIN groups " +
                              "ON students.group_id = groups.id " +
-                             "LIMIT " + length + " OFFSET " + offset)) {
-//// TODO: 18.11.16 resolv problem with LIMIT
+                             "LIMIT ? OFFSET ?")) {
+
             preparedStatement.setInt(1, length);
             preparedStatement.setInt(2, offset);
 
@@ -145,8 +145,7 @@ public class QueryCreatorImpl implements QueryCreator {
     }
 
     @Override
-    public List<Subject> getSubjectsThatStudyAllGroups() throws
-            InstanceNotFoundException, SQLException {
+    public List<Subject> getSubjectsThatStudyAllGroups() throws SQLException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(

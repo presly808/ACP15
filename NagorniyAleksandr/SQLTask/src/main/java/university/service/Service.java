@@ -15,12 +15,12 @@ package university.service;
 	  -показать группу, в которой более 3-х студентов изучают философию (и выгнать с универа)
  */
 
-import university.exceptions.DBUnavailableException;
-import university.exceptions.InvalidQueryParameterException;
+import university.exceptions.*;
 import university.models.*;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface Service {
@@ -30,17 +30,17 @@ public interface Service {
     List<Group> getGroupList(int offset, int length) throws InvalidQueryParameterException, DBUnavailableException;
     List<Teacher> getTeachersList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException;
 
-    boolean addStudent(Student student) throws InstanceAlreadyExistsException;
-    boolean addGroup(Group group) throws InstanceAlreadyExistsException;
-    boolean addSubject(Subject subject) throws InstanceAlreadyExistsException;
-    boolean addTeacher(Teacher teacher) throws InstanceAlreadyExistsException;
+    boolean addStudent(Student student) throws InstanceAlreadyExistsException, InvalidQueryParameterException, DBUnavailableException, GroupNotFoundException;
+    boolean addGroup(Group group) throws InstanceAlreadyExistsException, InvalidQueryParameterException, GroupAlreadyExistsException, DBUnavailableException;
+    boolean addSubject(Subject subject) throws InstanceAlreadyExistsException, InvalidQueryParameterException, SubjectAlreadyExistsException, SubjectCategoryNotFoundException, DBUnavailableException;
+    boolean addTeacher(Teacher teacher) throws InstanceAlreadyExistsException, InvalidQueryParameterException, DBUnavailableException;
 
-    boolean editStudent(Student studentWithNewData) throws InstanceNotFoundException;
-    boolean editGroup(Group groupWithNewData) throws InstanceNotFoundException;
-    boolean editTeacher(Teacher teacherWithNewData) throws InstanceNotFoundException;
-    boolean editSubject(Subject subjectWithNewData) throws InstanceNotFoundException;
+    boolean editStudent(Student studentWithNewData) throws InstanceNotFoundException, DBUnavailableException, InvalidQueryParameterException, GroupNotFoundException, StudentNotFoundException;
+    boolean editGroup(Group groupWithNewData) throws InstanceNotFoundException, InvalidQueryParameterException, GroupAlreadyExistsException, DBUnavailableException, GroupNotFoundException;
+    boolean editTeacher(Teacher teacherWithNewData) throws InstanceNotFoundException, InvalidQueryParameterException, DBUnavailableException, TeacherNotFoundException;
+    boolean editSubject(Subject subjectWithNewData) throws InstanceNotFoundException, InvalidQueryParameterException, SubjectCategoryNotFoundException, SubjectNotFoundException, DBUnavailableException;
 
-    List<Student> getStudentOfGroup(Group group) throws InstanceNotFoundException;
+    List<Student> getStudentOfGroup(Group group) throws InstanceNotFoundException, GroupNotFoundException, SQLException, InvalidQueryParameterException;
 
     List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws InstanceNotFoundException;
     List<Subject> getSubjectsThatStudyAllGroups() throws InstanceNotFoundException;
