@@ -2,18 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ACP15</artifactId>
+        <groupId>ua.artcode</groupId>
+        <version>1.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ua.artcode</groupId>
-    <artifactId>ACP15</artifactId>
-    <version>1.0</version>
-    <modules>
-        <module>SerhiiBilobrov</module>
-        <module>TestModule</module>
-        <module>TM2</module>
-        <module>NagorniyAleksandr</module>
-    </modules>
+    <artifactId>NagorniyAleksandr</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>SQLTask</module>
+    </modules>
 
 
 </project>

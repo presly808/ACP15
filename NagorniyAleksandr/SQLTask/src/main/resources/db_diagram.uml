@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>ebea969a-30d7-4920-9834-2278d6f4832a</OriginalElement>
+  <nodes>
+    <node x="170.0" y="292.5">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.study</node>
+    <node x="42.5" y="146.0">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.groups</node>
+    <node x="376.0" y="0.0">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.subject_categorys</node>
+    <node x="364.0" y="124.0">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.subjects</node>
+    <node x="0.0" y="292.0">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.students</node>
+    <node x="193.99999999999997" y="135.0">ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.teachers</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.study" target="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.subjects">
+      <point x="65.99999999999997" y="-47.5" />
+      <point x="335.0" y="267.0" />
+      <point x="449.0" y="267.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.students" target="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.groups">
+      <point x="0.0" y="-48.0" />
+      <point x="-32.5" y="37.0" />
+    </edge>
+    <edge source="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.study" target="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.teachers">
+      <point x="-2.8421709430404007E-14" y="-47.5" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.subjects" target="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.subject_categorys">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.study" target="ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.groups">
+      <point x="-66.00000000000003" y="-47.5" />
+      <point x="203.0" y="267.0" />
+      <point x="140.0" y="267.0" />
+      <point x="32.5" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8558013064813544" x="379.4550262782276" y="195.31627300075934" />
+  <SelectedNodes>
+    <node>ebea969a-30d7-4920-9834-2278d6f4832a.TABLE:university.students</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
