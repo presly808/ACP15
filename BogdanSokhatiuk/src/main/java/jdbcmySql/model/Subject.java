@@ -1,11 +1,16 @@
-package jdbcmySql;
+package jdbcmySql.model;
+
+import jdbcmySql.annotation.SqlDB;
 
 /**
  * Created by lost on 12.11.2016.
  */
 public class Subject {
+    @SqlDB
     private int id;
+    @SqlDB
     private String name;
+    @SqlDB
     private String description;
 
     public Subject() {

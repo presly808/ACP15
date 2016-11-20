@@ -1,20 +1,29 @@
 package jdbcmySql;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import jdbcmySql.dbMySql.SqlConnection;
+import org.apache.ibatis.jdbc.ScriptRunner;
+import org.junit.*;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
 
 /**
  * Created by lost on 12.11.2016.
  */
-public class testSqlSelect {
+public class TestSqlSelect {
     Connection connection;
 
+    @BeforeClass
+    public static void setUp() throws Exception {
+        Connection con = new SqlConnection().getConnection();
+        ScriptRunner scriptRunner= new ScriptRunner(con);
+        InputStream is= TestJDBCtask.class.getResourceAsStream("/sqlsripts.sql");
+        scriptRunner.runScript(new InputStreamReader(is));
+    }
+
     @Before
-    public void setUp() {
+    public void beforeMethod() {
         SqlConnection sqlConnection = new SqlConnection();
         connection = sqlConnection.getConnection();
     }
@@ -102,7 +111,5 @@ public class testSqlSelect {
                 e.printStackTrace();
             }
         }
-
     }
-
 }

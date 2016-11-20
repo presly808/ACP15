@@ -1,17 +1,23 @@
-package jdbcmySql;
+package jdbcmySql.model;
+
+import jdbcmySql.annotation.SqlDB;
 
 /**
  * Created by lost on 12.11.2016.
  */
 public class Student {
+    @SqlDB
     private int id;
+    @SqlDB
     private String name;
+    @SqlDB
     private int group;
 
 
+    private int gfdg;
+
     public Student() {
     }
-
 
 
     @Override

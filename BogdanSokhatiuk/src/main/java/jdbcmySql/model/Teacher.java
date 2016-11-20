@@ -1,12 +1,18 @@
-package jdbcmySql;
+package jdbcmySql.model;
+
+import jdbcmySql.annotation.SqlDB;
 
 /**
  * Created by lost on 12.11.2016.
  */
 public class Teacher {
+    @SqlDB
     private int id;
+    @SqlDB
     private String name;
+    @SqlDB
     private int experience;
+    @SqlDB
     private int subject;
 
     public int getId() {
