@@ -5,6 +5,6 @@ package ua.artcode.daoSQL.interfaces;
  */
 public interface UpdateDAO {
 
-    boolean updateStudentByGroup(int student_id, int group_id) throws ClassNotFoundException;
+    boolean updateStudentByGroup(int student_id, int group_id);
 
 }

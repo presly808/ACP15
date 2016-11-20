@@ -1,5 +1,8 @@
 package ua.artcode.util;
 
+import org.apache.log4j.Logger;
+import ua.artcode.daoSQL.implementations.CreateCommands;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +12,18 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
 
+    private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class);
+
     public static Connection getConnectionToDBUniversity() throws SQLException {
+
+        LOGGER.info("getting Connection To DB SQL named University on SQL server");
+
+        try {
+            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
+            LOGGER.info("getting driver to Connection To DB SQL named University on SQL server");
+        } catch (ClassNotFoundException e) {
+            LOGGER.info("get Connection To DB SQL named University on SQL server was interrupt", e);
+        }
 
         Connection connectionToDBUniversity = DriverManager.getConnection(PropertiesHolder.getProperty("URL_JDBC_UNIVERSITY"),
                 PropertiesHolder.getProperty("USER"), PropertiesHolder.getProperty("PASSWORD"));
@@ -17,10 +31,17 @@ public class ConnectionFactory {
         return connectionToDBUniversity;
     }
 
-    public static Connection getConnectionToNewDB() throws SQLException {
+    public static Connection getConnectionToTestDB() throws SQLException {
 
-        String str = IO.read();
-        Connection connectionToNewDB = DriverManager.getConnection(PropertiesHolder.getProperty(str),
+        LOGGER.info("getting Connection To DB SQL named testDBForUniversity on SQL server");
+        try {
+            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
+            LOGGER.info("getting driver to Connection To DB SQL named testDBForUniversity on SQL server");
+        } catch (ClassNotFoundException e) {
+            LOGGER.info("get Connection To DB SQL named testDBForUniversity on SQL server was interrupt", e);
+        }
+
+        Connection connectionToNewDB = DriverManager.getConnection(PropertiesHolder.getProperty("URL_JDBC_TESTDBFORUNIVERSITY"),
                 PropertiesHolder.getProperty("USER"), PropertiesHolder.getProperty("PASSWORD"));
 
         return connectionToNewDB;

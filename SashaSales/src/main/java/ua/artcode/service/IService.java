@@ -1,5 +1,6 @@
 package ua.artcode.service;
 
+import ua.artcode.exceptions.EmptyException;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Subject;
@@ -22,17 +23,17 @@ public interface IService {
 
 // service -> add
 
-    boolean addStudent(String student_name);
-    boolean addSubject(String subject_name, String subjects_description);
-    boolean addTeacher(String teacher_name, int experience, int subject_id);
-    boolean addGroup(String group_name);
+    boolean addStudent(String student_name) throws EmptyException;
+    boolean addSubject(String subject_name, String subjects_description) throws EmptyException;
+    boolean addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException;
+    boolean addGroup(String group_name) throws EmptyException;
 
 // service -> delete
 
-    boolean deleteStudent(String student_name);
-    boolean deleteSubject(String subject_name);
-    boolean deleteTeacher(String teacher_name);
-    boolean deleteGroup(String group_name);
+    boolean deleteStudent(String student_name) throws EmptyException;
+    boolean deleteSubject(String subject_name) throws EmptyException;
+    boolean deleteTeacher(String teacher_name) throws EmptyException;
+    boolean deleteGroup(String group_name) throws EmptyException;
 
 // service -> upDate
 

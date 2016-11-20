@@ -35,7 +35,7 @@ public class TestDataForDBSQL {
     public static String generateGroupName(){
 
         String [] firstPart = {"Base", "ACO", "ACP", "Velikie", "Izvestnie", "Uvazhaemie", "Politichesskaya", "Regionu", "Opoziciya", "EdinayaUkraine"};
-        String [] secondPart = {"1","2","3", "4","5","6", "7", "8", "9", "10", "11", "12", "13", "14", "", "16"};
+        String [] secondPart = {"1","2","3", "4","5","6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"};
         int index1 = (int) (10 - Math.random() * 10);
         int index2 = (int) (16 - Math.random() * 16);
 

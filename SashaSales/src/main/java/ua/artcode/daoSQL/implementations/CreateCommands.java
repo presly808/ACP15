@@ -6,6 +6,7 @@ import ua.artcode.util.ConnectionFactory;
 import ua.artcode.util.PropertiesHolder;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,9 +16,6 @@ import java.sql.Statement;
 public class CreateCommands implements CreateDAO{
 
     private static final Logger LOGGER = Logger.getLogger(CreateCommands.class);
-
-    private static final String CREATE_DB_SQL = "CREATE DATABASE %s";
-    public static String PART_URL_DB_SQL;
     private static final String CREATE_TABLE_GROUPS = "create table groups(\n" +
             "  id int PRIMARY KEY AUTO_INCREMENT,\n" +
             "  group_name VARCHAR(40) UNIQUE NOT NULL\n" +
@@ -49,42 +47,16 @@ public class CreateCommands implements CreateDAO{
             "  FOREIGN KEY (subject_id) REFERENCES subjects(id)\n" +
             ");";
 
-
-
-
-    public boolean createDBSQL(String nameDB) {
-
-        LOGGER.info("creating DB SQL " + nameDB + "on SQL server");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            LOGGER.error("creating DB SQL " + nameDB + "on SQL server", e);
-        }
-
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(String.format(CREATE_DB_SQL, nameDB));
-            LOGGER.info("DB SQL " + nameDB + "was create on SQL server");
-            return true;
-        } catch (SQLException e) {
-            LOGGER.error("creating DB SQL " + nameDB + "on SQL server was itterupt", e);
-            return false;
-        }
-
+    public CreateCommands() {
     }
 
     public boolean createTableGroups() {
 
         LOGGER.info("creating Table Groups in DB SQL");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(CREATE_TABLE_GROUPS);
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_GROUPS);) {
+            preparedStatement.execute();
             LOGGER.info("Table Groups was create in DB SQL");
             return true;
         } catch (SQLException e) {
@@ -97,15 +69,10 @@ public class CreateCommands implements CreateDAO{
     public boolean createTableSubject() {
 
         LOGGER.info("creating Table Subjects in DB SQL");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(CREATE_TABLE_SUBJECTS);
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_SUBJECTS);) {
+            preparedStatement.execute();
             LOGGER.info("Table Subjects was create in DB SQL");
             return true;
         } catch (SQLException e) {
@@ -118,15 +85,10 @@ public class CreateCommands implements CreateDAO{
     public boolean createTableTeachers() {
 
         LOGGER.info("creating Table Teachers in DB SQL");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(CREATE_TABLE_TEACHERS);
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_TEACHERS);) {
+            preparedStatement.execute();
             LOGGER.info("Table Teachers was create in DB SQL");
             return true;
         } catch (SQLException e) {
@@ -139,15 +101,10 @@ public class CreateCommands implements CreateDAO{
     public boolean createTableStudents() {
 
         LOGGER.info("creating Table Students in DB SQL");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(CREATE_TABLE_STUDENTS);
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_STUDENTS);) {
+            preparedStatement.execute();
             LOGGER.info("Table Students was create in DB SQL");
             return true;
         } catch (SQLException e) {
@@ -160,15 +117,10 @@ public class CreateCommands implements CreateDAO{
     public boolean createTableStudy() {
 
         LOGGER.info("creating Table Study in DB SQL");
-        try {
-            Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        } catch (ClassNotFoundException e) {
-            LOGGER.error("creating Table Study in DB SQL", e);
-        }
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            statement.executeUpdate(CREATE_TABLE_STUDY);
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_STUDY);) {
+            preparedStatement.execute();
             LOGGER.info("Table Study was create in DB SQL");
             return true;
         } catch (SQLException e) {

@@ -15,7 +15,7 @@ public class RunApp {
 
     public static void main(String[] args) {
 
-        IService iService = new IServiceImpl();
+       // IService iService = new IServiceImpl();
 
 
         /*List<Student> students = iService.getAllStudents();

@@ -11,12 +11,22 @@
 
     <artifactId>SashaSales</artifactId>
 
+    <properties>
+        <dbh2.version>1.4.187</dbh2.version>
+    </properties>
+
     <dependencies>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${dbh2.version}</version>
         </dependency>
 
         <dependency>

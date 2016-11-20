@@ -5,10 +5,10 @@ package ua.artcode.daoSQL.interfaces;
  */
 public interface InsertDAO {
 
-    boolean addSubject(String subject_name, String subjects_description) throws ClassNotFoundException;
-    boolean addGroup(String group_name) throws ClassNotFoundException;
-    boolean addTeacher(String teacher_name, int experience, int subject_id) throws ClassNotFoundException;
-    boolean addStudent(String student_name) throws ClassNotFoundException;
+    boolean addSubject(String subject_name, String subjects_description);
+    boolean addGroup(String group_name);
+    boolean addTeacher(String teacher_name, int experience, int subject_id);
+    boolean addStudent(String student_name);
 
 
 }

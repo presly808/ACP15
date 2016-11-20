@@ -6,6 +6,7 @@ import ua.artcode.daoSQL.interfaces.DeleteDAO;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
 import ua.artcode.daoSQL.interfaces.SelectDAO;
 import ua.artcode.daoSQL.interfaces.UpdateDAO;
+import ua.artcode.exceptions.EmptyException;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Subject;
@@ -25,7 +26,7 @@ public class IServiceImpl implements IService {
     private UpdateDAO updateDAO;
     private InsertDAO insertDAO;
 
-    public IServiceImpl() {
+    public IServiceImpl() throws ClassNotFoundException {
         LOGGER.trace("Create IServiceImpl instance");
         this.selectDAO = new SelectCommands();
         this.deleteDAO = new DeleteCommands();
@@ -38,11 +39,7 @@ public class IServiceImpl implements IService {
 
         List<Student> students = null;
 
-        try {
-            students = selectDAO.getStudents();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        students = selectDAO.getStudents();
         return students;
     }
 
@@ -50,12 +47,7 @@ public class IServiceImpl implements IService {
     public List<Student> getAllStudentsByGroup(String nameGroup) {
 
         List<Student> students = null;
-
-        try {
-            students = selectDAO.getStudentsByGroup(nameGroup);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        students = selectDAO.getStudentsByGroup(nameGroup);
         return students;
     }
 
@@ -63,136 +55,107 @@ public class IServiceImpl implements IService {
     public List<Subject> getAllSubjects() {
 
         List<Subject> subjects = null;
-
-        try {
-            subjects = selectDAO.getSubjects();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        subjects = selectDAO.getSubjects();
         return subjects;
     }
 
     @Override
     public List<Teacher> getAllTeachers() {
 
-
         List<Teacher> teachers = null;
-
-        try {
-            teachers = selectDAO.getTeachers();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        teachers = selectDAO.getTeachers();
         return teachers;
     }
 
     @Override
     public List<Group> getAllGroups() {
 
-
         List<Group> groups = null;
-
-        try {
-            groups = selectDAO.getGroups();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        groups = selectDAO.getGroups();
         return groups;
     }
 
     @Override
-    public boolean addStudent(String student_name) {
-        try {
-            return insertDAO.addStudent(student_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
+    public boolean addStudent(String student_name) throws EmptyException {
+
+        if (student_name.isEmpty()){
+            throw new EmptyException("student_name is empty");
         }
-    }
-
-    @Override
-    public boolean addSubject(String subject_name, String subjects_description) {
-
-        try {
-            return insertDAO.addSubject(subject_name, subjects_description);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean addTeacher(String teacher_name, int experience, int subject_id) {
-        try {
-            return insertDAO.addTeacher(teacher_name, experience, subject_id);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean addGroup(String group_name) {
-
-        try {
-            return insertDAO.addGroup(group_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean deleteStudent(String student_name) {
-        try {
-            return deleteDAO.deleteStudent(student_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean deleteSubject(String subject_name) {
-        try {
-            return deleteDAO.deleteSubject(subject_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean deleteTeacher(String teacher_name) {
-
-        try {
-            return deleteDAO.deleteTeacher(teacher_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return insertDAO.addStudent(student_name);
 
     }
 
     @Override
-    public boolean deleteGroup(String group_name) {
-        try {
-            return deleteDAO.deleteGroup(group_name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
+    public boolean addSubject(String subject_name, String subjects_description) throws EmptyException {
+
+        if (subject_name.isEmpty()){
+            throw new EmptyException("subject_name is empty");
         }
+        return insertDAO.addSubject(subject_name, subjects_description);
+    }
+
+    @Override
+    public boolean addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException {
+
+        if (teacher_name.isEmpty()){
+            throw new EmptyException("teacher_name is empty");
+        }
+
+        return insertDAO.addTeacher(teacher_name, experience, subject_id);
+
+    }
+
+    @Override
+    public boolean addGroup(String group_name) throws EmptyException {
+
+        if (group_name.isEmpty()){
+            throw new EmptyException("group_name is empty");
+        }
+        return insertDAO.addGroup(group_name);
+    }
+
+    @Override
+    public boolean deleteStudent(String student_name) throws EmptyException {
+
+        if (student_name.isEmpty()){
+            throw new EmptyException("student_name is empty");
+        }
+        return deleteDAO.deleteStudent(student_name);
+    }
+
+    @Override
+    public boolean deleteSubject(String subject_name) throws EmptyException {
+
+        if (subject_name.isEmpty()){
+            throw new EmptyException("subject_name is empty");
+        }
+        return deleteDAO.deleteSubject(subject_name);
+    }
+
+    @Override
+    public boolean deleteTeacher(String teacher_name) throws EmptyException {
+
+        if (teacher_name.isEmpty()){
+            throw new EmptyException("teacher_name is empty");
+        }
+        return deleteDAO.deleteTeacher(teacher_name);
+    }
+
+    @Override
+    public boolean deleteGroup(String group_name) throws EmptyException {
+
+        if (group_name.isEmpty()){
+            throw new EmptyException("group_name is empty");
+        }
+        return deleteDAO.deleteGroup(group_name);
     }
 
     @Override
     public boolean upDateByGroup(int student_id, int group_id) {
-
-        try {
-            return updateDAO.updateStudentByGroup(student_id, group_id);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if (student_id <= 0 && group_id <=0){
             return false;
         }
+        return updateDAO.updateStudentByGroup(student_id, group_id);
     }
 
     @Override
@@ -207,7 +170,7 @@ public class IServiceImpl implements IService {
 
     @Override
     public List<Teacher> getTeachersThatWorkMore3Years() {
-        return null;
+        return selectDAO.getTeachersThatWorkMore3Years();
     }
 
     @Override

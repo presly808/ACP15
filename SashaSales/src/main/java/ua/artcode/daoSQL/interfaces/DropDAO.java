@@ -5,7 +5,6 @@ package ua.artcode.daoSQL.interfaces;
  */
 public interface DropDAO {
 
-    boolean dropDATABASE(String DB_name);
     boolean dropTableGroups();
     boolean dropTableSubjects();
     boolean dropTableStudents();

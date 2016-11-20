@@ -5,12 +5,10 @@ package ua.artcode.daoSQL.interfaces;
  */
 public interface CreateDAO {
 
-    boolean createDBSQL(String nameDB);
     boolean createTableGroups();
     boolean createTableSubject();
     boolean createTableTeachers();
     boolean createTableStudents();
     boolean createTableStudy();
-
 
 }

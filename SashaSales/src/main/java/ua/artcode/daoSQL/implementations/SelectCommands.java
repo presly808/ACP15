@@ -6,9 +6,9 @@ import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Subject;
 import ua.artcode.model.Teacher;
-import ua.artcode.service.IServiceImpl;
 import ua.artcode.util.ConnectionFactory;
 import ua.artcode.util.PropertiesHolder;
+import ua.artcode.util.UtilsMethod;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,32 +21,27 @@ public class SelectCommands implements SelectDAO {
 
     private static final Logger LOGGER = Logger.getLogger(SelectCommands.class);
 
-    public static final String SELECT_ALL_STUDENTS = "SELECT student.id, student.student_name, student.group_id, groups.group_name FROM student, groups WHERE student.group_id=groups.id";
-    public static final String SELECT_ALL_GROUPS = "SELECT groups.id, groups.group_name FROM groups";
-    public static final String SELECT_ALL_STUDENTS_BY_GROUP = "SELECT student.id, student.student_name FROM student, groups WHERE student.group_id=groups.id and groups.group_name LIKE '%s'";
-    public static final String SELECT_ALL_SUBJECT = "SELECT subjects.id, subjects.subject_name, subjects.description FROM subjects";
-    public static final String SELECT_ALL_TEACHERS = "SELECT teachers.id, teachers.teacher_name, teachers.experience, subjects.subject_name FROM teachers, subjects WHERE teachers.subject_id=subjects.id";
+    private static final String SELECT_ALL_STUDENTS = "SELECT student.id, student.student_name, student.group_id, groups.group_name FROM student, groups WHERE student.group_id=groups.id";
+    private static final String SELECT_ALL_GROUPS = "SELECT groups.id, groups.group_name FROM groups";
+    private static final String SELECT_ALL_STUDENTS_BY_GROUP = "SELECT student.id, student.student_name, student.group_id, groups.group_name FROM student, groups WHERE student.group_id=groups.id and groups.group_name ='%s'";
+    private static final String SELECT_ALL_SUBJECT = "SELECT subjects.id, subjects.subject_name, subjects.description FROM subjects";
+    private static final String SELECT_ALL_TEACHERS_THAT_WORK_MORE_3_YEARS = "SELECT teachers.id, teachers.teacher_name, teachers.experience, subjects.subject_name FROM teachers, subjects WHERE teachers.subject_id=subjects.id and teachers.experience > 3";
+    private static final String SELECT_ALL_TEACHERS = "SELECT teachers.id, teachers.teacher_name, teachers.experience, subjects.subject_name FROM teachers, subjects WHERE teachers.subject_id=subjects.id";
 
-    public List<Student> getStudents() throws ClassNotFoundException {
+    public SelectCommands() {
+    }
+
+    public List<Student> getStudents() {
 
         LOGGER.info("getting List of Students from SQL DB");
 
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        List<Student> students =  new ArrayList<>();
+        List<Student> students = new ArrayList<>();
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_STUDENTS)) {
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_STUDENTS)) {
+            UtilsMethod.utilResultSet(resultSet, students);
 
-                while (resultSet.next()){
-                int id_student = resultSet.getInt("id");
-                String student_name = resultSet.getString("student_name");
-                int id_group = resultSet.getInt("group_id");
-                String group_name = resultSet.getString("group_name");
-                Group group = new Group(id_group, group_name);
-                Student student = new Student(id_student, student_name, group);
-                students.add(student);
-                }
             LOGGER.info("List of Students was get from SQL DB");
         } catch (SQLException e) {
             LOGGER.error("List of Students don't get from SQL DB", e);
@@ -55,26 +50,19 @@ public class SelectCommands implements SelectDAO {
         return students;
     }
 
-    public List<Student> getStudentsByGroup(String nameGroup) throws ClassNotFoundException {
+
+    public List<Student> getStudentsByGroup(String nameGroup) {
 
         LOGGER.info("getting List of Students By Group from SQL DB");
 
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        List<Student> students =  new ArrayList<>();
+        List<Student> students = new ArrayList<>();
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(String.format(SELECT_ALL_STUDENTS_BY_GROUP, nameGroup))) {
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(String.format(SELECT_ALL_STUDENTS_BY_GROUP, nameGroup))) {
 
-            while (resultSet.next()){
-                int id_student = resultSet.getInt("id");
-                String student_name = resultSet.getString("student_name");
-                int id_group = resultSet.getInt("group_id");
-                String group_name = resultSet.getString("group_name");
-                Group group = new Group(id_group, group_name);
-                Student student = new Student(id_student, student_name, group);
-                students.add(student);
-            }
+            UtilsMethod.utilResultSet(resultSet, students);
+
             LOGGER.info("List of Students By Group was get from SQL DB");
         } catch (SQLException e) {
             LOGGER.error("List of Students By Group don't get from SQL DB", e);
@@ -83,17 +71,16 @@ public class SelectCommands implements SelectDAO {
         return students;
     }
 
-    public List<Group> getGroups() throws ClassNotFoundException {
+    public List<Group> getGroups() {
 
         LOGGER.info("getting List of Subjects from SQL DB");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
         List<Group> groups = new ArrayList<>();
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(String.format(SELECT_ALL_GROUPS))) {
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(String.format(SELECT_ALL_GROUPS))) {
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id_group = resultSet.getInt("id");
                 String name_group = resultSet.getString("group_name");
                 Group group = new Group(id_group, name_group);
@@ -107,17 +94,17 @@ public class SelectCommands implements SelectDAO {
     }
 
 
-    public List<Subject> getSubjects() throws ClassNotFoundException {
+    public List<Subject> getSubjects() {
 
         LOGGER.info("getting List of Teachers from SQL DB");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        List<Subject> subjects =  new ArrayList<>();
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_SUBJECT)) {
+        List<Subject> subjects = new ArrayList<>();
 
-            while (resultSet.next()){
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_SUBJECT)) {
+
+            while (resultSet.next()) {
                 int subjects_id = resultSet.getInt("id");
                 String subjects_name = resultSet.getString("subject_name");
                 String subjects_description = resultSet.getString("description");
@@ -132,17 +119,16 @@ public class SelectCommands implements SelectDAO {
         return subjects;
     }
 
-    public List<Teacher> getTeachers() throws ClassNotFoundException {
+    public List<Teacher> getTeachers() {
 
-        LOGGER.info("getting List of Groups from SQL DB");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-        List<Teacher> teachers =  new ArrayList<>();
+        LOGGER.info("getting List of Teachers from SQL DB");
+        List<Teacher> teachers = new ArrayList<>();
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_TEACHERS)) {
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_TEACHERS)) {
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int teachers_id = resultSet.getInt("id");
                 String teacher_name = resultSet.getString("teacher_name");
                 int teacher_experience = resultSet.getInt("experience");
@@ -151,9 +137,35 @@ public class SelectCommands implements SelectDAO {
                 Teacher teacher = new Teacher(teachers_id, teacher_name, teacher_experience, subject);
                 teachers.add(teacher);
             }
-            LOGGER.info("List of Groups was get from SQL DB");
+            LOGGER.info("List of Teachers was get from SQL DB");
         } catch (SQLException e) {
-            LOGGER.error("List of Groups don't get from SQL DB", e);
+            LOGGER.error("List of Teachers don't get from SQL DB", e);
+        }
+
+        return teachers;
+    }
+
+    public List<Teacher> getTeachersThatWorkMore3Years() {
+
+        LOGGER.info("getting List of Teachers That Work More 3 Years from SQL DB");
+        List<Teacher> teachers = new ArrayList<>();
+
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_TEACHERS_THAT_WORK_MORE_3_YEARS)) {
+
+            while (resultSet.next()) {
+                int teachers_id = resultSet.getInt("id");
+                String teacher_name = resultSet.getString("teacher_name");
+                int teacher_experience = resultSet.getInt("experience");
+                String subject_name = resultSet.getString("subject_name");
+                Subject subject = new Subject(subject_name);
+                Teacher teacher = new Teacher(teachers_id, teacher_name, teacher_experience, subject);
+                teachers.add(teacher);
+            }
+            LOGGER.info("List of Teachers That Work More 3 was get from SQL DB");
+        } catch (SQLException e) {
+            LOGGER.error("getting List of Teachers That Work More 3 from SQL DB was iterrupt", e);
         }
 
         return teachers;

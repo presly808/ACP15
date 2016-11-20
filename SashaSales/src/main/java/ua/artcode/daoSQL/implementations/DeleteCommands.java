@@ -14,23 +14,22 @@ public class DeleteCommands implements DeleteDAO {
 
     private static final Logger LOGGER = Logger.getLogger(DeleteCommands.class);
 
-    public static final String DELETE_SUBJECT = "DELETE FROM subjects WHERE subject_name = '%s';";
-    public static final String DELETE_GROUP = "DELETE FROM groups WHERE group_name = '%s';";
-    public static final String DELETE_TEACHER = "DELETE FROM teachers WHERE teacher_name = '%s';";
-    public static final String DELETE_STUDENT = "DELETE FROM student WHERE student_name = '%s';";
+    private static final String DELETE_SUBJECT = "DELETE FROM subjects WHERE subject_name = ?;";
+    private static final String DELETE_GROUP = "DELETE FROM groups WHERE group_name = ?;";
+    private static final String DELETE_TEACHER = "DELETE FROM teachers WHERE teacher_name = ?;";
+    private static final String DELETE_STUDENT = "DELETE FROM student WHERE student_name = ?;";
 
+    public DeleteCommands() {
+    }
 
-    public boolean deleteSubject(String subject_name) throws ClassNotFoundException {
+    public boolean deleteSubject(String subject_name) {
 
         LOGGER.info("deleting Subject " + subject_name + " to DB SQL");
 
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-
-        try(Connection connection = ConnectionFactory.getConnectionToDBUniversity();
-            Statement statement = connection.createStatement();) {
-            connection.setAutoCommit(false);
-            statement.executeUpdate(String.format(DELETE_SUBJECT, subject_name));
-            connection.commit();
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SUBJECT);) {
+            preparedStatement.setString(1, subject_name);
+            preparedStatement.execute();
             LOGGER.info("Subject " + subject_name + "was delete to DB SQL");
             return true;
 
@@ -41,16 +40,14 @@ public class DeleteCommands implements DeleteDAO {
 
     }
 
-    public boolean deleteGroup(String group_name) throws ClassNotFoundException {
+    public boolean deleteGroup(String group_name) {
 
         LOGGER.info("deleting Group " + group_name + " to DB SQL");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            connection.setAutoCommit(false);
-            statement.executeUpdate(String.format(DELETE_GROUP, group_name));
-            connection.commit();
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_GROUP);) {
+            preparedStatement.setString(1, group_name);
+            preparedStatement.execute();
             LOGGER.info("Group " + group_name + "was delete to DB SQL");
             return true;
 
@@ -62,16 +59,14 @@ public class DeleteCommands implements DeleteDAO {
 
     }
 
-    public boolean deleteTeacher(String teacher_name) throws ClassNotFoundException {
+    public boolean deleteTeacher(String teacher_name) {
 
         LOGGER.info("deleting Teacher " + teacher_name + " to DB SQL");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            connection.setAutoCommit(false);
-            statement.executeUpdate(String.format(DELETE_TEACHER, teacher_name));
-            connection.commit();
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TEACHER);) {
+            preparedStatement.setString(1, teacher_name);
+            preparedStatement.execute();
             LOGGER.info("Teacher " + teacher_name + "was delete to DB SQL");
             return true;
 
@@ -83,16 +78,14 @@ public class DeleteCommands implements DeleteDAO {
 
     }
 
-    public boolean deleteStudent(String student_name) throws ClassNotFoundException {
+    public boolean deleteStudent(String student_name) {
 
         LOGGER.info("deleting Student " + student_name + " to DB SQL");
-        Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
 
-        try(Connection connection = ConnectionFactory.getConnectionToNewDB();
-            Statement statement = connection.createStatement();) {
-            connection.setAutoCommit(false);
-            statement.executeUpdate(String.format(DELETE_STUDENT, student_name));
-            connection.commit();
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STUDENT);) {
+            preparedStatement.setString(1, student_name);
+            preparedStatement.execute();
             LOGGER.info("Student " + student_name + "was delete to DB SQL");
             return true;
 

@@ -5,10 +5,10 @@ package ua.artcode.daoSQL.interfaces;
  */
 public interface DeleteDAO {
 
-    boolean deleteSubject(String subject_name) throws ClassNotFoundException;
-    boolean deleteGroup(String group_name) throws ClassNotFoundException;
-    boolean deleteTeacher(String teacher_name) throws ClassNotFoundException;
-    boolean deleteStudent(String student_name) throws ClassNotFoundException;
+    boolean deleteSubject(String subject_name);
+    boolean deleteGroup(String group_name);
+    boolean deleteTeacher(String teacher_name);
+    boolean deleteStudent(String student_name);
 
 
 }

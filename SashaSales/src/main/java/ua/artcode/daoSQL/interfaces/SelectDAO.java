@@ -12,11 +12,13 @@ import java.util.List;
  */
 public interface SelectDAO {
 
-    List<Student> getStudents() throws ClassNotFoundException;
-    List<Student> getStudentsByGroup(String nameGroup) throws ClassNotFoundException;
-    List<Group> getGroups() throws ClassNotFoundException;
-    List<Subject> getSubjects() throws ClassNotFoundException;
-    List<Teacher> getTeachers() throws ClassNotFoundException;
+    List<Student> getStudents();
+    List<Student> getStudentsByGroup(String nameGroup);
+    List<Group> getGroups();
+    List<Subject> getSubjects();
+    List<Teacher> getTeachers();
+    List<Teacher> getTeachersThatWorkMore3Years();
+
 
 
 }
