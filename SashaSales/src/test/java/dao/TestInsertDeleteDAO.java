@@ -54,10 +54,9 @@ public class TestInsertDeleteDAO {
     @Test
     public void testAddDeleteSubject(){
 
-        String subjectName = "Mathematics";
-        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description mathematics");
+        String subjectName = "Terapia";
+        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description Terapia");
         boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
-
 
         Assert.assertEquals("Test method Add and Delete subject", true, insertSubjectResult && deleteSubjectResult);
 
@@ -66,13 +65,13 @@ public class TestInsertDeleteDAO {
     @Test
     public void testAddDeleteTeacher(){
 
-        String subjectName = "Mathematics";
+        String subjectName = "Terapia";
         String teacherName = "Grigor";
-        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description mathematics");
+        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description Terapia");
         boolean insertTeacherResult = insertDAO.addTeacher(teacherName, 3, 1);
         boolean deleteTeacherResult = deleteDAO.deleteTeacher(teacherName);
         boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
-        Assert.assertEquals("Test method Add and Delete subject", true, insertSubjectResult && insertTeacherResult
+        Assert.assertEquals("Test method Add and Delete Teacher", true, insertSubjectResult && insertTeacherResult
                                 && deleteTeacherResult && deleteSubjectResult);
 
     }
@@ -83,7 +82,7 @@ public class TestInsertDeleteDAO {
         String studentName = "Grigor";
         boolean insertStudentResult =  insertDAO.addStudent(studentName);
         boolean deleteStudentResult = deleteDAO.deleteStudent(studentName);
-        Assert.assertEquals("Test method Add and Delete subject", true, insertStudentResult && deleteStudentResult);
+        Assert.assertEquals("Test method Add and Delete Student", true, insertStudentResult && deleteStudentResult);
 
     }
 

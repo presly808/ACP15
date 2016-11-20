@@ -159,7 +159,7 @@ public class IServiceImpl implements IService {
     }
 
     @Override
-    public List<Group> groupsThatStudySubject(Subject subject) {
+    public List<Group> getGroupsThatStudySubject(String subject_name) {
         return null;
     }
 

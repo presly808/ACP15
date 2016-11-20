@@ -9,37 +9,52 @@ public class TestDataForDBSQL {
 
 
 
-    public static String generateName(){
+    public static String[] generateStudentName(){
 
-        String [] firstNames = {"Katerina", "Elena", "Artur", "Ivan", "Sergey", "Petr", "Nikolay", "Stepan", "Pavel", "Gennadiy", "Ulyana",
-                                "Yana", "Yuliya", "Vladimir", "Igor", "Aleksandr", "Hanna", "Irina", "Antonina", "Vladislav"};
-        String [] lastNames = {"Poroshenko", "Klichko", "Zelenskiy", "Koshevoy", "Timoshenko", "Lyashko", "Putin", "Aksenov", "Kernes",
-                                "Avakov", "Moskal", "Shevchenho", "Hmelnizkiy", "Zhirinovskiy", "Tramp", "Kuchma", "Yanukovich",
-                                "Kirkorov", "Baskov", "Galkin"};
-        int index1 = (int) (20 - Math.random() * 20);
-        int index2 = (int) (20 - Math.random() * 20);
+        String [] studentNames = {"Katerina Poroshenko", "Elena Klichko", "Artur Zelenskiy", "Ivan Koshevoy", "Sergey Timoshenko",
+                                "Petr Lyashko", "Nikolay Putin", "Stepan Aksenov", "Pavel Kernes", "Gennadiy Avakov",
+                                "Ulyana Moskal", "Yana Shevchenho", "Yuliya Hmelnizkiy", "Vladimir Zhirinovskiy", "Igor Tramp",
+                                "Aleksandr Kuchma", "Hanna Yanukovich", "Irina Kirkorov", "Antonina Baskov", "Vladislav Galkin",
+                                "Katerina Galkin", "Elena Poroshenko", "Artur Klichkox", "Ivan Klichko", "Sergey Koshevoy",
+                                "Petr Timoshenko", "Nikolay Lyashko", "Stepan Putin", "Pavel Aksenov", "Gennadiy Kernes",
+                                "Ulyana Avakov", "Yana Moskal", "Yuliya Shevchenho", "Vladimir Hmelnizkiy", "Igor Zhirinovskiy",
+                                "Aleksandr Tramp", "Hanna Kuchma", "Irina Yanukovich", "Antonina Kirkorov", "Vladislav Baskov",
+                                "Katerina Baskov", "Elena Galkin", "Artur Poroshenko", "Ivan Klichkox", "Sergey Klichko",
+                                "Petr Koshevoy", "Nikolay Timoshenko", "Stepan Lyashko", "Pavel Putin", "Gennadiy Aksenov",
+                                "Ulyana Kernes", "Yana Avakov", "Yuliya Moskal", "Vladimir Shevchenho", "Igor Hmelnizkiy",
+                                "Aleksandr Zhirinovskiy", "Hanna Tramp", "Irina Kuchma", "Antonina Yanukovich", "Vladislav Kirkorov"
+                                };
 
-        return firstNames[index1] + " " + lastNames[index2];
+        return studentNames;
+
+    }
+
+    public static String[] generateTeacherName(){
+
+        String [] teacherNames = {"Katerina Yanukovich", "Elena Kuchma", "Artur Tramp", "Ivan Zhirinovskiy",
+                "Sergey Hmelnizkiy", "Petr Shevchenho", "Nikolay Moskal", "Stepan Avakov", "Pavel Kernes",
+                "Gennadiy Aksenov", "Ulyana Putin", "Yana Lyashko", "Yuliya Timoshenko", "Vladimir Koshevoy",
+                "Igor Zelenskiy", "Aleksandr Klichko", "Hanna Poroshenko", "Irina Galkin", "Antonina Baskov",
+                "Vladislav Kirkorov"};
+
+        return teacherNames;
 
     }
 
     public static String[] generateSubjectName(){
 
-        String [] subjectNames = {"Mathematics", "English", "Ukrainian", "Java programming", "Phisics", "Philologia", "Economics",
+        String [] subjectNames = {"Mathematics", "English", "Ukrainian", "Java programming", "Phisics", "Philosofia", "Economics",
                                 "Philosophy", "Music", "Statistics", "Linguistics", "Biochemistry", "Botany", "Chemistry", "Criminal Justice", "Geography",
-                                "History", "Management", "Painting", "Media and Communication", "Journalism"};
+                                "History", "Management", "Painting", "Journalism", "Pholology"};
 
         return subjectNames;
     }
 
-    public static String generateGroupName(){
+    public static String[] generateGroupName(){
 
-        String [] firstPart = {"Base", "ACO", "ACP", "Velikie", "Izvestnie", "Uvazhaemie", "Politichesskaya", "Regionu", "Opoziciya", "EdinayaUkraine"};
-        String [] secondPart = {"1","2","3", "4","5","6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"};
-        int index1 = (int) (10 - Math.random() * 10);
-        int index2 = (int) (16 - Math.random() * 16);
+        String [] groups = {"Base16", "ACO16", "ACP16", "Velikie16", "Izvestnie16", "Uvazhaemie16", "Politichesskaya16", "Regionu16", "Opoziciya16", "EdinayaUkraine16"};
 
-        return firstPart[index1] + "-" + secondPart[index2];
+        return groups;
     }
 
 

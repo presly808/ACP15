@@ -16,7 +16,6 @@ public class TestCreateDropDAO {
 
     private CreateDAO createDAO;
     private DropDAO dropDAO;
-    private static final String PATH_FILE_PROPERTY_DB = Contstants.PATH_FOR_PROPERTY_FILE_TEST;
 
     @Before
     public void setUP(){

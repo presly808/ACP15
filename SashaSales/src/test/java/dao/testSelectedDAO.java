@@ -48,8 +48,7 @@ public class TestSelectedDAO {
 
         List<Student> studentList = selectDAO.getStudents();
         int size = studentList.size();
-        System.out.println(studentList.size());
-        Assert.assertEquals("Test method Add and Delete Groups", true, size > 15);
+        Assert.assertEquals("Test method Add and Delete Groups", true, size == 60);
 
     }
 
@@ -57,17 +56,24 @@ public class TestSelectedDAO {
     public void testGetTeachersThatWorkMore3Years(){
 
         List<Teacher> teacherList = selectDAO.getTeachersThatWorkMore3Years();
-        System.out.println("Quantity Teachers That Work More 3 Years - " + teacherList.size());
-
-        Assert.assertEquals("Test method Get Teachers That Work More 3 Years ", true, teacherList.size() > 2);
+        Assert.assertEquals("Test method Get Teachers That Work More 3 Years ", true, teacherList.size() == 6);
     }
 
     @Test
     public void testGetStudentsByGroup(){
 
-        List<Student> studentList = selectDAO.getStudentsByGroup("Base12");
+        List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
         int size = studentList.size();
-        Assert.assertEquals("Test method Get Students By Group", true,  size == 6 || size == 5);
+        Assert.assertEquals("Test method Get Students By Group", true,  size == 6);
+
+    }
+
+    @Test
+    public void testGetGroupsThatStudySubject(String subject_name){
+
+        List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
+        int size = studentList.size();
+        Assert.assertEquals("Test method Get Groups That Study Subject " + subject_name, true,  size == 6);
 
     }
 

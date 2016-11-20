@@ -41,7 +41,7 @@ public interface IService {
 
 // -узнать какие группы изучают математику
 
-    List<Group> groupsThatStudySubject(Subject subject);
+    List<Group> getGroupsThatStudySubject(String subject_name);
 
 // -какие преподаватель имеют наименьший и наибольший опыт?
 
