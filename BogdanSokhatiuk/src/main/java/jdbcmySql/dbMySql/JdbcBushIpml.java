@@ -13,8 +13,7 @@ public class JdbcBushIpml implements JdbcBush {
     private Connection connection;
 
     public JdbcBushIpml() {
-        SqlConnection sqlConnection = new SqlConnection();
-        connection = sqlConnection.getConnection();
+        connection = SqlConnection.getConnect();
     }
 
     @Override

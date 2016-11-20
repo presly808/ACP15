@@ -19,7 +19,7 @@ import static jdbcmySql.model.Constants.*;
 
 
 public class JdbcTask<T> {
-    T t;
+   private T t;
 
 
     public List<T> getAll(Class cl) {
