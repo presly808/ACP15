@@ -1,17 +1,21 @@
 package university.jdbc;
 
+import org.apache.log4j.Logger;
 import university.container.PropertiesHolder;
 
 import java.sql.*;
 
 
-public class DBConnectorMySQL implements DBConnector {
+public class DBConnectorImpl implements DBConnector {
+
+    private static final Logger log = Logger.getLogger(PropertiesHolder.class);
 
     @Override
     public Connection getConnection() throws SQLException {
         try {
             Class.forName(PropertiesHolder.get("JDBC_DRIVER_CLASS_NAME"));
         } catch (ClassNotFoundException e) {
+            log.error(e.getMessage());
             e.printStackTrace();
             throw new SQLException("Driver Class not found");
         }
@@ -20,15 +24,6 @@ public class DBConnectorMySQL implements DBConnector {
                 PropertiesHolder.get("JDBC_URL"),
                 PropertiesHolder.get("JDBC_USER"),
                 PropertiesHolder.get("JDBC_PASS"));
-
-        //PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users(name,birth,phone,amount) VALUES (?,?,?,?)");){
-
-            /*
-            preparedStatement.setString(1,);
-            preparedStatement.setDate(2,);
-            preparedStatement.setString(3,);
-            preparedStatement.setDouble(4,);
-            */
     }
 }
 

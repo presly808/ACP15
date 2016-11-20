@@ -1,5 +1,6 @@
 package university.dao.crud;
 
+import org.apache.log4j.Logger;
 import university.exceptions.*;
 import university.jdbc.DBConnector;
 import university.models.Group;
@@ -13,6 +14,8 @@ import static university.dao.converter.ToObjectConverter.*;
 
 public class CRUDQueryImpl implements CRUDQuery {
     private DBConnector dbConnector;
+
+    private static final Logger log = Logger.getLogger(CRUDQueryImpl.class);
 
     public CRUDQueryImpl(DBConnector dbConnector) {
         this.dbConnector = dbConnector;
@@ -38,7 +41,8 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+            log.error("Throw: GroupNotFoundException");
             throw new GroupNotFoundException(
                     "Group with id=" + student.getGroup().getId() +
                             " not found in DB");
@@ -73,7 +77,8 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+            log.error("Throw: GroupAlreadyExistsException");
             throw new GroupAlreadyExistsException("Group already exist in DB");
         }
         return false;
@@ -100,11 +105,13 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             if (e.getMessage().contains("Duplicate entry")) {
+                log.error("Throw: SubjectAlreadyExistsException");
                 throw new SubjectAlreadyExistsException(
                         "Subject with name=" + subject.getName() + "already exist in DB");
             } else {
+                log.error("Throw: SubjectCategoryNotFoundException");
                 throw new SubjectCategoryNotFoundException(
                         "Subject category with id=" + subject.getCategory().getId() +
                                 " not found in DB");
@@ -151,11 +158,13 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: StudentNotFoundException");
                 throw new StudentNotFoundException(
                         "Student with id=" + studentWithNewData.getId() + " not found");
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+            log.error("Throw: GroupNotFoundException");
             throw new GroupNotFoundException(
                     "Group with id=" + studentWithNewData.getGroup().getId() + " not found in DB");
         }
@@ -174,6 +183,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: GroupNotFoundException");
                 throw new GroupNotFoundException(
                         "Group with id=" + groupWithNewData.getId() + " not found");
             }
@@ -194,6 +204,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: TeacherNotFoundException");
                 throw new TeacherNotFoundException(
                         "Teacher with id=" + teacherWithNewData.getId() + " not found");
             }
@@ -215,11 +226,13 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: SubjectNotFoundException");
                 throw new SubjectNotFoundException(
                         "Subject with id=" + subjectWithNewData.getId() + " not found");
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
+            log.error("Throw: SubjectCategoryNotFoundException");
             throw new SubjectCategoryNotFoundException(
                     "Subject category with id=" + subjectWithNewData.getCategory().getId() +
                             " not found in DB");
@@ -239,6 +252,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: StudentNotFoundException");
                 throw new StudentNotFoundException(
                         "Student with id=" + student.getId() + " not found");
             }
@@ -258,6 +272,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: GroupNotFoundException");
                 throw new GroupNotFoundException(
                         "Group with id=" + group.getId() + " not found");
             }
@@ -277,6 +292,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: TeacherNotFoundException");
                 throw new TeacherNotFoundException(
                         "Teacher with id=" + teacher.getId() + " not found");
             }
@@ -296,6 +312,7 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
+                log.error("Throw: SubjectNotFoundException");
                 throw new SubjectNotFoundException(
                         "Subject with id=" + subject.getId() + " not found");
             }
@@ -320,8 +337,11 @@ public class CRUDQueryImpl implements CRUDQuery {
 
             Student resStudent = getOneStudentFromResultSet(resultSet);
 
-            if (resStudent == null) throw new StudentNotFoundException(
-                    "Student with id=" + student.getId() + " not found");
+            if (resStudent == null) {
+                log.error("Throw: StudentNotFoundException");
+                throw new StudentNotFoundException(
+                        "Student with id=" + student.getId() + " not found");
+            }
 
             return resStudent;
         }
@@ -343,8 +363,11 @@ public class CRUDQueryImpl implements CRUDQuery {
 
             Group resGroup = getOneGroupFromResultSet(resultSet);
 
-            if (resGroup == null) throw new GroupNotFoundException(
-                    "Group with id=" + group.getId() + " not found");
+            if (resGroup == null) {
+                log.error("Throw: GroupNotFoundException");
+                throw new GroupNotFoundException(
+                        "Group with id=" + group.getId() + " not found");
+            }
 
             return resGroup;
         }
@@ -366,8 +389,11 @@ public class CRUDQueryImpl implements CRUDQuery {
 
             Teacher resTeacher = getOneTeacherFromResultSet(resultSet);
 
-            if (resTeacher == null) throw new TeacherNotFoundException(
-                    "Teacher with id=" + teacher.getId() + " not found");
+            if (resTeacher == null) {
+                log.error("Throw: TeacherNotFoundException");
+                throw new TeacherNotFoundException(
+                        "Teacher with id=" + teacher.getId() + " not found");
+            }
 
             return resTeacher;
         }
@@ -392,8 +418,11 @@ public class CRUDQueryImpl implements CRUDQuery {
 
             Subject resSubject = getOneSubjectFromResultSet(resultSet);
 
-            if (resSubject == null) throw new SubjectNotFoundException(
-                    "Subject with id=" + subject.getId() + " not found");
+            if (resSubject == null) {
+                log.error("Throw: SubjectNotFoundException");
+                throw new SubjectNotFoundException(
+                        "Subject with id=" + subject.getId() + " not found");
+            }
 
             return resSubject;
         }

@@ -9,9 +9,9 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by aleksandrnagorniy on 18.11.16.
  */
-public class DBConnectorMySQLTest {
+public class DBConnectorImplTest {
 
-    DBConnector dbConnector = new DBConnectorMySQL();
+    DBConnector dbConnector = new DBConnectorImpl();
 
     @Test
     public void getConnection() throws Exception {

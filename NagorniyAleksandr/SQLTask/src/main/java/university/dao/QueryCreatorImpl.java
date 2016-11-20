@@ -343,14 +343,12 @@ public class QueryCreatorImpl implements QueryCreator {
         return crudQuery.getStudent(student);
     }
 
-
     @Override
     public Group getGroup(Group group) throws
             GroupNotFoundException, SQLException {
 
         return crudQuery.getGroup(group);
     }
-
 
     @Override
     public Teacher getTeacher(Teacher teacher) throws

@@ -1,12 +1,18 @@
 package university.dao.crud;
 
+import org.apache.ibatis.jdbc.ScriptRunner;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.exceptions.TeacherNotFoundException;
 import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorMySQL;
+import university.jdbc.DBConnectorImpl;
 import university.models.Teacher;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.junit.Assert.*;
 
@@ -17,11 +23,27 @@ public class CRUDTeacherTest {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
+    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
+    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     static {
-        dbConnector = new DBConnectorMySQL();
+        dbConnector = new DBConnectorImpl();
         CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
         queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
+    }
+
+    @BeforeClass
+    public static void initDB() throws Exception {
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
+    }
+
+    @AfterClass
+    public static void dropDB() throws Exception {
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
     }
 
     @Test

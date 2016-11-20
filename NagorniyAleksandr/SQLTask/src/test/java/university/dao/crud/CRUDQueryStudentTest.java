@@ -1,16 +1,18 @@
 package university.dao.crud;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.apache.ibatis.jdbc.ScriptRunner;
+import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.exceptions.GroupNotFoundException;
 import university.exceptions.StudentNotFoundException;
 import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorMySQL;
+import university.jdbc.DBConnectorImpl;
 import university.models.Group;
 import university.models.Student;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
@@ -19,6 +21,8 @@ import static org.junit.Assert.*;
 public class CRUDQueryStudentTest {
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
+    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
+    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     private Group testStudentsGroup;
     private Group groupNotFromDB;
@@ -27,9 +31,23 @@ public class CRUDQueryStudentTest {
     private Student studentNotFromDB;
 
     static {
-        dbConnector = new DBConnectorMySQL();
+        dbConnector = new DBConnectorImpl();
         CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
         queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
+    }
+
+    @BeforeClass
+    public static void initDB() throws Exception {
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
+    }
+
+    @AfterClass
+    public static void dropDB() throws Exception {
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
     }
 
     @Before

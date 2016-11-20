@@ -33,11 +33,11 @@ public class ServiceImpl implements Service {
     }
 
     private void validateOffsetAndLength(int offset, int length) throws InvalidQueryParameterException {
-        if (offset < 1) {
+        if (offset < 0) {
             log.error("Throw: Offset parameter is invalid");
             throw new InvalidQueryParameterException("Offset parameter is invalid");
         }
-        if (length < 1) {
+        if (length < 0) {
             log.error("Throw: Length parameter is invalid");
             throw new InvalidQueryParameterException("Length parameter is invalid");
         }

@@ -1,7 +1,8 @@
 package university.dao.crud;
 
-import org.junit.After;
-import org.junit.Before;
+import org.apache.ibatis.jdbc.ScriptRunner;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
@@ -9,9 +10,12 @@ import university.exceptions.GroupAlreadyExistsException;
 import university.exceptions.GroupNotFoundException;
 import university.exceptions.StudentNotFoundException;
 import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorMySQL;
+import university.jdbc.DBConnectorImpl;
 import university.models.Group;
 import university.models.Student;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
@@ -21,26 +25,50 @@ public class CRUDGroupAndStudentTest {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
+    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
+    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
+
 
     static {
-        dbConnector = new DBConnectorMySQL();
+        dbConnector = new DBConnectorImpl();
         CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
         queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
     }
 
-    @Before
-    public void beforeMethod(){
-        // init data
-        // create model instances
-        // st1, st2, st3
-        // gr1 gr2 g3
-        // sql ->
+    @BeforeClass
+    public static void initUp() throws Exception {
+
+        // way #1
+
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
+
+
+        // way #2
+        /*
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
+        */
+
+
+        // way #3
+        /*
+        Connection connection = dbConnector.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "RUNSCRIPT FROM 'classpath:/H2StructureScript.sql'");
+        preparedStatement.execute();
+        */
+
     }
 
-    @After
-    public void tearDown(){
-        // remove created data
-        // sql ->
+    @AfterClass
+    public static void dropDB() throws Exception {
+        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
+        runner.runScript(new InputStreamReader(is));
     }
 
     @Test
@@ -150,6 +178,8 @@ public class CRUDGroupAndStudentTest {
             assertTrue(false);
 
         } catch (GroupNotFoundException e) {
+            assertTrue(true);
+        } catch (org.h2.jdbc.JdbcSQLException e) {
             assertTrue(true);
         }
 
