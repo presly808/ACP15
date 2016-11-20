@@ -16,6 +16,7 @@ import java.sql.Statement;
 public class CreateCommands implements CreateDAO{
 
     private static final Logger LOGGER = Logger.getLogger(CreateCommands.class);
+
     private static final String CREATE_TABLE_GROUPS = "create table groups(\n" +
             "  id int PRIMARY KEY AUTO_INCREMENT,\n" +
             "  group_name VARCHAR(40) UNIQUE NOT NULL\n" +
