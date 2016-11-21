@@ -2,13 +2,9 @@ package university.container;
 
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-
-/**
- * Created by aleksandrnagorniy on 18.11.16.
- */
 public class PropertiesHolderTest {
     @Test
     public void get() throws Exception {

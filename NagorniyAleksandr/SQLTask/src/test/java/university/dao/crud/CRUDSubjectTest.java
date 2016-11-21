@@ -1,6 +1,6 @@
 package university.dao.crud;
 
-import org.apache.ibatis.jdbc.ScriptRunner;
+import org.h2.tools.RunScript;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,9 +19,6 @@ import java.io.InputStreamReader;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by nagornyyalek on 17.11.2016.
- */
 public class CRUDSubjectTest {
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
@@ -36,16 +33,16 @@ public class CRUDSubjectTest {
 
     @BeforeClass
     public static void initDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
     @AfterClass
     public static void dropDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
     @Test
