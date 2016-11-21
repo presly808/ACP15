@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.TeacherNotFoundException;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorImpl;
@@ -74,7 +75,7 @@ public class CRUDTeacherTest {
         try {
             queryCreator.getTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -94,7 +95,7 @@ public class CRUDTeacherTest {
         try {
             queryCreator.editTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -107,7 +108,7 @@ public class CRUDTeacherTest {
         try {
             queryCreator.getTeacher(testTeacher);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -115,7 +116,7 @@ public class CRUDTeacherTest {
         try {
             queryCreator.deleteTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

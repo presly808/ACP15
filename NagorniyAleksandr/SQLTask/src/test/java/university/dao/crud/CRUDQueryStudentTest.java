@@ -4,6 +4,7 @@ import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.GroupNotFoundException;
 import university.exceptions.StudentNotFoundException;
 import university.jdbc.DBConnector;
@@ -94,7 +95,6 @@ public class CRUDQueryStudentTest {
         //test auto-generation id
         assertThat(testStudentForAddTest.getId(), not(equalTo(testStudentsIdForAddTest)));
 
-
         queryCreator.deleteStudent(testStudentForAddTest);
     }
 
@@ -107,7 +107,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.addStudent(studentWithInvalidGroup);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -133,7 +133,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.editStudent(testStudent);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -143,7 +143,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.editStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -156,7 +156,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.getStudent(testStudent);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -168,7 +168,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.deleteStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -187,7 +187,7 @@ public class CRUDQueryStudentTest {
         try {
             queryCreator.getStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

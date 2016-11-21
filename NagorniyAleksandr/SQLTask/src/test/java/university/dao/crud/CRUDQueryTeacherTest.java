@@ -4,6 +4,7 @@ import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.TeacherNotFoundException;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorImpl;
@@ -104,7 +105,7 @@ public class CRUDQueryTeacherTest {
         try {
             queryCreator.editTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -119,7 +120,7 @@ public class CRUDQueryTeacherTest {
         try {
             queryCreator.getTeacher(testTeacher);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -131,7 +132,7 @@ public class CRUDQueryTeacherTest {
         try {
             queryCreator.deleteTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -152,7 +153,7 @@ public class CRUDQueryTeacherTest {
         try {
             queryCreator.getTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (TeacherNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

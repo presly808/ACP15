@@ -4,6 +4,7 @@ import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.SubjectAlreadyExistsException;
 import university.exceptions.SubjectCategoryNotFoundException;
 import university.exceptions.SubjectNotFoundException;
@@ -114,7 +115,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.addSubject(testSubjectWithInvalidCategory);
             assertTrue(false);
-        } catch (SubjectCategoryNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -124,7 +125,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.addSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -151,7 +152,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.editSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -164,7 +165,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.editSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectCategoryNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -178,7 +179,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.getSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -190,7 +191,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.deleteSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -212,7 +213,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.getSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

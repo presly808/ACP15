@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.SubjectAlreadyExistsException;
 import university.exceptions.SubjectCategoryNotFoundException;
 import university.exceptions.SubjectNotFoundException;
@@ -66,7 +67,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.addSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -88,7 +89,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.getSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -110,7 +111,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.editSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -122,7 +123,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.editSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectCategoryNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -135,7 +136,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.getSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -143,7 +144,7 @@ public class CRUDSubjectTest {
         try {
             queryCreator.deleteSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

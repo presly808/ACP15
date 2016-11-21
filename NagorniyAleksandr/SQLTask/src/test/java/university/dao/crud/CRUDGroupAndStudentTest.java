@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.GroupAlreadyExistsException;
 import university.exceptions.GroupNotFoundException;
 import university.exceptions.StudentNotFoundException;
@@ -39,13 +40,11 @@ public class CRUDGroupAndStudentTest {
     public static void initUp() throws Exception {
 
         // way #1
-/*
-
+        /*
         InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
         ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
         runner.runScript(new InputStreamReader(is));
-
-*/
+        */
 
         // way #2
         InputStream is = CRUDGroupAndStudentTest.class.
@@ -95,7 +94,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.addGroup(testGroup);
             assertTrue(false);
-        } catch (GroupAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -113,7 +112,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.getGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -132,7 +131,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.editGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -145,7 +144,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.getGroup(testGroup);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -153,7 +152,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.deleteGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -182,12 +181,9 @@ public class CRUDGroupAndStudentTest {
             queryCreator.addStudent(new Student(testStudentsId, testStudentsName, groupNotFromDB));
             assertTrue(false);
 
-        } catch (GroupNotFoundException e) {
-            assertTrue(true);
-        } catch (org.h2.jdbc.JdbcSQLException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
-
 
         //test READ student
         Student addedStudent = queryCreator.getStudent(testStudent);
@@ -203,7 +199,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.getStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -224,7 +220,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.editStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -233,7 +229,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.editStudent(testStudent);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -246,7 +242,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.getStudent(testStudent);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -254,7 +250,7 @@ public class CRUDGroupAndStudentTest {
         try {
             queryCreator.deleteStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (StudentNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 

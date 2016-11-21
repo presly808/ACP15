@@ -4,6 +4,7 @@ import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.GroupAlreadyExistsException;
 import university.exceptions.GroupNotFoundException;
 import university.jdbc.DBConnector;
@@ -86,7 +87,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.addGroup(testGroup);
             assertTrue(false);
-        } catch (GroupAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -109,7 +110,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.editGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -125,7 +126,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.getGroup(testGroup);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
             queryCreator.addGroup(testGroup);
         }
@@ -136,7 +137,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.deleteGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -157,7 +158,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.getGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
