@@ -21,8 +21,8 @@ public class CRUDQueryTeacherTest {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
-    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
-    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
+    public static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
+    //public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     Teacher testTeacher;
     Teacher teacherNotFromDB;
@@ -40,12 +40,12 @@ public class CRUDQueryTeacherTest {
         RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
-    @AfterClass
+    /*@AfterClass
     public static void dropDB() throws Exception {
         InputStream is = CRUDGroupAndStudentTest.class.
                 getResourceAsStream(DROP_TEST_DB_SCRIPT);
         RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
-    }
+    }*/
 
     @Before
     public void setUp() throws Exception {

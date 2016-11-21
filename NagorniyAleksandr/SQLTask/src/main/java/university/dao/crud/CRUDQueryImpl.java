@@ -58,8 +58,7 @@ public class CRUDQueryImpl implements CRUDQuery {
     }
 
     @Override
-    public boolean addGroup(Group group) throws
-            AppDBException {
+    public boolean addGroup(Group group) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
