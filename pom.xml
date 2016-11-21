@@ -9,7 +9,6 @@
     <version>1.0</version>
     <modules>
         <module>SerhiiBilobrov</module>
-        <module>TestModule</module>
         <module>TM2</module>
     </modules>
     <packaging>pom</packaging>
