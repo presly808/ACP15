@@ -6,9 +6,6 @@ import java.sql.Connection;
 
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by aleksandrnagorniy on 18.11.16.
- */
 public class DBConnectorImplTest {
 
     DBConnector dbConnector = new DBConnectorImpl();

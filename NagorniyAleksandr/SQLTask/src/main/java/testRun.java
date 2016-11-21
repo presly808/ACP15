@@ -2,6 +2,7 @@ import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.dao.crud.CRUDQuery;
 import university.dao.crud.CRUDQueryImpl;
+import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorImpl;
 import university.models.Subject;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class testRun {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AppDBException {
 
         DBConnector dbConnector = new DBConnectorImpl();
         CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);

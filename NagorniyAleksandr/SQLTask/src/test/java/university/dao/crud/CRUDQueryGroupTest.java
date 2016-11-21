@@ -1,9 +1,10 @@
 package university.dao.crud;
 
-import org.apache.ibatis.jdbc.ScriptRunner;
+import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.GroupAlreadyExistsException;
 import university.exceptions.GroupNotFoundException;
 import university.jdbc.DBConnector;
@@ -17,15 +18,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-/**
- * Created by nagornyyalek on 18.11.2016.
- */
 public class CRUDQueryGroupTest {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
-    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
-    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
+    public static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
+    //public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     private Group testGroup;
     private Group groupNotFromDB;
@@ -38,18 +36,18 @@ public class CRUDQueryGroupTest {
 
     @BeforeClass
     public static void initDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
-    @AfterClass
+    /*@AfterClass
     public static void dropDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
-
+*/
     @Before
     public void setUp() throws Exception {
 
@@ -89,7 +87,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.addGroup(testGroup);
             assertTrue(false);
-        } catch (GroupAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -112,7 +110,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.editGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -128,7 +126,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.getGroup(testGroup);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
             queryCreator.addGroup(testGroup);
         }
@@ -139,7 +137,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.deleteGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -160,7 +158,7 @@ public class CRUDQueryGroupTest {
         try {
             queryCreator.getGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (GroupNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 

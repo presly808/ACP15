@@ -6,59 +6,40 @@ import university.models.Student;
 import university.models.Subject;
 import university.models.Teacher;
 
-import java.sql.SQLException;
-
 /**
  * Created by nagornyyalek on 17.11.2016.
  */
 public interface CRUDQuery {
 
-    boolean addStudent(Student student) throws
-            SQLException, GroupNotFoundException;
+    boolean addStudent(Student student) throws AppDBException;
 
-    boolean addGroup(Group group) throws
-            GroupAlreadyExistsException, SQLException;
+    boolean addGroup(Group group) throws AppDBException;
 
-    boolean addSubject(Subject subject) throws
-            SubjectAlreadyExistsException, SubjectCategoryNotFoundException,
-            SQLException;
+    boolean addSubject(Subject subject) throws AppDBException;
 
-    boolean addTeacher(Teacher teacher) throws
-            SQLException;
+    boolean addTeacher(Teacher teacher) throws AppDBException;
 
-    boolean editStudent(Student studentWithNewData) throws
-            StudentNotFoundException, GroupNotFoundException, SQLException;
+    boolean editStudent(Student studentWithNewData) throws AppDBException;
 
-    boolean editGroup(Group groupWithNewData) throws
-            GroupNotFoundException, SQLException;
+    boolean editGroup(Group groupWithNewData) throws AppDBException;
 
-    boolean editTeacher(Teacher teacherWithNewData) throws
-            TeacherNotFoundException, SQLException;
+    boolean editTeacher(Teacher teacherWithNewData) throws AppDBException;
 
-    boolean editSubject(Subject subjectWithNewData) throws
-            SubjectNotFoundException, SubjectCategoryNotFoundException, SQLException;
+    boolean editSubject(Subject subjectWithNewData) throws AppDBException;
 
-    boolean deleteStudent(Student student) throws
-            StudentNotFoundException, SQLException;
+    boolean deleteStudent(Student student) throws AppDBException;
 
-    boolean deleteGroup(Group group) throws
-            GroupNotFoundException, SQLException;
+    boolean deleteGroup(Group group) throws AppDBException;
 
-    boolean deleteTeacher(Teacher teacher) throws
-            TeacherNotFoundException, SQLException;
+    boolean deleteTeacher(Teacher teacher) throws AppDBException;
 
-    boolean deleteSubject(Subject subject) throws
-            SubjectNotFoundException, SQLException;
+    boolean deleteSubject(Subject subject) throws AppDBException;
 
-    Student getStudent(Student student) throws
-            StudentNotFoundException, SQLException;
+    Student getStudent(Student student) throws AppDBException;
 
-    Group getGroup(Group group) throws
-            GroupNotFoundException, SQLException;
+    Group getGroup(Group group) throws AppDBException;
 
-    Teacher getTeacher(Teacher teacher) throws
-            TeacherNotFoundException, SQLException;
+    Teacher getTeacher(Teacher teacher) throws AppDBException;
 
-    Subject getSubject(Subject subject) throws
-            SubjectNotFoundException, SQLException;
+    Subject getSubject(Subject subject) throws AppDBException;
 }

@@ -15,50 +15,42 @@ package university.service;
 	  -показать группу, в которой более 3-х студентов изучают философию (и выгнать с универа)
  */
 
-import university.exceptions.*;
+import university.exceptions.AppDBException;
+import university.exceptions.InvalidQueryParameterException;
 import university.models.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface Service {
 
-    List<Student> getStudentsList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException;
-    List<Subject> getSubjectsList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException;
-    List<Group> getGroupList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException;
-    List<Teacher> getTeachersList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException;
+    List<Student> getStudentsList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
+    List<Subject> getSubjectsList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
+    List<Group> getGroupList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
+    List<Teacher> getTeachersList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
 
-    boolean addStudent(Student student) throws InvalidQueryParameterException,
-            GroupNotFoundException, DBUnavailableException;
-    boolean addGroup(Group group) throws InvalidQueryParameterException,
-            GroupAlreadyExistsException, DBUnavailableException;
-    boolean addSubject(Subject subject) throws InvalidQueryParameterException, SubjectAlreadyExistsException,
-            SubjectCategoryNotFoundException, DBUnavailableException;
-    boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, DBUnavailableException;
+    boolean addStudent(Student student) throws InvalidQueryParameterException, AppDBException;
+    boolean addGroup(Group group) throws InvalidQueryParameterException, AppDBException;
+    boolean addSubject(Subject subject) throws InvalidQueryParameterException, AppDBException;
+    boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, AppDBException;
 
-    boolean editStudent(Student studentWithNewData) throws InvalidQueryParameterException,
-            GroupNotFoundException, StudentNotFoundException, DBUnavailableException;
-    boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException,
-            GroupAlreadyExistsException, DBUnavailableException, GroupNotFoundException;
-    boolean editTeacher(Teacher teacherWithNewData) throws InvalidQueryParameterException,
-            DBUnavailableException, TeacherNotFoundException;
-    boolean editSubject(Subject subjectWithNewData) throws InvalidQueryParameterException,
-            SubjectCategoryNotFoundException, SubjectNotFoundException, DBUnavailableException;
+    boolean editStudent(Student studentWithNewData) throws InvalidQueryParameterException, AppDBException;
+    boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException, AppDBException;
+    boolean editTeacher(Teacher teacherWithNewData) throws InvalidQueryParameterException, AppDBException;
+    boolean editSubject(Subject subjectWithNewData) throws InvalidQueryParameterException, AppDBException;
 
-    List<Student> getStudentOfGroup(Group group) throws GroupNotFoundException,
-            SQLException, InvalidQueryParameterException;
+    List<Student> getStudentOfGroup(Group group) throws AppDBException, InvalidQueryParameterException;
 
-    List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws InvalidQueryParameterException, DBUnavailableException;
-    List<Subject> getSubjectsThatStudyAllGroups() throws DBUnavailableException;
+    List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws InvalidQueryParameterException, AppDBException;
+    List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException;
 
-    Teacher getTeacherWithMaxExperience() throws DBUnavailableException;
-    Teacher getTeacherWithMinExperience() throws DBUnavailableException;
-    List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws InvalidQueryParameterException, DBUnavailableException;
-    List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws DBUnavailableException;
+    Teacher getTeacherWithMaxExperience() throws AppDBException;
+    Teacher getTeacherWithMinExperience() throws AppDBException;
+    List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws InvalidQueryParameterException, AppDBException;
+    List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws AppDBException;
 
 
-    List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws InvalidQueryParameterException, DBUnavailableException;
-    List<Subject> getListOfHumanitarianSubjects() throws DBUnavailableException;
+    List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws InvalidQueryParameterException, AppDBException;
+    List<Subject> getListOfHumanitarianSubjects() throws AppDBException;
 
     //double averageRateOfSubject(Subject subject);
     //double averageRateOfSubjectByGroup(Subject subject, Group group);

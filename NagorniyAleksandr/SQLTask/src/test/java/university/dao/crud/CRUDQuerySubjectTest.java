@@ -1,9 +1,10 @@
 package university.dao.crud;
 
-import org.apache.ibatis.jdbc.ScriptRunner;
+import org.h2.tools.RunScript;
 import org.junit.*;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.exceptions.AppDBException;
 import university.exceptions.SubjectAlreadyExistsException;
 import university.exceptions.SubjectCategoryNotFoundException;
 import university.exceptions.SubjectNotFoundException;
@@ -19,13 +20,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-
 public class CRUDQuerySubjectTest {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
-    public static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
-    public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
+    public static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
+    //public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     private SubjectCategory validSubjectCategory;
     private Subject testSubject;
@@ -41,17 +41,17 @@ public class CRUDQuerySubjectTest {
 
     @BeforeClass
     public static void initDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(CREATE_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(CREATE_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
-    @AfterClass
+    /*@AfterClass
     public static void dropDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.getResourceAsStream(DROP_TEST_DB_SCRIPT);
-        ScriptRunner runner = new ScriptRunner(dbConnector.getConnection());
-        runner.runScript(new InputStreamReader(is));
-    }
+        InputStream is = CRUDGroupAndStudentTest.class.
+                getResourceAsStream(DROP_TEST_DB_SCRIPT);
+        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
+    }*/
 
     @Before
     public void setUp() throws Exception {
@@ -115,7 +115,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.addSubject(testSubjectWithInvalidCategory);
             assertTrue(false);
-        } catch (SubjectCategoryNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -125,7 +125,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.addSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectAlreadyExistsException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -152,7 +152,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.editSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -165,7 +165,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.editSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectCategoryNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -179,7 +179,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.getSubject(testSubject);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
 
@@ -191,7 +191,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.deleteSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }
@@ -213,7 +213,7 @@ public class CRUDQuerySubjectTest {
         try {
             queryCreator.getSubject(subjectNotFromDB);
             assertTrue(false);
-        } catch (SubjectNotFoundException e) {
+        } catch (AppDBException e) {
             assertTrue(true);
         }
     }

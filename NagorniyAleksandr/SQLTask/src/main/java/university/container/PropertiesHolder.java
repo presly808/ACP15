@@ -1,6 +1,8 @@
 package university.container;
 
 import org.apache.log4j.Logger;
+import university.exceptions.AppPropertiesException;
+
 
 import java.io.IOException;
 import java.util.Properties;
@@ -21,6 +23,7 @@ public class PropertiesHolder {
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
+            throw new AppPropertiesException(e.getMessage());
         }
         return properties;
     }
