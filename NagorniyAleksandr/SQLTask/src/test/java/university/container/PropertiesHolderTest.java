@@ -1,9 +1,9 @@
 package university.container;
 
 import org.junit.Test;
+import university.exceptions.AppPropertiesException;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class PropertiesHolderTest {
     @Test
@@ -14,7 +14,11 @@ public class PropertiesHolderTest {
         assertNotNull(PropertiesHolder.get("JDBC_USER"));
         assertNotNull(PropertiesHolder.get("JDBC_PASS"));
 
-        assertNull(PropertiesHolder.get("Invalid property"));
+        try {
+            PropertiesHolder.get("Invalid property");
+            assertTrue(false);
+        } catch (AppPropertiesException e){
+            assertTrue(true);
+        }
     }
-
 }

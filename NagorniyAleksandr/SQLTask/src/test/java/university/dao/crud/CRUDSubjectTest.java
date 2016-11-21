@@ -7,9 +7,6 @@ import org.junit.Test;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.exceptions.AppDBException;
-import university.exceptions.SubjectAlreadyExistsException;
-import university.exceptions.SubjectCategoryNotFoundException;
-import university.exceptions.SubjectNotFoundException;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorImpl;
 import university.models.Subject;
@@ -24,7 +21,7 @@ public class CRUDSubjectTest {
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
     public static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
-    //public static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
+    public static final String DROP_TEST_DB_SCRIPT = "/H2DropDBScript.sql";
 
     static {
         dbConnector = new DBConnectorImpl();
@@ -39,12 +36,12 @@ public class CRUDSubjectTest {
         RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
-    /*@AfterClass
+    @AfterClass
     public static void dropDB() throws Exception {
         InputStream is = CRUDGroupAndStudentTest.class.
                 getResourceAsStream(DROP_TEST_DB_SCRIPT);
         RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
-    }*/
+    }
 
     @Test
     public void CRUDSubject() throws Exception {

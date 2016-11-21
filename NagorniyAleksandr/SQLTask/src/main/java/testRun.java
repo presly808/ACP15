@@ -24,8 +24,7 @@ public class testRun {
 
         Service service = new ServiceImpl(queryCreator);
 
-
-            service.getGroupList(0, 10);
+        service.getGroupList(0, 10);
 
 
         List<Subject> result = service.getSubjectsList(0,100);

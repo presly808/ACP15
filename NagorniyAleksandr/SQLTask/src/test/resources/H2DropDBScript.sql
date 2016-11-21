@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS study;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS subjects;
+DROP TABLE IF EXISTS teachers;
+DROP TABLE IF EXISTS subject_categorys;
+DROP TABLE IF EXISTS groups;
