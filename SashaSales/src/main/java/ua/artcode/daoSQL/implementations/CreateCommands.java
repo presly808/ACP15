@@ -48,6 +48,14 @@ public class CreateCommands implements CreateDAO{
             "  FOREIGN KEY (subject_id) REFERENCES subjects(id)\n" +
             ");";
 
+    private static final String CREATE_TABLE_MARKS = "create table marks(\n" +
+            "  student_id int,\n" +
+            "  subject_id int,\n" +
+            "  mark int,\n" +
+            "  FOREIGN KEY (student_id) REFERENCES student(id),\n" +
+            "  FOREIGN KEY (subject_id) REFERENCES subjects(id)\n" +
+            ");";
+
     public CreateCommands() {
     }
 
@@ -129,6 +137,21 @@ public class CreateCommands implements CreateDAO{
             return false;
         }
 
+    }
+
+    public boolean createTableMarks() {
+
+        LOGGER.info("creating Table Marks in DB SQL");
+
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_TABLE_MARKS);) {
+            preparedStatement.execute();
+            LOGGER.info("Table Marks was create in DB SQL");
+            return true;
+        } catch (SQLException e) {
+            LOGGER.error("creating Table Marks in DB SQL was itterupt", e);
+            return false;
+        }
     }
 
 }

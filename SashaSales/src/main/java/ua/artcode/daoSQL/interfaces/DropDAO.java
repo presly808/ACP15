@@ -10,5 +10,6 @@ public interface DropDAO {
     boolean dropTableStudents();
     boolean dropTableTeachers();
     boolean dropTableStudy();
+    boolean dropTableMarks();
 
 }

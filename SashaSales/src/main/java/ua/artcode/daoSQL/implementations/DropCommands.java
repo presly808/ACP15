@@ -22,6 +22,7 @@ public class DropCommands implements DropDAO {
     private static final String DROP_TABLE_TEACHERS = "DROP TABLE teachers;";
     private static final String DROP_TABLE_STUDENTS = "DROP TABLE student;";
     private static final String DROP_TABLE_STUDY = "DROP TABLE study;";
+    private static final String DROP_TABLE_MARKS = "DROP TABLE marks;";
 
     public DropCommands() {
     }
@@ -106,6 +107,23 @@ public class DropCommands implements DropDAO {
 
         } catch (SQLException e) {
             LOGGER.error("droping Table Study from DB SQL was itterupt", e);
+            return false;
+        }
+
+    }
+
+    public boolean dropTableMarks() {
+
+        LOGGER.info("droping Table Marks from DB SQL");
+
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DROP_TABLE_MARKS);) {
+            preparedStatement.execute();
+            LOGGER.info("Table Marks was droped from DB SQL");
+            return true;
+
+        } catch (SQLException e) {
+            LOGGER.error("droping Table Marks from DB SQL was itterupt", e);
             return false;
         }
 

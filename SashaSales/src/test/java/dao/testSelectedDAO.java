@@ -69,11 +69,11 @@ public class TestSelectedDAO {
     }
 
     @Test
-    public void testGetGroupsThatStudySubject(String subject_name){
+    public void testGetGroupsThatStudySubject(){
 
         List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
         int size = studentList.size();
-        Assert.assertEquals("Test method Get Groups That Study Subject " + subject_name, true,  size == 6);
+        Assert.assertEquals("Test method Get Groups That Study Subject ", true,  size == 6);
 
     }
 

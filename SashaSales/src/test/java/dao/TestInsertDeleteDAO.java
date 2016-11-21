@@ -86,5 +86,22 @@ public class TestInsertDeleteDAO {
 
     }
 
+    @Test
+    public void testAddDeleteFieldStudy(){
+
+        String groupName = "RR12";
+        String subjectName = "Terapia";
+        boolean insertGroupResult =  insertDAO.addGroup(groupName);
+        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description Terapia");
+        boolean insertFieldStudyResult =  insertDAO.addFieldStudy(1, 1);
+        boolean deleteFieldStudyResult =  deleteDAO.deleteFieldStudy(1, 1);
+        boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
+        boolean deleteGroupResult = deleteDAO.deleteGroup(groupName);
+
+        Assert.assertEquals("Test method Add and Delete Student", true, insertGroupResult && insertSubjectResult
+            && insertFieldStudyResult && deleteFieldStudyResult && deleteSubjectResult && deleteGroupResult);
+
+    }
+
 
 }

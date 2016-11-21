@@ -18,6 +18,7 @@ public class DeleteCommands implements DeleteDAO {
     private static final String DELETE_GROUP = "DELETE FROM groups WHERE group_name = ?;";
     private static final String DELETE_TEACHER = "DELETE FROM teachers WHERE teacher_name = ?;";
     private static final String DELETE_STUDENT = "DELETE FROM student WHERE student_name = ?;";
+    private static final String DELETE_FIELD_STUDY = "DELETE FROM study WHERE group_id = ? and subject_id = ?;";
 
     public DeleteCommands() {
     }
@@ -95,6 +96,24 @@ public class DeleteCommands implements DeleteDAO {
         }
 
 
+    }
+
+    @Override
+    public boolean deleteFieldStudy(int id_group, int id_subject) {
+        LOGGER.info("deleting Field in Study in DB where id_group - " + id_group + " and id_subject - " + id_subject);
+
+        try(Connection connection = ConnectionFactory.getConnectionToTestDB();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_FIELD_STUDY);) {
+            preparedStatement.setInt(1, id_group);
+            preparedStatement.setInt(2, id_subject);
+            preparedStatement.execute();
+            LOGGER.info("Field in Study to DB where id_group - " + id_group + " and id_subject - " + id_subject + "was delete");
+            return true;
+
+        } catch (SQLException e) {
+            LOGGER.error("deleting Field in Study to DB where id_group - " + id_group + " and id_subject - " + id_subject + "was iterrupt", e);
+            return false;
+        }
     }
 
 }

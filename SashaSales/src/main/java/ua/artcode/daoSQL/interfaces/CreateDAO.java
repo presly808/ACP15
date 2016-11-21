@@ -10,5 +10,6 @@ public interface CreateDAO {
     boolean createTableTeachers();
     boolean createTableStudents();
     boolean createTableStudy();
+    boolean createTableMarks();
 
 }

@@ -21,7 +21,6 @@ public class TestCreateDropDAO {
     public void setUP(){
             createDAO = new CreateCommands();
             dropDAO = new DropCommands();
-
     }
 
 
@@ -79,4 +78,23 @@ public class TestCreateDropDAO {
                 && createTableGroupsResult && createTableSubjectsResult
                     && dropTableGroupsResult && dropTableStudyResult && dropTableSubjectsResult);
     }
+
+    @Test
+    public void testCreateDropMarks(){
+
+        boolean createTableGroupsResult = createDAO.createTableGroups();
+        boolean createTableSubjectsResult = createDAO.createTableSubject();
+        boolean createTableStudentsResult = createDAO.createTableStudents();
+        boolean createTableStudyResult = createDAO.createTableStudy();
+        boolean createTableMarkResult = createDAO.createTableMarks();
+        boolean dropTableMarkResult = dropDAO.dropTableMarks();
+        boolean dropTableStudyResult = dropDAO.dropTableStudy();
+        boolean dropTableStudentsResult = dropDAO.dropTableStudents();
+        boolean dropTableGroupsResult = dropDAO.dropTableGroups();
+        boolean dropTableSubjectsResult = dropDAO.dropTableSubjects();
+        Assert.assertEquals("Test method Create Table Groups", true, createTableStudyResult && createTableStudentsResult
+                && createTableGroupsResult && createTableSubjectsResult && createTableMarkResult && dropTableStudentsResult
+                && dropTableGroupsResult && dropTableStudyResult && dropTableSubjectsResult && dropTableMarkResult);
+    }
+
 }
