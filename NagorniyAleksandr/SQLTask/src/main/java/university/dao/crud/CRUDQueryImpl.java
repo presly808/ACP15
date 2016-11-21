@@ -1,7 +1,7 @@
 package university.dao.crud;
 
 import org.apache.log4j.Logger;
-import university.exceptions.*;
+import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
 import university.models.Group;
 import university.models.Student;
@@ -23,7 +23,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
     @Override
     public boolean addStudent(Student student) throws
-            SQLException, GroupNotFoundException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -40,12 +40,10 @@ public class CRUDQueryImpl implements CRUDQuery {
                 student.setId(newStudentId);
                 return true;
             }
-        } catch (SQLIntegrityConstraintViolationException e) {
+        } catch (SQLException e) {
             log.error(e.getMessage());
-            log.error("Throw: GroupNotFoundException");
-            throw new GroupNotFoundException(
-                    "Group with id=" + student.getGroup().getId() +
-                            " not found in DB");
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
         return false;
     }
@@ -61,7 +59,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
     @Override
     public boolean addGroup(Group group) throws
-            GroupAlreadyExistsException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -76,18 +74,17 @@ public class CRUDQueryImpl implements CRUDQuery {
                 group.setId(newGroupId);
                 return true;
             }
-        } catch (SQLIntegrityConstraintViolationException e) {
+        } catch (SQLException e) {
             log.error(e.getMessage());
-            log.error("Throw: GroupAlreadyExistsException");
-            throw new GroupAlreadyExistsException("Group already exist in DB");
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
         return false;
     }
 
     @Override
     public boolean addSubject(Subject subject) throws
-            SubjectAlreadyExistsException, SubjectCategoryNotFoundException,
-            SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -104,26 +101,17 @@ public class CRUDQueryImpl implements CRUDQuery {
                 subject.setId(newSubjectId);
                 return true;
             }
-        } catch (SQLIntegrityConstraintViolationException e) {
+        } catch (SQLException e) {
             log.error(e.getMessage());
-            if (e.getMessage().contains("Duplicate entry")) {
-                log.error("Throw: SubjectAlreadyExistsException");
-                throw new SubjectAlreadyExistsException(
-                        "Subject with name=" + subject.getName() + "already exist in DB");
-            } else {
-                log.error("Throw: SubjectCategoryNotFoundException");
-                throw new SubjectCategoryNotFoundException(
-                        "Subject category with id=" + subject.getCategory().getId() +
-                                " not found in DB");
-            }
-
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
         return false;
     }
 
     @Override
     public boolean addTeacher(Teacher teacher) throws
-            SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -134,19 +122,22 @@ public class CRUDQueryImpl implements CRUDQuery {
 
             preparedStatement.execute();
 
-
             int newTeacherId = getGeneratedId(preparedStatement);
             if (newTeacherId != 0) {
                 teacher.setId(newTeacherId);
                 return true;
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
         return false;
     }
 
     @Override
     public boolean editStudent(Student studentWithNewData) throws
-            StudentNotFoundException, GroupNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -158,21 +149,19 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: StudentNotFoundException");
-                throw new StudentNotFoundException(
-                        "Student with id=" + studentWithNewData.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Student not found");
             }
-        } catch (SQLIntegrityConstraintViolationException e) {
+        } catch (SQLException e) {
             log.error(e.getMessage());
-            log.error("Throw: GroupNotFoundException");
-            throw new GroupNotFoundException(
-                    "Group with id=" + studentWithNewData.getGroup().getId() + " not found in DB");
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
     public boolean editGroup(Group groupWithNewData) throws
-            GroupNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -183,16 +172,19 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: GroupNotFoundException");
-                throw new GroupNotFoundException(
-                        "Group with id=" + groupWithNewData.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Group not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
     public boolean editTeacher(Teacher teacherWithNewData) throws
-            TeacherNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -204,16 +196,19 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: TeacherNotFoundException");
-                throw new TeacherNotFoundException(
-                        "Teacher with id=" + teacherWithNewData.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Teacher not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
     public boolean editSubject(Subject subjectWithNewData) throws
-            SubjectNotFoundException, SubjectCategoryNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -226,22 +221,19 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: SubjectNotFoundException");
-                throw new SubjectNotFoundException(
-                        "Subject with id=" + subjectWithNewData.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Teacher not found");
             }
-        } catch (SQLIntegrityConstraintViolationException e) {
+        } catch (SQLException e) {
             log.error(e.getMessage());
-            log.error("Throw: SubjectCategoryNotFoundException");
-            throw new SubjectCategoryNotFoundException(
-                    "Subject category with id=" + subjectWithNewData.getCategory().getId() +
-                            " not found in DB");
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
     public boolean deleteStudent(Student student) throws
-            StudentNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -252,16 +244,19 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: StudentNotFoundException");
-                throw new StudentNotFoundException(
-                        "Student with id=" + student.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Student not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
     public boolean deleteGroup(Group group) throws
-            GroupNotFoundException, SQLException {
+            AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -272,16 +267,18 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: GroupNotFoundException");
-                throw new GroupNotFoundException(
-                        "Group with id=" + group.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Group not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public boolean deleteTeacher(Teacher teacher) throws
-            TeacherNotFoundException, SQLException {
+    public boolean deleteTeacher(Teacher teacher) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -292,16 +289,18 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: TeacherNotFoundException");
-                throw new TeacherNotFoundException(
-                        "Teacher with id=" + teacher.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Teacher not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public boolean deleteSubject(Subject subject) throws
-            SubjectNotFoundException, SQLException {
+    public boolean deleteSubject(Subject subject) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -312,16 +311,18 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: SubjectNotFoundException");
-                throw new SubjectNotFoundException(
-                        "Subject with id=" + subject.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Subject not found");
             }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public Student getStudent(Student student) throws
-            StudentNotFoundException, SQLException {
+    public Student getStudent(Student student) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -338,18 +339,20 @@ public class CRUDQueryImpl implements CRUDQuery {
             Student resStudent = getOneStudentFromResultSet(resultSet);
 
             if (resStudent == null) {
-                log.error("Throw: StudentNotFoundException");
-                throw new StudentNotFoundException(
-                        "Student with id=" + student.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Student not found");
             }
-
             return resStudent;
+
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public Group getGroup(Group group) throws
-            GroupNotFoundException, SQLException {
+    public Group getGroup(Group group) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -364,18 +367,20 @@ public class CRUDQueryImpl implements CRUDQuery {
             Group resGroup = getOneGroupFromResultSet(resultSet);
 
             if (resGroup == null) {
-                log.error("Throw: GroupNotFoundException");
-                throw new GroupNotFoundException(
-                        "Group with id=" + group.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Group not found");
             }
-
             return resGroup;
+
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public Teacher getTeacher(Teacher teacher) throws
-            TeacherNotFoundException, SQLException {
+    public Teacher getTeacher(Teacher teacher) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -390,18 +395,20 @@ public class CRUDQueryImpl implements CRUDQuery {
             Teacher resTeacher = getOneTeacherFromResultSet(resultSet);
 
             if (resTeacher == null) {
-                log.error("Throw: TeacherNotFoundException");
-                throw new TeacherNotFoundException(
-                        "Teacher with id=" + teacher.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Teacher not found");
             }
-
             return resTeacher;
+
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 
     @Override
-    public Subject getSubject(Subject subject) throws
-            SubjectNotFoundException, SQLException {
+    public Subject getSubject(Subject subject) throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -419,12 +426,14 @@ public class CRUDQueryImpl implements CRUDQuery {
             Subject resSubject = getOneSubjectFromResultSet(resultSet);
 
             if (resSubject == null) {
-                log.error("Throw: SubjectNotFoundException");
-                throw new SubjectNotFoundException(
-                        "Subject with id=" + subject.getId() + " not found");
+                log.error("Throw: AppDBException");
+                throw new AppDBException("Subject not found");
             }
-
             return resSubject;
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            log.error("Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
         }
     }
 }

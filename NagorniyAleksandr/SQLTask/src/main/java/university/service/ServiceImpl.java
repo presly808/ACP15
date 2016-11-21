@@ -2,10 +2,10 @@ package university.service;
 
 import org.apache.log4j.Logger;
 import university.dao.QueryCreator;
-import university.exceptions.*;
+import university.exceptions.AppDBException;
+import university.exceptions.InvalidQueryParameterException;
 import university.models.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceImpl implements Service {
@@ -19,17 +19,13 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public List<Student> getStudentsList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException {
+    public List<Student> getStudentsList(int offset, int length) throws
+            InvalidQueryParameterException, AppDBException {
 
         validateOffsetAndLength(offset, length);
 
-        try {
-            log.info("Request: get students list");
-            return queryCreator.getStudentsList(offset, length);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: get students list");
+        return queryCreator.getStudentsList(offset, length);
     }
 
     private void validateOffsetAndLength(int offset, int length) throws InvalidQueryParameterException {
@@ -44,61 +40,44 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public List<Subject> getSubjectsList(int offset, int length) throws DBUnavailableException, InvalidQueryParameterException {
+    public List<Subject> getSubjectsList(int offset, int length) throws
+            AppDBException, InvalidQueryParameterException {
 
         validateOffsetAndLength(offset, length);
 
-        try {
-            log.info("Request: get subjects list");
-            return queryCreator.getSubjectsList(offset, length);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: get subjects list");
+        return queryCreator.getSubjectsList(offset, length);
     }
 
     @Override
-    public List<Group> getGroupList(int offset, int length) throws InvalidQueryParameterException, DBUnavailableException {
+    public List<Group> getGroupList(int offset, int length) throws
+            InvalidQueryParameterException, AppDBException {
 
         validateOffsetAndLength(offset, length);
 
-        try {
-            log.info("Request: get group list");
-            return queryCreator.getGroupList(offset, length);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: get group list");
+        return queryCreator.getGroupList(offset, length);
     }
 
     @Override
-    public List<Teacher> getTeachersList(int offset, int length)
-            throws DBUnavailableException, InvalidQueryParameterException {
+    public List<Teacher> getTeachersList(int offset, int length) throws
+            AppDBException, InvalidQueryParameterException {
 
         validateOffsetAndLength(offset, length);
 
-        try {
-            log.info("Request: get teachers list");
-            return queryCreator.getTeachersList(offset, length);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: get teachers list");
+        return queryCreator.getTeachersList(offset, length);
     }
 
     @Override
     public boolean addStudent(Student student)
-            throws InvalidQueryParameterException, DBUnavailableException, GroupNotFoundException {
+            throws InvalidQueryParameterException, AppDBException {
 
         validateStudentForNull(student);
 
-        try {
-            log.info("Request: add student");
-            return queryCreator.addStudent(student);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+
+        log.info("Request: add student");
+        return queryCreator.addStudent(student);
     }
 
     private void validateStudentForNull(Student student) throws InvalidQueryParameterException {
@@ -111,18 +90,12 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public boolean addGroup(Group group) throws InvalidQueryParameterException,
-            GroupAlreadyExistsException, DBUnavailableException {
+    public boolean addGroup(Group group) throws InvalidQueryParameterException, AppDBException {
 
         validateGroupForNull(group);
 
-        try {
-            log.info("Request: add group");
-            return queryCreator.addGroup(group);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: add group");
+        return queryCreator.addGroup(group);
     }
 
     private void validateGroupForNull(Group group) throws InvalidQueryParameterException {
@@ -133,18 +106,12 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public boolean addSubject(Subject subject) throws InvalidQueryParameterException,
-            SubjectAlreadyExistsException, SubjectCategoryNotFoundException, DBUnavailableException {
+    public boolean addSubject(Subject subject) throws InvalidQueryParameterException, AppDBException {
 
         validateSubjectForNull(subject);
 
-        try {
-            log.info("Request: add subject");
-            return queryCreator.addSubject(subject);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: add subject");
+        return queryCreator.addSubject(subject);
     }
 
     private void validateSubjectForNull(Subject subject) throws InvalidQueryParameterException {
@@ -157,17 +124,12 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, DBUnavailableException {
+    public boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, AppDBException {
 
         validateTeacherForNull(teacher);
 
-        try {
-            log.info("Request: add teacher");
-            return queryCreator.addTeacher(teacher);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: add teacher");
+        return queryCreator.addTeacher(teacher);
     }
 
     private void validateTeacherForNull(Teacher teacher) throws InvalidQueryParameterException {
@@ -178,70 +140,47 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public boolean editStudent(Student studentWithNewData) throws DBUnavailableException,
-            InvalidQueryParameterException, GroupNotFoundException, StudentNotFoundException {
-
+    public boolean editStudent(Student studentWithNewData) throws
+            InvalidQueryParameterException, AppDBException {
 
         validateStudentForNull(studentWithNewData);
 
-        try {
-            log.info("Request: edit student");
-            return queryCreator.editStudent(studentWithNewData);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: edit student");
+        return queryCreator.editStudent(studentWithNewData);
     }
 
     @Override
-    public boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException,
-            GroupAlreadyExistsException, DBUnavailableException, GroupNotFoundException {
+    public boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException, AppDBException {
 
         validateGroupForNull(groupWithNewData);
 
-        try {
-            log.info("Request: edit group");
-            return queryCreator.editGroup(groupWithNewData);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: edit group");
+        return queryCreator.editGroup(groupWithNewData);
     }
 
     @Override
     public boolean editTeacher(Teacher teacherWithNewData) throws
-            InvalidQueryParameterException, DBUnavailableException, TeacherNotFoundException {
+            InvalidQueryParameterException, AppDBException {
 
         validateTeacherForNull(teacherWithNewData);
 
-        try {
-            log.info("Request: edit teacher");
-            return queryCreator.editTeacher(teacherWithNewData);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: edit teacher");
+        return queryCreator.editTeacher(teacherWithNewData);
     }
 
     @Override
     public boolean editSubject(Subject subjectWithNewData) throws
-            InvalidQueryParameterException, SubjectCategoryNotFoundException,
-            SubjectNotFoundException, DBUnavailableException {
+            InvalidQueryParameterException, AppDBException {
 
         validateSubjectForNull(subjectWithNewData);
 
-        try {
-            log.info("Request: edit subject");
-            return queryCreator.editSubject(subjectWithNewData);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: edit subject");
+        return queryCreator.editSubject(subjectWithNewData);
     }
 
     @Override
-    public List<Student> getStudentOfGroup(Group group) throws GroupNotFoundException,
-            SQLException, InvalidQueryParameterException {
+    public List<Student> getStudentOfGroup(Group group) throws
+            InvalidQueryParameterException, AppDBException {
 
         validateGroupForNull(group);
 
@@ -251,97 +190,68 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws
-            InvalidQueryParameterException, DBUnavailableException {
+            InvalidQueryParameterException, AppDBException {
 
         validateOffsetAndLength(offset, length);
         validateSubjectForNull(subject);
 
-        try {
-            log.info("Request: get groups by subject");
-            return queryCreator.getGroupsBySubject(subject, offset, length);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        return queryCreator.getGroupsBySubject(subject, offset, length);
     }
 
     @Override
-    public List<Subject> getSubjectsThatStudyAllGroups() throws DBUnavailableException {
-        try {
-            log.info("Request: get subject that study all groups");
-            return queryCreator.getSubjectsThatStudyAllGroups();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+    public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
+
+        log.info("Request: get subject that study all groups");
+        return queryCreator.getSubjectsThatStudyAllGroups();
     }
 
     @Override
-    public Teacher getTeacherWithMaxExperience() throws DBUnavailableException {
-        try {
-            log.info("Request: get teacher with max experience");
-            return queryCreator.getTeacherWithMaxExperience();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+    public Teacher getTeacherWithMaxExperience() throws AppDBException {
+
+        log.info("Request: get teacher with max experience");
+        return queryCreator.getTeacherWithMaxExperience();
     }
 
     @Override
-    public Teacher getTeacherWithMinExperience() throws DBUnavailableException {
-        try {
-            log.info("Request: get teacher with min experience");
-            return queryCreator.getTeacherWithMinExperience();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+    public Teacher getTeacherWithMinExperience() throws AppDBException {
+
+        log.info("Request: get teacher with min experience");
+        return queryCreator.getTeacherWithMinExperience();
     }
 
     @Override
-    public List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws InvalidQueryParameterException, DBUnavailableException {
+    public List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws
+            InvalidQueryParameterException, AppDBException {
+
         if (years < 0) {
             log.error("Throw: Invalid input data");
             throw new InvalidQueryParameterException("Param \"years\" is incorrect");
         }
 
-        try {
-            log.info("Request: get teacher with experience more than" + years + " years");
-            return queryCreator.getTeachersWithExperienceMoreThanYears(years);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+        log.info("Request: get teacher with experience more than" + years + " years");
+        return queryCreator.getTeachersWithExperienceMoreThanYears(years);
     }
 
     @Override
-    public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws DBUnavailableException {
-        try {
-            log.info("Request: get teacher with experience more than three years");
-            return queryCreator.getTeachersWithExperienceMoreThanThreeYears();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+    public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws AppDBException {
+
+        log.info("Request: get teacher with experience more than three years");
+        return queryCreator.getTeachersWithExperienceMoreThanThreeYears();
     }
 
     @Override
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws
-            InvalidQueryParameterException, DBUnavailableException {
+            InvalidQueryParameterException, AppDBException {
 
         validateSubjectCategoryForNull(subjectCategory);
 
-        try {
-            log.info("Request: get of subjects by category" + subjectCategory.getTitle());
-            return queryCreator.getListOfSubjectsByCategory(subjectCategory);
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
-
+        log.info("Request: get of subjects by category" + subjectCategory.getTitle());
+        return queryCreator.getListOfSubjectsByCategory(subjectCategory);
     }
 
-    private void validateSubjectCategoryForNull(SubjectCategory subjectCategory) throws InvalidQueryParameterException {
+    private void validateSubjectCategoryForNull(SubjectCategory subjectCategory) throws
+            InvalidQueryParameterException {
+
         if (subjectCategory == null) {
             log.error("Throw: Subject category is null");
             throw new InvalidQueryParameterException("Subject category is null");
@@ -349,13 +259,9 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public List<Subject> getListOfHumanitarianSubjects() throws DBUnavailableException {
-        try {
-            log.info("Request: get humanitarian subjects");
-            return queryCreator.getListOfHumanitarianSubjects();
-        } catch (SQLException e) {
-            log.error(e.getMessage());
-            throw new DBUnavailableException("DataBaseUnavailable");
-        }
+    public List<Subject> getListOfHumanitarianSubjects() throws AppDBException {
+
+        log.info("Request: get humanitarian subjects");
+        return queryCreator.getListOfHumanitarianSubjects();
     }
 }
