@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ua.artcode.daoSQL.implementations.*;
 import ua.artcode.daoSQL.interfaces.*;
+import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Teacher;
 
@@ -33,13 +34,13 @@ public class TestSelectedDAO {
         selectDAO = new SelectCommands();
         updateDAO = new UpDateCommands();
         dropDAO = new DropCommands();
-        StartInitDB.createTables(createDAO);
-        StartInitDB.initTables(insertDAO, updateDAO);
+      //  StartInitDB.createTables(createDAO);
+       // StartInitDB.initTables(insertDAO, updateDAO);
     }
 
     @After
     public void finished(){
-        StartInitDB.dropTables(dropDAO);
+       // StartInitDB.dropTables(dropDAO);
     }
 
 
@@ -71,9 +72,31 @@ public class TestSelectedDAO {
     @Test
     public void testGetGroupsThatStudySubject(){
 
-        List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
-        int size = studentList.size();
-        Assert.assertEquals("Test method Get Groups That Study Subject ", true,  size == 6);
+        String subjectName = "Mathematics";
+        List<Group> groupsList = selectDAO.getGroupsThatStudySubject(subjectName);
+        int size = groupsList.size();
+        Assert.assertEquals("Test method Get Groups That Study Subject ", true,  size == 2);
+
+    }
+
+    @Test
+    public void testAvgMarkBySubjectInUniversity(){
+
+        String subjectName = "Mathematics";
+        double avgMark = selectDAO.avgMarkBySubjectInUniversity(subjectName);
+        System.out.println(avgMark);
+        Assert.assertEquals("Test method Get Avg Mark By Subject In University ", true,  avgMark != 0);
+
+    }
+
+    @Test
+    public void testAvgMarkBySubjectInGroup(){
+
+        String subjectName = "Journalism";
+        String groupName = "Base16";
+        double avgMark = selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
+        System.out.println(avgMark);
+        Assert.assertEquals("Test method Get Avg Mark By Subject In University ", true,  avgMark != 0);
 
     }
 

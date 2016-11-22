@@ -183,13 +183,21 @@ public class IServiceImpl implements IService {
     }
 
     @Override
-    public int avgMarkBySubjectInUniversity(Subject subject) {
-        return 0;
+    public double avgMarkBySubjectInUniversity(String subject_name) throws EmptyException {
+
+        if (subject_name.isEmpty()){
+            throw new EmptyException("subject_name is empty");
+        }
+        return selectDAO.avgMarkBySubjectInUniversity(subject_name);
     }
 
     @Override
-    public int avgMarkBySubjectInGroup(Subject subject, Group group) {
-        return 0;
+    public double avgMarkBySubjectInGroup(String subjectName, String groupName) throws EmptyException {
+
+        if (subjectName.isEmpty() || groupName.isEmpty()){
+            throw new EmptyException("subject_name is empty");
+        }
+        return selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
     }
 
     @Override

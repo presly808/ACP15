@@ -57,8 +57,8 @@ public interface IService {
 
 //  -узнать средний бал студентов по физике (всех и определенной группы)
 
-    int avgMarkBySubjectInUniversity(Subject subject);
-    int avgMarkBySubjectInGroup(Subject subject, Group group);
+    double avgMarkBySubjectInUniversity(String subject_name)  throws EmptyException;
+    double avgMarkBySubjectInGroup(String subjectName, String groupName) throws EmptyException;
 
 //  -показать группу, в которой более 3-х студентов изучают философию (и выгнать с универа)
 

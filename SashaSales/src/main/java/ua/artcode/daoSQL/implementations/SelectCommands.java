@@ -31,6 +31,13 @@ public class SelectCommands implements SelectDAO {
             "ON groups.id=study.group_id AND study.subject_id=subjects.id\n" +
             "WHERE subjects.subject_name= ?;";
 
+    private static final String SELECT_AVG_MARK_BY_SUBJECT_IN_UNIVERSITY = "SELECT avg(mark) as middleMark FROM marks INNER JOIN subjects\n" +
+            "ON marks.subject_id=subjects.id WHERE subjects.subject_name=?";
+
+    private static final String SELECT_AVG_MARK_BY_SUBJECT_IN_GROUP = "SELECT avg(mark) as middleMark FROM groups INNER JOIN study INNER JOIN marks INNER JOIN subjects\n" +
+            "ON groups.id=study.group_id AND study.subject_id=marks.subject_id AND marks.subject_id=subjects.id\n" +
+            "WHERE groups.group_name = ? AND subjects.subject_name=?;";
+
     public SelectCommands() {
     }
 
@@ -199,5 +206,53 @@ public class SelectCommands implements SelectDAO {
 
         return groups;
     }
+
+
+    public double avgMarkBySubjectInUniversity(String subject_name) {
+
+        LOGGER.info("getting avg Mark By Subject " + subject_name + " In University ");
+        double avgMark = 0;
+
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_AVG_MARK_BY_SUBJECT_IN_UNIVERSITY);) {
+
+            preparedStatement.setString(1, subject_name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                avgMark = resultSet.getDouble("middleMark");
+            }
+
+            resultSet.close();
+            LOGGER.info("getting avg Mark By Subject " + subject_name + " In University was get");
+        } catch (SQLException e) {
+            LOGGER.error("getting avg Mark By Subject " + subject_name + " In University was iterrupt", e);
+        }
+
+        return avgMark;
+    }
+
+    public double avgMarkBySubjectInGroup(String group_name, String subject_name) {
+
+        LOGGER.info("getting avg Mark By Subject " + subject_name + " In Group ");
+        double avgMark = 0;
+
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_AVG_MARK_BY_SUBJECT_IN_GROUP);) {
+
+            preparedStatement.setString(1, group_name);
+            preparedStatement.setString(2, subject_name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                avgMark = resultSet.getDouble("middleMark");
+            }
+            resultSet.close();
+            LOGGER.info("getting avg Mark By Subject " + subject_name + " In Group was get");
+        } catch (SQLException e) {
+            LOGGER.error("getting avg Mark By Subject " + subject_name + " In Group was iterrupt", e);
+        }
+
+        return avgMark;
+    }
+
 
 }

@@ -45,7 +45,7 @@ public class TestDataForDBSQL {
 
         String [] subjectNames = {"Mathematics", "English", "Ukrainian", "Java programming", "Phisics", "Philosofia", "Economics",
                                 "Philosophy", "Music", "Statistics", "Linguistics", "Biochemistry", "Botany", "Chemistry", "Criminal Justice", "Geography",
-                                "History", "Management", "Painting", "Journalism", "Pholology"};
+                                "History", "Management", "Painting", "Philology"};
 
         return subjectNames;
     }
