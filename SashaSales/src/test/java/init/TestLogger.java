@@ -27,7 +27,6 @@ public class TestLogger {
         StartInitDB.createTables(createDAO);
         StartInitDB.initTables(insertDAO, updateDAO);
 
-        selectDAO.getStudents().forEach(System.out::println);
 
 
     }

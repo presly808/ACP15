@@ -41,7 +41,7 @@ public interface IService {
 
 // -узнать какие группы изучают математику
 
-    List<Group> getGroupsThatStudySubject(String subject_name);
+    List<Group> getGroupsThatStudySubject(String subject_name) throws EmptyException;
 
 // -какие преподаватель имеют наименьший и наибольший опыт?
 

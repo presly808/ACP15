@@ -27,6 +27,9 @@ public class SelectCommands implements SelectDAO {
     private static final String SELECT_ALL_SUBJECT = "SELECT subjects.id, subjects.subject_name, subjects.description FROM subjects";
     private static final String SELECT_ALL_TEACHERS_THAT_WORK_MORE_3_YEARS = "SELECT teachers.id, teachers.teacher_name, teachers.experience, subjects.subject_name FROM teachers, subjects WHERE teachers.subject_id=subjects.id and teachers.experience > 3";
     private static final String SELECT_ALL_TEACHERS = "SELECT teachers.id, teachers.teacher_name, teachers.experience, subjects.subject_name FROM teachers, subjects WHERE teachers.subject_id=subjects.id";
+    private static final String SELECT_GROUPS_THAT_STUDY_SUBJECT = "SELECT groups.id, groups.group_name FROM groups INNER JOIN study INNER JOIN subjects\n" +
+            "ON groups.id=study.group_id AND study.subject_id=subjects.id\n" +
+            "WHERE subjects.subject_name= ?;";
 
     public SelectCommands() {
     }
@@ -169,6 +172,32 @@ public class SelectCommands implements SelectDAO {
         }
 
         return teachers;
+    }
+
+    public List<Group> getGroupsThatStudySubject(String subject_name) {
+
+        LOGGER.info("getting List of Groups That Study Subject " + subject_name +" from SQL DB");
+        List<Group> groups = new ArrayList<>();
+
+        try (Connection connection = ConnectionFactory.getConnectionToTestDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_GROUPS_THAT_STUDY_SUBJECT);) {
+
+            preparedStatement.setString(1, subject_name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int group_id = resultSet.getInt("id");
+                String group_name = resultSet.getString("group_name");
+                Group group = new Group(group_id, group_name);
+                groups.add(group);
+            }
+            resultSet.close();
+            LOGGER.info("List of Groups That Study Subject " + subject_name +" from SQL DB was get");
+        } catch (SQLException e) {
+            LOGGER.error("getting List of Groups That Study Subject " + subject_name +" from SQL DB was iterrupt", e);
+        }
+
+        return groups;
     }
 
 }

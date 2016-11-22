@@ -16,11 +16,9 @@ public class ConnectionFactory {
 
     public static Connection getConnectionToDBUniversity() throws SQLException {
 
-        LOGGER.info("getting Connection To DB SQL named University on SQL server");
-
         try {
             Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-            LOGGER.info("getting driver to Connection To DB SQL named University on SQL server");
+            LOGGER.info("getting driver to Connection To DB SQL named University on SQL server" + PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
         } catch (ClassNotFoundException e) {
             LOGGER.info("get Connection To DB SQL named University on SQL server was interrupt", e);
         }
@@ -33,10 +31,9 @@ public class ConnectionFactory {
 
     public static Connection getConnectionToTestDB() throws SQLException {
 
-        LOGGER.info("getting Connection To DB SQL named testDBForUniversity on SQL server");
         try {
             Class.forName(PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
-            LOGGER.info("getting driver to Connection To DB SQL named testDBForUniversity on SQL server");
+            LOGGER.info("getting driver to Connection To DB SQL named Test on SQL server " + PropertiesHolder.getProperty("CLASS_NAME_JDBC_DRIVER"));
         } catch (ClassNotFoundException e) {
             LOGGER.info("get Connection To DB SQL named testDBForUniversity on SQL server was interrupt", e);
         }

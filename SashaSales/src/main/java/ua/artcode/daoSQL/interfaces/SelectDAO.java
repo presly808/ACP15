@@ -18,7 +18,7 @@ public interface SelectDAO {
     List<Subject> getSubjects();
     List<Teacher> getTeachers();
     List<Teacher> getTeachersThatWorkMore3Years();
-
+    List<Group> getGroupsThatStudySubject(String subject_name);
 
 
 }

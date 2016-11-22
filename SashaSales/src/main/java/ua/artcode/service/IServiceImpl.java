@@ -152,15 +152,19 @@ public class IServiceImpl implements IService {
 
     @Override
     public boolean upDateByGroup(int student_id, int group_id) {
-        if (student_id <= 0 && group_id <=0){
+        if (student_id <= 0){
             return false;
         }
         return updateDAO.updateStudentByGroup(student_id, group_id);
     }
 
     @Override
-    public List<Group> getGroupsThatStudySubject(String subject_name) {
-        return null;
+    public List<Group> getGroupsThatStudySubject(String subject_name) throws EmptyException {
+        if (subject_name.isEmpty()){
+            throw new EmptyException("group_name is empty");
+        }
+
+        return selectDAO.getGroupsThatStudySubject(subject_name);
     }
 
     @Override
