@@ -41,8 +41,7 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
         return false;
@@ -74,8 +73,7 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
         return false;
@@ -101,8 +99,7 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
         return false;
@@ -127,8 +124,7 @@ public class CRUDQueryImpl implements CRUDQuery {
                 return true;
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
         return false;
@@ -140,7 +136,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE students SET name = ?, group_id = ? WHERE id = ?")) {
+                     "UPDATE students SET students.name = ?, students.group_id = ? WHERE students.id = ?")) {
+
             preparedStatement.setString(1, studentWithNewData.getName());
             preparedStatement.setInt(2, studentWithNewData.getGroup().getId());
             preparedStatement.setInt(3, studentWithNewData.getId());
@@ -148,12 +145,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Student not found");
                 throw new AppDBException("Student not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -171,12 +167,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Group not found");
                 throw new AppDBException("Group not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -195,12 +190,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Teacher not found");
                 throw new AppDBException("Teacher not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -220,12 +214,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Teacher not found");
                 throw new AppDBException("Teacher not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -243,12 +236,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Student not found");
                 throw new AppDBException("Student not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -266,12 +258,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Group not found");
                 throw new AppDBException("Group not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -288,12 +279,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Teacher not found");
                 throw new AppDBException("Teacher not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -310,12 +300,11 @@ public class CRUDQueryImpl implements CRUDQuery {
             if (preparedStatement.executeUpdate() != 0) {
                 return true;
             } else {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Subject not found");
                 throw new AppDBException("Subject not found");
             }
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -338,14 +327,13 @@ public class CRUDQueryImpl implements CRUDQuery {
             Student resStudent = getOneStudentFromResultSet(resultSet);
 
             if (resStudent == null) {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Student not found");
                 throw new AppDBException("Student not found");
             }
             return resStudent;
 
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -366,14 +354,13 @@ public class CRUDQueryImpl implements CRUDQuery {
             Group resGroup = getOneGroupFromResultSet(resultSet);
 
             if (resGroup == null) {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Group not found");
                 throw new AppDBException("Group not found");
             }
             return resGroup;
 
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -394,14 +381,13 @@ public class CRUDQueryImpl implements CRUDQuery {
             Teacher resTeacher = getOneTeacherFromResultSet(resultSet);
 
             if (resTeacher == null) {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Teacher not found");
                 throw new AppDBException("Teacher not found");
             }
             return resTeacher;
 
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -425,13 +411,12 @@ public class CRUDQueryImpl implements CRUDQuery {
             Subject resSubject = getOneSubjectFromResultSet(resultSet);
 
             if (resSubject == null) {
-                log.error("Throw: AppDBException");
+                log.error("Throw: AppDBException, Subject not found");
                 throw new AppDBException("Subject not found");
             }
             return resSubject;
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }

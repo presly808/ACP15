@@ -22,8 +22,7 @@ public class PropertiesHolder {
             log.info("Load properties");
             properties.load(PropertiesHolder.class.getResourceAsStream(PROPERTIES_FILE_PATH));
         } catch (IOException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppPropertiesException");
+            log.error(e.getMessage() + ". Throw: AppPropertiesException");
             throw new AppPropertiesException(e.getMessage());
         }
         return properties;

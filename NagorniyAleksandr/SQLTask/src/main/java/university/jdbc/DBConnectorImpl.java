@@ -15,9 +15,7 @@ public class DBConnectorImpl implements DBConnector {
         try {
             Class.forName(PropertiesHolder.get("JDBC_DRIVER_CLASS_NAME"));
         } catch (ClassNotFoundException e) {
-            log.error(e.getMessage());
-            e.printStackTrace();
-            log.error("Throw: SQLException \"DataBase Driver Class not found\"");
+            log.error(e.getMessage() + "Throw: SQLException \"DataBase Driver Class not found\"");
             throw new SQLException("DataBase Driver Class not found");
         }
 

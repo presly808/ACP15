@@ -1,7 +1,6 @@
 package university.dao;
 
 import org.apache.log4j.Logger;
-import university.container.TableColumnAliasContainer;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
@@ -13,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static university.container.TableColumnAliasContainer.*;
+import static university.container.TableColumnAliasContainer.getColumnAlias;
 import static university.util.convertor.ToObjectConverter.*;
 
 public class QueryCreatorImpl implements QueryCreator {
@@ -53,8 +52,7 @@ public class QueryCreatorImpl implements QueryCreator {
             return getStudentsAsListFromResultSet(resultSet);
 
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -85,8 +83,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -96,20 +93,23 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * " +
+                     "SELECT groups.id AS ?, groups.name AS ? " +
                              "FROM groups " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            preparedStatement.setInt(1, length);
-            preparedStatement.setInt(2, offset);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("groups.id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
+
+            preparedStatement.setInt(i++, length);
+            preparedStatement.setInt(i++, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getGroupsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -118,20 +118,24 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Teacher> getTeachersList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * " +
+                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
                              "FROM teachers " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            preparedStatement.setInt(1, length);
-            preparedStatement.setInt(2, offset);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
+
+            preparedStatement.setInt(i++, length);
+            preparedStatement.setInt(i++, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getTeachersAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -141,7 +145,14 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name FROM students WHERE group_id = ?")) {
+                     "SELECT students.id AS ?, students.name AS ? FROM students WHERE students.group_id = ?")) {
+
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("students.id"));
+            preparedStatement.setString(i++, getColumnAlias("students.name"));
+
+            preparedStatement.setInt(i++, group.getId());
+
 
             preparedStatement.setInt(1, group.getId());
 
@@ -149,8 +160,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getStudentsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -160,24 +170,27 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id, groups.name " +
+                     "SELECT groups.id AS ?, groups.name AS ? " +
                              "FROM groups " +
                              "INNER JOIN study " +
-                             "ON id = study.group_id " +
-                             "WHERE subject_id = ? " +
+                             "ON groups.id = study.group_id " +
+                             "WHERE study.subject_id = ? " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            preparedStatement.setInt(1, subject.getId());
-            preparedStatement.setInt(2, length);
-            preparedStatement.setInt(3, offset);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("groups.id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
+
+            preparedStatement.setInt(i++, subject.getId());
+            preparedStatement.setInt(i++, length);
+            preparedStatement.setInt(i++, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getGroupsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -187,18 +200,24 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subject_id, subjects.name, subjects.category_id, subject_categorys.title " +
+                     "SELECT study.subject_id AS ?, subjects.name AS ?, " +
+                             "subjects.category_id AS ?, subject_categorys.title AS ? " +
                              "FROM study, groups, subjects, subject_categorys " +
                              "WHERE subject_id = subjects.id AND category_id = subject_categorys.id " +
                              "GROUP BY subject_id " +
                              "HAVING count(DISTINCT group_id) = count(DISTINCT groups.id)")) {
 
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("study.subject_id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
+            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -207,11 +226,16 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name, experience " +
+                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "ORDER BY experience DESC " +
                              "LIMIT 1")) {
+
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -227,18 +251,22 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMinExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name, experience " +
+                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "ORDER BY experience ASC " +
                              "LIMIT 1")) {
 
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getOneTeacherFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            log.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -248,12 +276,17 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name, experience " +
+                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "HAVING experience > ?")) {
 
-            preparedStatement.setInt(1, years);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
+
+            preparedStatement.setInt(i++, years);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -275,11 +308,16 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory category) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name, category_id " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ? " +
                              "FROM subjects " +
-                             "WHERE category_id = ?")) {
+                             "WHERE subjects.category_id = ?")) {
 
-            preparedStatement.setInt(1, category.getId());
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.experience"));
+
+            preparedStatement.setInt(i++, category.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -295,13 +333,18 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Subject> getListOfSubjectsByCategory(String categoryName) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id, subjects.name, subjects.category_id " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ? " +
                              "FROM subjects " +
                              "INNER JOIN subject_categorys " +
                              "ON subjects.category_id = subject_categorys.id " +
                              "WHERE subject_categorys.title = ?")) {
 
-            preparedStatement.setString(1, categoryName);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.experience"));
+
+            preparedStatement.setString(i++, categoryName);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
