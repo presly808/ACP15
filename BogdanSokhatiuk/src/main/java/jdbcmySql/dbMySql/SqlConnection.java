@@ -30,21 +30,17 @@ public class SqlConnection implements MyConnection {
             LOG.debug("Create data base connection " + "Url=" + url + "; User=" + user);
         } catch (SQLException e) {
             LOG.error(e.getMessage());
-            e.printStackTrace();
         }
         return connection;
     }
 
     @Override
     public Connection getConnection() {
-
         try {
-
             connection = DriverManager.getConnection(url, user, pass);
             LOG.debug("Create data base connection " + "Url=" + url + "; User=" + user);
         } catch (SQLException e) {
             LOG.error(e.getMessage());
-            e.printStackTrace();
         }
         return connection;
     }
@@ -54,7 +50,6 @@ public class SqlConnection implements MyConnection {
             connection.close();
         } catch (SQLException e) {
             LOG.error(e);
-            e.printStackTrace();
         }
     }
 

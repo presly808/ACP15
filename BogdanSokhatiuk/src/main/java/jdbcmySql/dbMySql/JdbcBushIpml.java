@@ -24,7 +24,6 @@ public class JdbcBushIpml implements JdbcBush {
             resultSet = statement.executeQuery(sql);
             LOG.debug("Execute sql " + sql + ";");
         } catch (SQLException e) {
-            e.printStackTrace();
             LOG.error(e);
         }
         return resultSet;
@@ -38,7 +37,6 @@ public class JdbcBushIpml implements JdbcBush {
             LOG.debug("Execute sql " + sql + ";");
         } catch (SQLException e) {
             LOG.error(e);
-            e.printStackTrace();
         }
         return true;
     }

@@ -6,6 +6,8 @@ import jdbcmySql.model.Group;
 import jdbcmySql.model.Student;
 import jdbcmySql.model.Subject;
 import jdbcmySql.model.Teacher;
+import jdbcmySql.utils.PropertiesHolder;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -15,12 +17,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jdbcmySql.model.Constants.*;
+
+import static jdbcmySql.model.SqlScripts.*;
 
 
 public class JdbcTask<T> {
-   private T t;
-
+    private T t;
+    private static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
 
     public List<T> getAll(Class cl) {
         if (cl.equals(Student.class)) return getAllfromBase(cl, SQLSELECT1);
@@ -39,9 +42,9 @@ public class JdbcTask<T> {
         try {
             obj = cl.newInstance();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            LOG.error(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         try {
             resultSet = jdbcBush.sqlSelect(sql);
@@ -56,13 +59,13 @@ public class JdbcTask<T> {
                             try {
                                 fields[i].set(obj, resultSet.getInt(i + 1));
                             } catch (IllegalAccessException e) {
-                                e.printStackTrace();
+                                LOG.error(e);;
                             }
                         } else {
                             try {
                                 fields[i].set(obj, resultSet.getString(i + 1));
                             } catch (IllegalAccessException e) {
-                                e.printStackTrace();
+                                LOG.error(e);
                             }
                         }
                     }
@@ -71,7 +74,7 @@ public class JdbcTask<T> {
             }
             jdbcBush.closeConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return list;
     }
@@ -101,26 +104,27 @@ public class JdbcTask<T> {
 
                     fields[i].setAccessible(true);
                     if (fields[i].isAnnotationPresent(SqlDB.class)) {
-                    if (fields[i].getType().isPrimitive()) {
-                        try {
-                            fields[i].set(obj, resultSet.getInt(i + 1));
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        try {
-                            fields[i].set(obj, resultSet.getString(i + 1));
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
+                        if (fields[i].getType().isPrimitive()) {
+                            try {
+                                fields[i].set(obj, resultSet.getInt(i + 1));
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                fields[i].set(obj, resultSet.getString(i + 1));
+                            } catch (IllegalAccessException e) {
+                                LOG.error(e);
+                            }
                         }
                     }
-                }}
+                }
                 list.add(obj);
 
             }
             con.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
 
         return list;
@@ -147,9 +151,9 @@ public class JdbcTask<T> {
             return result;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return false;
     }

@@ -26,7 +26,6 @@ public class PropertiesHolder {
             properties.load(PropertiesHolder.class.getResourceAsStream(APP_PROPERTIES_PATH));
         } catch (IOException e) {
             LOG.error(e);
-            e.printStackTrace();
         }
         return properties;
     }

@@ -5,7 +5,9 @@ import jdbcmySql.dbMySql.JdbcBushIpml;
 import jdbcmySql.dbMySql.JdbcTask;
 import jdbcmySql.dbMySql.SqlConnection;
 import jdbcmySql.model.Student;
+import jdbcmySql.utils.PropertiesHolder;
 import org.apache.ibatis.jdbc.ScriptRunner;
+import org.apache.log4j.Logger;
 import org.junit.*;
 
 import java.io.InputStream;
@@ -14,17 +16,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import static jdbcmySql.model.SqlScripts.SQLTEST6;
+
 /**
  * Created by lost on 12.11.2016.
  */
 public class TestJDBCtask {
     private JdbcTask jdbcTask;
+    private static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
 
     @BeforeClass
     public static void setUp() throws Exception {
         Connection con = new SqlConnection().getConnection();
-        ScriptRunner scriptRunner= new ScriptRunner(con);
-        InputStream is= TestJDBCtask.class.getResourceAsStream("/sqlsripts.sql");
+        ScriptRunner scriptRunner = new ScriptRunner(con);
+        InputStream is = TestJDBCtask.class.getResourceAsStream("/sqlsripts.sql");
         scriptRunner.runScript(new InputStreamReader(is));
     }
 
@@ -59,7 +64,7 @@ public class TestJDBCtask {
     public void tearDown() {
         JdbcBush jdbcBush = new JdbcBushIpml();
         try {
-            jdbcBush.sqlDeleteUpdateInsert("Delete from students where name='Test'");
+            jdbcBush.sqlDeleteUpdateInsert(SQLTEST6);
             jdbcBush.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
