@@ -3,10 +3,12 @@ package university.service;
 import org.apache.log4j.Logger;
 import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
-import university.exceptions.InvalidQueryParameterException;
+import university.exceptions.InvalidValueException;
 import university.models.*;
 
 import java.util.List;
+
+import static university.util.Validator.*;
 
 public class ServiceImpl implements Service {
 
@@ -20,7 +22,7 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Student> getStudentsList(int offset, int length) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
         validateOffsetAndLength(offset, length);
 
@@ -28,20 +30,9 @@ public class ServiceImpl implements Service {
         return queryCreator.getStudentsList(offset, length);
     }
 
-    private void validateOffsetAndLength(int offset, int length) throws InvalidQueryParameterException {
-        if (offset < 0) {
-            log.error("Throw: Offset parameter is invalid");
-            throw new InvalidQueryParameterException("Offset parameter is invalid");
-        }
-        if (length < 0) {
-            log.error("Throw: Length parameter is invalid");
-            throw new InvalidQueryParameterException("Length parameter is invalid");
-        }
-    }
-
     @Override
     public List<Subject> getSubjectsList(int offset, int length) throws
-            AppDBException, InvalidQueryParameterException {
+            AppDBException, InvalidValueException {
 
         validateOffsetAndLength(offset, length);
 
@@ -51,7 +42,7 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Group> getGroupList(int offset, int length) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
         validateOffsetAndLength(offset, length);
 
@@ -61,7 +52,7 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Teacher> getTeachersList(int offset, int length) throws
-            AppDBException, InvalidQueryParameterException {
+            AppDBException, InvalidValueException {
 
         validateOffsetAndLength(offset, length);
 
@@ -71,88 +62,58 @@ public class ServiceImpl implements Service {
 
     @Override
     public boolean addStudent(Student student)
-            throws InvalidQueryParameterException, AppDBException {
+            throws InvalidValueException, AppDBException {
 
-        validateStudentForNull(student);
-
+        validateStudent(student);
 
         log.info("Request: add student");
         return queryCreator.addStudent(student);
     }
 
-    private void validateStudentForNull(Student student) throws InvalidQueryParameterException {
-        if (student == null) {
-            log.error("Throw: Student is null");
-            throw new InvalidQueryParameterException("Student is null");
-        }
-
-        validateGroupForNull(student.getGroup());
-    }
 
     @Override
-    public boolean addGroup(Group group) throws InvalidQueryParameterException, AppDBException {
+    public boolean addGroup(Group group) throws InvalidValueException, AppDBException {
 
-        validateGroupForNull(group);
+        validateGroup(group);
 
         log.info("Request: add group");
         return queryCreator.addGroup(group);
     }
 
-    private void validateGroupForNull(Group group) throws InvalidQueryParameterException {
-        if (group == null) {
-            log.error("Throw: Group is null");
-            throw new InvalidQueryParameterException("Group is null");
-        }
-    }
+
 
     @Override
-    public boolean addSubject(Subject subject) throws InvalidQueryParameterException, AppDBException {
+    public boolean addSubject(Subject subject) throws InvalidValueException, AppDBException {
 
-        validateSubjectForNull(subject);
+        validateSubject(subject);
 
         log.info("Request: add subject");
         return queryCreator.addSubject(subject);
     }
 
-    private void validateSubjectForNull(Subject subject) throws InvalidQueryParameterException {
-        if (subject == null) {
-            log.error("Throw: Subject is null");
-            throw new InvalidQueryParameterException("Subject is null");
-        }
-
-        validateSubjectCategoryForNull(subject.getCategory());
-    }
-
     @Override
-    public boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, AppDBException {
+    public boolean addTeacher(Teacher teacher) throws InvalidValueException, AppDBException {
 
-        validateTeacherForNull(teacher);
+        validateTeacher(teacher);
 
         log.info("Request: add teacher");
         return queryCreator.addTeacher(teacher);
     }
 
-    private void validateTeacherForNull(Teacher teacher) throws InvalidQueryParameterException {
-        if (teacher == null) {
-            log.error("Throw: Teacher is null");
-            throw new InvalidQueryParameterException("Teacher is null");
-        }
-    }
-
     @Override
     public boolean editStudent(Student studentWithNewData) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
-        validateStudentForNull(studentWithNewData);
+        validateStudent(studentWithNewData);
 
         log.info("Request: edit student");
         return queryCreator.editStudent(studentWithNewData);
     }
 
     @Override
-    public boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException, AppDBException {
+    public boolean editGroup(Group groupWithNewData) throws InvalidValueException, AppDBException {
 
-        validateGroupForNull(groupWithNewData);
+        validateGroup(groupWithNewData);
 
         log.info("Request: edit group");
         return queryCreator.editGroup(groupWithNewData);
@@ -160,9 +121,9 @@ public class ServiceImpl implements Service {
 
     @Override
     public boolean editTeacher(Teacher teacherWithNewData) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
-        validateTeacherForNull(teacherWithNewData);
+        validateTeacher(teacherWithNewData);
 
         log.info("Request: edit teacher");
         return queryCreator.editTeacher(teacherWithNewData);
@@ -170,9 +131,9 @@ public class ServiceImpl implements Service {
 
     @Override
     public boolean editSubject(Subject subjectWithNewData) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
-        validateSubjectForNull(subjectWithNewData);
+        validateSubject(subjectWithNewData);
 
         log.info("Request: edit subject");
         return queryCreator.editSubject(subjectWithNewData);
@@ -180,9 +141,9 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Student> getStudentOfGroup(Group group) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
-        validateGroupForNull(group);
+        validateGroup(group);
 
         log.info("Request: get student of group");
         return queryCreator.getStudentOfGroup(group);
@@ -190,10 +151,10 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
         validateOffsetAndLength(offset, length);
-        validateSubjectForNull(subject);
+        validateSubject(subject);
 
         return queryCreator.getGroupsBySubject(subject, offset, length);
     }
@@ -221,11 +182,11 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
         if (years < 0) {
             log.error("Throw: Invalid input data");
-            throw new InvalidQueryParameterException("Param \"years\" is incorrect");
+            throw new InvalidValueException("Param \"years\" is incorrect");
         }
 
         log.info("Request: get teacher with experience more than" + years + " years");
@@ -241,21 +202,12 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws
-            InvalidQueryParameterException, AppDBException {
+            InvalidValueException, AppDBException {
 
-        validateSubjectCategoryForNull(subjectCategory);
+        validateSubjectCategory(subjectCategory);
 
         log.info("Request: get of subjects by category" + subjectCategory.getTitle());
         return queryCreator.getListOfSubjectsByCategory(subjectCategory);
-    }
-
-    private void validateSubjectCategoryForNull(SubjectCategory subjectCategory) throws
-            InvalidQueryParameterException {
-
-        if (subjectCategory == null) {
-            log.error("Throw: Subject category is null");
-            throw new InvalidQueryParameterException("Subject category is null");
-        }
     }
 
     @Override

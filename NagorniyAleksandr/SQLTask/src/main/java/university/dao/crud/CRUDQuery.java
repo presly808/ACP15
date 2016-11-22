@@ -6,9 +6,6 @@ import university.models.Student;
 import university.models.Subject;
 import university.models.Teacher;
 
-/**
- * Created by nagornyyalek on 17.11.2016.
- */
 public interface CRUDQuery {
 
     boolean addStudent(Student student) throws AppDBException;

@@ -16,40 +16,40 @@ package university.service;
  */
 
 import university.exceptions.AppDBException;
-import university.exceptions.InvalidQueryParameterException;
+import university.exceptions.InvalidValueException;
 import university.models.*;
 
 import java.util.List;
 
 public interface Service {
 
-    List<Student> getStudentsList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
-    List<Subject> getSubjectsList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
-    List<Group> getGroupList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
-    List<Teacher> getTeachersList(int offset, int length) throws AppDBException, InvalidQueryParameterException;
+    List<Student> getStudentsList(int offset, int length) throws AppDBException, InvalidValueException;
+    List<Subject> getSubjectsList(int offset, int length) throws AppDBException, InvalidValueException;
+    List<Group> getGroupList(int offset, int length) throws AppDBException, InvalidValueException;
+    List<Teacher> getTeachersList(int offset, int length) throws AppDBException, InvalidValueException;
 
-    boolean addStudent(Student student) throws InvalidQueryParameterException, AppDBException;
-    boolean addGroup(Group group) throws InvalidQueryParameterException, AppDBException;
-    boolean addSubject(Subject subject) throws InvalidQueryParameterException, AppDBException;
-    boolean addTeacher(Teacher teacher) throws InvalidQueryParameterException, AppDBException;
+    boolean addStudent(Student student) throws InvalidValueException, AppDBException;
+    boolean addGroup(Group group) throws InvalidValueException, AppDBException;
+    boolean addSubject(Subject subject) throws InvalidValueException, AppDBException;
+    boolean addTeacher(Teacher teacher) throws InvalidValueException, AppDBException;
 
-    boolean editStudent(Student studentWithNewData) throws InvalidQueryParameterException, AppDBException;
-    boolean editGroup(Group groupWithNewData) throws InvalidQueryParameterException, AppDBException;
-    boolean editTeacher(Teacher teacherWithNewData) throws InvalidQueryParameterException, AppDBException;
-    boolean editSubject(Subject subjectWithNewData) throws InvalidQueryParameterException, AppDBException;
+    boolean editStudent(Student studentWithNewData) throws InvalidValueException, AppDBException;
+    boolean editGroup(Group groupWithNewData) throws InvalidValueException, AppDBException;
+    boolean editTeacher(Teacher teacherWithNewData) throws InvalidValueException, AppDBException;
+    boolean editSubject(Subject subjectWithNewData) throws InvalidValueException, AppDBException;
 
-    List<Student> getStudentOfGroup(Group group) throws AppDBException, InvalidQueryParameterException;
+    List<Student> getStudentOfGroup(Group group) throws AppDBException, InvalidValueException;
 
-    List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws InvalidQueryParameterException, AppDBException;
+    List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws InvalidValueException, AppDBException;
     List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException;
 
     Teacher getTeacherWithMaxExperience() throws AppDBException;
     Teacher getTeacherWithMinExperience() throws AppDBException;
-    List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws InvalidQueryParameterException, AppDBException;
+    List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws InvalidValueException, AppDBException;
     List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws AppDBException;
 
 
-    List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws InvalidQueryParameterException, AppDBException;
+    List<Subject> getListOfSubjectsByCategory(SubjectCategory subjectCategory) throws InvalidValueException, AppDBException;
     List<Subject> getListOfHumanitarianSubjects() throws AppDBException;
 
     //double averageRateOfSubject(Subject subject);

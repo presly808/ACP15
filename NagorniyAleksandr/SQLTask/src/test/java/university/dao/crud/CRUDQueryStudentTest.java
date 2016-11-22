@@ -1,37 +1,27 @@
 package university.dao.crud;
 
-import org.h2.tools.RunScript;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import university.container.Factory;
 import university.dao.QueryCreator;
-import university.dao.QueryCreatorImpl;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorImpl;
 import university.models.Group;
 import university.models.Student;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class CRUDQueryStudentTest extends PrepareTestDataBase {
-    private static final DBConnector dbConnector;
-    private static final QueryCreator queryCreator;
+
+    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     private Group testStudentsGroup;
     private Group groupNotFromDB;
 
     private Student testStudent;
     private Student studentNotFromDB;
-
-    static {
-        dbConnector = new DBConnectorImpl();
-        CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
-        queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
-    }
 
     @Before
     public void setUp() throws Exception {

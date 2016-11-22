@@ -2,6 +2,7 @@ package university.dao.crud;
 
 import org.h2.tools.RunScript;
 import org.junit.*;
+import university.container.Factory;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.exceptions.AppDBException;
@@ -19,20 +20,13 @@ import static org.junit.Assert.*;
 
 public class CRUDQuerySubjectTest extends PrepareTestDataBase {
 
-    private static final DBConnector dbConnector;
-    private static final QueryCreator queryCreator;
+    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     private SubjectCategory validSubjectCategory;
     private Subject testSubject;
 
     private SubjectCategory subjectCategoryNotFromDB;
     private Subject subjectNotFromDB;
-
-    static {
-        dbConnector = new DBConnectorImpl();
-        CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
-        queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
-    }
 
     @Before
     public void setUp() throws Exception {

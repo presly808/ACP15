@@ -2,7 +2,7 @@ package university.dao;
 
 import org.apache.log4j.Logger;
 import university.dao.crud.CRUDQuery;
-import university.exceptions.*;
+import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
 import university.models.*;
 
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static university.dao.converter.ToObjectConverter.*;
+import static university.util.convertor.ToObjectConverter.*;
 
 public class QueryCreatorImpl implements QueryCreator {
 

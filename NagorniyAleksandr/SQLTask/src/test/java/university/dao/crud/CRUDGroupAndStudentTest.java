@@ -1,11 +1,9 @@
 package university.dao.crud;
 
 import org.junit.Test;
+import university.container.Factory;
 import university.dao.QueryCreator;
-import university.dao.QueryCreatorImpl;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorImpl;
 import university.models.Group;
 import university.models.Student;
 
@@ -15,14 +13,7 @@ import static org.junit.Assert.*;
 
 public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
-    private static final DBConnector dbConnector;
-    private static final QueryCreator queryCreator;
-
-    static {
-        dbConnector = new DBConnectorImpl();
-        CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
-        queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
-    }
+    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Test
     public void CRUDGroupAndStudents() throws Exception {
@@ -143,7 +134,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
         //test error when read invalid student
         int invalidStudentId = -1;
-        Student studentNotFromDB = new Student(invalidId, testStudentsName, testStudentsGroup);
+        Student studentNotFromDB = new Student(invalidStudentId, testStudentsName, testStudentsGroup);
 
         try {
             queryCreator.getStudent(studentNotFromDB);

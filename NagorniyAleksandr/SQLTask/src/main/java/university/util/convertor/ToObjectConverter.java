@@ -1,4 +1,4 @@
-package university.dao.converter;
+package university.util.convertor;
 
 import university.models.*;
 
@@ -124,6 +124,4 @@ public class ToObjectConverter {
 
         return result;
     }
-
-
 }

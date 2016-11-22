@@ -41,9 +41,9 @@ public class PropertiesHolder {
 
         if (property == null) {
             log.error("Throw: AppPropertiesException, " +
-                    "\"Not found property for key=\"" + key);
+                    "\"Not found property for key=\"" + key + "\"");
             throw new AppPropertiesException(
-                    "Not found property for key=" + key);
+                    "Not found property for key=" + key + "\"");
         }
         return property;
     }

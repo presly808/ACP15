@@ -1,31 +1,16 @@
 package university.dao.crud;
 
-import org.h2.tools.RunScript;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import university.container.Factory;
 import university.dao.QueryCreator;
-import university.dao.QueryCreatorImpl;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorImpl;
 import university.models.Teacher;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import static org.junit.Assert.*;
 
 public class CRUDTeacherTest extends PrepareTestDataBase {
 
-    private static final DBConnector dbConnector;
-    private static final QueryCreator queryCreator;
-
-    static {
-        dbConnector = new DBConnectorImpl();
-        CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
-        queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
-    }
+    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Test
     public void CRUDTeacher() throws Exception {

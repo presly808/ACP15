@@ -10,7 +10,7 @@ import university.models.Teacher;
 
 import java.sql.*;
 
-import static university.dao.converter.ToObjectConverter.*;
+import static university.util.convertor.ToObjectConverter.*;
 
 public class CRUDQueryImpl implements CRUDQuery {
     private DBConnector dbConnector;
