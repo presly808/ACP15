@@ -24,15 +24,15 @@
 
 #### PROJECT REQUIREMENTS:
 1. SOFTWARE
-+ JDK 1.8
-+ MySQL Server
+  + JDK 1.8
+  + MySQL Server
 
 2. LIBS(DEPENDENCY)
-+ MySQL-Connector v.6.0.5
-+ H2Database v.1.4.193
-+ Log4j v.1.2.17
-+ JUnit v.4.12
-+ Mockito-Core v.2.2.22
+  + MySQL-Connector v.6.0.5
+  + H2Database v.1.4.193
+  + Log4j v.1.2.17
+  + JUnit v.4.12
+  + Mockito-Core v.2.2.22
 
 #### RUN PROGRAM:
 for running program run:
