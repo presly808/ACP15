@@ -34,13 +34,13 @@ public class TestSelectedDAO {
         selectDAO = new SelectCommands();
         updateDAO = new UpDateCommands();
         dropDAO = new DropCommands();
-      //  StartInitDB.createTables(createDAO);
-       // StartInitDB.initTables(insertDAO, updateDAO);
+        StartInitDB.createTables(createDAO);
+        StartInitDB.initTables(insertDAO, updateDAO);
     }
 
     @After
     public void finished(){
-       // StartInitDB.dropTables(dropDAO);
+        StartInitDB.dropTables(dropDAO);
     }
 
 
