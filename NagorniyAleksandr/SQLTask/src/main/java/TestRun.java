@@ -22,21 +22,12 @@ public class TestRun {
         Service service = ServiceHolder.getInstance();
 
         List<Group> resultGroup = service.getGroupList(0, 10);
-        for (Group group : resultGroup) {
-            System.out.println(group);
-        }
+        resultGroup.forEach(System.out::println);
 
         List<Subject> resultSubjects = service.getSubjectsList(0,100);
-        for (Subject subject : resultSubjects) {
-            System.out.println(subject);
-        }
+        resultSubjects.forEach(System.out::println);
 
         List<Student> resultStudent = service.getStudentsList(0,40);
-        for (Student student : resultStudent) {
-            System.out.println(student);
-        }
-
-
-
+        resultStudent.forEach(System.out::println);
     }
 }
