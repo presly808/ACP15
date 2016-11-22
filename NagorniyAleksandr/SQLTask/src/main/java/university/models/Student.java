@@ -55,17 +55,12 @@ public class Student {
 
         Student student = (Student) o;
 
-        if (id != student.id) return false;
-        if (name != null ? !name.equals(student.name) : student.name != null) return false;
-        return group != null ? group.equals(student.group) : student.group == null;
+        return id == student.id;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (group != null ? group.hashCode() : 0);
-        return result;
+        return id;
     }
 }

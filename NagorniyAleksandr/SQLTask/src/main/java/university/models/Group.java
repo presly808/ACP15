@@ -45,15 +45,12 @@ public class Group {
 
         Group group = (Group) o;
 
-        if (id != group.id) return false;
-        return name != null ? name.equals(group.name) : group.name == null;
+        return id == group.id;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return id;
     }
 }

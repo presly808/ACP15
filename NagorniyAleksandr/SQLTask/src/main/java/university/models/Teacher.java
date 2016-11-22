@@ -55,17 +55,12 @@ public class Teacher {
 
         Teacher teacher = (Teacher) o;
 
-        if (id != teacher.id) return false;
-        if (experience != teacher.experience) return false;
-        return name != null ? name.equals(teacher.name) : teacher.name == null;
+        return id == teacher.id;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + experience;
-        return result;
+        return id;
     }
 }

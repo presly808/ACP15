@@ -16,12 +16,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDQueryGroupTest {
+public class CRUDQueryGroupTest extends PrepareTestDataBase {
 
     private static final DBConnector dbConnector;
     private static final QueryCreator queryCreator;
-    public static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
-    public static final String DROP_TEST_DB_SCRIPT = "/H2DropDBScript.sql";
 
     private Group testGroup;
     private Group groupNotFromDB;
@@ -30,20 +28,6 @@ public class CRUDQueryGroupTest {
         dbConnector = new DBConnectorImpl();
         CRUDQuery crudQuery = new CRUDQueryImpl(dbConnector);
         queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
-    }
-
-    @BeforeClass
-    public static void initDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.
-                getResourceAsStream(CREATE_TEST_DB_SCRIPT);
-        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
-    }
-
-    @AfterClass
-    public static void dropDB() throws Exception {
-        InputStream is = CRUDGroupAndStudentTest.class.
-                getResourceAsStream(DROP_TEST_DB_SCRIPT);
-        RunScript.execute(dbConnector.getConnection(), new InputStreamReader(is));
     }
 
     @Before

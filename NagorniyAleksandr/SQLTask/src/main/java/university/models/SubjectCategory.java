@@ -46,15 +46,12 @@ public class SubjectCategory {
 
         SubjectCategory that = (SubjectCategory) o;
 
-        if (id != that.id) return false;
-        return title != null ? title.equals(that.title) : that.title == null;
+        return id == that.id;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        return result;
+        return id;
     }
 }
