@@ -1,6 +1,7 @@
 package university.dao;
 
 import org.apache.log4j.Logger;
+import university.container.TableColumnAliasContainer;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import static university.container.TableColumnAliasContainer.*;
 import static university.util.convertor.ToObjectConverter.*;
 
 public class QueryCreatorImpl implements QueryCreator {
@@ -31,19 +33,25 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id, students.name, students.group_id, " +
-                             "groups.name " +
+                     "SELECT students.id AS ?, students.name AS ?, students.group_id AS ?, groups.name AS ? " +
                              "FROM students " +
                              "LEFT JOIN groups " +
                              "ON students.group_id = groups.id " +
                              "LIMIT ? OFFSET ?")) {
 
-            preparedStatement.setInt(1, length);
-            preparedStatement.setInt(2, offset);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("students.id"));
+            preparedStatement.setString(i++, getColumnAlias("students.name"));
+            preparedStatement.setString(i++, getColumnAlias("students.group_id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
+
+            preparedStatement.setInt(i++, length);
+            preparedStatement.setInt(i++, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return getStudentsAsListFromResultSet(resultSet);
+
         } catch (SQLException e) {
             log.error(e.getMessage());
             log.error("Throw: AppDBException");
@@ -55,16 +63,23 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Subject> getSubjectsList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id, subjects.name, subjects.category_id, " +
-                             "subject_categorys.title, subjects.description " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ?, " +
+                             "subject_categorys.title AS ?, subjects.description AS ? " +
                              "FROM subjects " +
                              "LEFT JOIN subject_categorys " +
                              "ON subjects.category_id=subject_categorys.id " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            preparedStatement.setInt(1, length);
-            preparedStatement.setInt(2, offset);
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
+            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
+
+            preparedStatement.setInt(i++, length);
+            preparedStatement.setInt(i++, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -145,7 +160,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT id, name " +
+                     "SELECT groups.id, groups.name " +
                              "FROM groups " +
                              "INNER JOIN study " +
                              "ON id = study.group_id " +

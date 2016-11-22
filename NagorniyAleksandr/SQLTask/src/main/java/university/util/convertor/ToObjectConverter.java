@@ -24,8 +24,8 @@ public class ToObjectConverter {
 
     public static Group getOneGroupFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int groupId = resultSet.getInt("id");
-            String groupName = resultSet.getString("name");
+            int groupId = resultSet.getInt(1);
+            String groupName = resultSet.getString(2);
 
             return new Group(groupId, groupName);
         } else {
@@ -35,9 +35,9 @@ public class ToObjectConverter {
 
     public static Teacher getOneTeacherFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int teacherId = resultSet.getInt("id");
-            String teacherName = resultSet.getString("name");
-            int teacherExperience = resultSet.getInt("experience");
+            int teacherId = resultSet.getInt(1);
+            String teacherName = resultSet.getString(2);
+            int teacherExperience = resultSet.getInt(3);
 
             return new Teacher(teacherId, teacherName, teacherExperience);
         } else {
@@ -47,11 +47,11 @@ public class ToObjectConverter {
 
     public static Subject getOneSubjectFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int subjectId = resultSet.getInt("id");
-            String subjectName = resultSet.getString("name");
-            int categoryId = resultSet.getInt("category_id");
-            String categoryTitle = resultSet.getString("title");
-            String subjectDescription = resultSet.getString("description");
+            int subjectId = resultSet.getInt(1);
+            String subjectName = resultSet.getString(2);
+            int categoryId = resultSet.getInt(3);
+            String categoryTitle = resultSet.getString(4);
+            String subjectDescription = resultSet.getString(5);
 
             return new Subject(subjectId, subjectName, new SubjectCategory(categoryId, categoryTitle), subjectDescription);
         } else {
@@ -82,11 +82,11 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int subjectId = resultSet.getInt("id");
-            String subjectName = resultSet.getString("name");
-            int categoryID = resultSet.getInt("category_id");
-            String categoryTitle = resultSet.getString("title");
-            String subjectDescription = resultSet.getString("description");
+            int subjectId = resultSet.getInt(1);
+            String subjectName = resultSet.getString(2);
+            int categoryID = resultSet.getInt(3);
+            String categoryTitle = resultSet.getString(4);
+            String subjectDescription = resultSet.getString(5);
 
             result.add(new Subject(subjectId, subjectName,
                     new SubjectCategory(categoryID, categoryTitle),
@@ -101,8 +101,8 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int groupId = resultSet.getInt("id");
-            String groupName = resultSet.getString("name");
+            int groupId = resultSet.getInt(1);
+            String groupName = resultSet.getString(2);
 
             result.add(new Group(groupId, groupName));
         }
@@ -115,9 +115,9 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int teacherId = resultSet.getInt("id");
-            String teacherName = resultSet.getString("name");
-            int teacherExperience = resultSet.getInt("experience");
+            int teacherId = resultSet.getInt(1);
+            String teacherName = resultSet.getString(2);
+            int teacherExperience = resultSet.getInt(3);
 
             result.add(new Teacher(teacherId, teacherName, teacherExperience));
         }
