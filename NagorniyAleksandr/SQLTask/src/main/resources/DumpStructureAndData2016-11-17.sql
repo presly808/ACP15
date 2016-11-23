@@ -179,7 +179,7 @@ CREATE TABLE `teachers` (
 
 LOCK TABLES `teachers` WRITE;
 /*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
-INSERT INTO `teachers` VALUES (1,'Serhii Bilobrov',3),(2,'Ivan Petrov\n',2),(3,'Ivan Abdulin',5),(4,'Dow Jones',20),(5,'Ocheretjanij Volodimir',5),(6,'Matvіev Іgor',6),(7,'Prikidev Oleg',4),(8,'Lіshhuk Sergіj',10),(9,'Bіrjuk Volodimir',15),(10,'Kuharchuk Marina',20),(11,'Sergeev Oleksandr',13),(12,'Horіshman evgen',12);
+INSERT INTO `teachers` VALUES (1,'Serhii Bilobrov',3),(2,'Ivan Petrov',2),(3,'Ivan Abdulin',5),(4,'Dow Jones',20),(5,'Ocheretjanij Volodimir',5),(6,'Matvіev Іgor',6),(7,'Prikidev Oleg',4),(8,'Lіshhuk Sergіj',10),(9,'Bіrjuk Volodimir',15),(10,'Kuharchuk Marina',20),(11,'Sergeev Oleksandr',13),(12,'Horіshman evgen',12);
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

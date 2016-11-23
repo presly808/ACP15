@@ -1,6 +1,7 @@
 package university.dao;
 
 import org.apache.log4j.Logger;
+import university.container.TableColumnAliasContainer;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
 import university.jdbc.DBConnector;
@@ -202,20 +203,35 @@ public class QueryCreatorImpl implements QueryCreator {
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
 
+        /*SELECT subjects.id AS ?, subjects.name AS ?, " +
+        "subjects.category_id AS ?, subject_categorys.title AS ?, " +
+                "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
+                "FROM subjects " +
+                "INNER JOIN subject_categorys " +
+                "ON subjects.category_id = subject_categorys.id " +
+                "RIGHT JOIN study " +
+                "ON subjects.id = study.subject_id " +
+                */
+
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, " +
-                             "subjects.category_id AS ?, subject_categorys.title AS ?, " +
-                             "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
+
+                     "SELECT tempTable.id AS ?, tempTable.name AS ?, " +
+                             "tempTable.category_id AS ?, subject_categorys.title AS ?, " +
+                             "tempTable.description AS ?" +
+                             "FROM (SELECT * " +
+                             "FROM (SELECT subjects.id, subjects.name, " +
+                             "subjects.category_id, " +
+                             "subjects.description, count(DISTINCT group_id) AS subjectCount " +
                              "FROM subjects " +
-                             "INNER JOIN subject_categorys " +
-                             "ON subjects.category_id = subject_categorys.id " +
                              "RIGHT JOIN study " +
                              "ON subjects.id = study.subject_id " +
-                             "LEFT JOIN groups " +
-                             "ON group_id = groups.id " +
-                             "GROUP BY study.subject_id " +
-                             "HAVING count(DISTINCT group_id) = count(DISTINCT groups.id)")) {
+                             "GROUP BY study.subject_id) AS subjectsWithCountGroups " +
+                             "INNER JOIN (SELECT count(groups.id) AS totalCount " +
+                             "FROM groups) AS totalCountGroups " +
+                             "ON subjectsWithCountGroups.subjectCount = totalCountGroups.totalCount) AS tempTable " +
+                             "INNER JOIN subject_categorys " +
+                             "ON tempTable.category_id = subject_categorys.id")) {
 
             int i = 1;
             preparedStatement.setString(i++, getColumnAlias("subjects.id"));
@@ -315,7 +331,6 @@ public class QueryCreatorImpl implements QueryCreator {
         return getTeachersWithExperienceMoreThanYears(3);
     }
 
-    //+
     @Override
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory category)
             throws AppDBException {
@@ -351,8 +366,10 @@ public class QueryCreatorImpl implements QueryCreator {
     @Override
     public List<Subject> getListOfSubjectsByCategory(String categoryName) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
+             //todo fix sql query
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ? " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, category_id AS ?, " +
+                             "subject_categorys.title AS ?, subjects.description AS ? " +
                              "FROM subjects " +
                              "INNER JOIN subject_categorys " +
                              "ON subjects.category_id = subject_categorys.id " +
@@ -361,7 +378,9 @@ public class QueryCreatorImpl implements QueryCreator {
             int i = 1;
             preparedStatement.setString(i++, getColumnAlias("subjects.id"));
             preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.experience"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
+            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
 
             preparedStatement.setString(i++, categoryName);
 

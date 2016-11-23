@@ -10,6 +10,7 @@ import university.models.Teacher;
 
 import java.sql.*;
 
+import static university.container.TableColumnAliasContainer.getColumnAlias;
 import static university.util.convertor.ToObjectConverter.*;
 
 public class CRUDQueryImpl implements CRUDQuery {
@@ -314,13 +315,20 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id, students.name, students.group_id, groups.name " +
+                     "SELECT students.id AS ?, students.name AS ?, " +
+                             "students.group_id AS ?, groups.name AS ?  " +
                              "FROM students " +
                              "LEFT JOIN groups " +
-                             "ON students.group_id = `groups`.id " +
+                             "ON students.group_id = groups.id " +
                              "WHERE students.id = ?")) {
 
-            preparedStatement.setInt(1, student.getId());
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("students.id"));
+            preparedStatement.setString(i++, getColumnAlias("students.name"));
+            preparedStatement.setString(i++, getColumnAlias("students.group_id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
+
+            preparedStatement.setInt(i++, student.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -343,11 +351,15 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * " +
+                     "SELECT groups.id AS ?, groups.name AS ? " +
                              "FROM groups " +
                              "WHERE id = ?")) {
 
-            preparedStatement.setInt(1, group.getId());
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("groups.id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
+
+            preparedStatement.setInt(i++, group.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -370,11 +382,16 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * " +
+                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
                              "FROM teachers " +
                              "WHERE id = ?")) {
 
-            preparedStatement.setInt(1, teacher.getId());
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
+            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
+
+            preparedStatement.setInt(i++, teacher.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -397,14 +414,21 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id, name, category_id, " +
-                             "subject_categorys.title, subjects.description " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, category_id AS ?, " +
+                             "subject_categorys.title AS ?, subjects.description AS ? " +
                              "FROM subjects " +
                              "LEFT JOIN `subject_categorys` " +
                              "ON subjects.category_id=`subject_categorys`.id " +
                              "WHERE subjects.id = ?")) {
 
-            preparedStatement.setInt(1, subject.getId());
+            int i = 1;
+            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
+            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
+
+            preparedStatement.setInt(i++, subject.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class TableColumnAliasContainer {
 
-
     public static final Map<String, String> aliasMap = new HashMap<>();
 
     static {
@@ -34,10 +33,6 @@ public class TableColumnAliasContainer {
         aliasMap.put("teachers.name", "teacherName");
         aliasMap.put("teachers.experience", "teacherExperience");
     }
-
-
-
-
 
     public static String getColumnNameWithAlias(String columnName){
         String alias = aliasMap.get(columnName);

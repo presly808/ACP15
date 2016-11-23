@@ -12,8 +12,8 @@ import java.io.InputStreamReader;
 public class PrepareTestDataBase {
 
     private static final DBConnector dbConnector = Factory.getDBConnector();
-    private static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
-    private static final String DROP_TEST_DB_SCRIPT = "/H2DropDBScript.sql";
+    private static final String CREATE_TEST_DB_SCRIPT = "/MySQLStructureAndDataScript.sql";
+    private static final String DROP_TEST_DB_SCRIPT = "/MySQLDropTestDBScript.sql";
 
     @BeforeClass
     public static void initDB() throws Exception {

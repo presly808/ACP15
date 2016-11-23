@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToObjectConverter {
+    // TODO: 23.11.2016 set aliases
+
 
     public static Student getOneStudentFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int studentId = resultSet.getInt(1);
-            String studentName = resultSet.getString(2);
-            int groupId = resultSet.getInt(3);
-            String groupName = resultSet.getString(4);
+            int studentId = resultSet.getInt("studentId");
+            String studentName = resultSet.getString("studentName");
+            int groupId = resultSet.getInt("studentGroupId");
+            String groupName = resultSet.getString("groupName");
 
             return new Student(studentId, studentName, new Group(groupId, groupName));
         } else {
@@ -24,8 +26,8 @@ public class ToObjectConverter {
 
     public static Group getOneGroupFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int groupId = resultSet.getInt(1);
-            String groupName = resultSet.getString(2);
+            int groupId = resultSet.getInt("groupId");
+            String groupName = resultSet.getString("groupName");
 
             return new Group(groupId, groupName);
         } else {
@@ -35,9 +37,9 @@ public class ToObjectConverter {
 
     public static Teacher getOneTeacherFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int teacherId = resultSet.getInt(1);
-            String teacherName = resultSet.getString(2);
-            int teacherExperience = resultSet.getInt(3);
+            int teacherId = resultSet.getInt("teacherId");
+            String teacherName = resultSet.getString("teacherName");
+            int teacherExperience = resultSet.getInt("teacherExperience");
 
             return new Teacher(teacherId, teacherName, teacherExperience);
         } else {
@@ -45,13 +47,14 @@ public class ToObjectConverter {
         }
     }
 
+
     public static Subject getOneSubjectFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
-            int subjectId = resultSet.getInt(1);
-            String subjectName = resultSet.getString(2);
-            int categoryId = resultSet.getInt(3);
-            String categoryTitle = resultSet.getString(4);
-            String subjectDescription = resultSet.getString(5);
+            int subjectId = resultSet.getInt("subjectId");
+            String subjectName = resultSet.getString("subjectName");
+            int categoryId = resultSet.getInt("subjectCategoryId");
+            String categoryTitle = resultSet.getString("categoryTitle");
+            String subjectDescription = resultSet.getString("subjectDescription");
 
             return new Subject(subjectId, subjectName, new SubjectCategory(categoryId, categoryTitle), subjectDescription);
         } else {
@@ -65,10 +68,10 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int studentId = resultSet.getInt(1);
-            String studentName = resultSet.getString(2);
-            int groupId = resultSet.getInt(3);
-            String groupName = resultSet.getString(4);
+            int studentId = resultSet.getInt("studentId");
+            String studentName = resultSet.getString("studentName");
+            int groupId = resultSet.getInt("studentGroupId");
+            String groupName = resultSet.getString("groupName");
 
             result.add(new Student(studentId, studentName,
                     new Group(groupId, groupName)));
@@ -101,8 +104,8 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int groupId = resultSet.getInt(1);
-            String groupName = resultSet.getString(2);
+            int groupId = resultSet.getInt("groupId");
+            String groupName = resultSet.getString("groupName");
 
             result.add(new Group(groupId, groupName));
         }
@@ -115,9 +118,9 @@ public class ToObjectConverter {
 
         while (resultSet.next()) {
 
-            int teacherId = resultSet.getInt(1);
-            String teacherName = resultSet.getString(2);
-            int teacherExperience = resultSet.getInt(3);
+            int teacherId = resultSet.getInt("teacherId");
+            String teacherName = resultSet.getString("teacherName");
+            int teacherExperience = resultSet.getInt("teacherExperience");
 
             result.add(new Teacher(teacherId, teacherName, teacherExperience));
         }
