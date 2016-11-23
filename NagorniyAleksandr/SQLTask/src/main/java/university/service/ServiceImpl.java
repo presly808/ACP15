@@ -81,7 +81,6 @@ public class ServiceImpl implements Service {
     }
 
 
-
     @Override
     public boolean addSubject(Subject subject) throws InvalidValueException, AppDBException {
 

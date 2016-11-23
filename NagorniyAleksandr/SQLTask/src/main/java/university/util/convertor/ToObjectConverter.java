@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToObjectConverter {
-    // TODO: 23.11.2016 set aliases
-
 
     public static Student getOneStudentFromResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet.next()) {
