@@ -32,7 +32,7 @@ public class Validator {
             throw new InvalidValueException("Student is null");
         }
 
-        if (!PATTERN_FOR_PEOPLE_NAME.matcher(student.getName()).matches()) {
+        if (student.getName() == null || !PATTERN_FOR_PEOPLE_NAME.matcher(student.getName()).matches()) {
             log.error("Throw: Invalid students name");
             throw new InvalidValueException("Invalid students name");
         }
@@ -51,7 +51,7 @@ public class Validator {
             throw new InvalidValueException("Group is null");
         }
 
-        if (!PATTERN_FOR_GROUP_NAME.matcher(group.getName()).matches()) {
+        if (group.getName() == null || !PATTERN_FOR_GROUP_NAME.matcher(group.getName()).matches()) {
             log.error("Throw: Invalid group name");
             throw new InvalidValueException("Invalid group name");
         }
@@ -64,7 +64,7 @@ public class Validator {
             throw new InvalidValueException("Subject is null");
         }
 
-        if (!PATTERN_FOR_SUBJECT_NAME.matcher(subject.getName()).matches()) {
+        if (subject.getName() == null || !PATTERN_FOR_SUBJECT_NAME.matcher(subject.getName()).matches()) {
             log.error("Throw: Invalid subject name");
             throw new InvalidValueException("Invalid subject name");
         }
@@ -85,7 +85,8 @@ public class Validator {
             throw new InvalidValueException("Subject category is null");
         }
 
-        if (!PATTERN_FOR_SUBJECT_CATEGORY_NAME.matcher(subjectCategory.getTitle()).matches()) {
+        if (subjectCategory.getTitle() == null ||
+                !PATTERN_FOR_SUBJECT_CATEGORY_NAME.matcher(subjectCategory.getTitle()).matches()) {
             log.error("Throw: Invalid subject category name");
             throw new InvalidValueException("Invalid subject category name");
         }
@@ -97,7 +98,7 @@ public class Validator {
             throw new InvalidValueException("Teacher is null");
         }
 
-        if (!PATTERN_FOR_PEOPLE_NAME.matcher(teacher.getName()).matches()) {
+        if (teacher.getName() == null || !PATTERN_FOR_PEOPLE_NAME.matcher(teacher.getName()).matches()) {
             log.error("Throw: Invalid teacher name");
             throw new InvalidValueException("Invalid teacher name");
         }
