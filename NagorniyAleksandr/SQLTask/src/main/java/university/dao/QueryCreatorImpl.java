@@ -34,7 +34,7 @@ public class QueryCreatorImpl implements QueryCreator {
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT students.id AS ?, students.name AS ?, students.group_id AS ?, groups.name AS ? " +
                              "FROM students " +
-                             "LEFT JOIN groups " +
+                             "INNER JOIN groups " +
                              "ON students.group_id = groups.id " +
                              "LIMIT ? OFFSET ?")) {
 
@@ -64,7 +64,7 @@ public class QueryCreatorImpl implements QueryCreator {
                      "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ?, " +
                              "subject_categorys.title AS ?, subjects.description AS ? " +
                              "FROM subjects " +
-                             "LEFT JOIN subject_categorys " +
+                             "INNER JOIN subject_categorys " +
                              "ON subjects.category_id=subject_categorys.id " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
@@ -145,16 +145,20 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS ?, students.name AS ? FROM students WHERE students.group_id = ?")) {
+                     "SELECT students.id AS ?, students.name AS ?, " +
+                             "students.group_id AS ?, groups.name AS ? " +
+                             "FROM students " +
+                             "INNER JOIN groups " +
+                             "ON students.group_id = groups.id " +
+                             "WHERE students.group_id = ?")) {
 
             int i = 1;
             preparedStatement.setString(i++, getColumnAlias("students.id"));
             preparedStatement.setString(i++, getColumnAlias("students.name"));
+            preparedStatement.setString(i++, getColumnAlias("students.group_id"));
+            preparedStatement.setString(i++, getColumnAlias("groups.name"));
 
             preparedStatement.setInt(i++, group.getId());
-
-
-            preparedStatement.setInt(1, group.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -200,18 +204,25 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT study.subject_id AS ?, subjects.name AS ?, " +
-                             "subjects.category_id AS ?, subject_categorys.title AS ? " +
-                             "FROM study, groups, subjects, subject_categorys " +
-                             "WHERE subject_id = subjects.id AND category_id = subject_categorys.id " +
-                             "GROUP BY subject_id " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, " +
+                             "subjects.category_id AS ?, subject_categorys.title AS ?, " +
+                             "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
+                             "FROM subjects " +
+                             "INNER JOIN subject_categorys " +
+                             "ON subjects.category_id = subject_categorys.id " +
+                             "RIGHT JOIN study " +
+                             "ON subjects.id = study.subject_id " +
+                             "LEFT JOIN groups " +
+                             "ON group_id = groups.id " +
+                             "GROUP BY study.subject_id " +
                              "HAVING count(DISTINCT group_id) = count(DISTINCT groups.id)")) {
 
             int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("study.subject_id"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
             preparedStatement.setString(i++, getColumnAlias("subjects.name"));
             preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
             preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -304,18 +315,26 @@ public class QueryCreatorImpl implements QueryCreator {
         return getTeachersWithExperienceMoreThanYears(3);
     }
 
+    //+
     @Override
-    public List<Subject> getListOfSubjectsByCategory(SubjectCategory category) throws AppDBException {
+    public List<Subject> getListOfSubjectsByCategory(SubjectCategory category)
+            throws AppDBException {
+
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ? " +
+                     "SELECT subjects.id AS ?, subjects.name AS ?, " +
+                             "subjects.category_id AS ?, subject_categorys.title AS ?, subjects.description AS ? " +
                              "FROM subjects " +
+                             "INNER JOIN subject_categorys " +
+                             "ON subjects.category_id = subject_categorys.id " +
                              "WHERE subjects.category_id = ?")) {
 
             int i = 1;
             preparedStatement.setString(i++, getColumnAlias("subjects.id"));
             preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.experience"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
+            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
+            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
 
             preparedStatement.setInt(i++, category.getId());
 
