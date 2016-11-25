@@ -13,6 +13,54 @@ import java.sql.*;
 import static university.util.convertor.ToObjectConverter.*;
 
 public class CRUDQueryImpl implements CRUDQuery {
+    private static final String ADD_STUDENT = "INSERT INTO students (name, group_id) VALUES (?,?)";
+    private static final String ADD_GROUP = "INSERT INTO groups (name) VALUES (?)";
+    private static final String ADD_SUBJECT = "INSERT INTO subjects(name, category_id, description) " +
+            "VALUES (?, ?, ?)";
+    private static final String ADD_TEACHER = "INSERT INTO teachers(name, experience) VALUES (?, ?)";
+    private static final String UPDATE_STUDENT = "UPDATE students " +
+            "SET students.name = ?, students.group_id = ? " +
+            "WHERE students.id = ?";
+    private static final String UPDATE_GROUP = "UPDATE groups " +
+            "SET name = ? " +
+            "WHERE id = ?";
+    private static final String UPDATE_TEACHER = "UPDATE teachers " +
+            "SET name = ?, experience = ? " +
+            "WHERE id = ?";
+    private static final String UPDATE_SUBJECT = "UPDATE subjects " +
+            "SET name = ?, category_id = ?, description = ? " +
+            "WHERE id = ?";
+    private static final String DELETE_STUDENT = "DELETE FROM students WHERE id = ?";
+    private static final String DELETE_GROUP = "DELETE FROM groups WHERE id = ?";
+    private static final String DELETE_TEACHER = "DELETE FROM teachers WHERE id = ?";
+    private static final String DELETE_SUBJECT = "DELETE FROM subjects WHERE id = ?";
+    private static final String GET_STUDENT = "SELECT students.id AS studentId, " +
+            "students.name AS studentName, " +
+            "students.group_id AS studentGroupId, " +
+            "groups.name AS groupName " +
+            "FROM students " +
+            "LEFT JOIN groups " +
+            "ON students.group_id = groups.id " +
+            "WHERE students.id = ?";
+    private static final String GET_GROUP = "SELECT groups.id AS groupId, " +
+            "groups.name AS groupName " +
+            "FROM groups " +
+            "WHERE id = ?";
+    private static final String GET_TEACHER = "SELECT teachers.id AS teacherId, " +
+            "teachers.name AS teacherName, " +
+            "teachers.experience AS teacherExperience " +
+            "FROM teachers " +
+            "WHERE id = ?";
+    private static final String GET_SUBJECT = "SELECT subjects.id AS subjectId, " +
+            "subjects.name AS subjectName, " +
+            "category_id AS subjectCategoryId, " +
+            "subject_categorys.title AS categoryTitle, " +
+            "subjects.description AS subjectDescription " +
+            "FROM subjects " +
+            "LEFT JOIN subject_categorys " +
+            "ON subjects.category_id = subject_categorys.id " +
+            "WHERE subjects.id = ?";
+
     private DBConnector dbConnector;
 
     private static final Logger log = Logger.getLogger(CRUDQueryImpl.class);
@@ -27,8 +75,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO students (name, group_id) VALUES (?,?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
+                     ADD_STUDENT, Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, student.getName());
             preparedStatement.setInt(2, student.getGroup().getId());
@@ -61,8 +108,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO groups (name) VALUES (?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
+                     ADD_GROUP, Statement.RETURN_GENERATED_KEYS)) {
+
             preparedStatement.setString(1, group.getName());
 
             preparedStatement.execute();
@@ -85,9 +132,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO subjects(name, category_id, description) " +
-                             "VALUES (?, ?, ?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
+                     ADD_SUBJECT, Statement.RETURN_GENERATED_KEYS)) {
+
             preparedStatement.setString(1, subject.getName());
             preparedStatement.setInt(2, subject.getCategory().getId());
             preparedStatement.setString(3, subject.getDescription());
@@ -112,8 +158,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO teachers(name, experience) VALUES (?, ?)",
-                     Statement.RETURN_GENERATED_KEYS)) {
+                     ADD_TEACHER, Statement.RETURN_GENERATED_KEYS)) {
+
             preparedStatement.setString(1, teacher.getName());
             preparedStatement.setInt(2, teacher.getExperience());
 
@@ -137,9 +183,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE students " +
-                             "SET students.name = ?, students.group_id = ? " +
-                             "WHERE students.id = ?")) {
+                     UPDATE_STUDENT)) {
 
             preparedStatement.setString(1, studentWithNewData.getName());
             preparedStatement.setInt(2, studentWithNewData.getGroup().getId());
@@ -163,9 +207,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE groups " +
-                             "SET name = ? " +
-                             "WHERE id = ?")) {
+                     UPDATE_GROUP)) {
+
             preparedStatement.setString(1, groupWithNewData.getName());
             preparedStatement.setInt(2, groupWithNewData.getId());
 
@@ -187,9 +230,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE teachers " +
-                             "SET name = ?, experience = ? " +
-                             "WHERE id = ?")) {
+                     UPDATE_TEACHER)) {
+
             preparedStatement.setString(1, teacherWithNewData.getName());
             preparedStatement.setInt(2, teacherWithNewData.getExperience());
             preparedStatement.setInt(3, teacherWithNewData.getId());
@@ -212,9 +254,8 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "UPDATE subjects " +
-                             "SET name = ?, category_id = ?, description = ? " +
-                             "WHERE id = ?")) {
+                     UPDATE_SUBJECT)) {
+
             preparedStatement.setString(1, subjectWithNewData.getName());
             preparedStatement.setInt(2, subjectWithNewData.getCategory().getId());
             preparedStatement.setString(3, subjectWithNewData.getDescription());
@@ -238,7 +279,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "DELETE FROM students WHERE id = ?")) {
+                     DELETE_STUDENT)) {
 
             preparedStatement.setInt(1, student.getId());
 
@@ -260,7 +301,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "DELETE FROM groups WHERE id = ?")) {
+                     DELETE_GROUP)) {
 
             preparedStatement.setInt(1, group.getId());
 
@@ -281,7 +322,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "DELETE FROM teachers WHERE id = ?")) {
+                     DELETE_TEACHER)) {
 
             preparedStatement.setInt(1, teacher.getId());
 
@@ -302,7 +343,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "DELETE FROM subjects WHERE id = ?")) {
+                     DELETE_SUBJECT)) {
 
             preparedStatement.setInt(1, subject.getId());
 
@@ -323,14 +364,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS studentId, " +
-                             "students.name AS studentName, " +
-                             "students.group_id AS studentGroupId, " +
-                             "groups.name AS groupName " +
-                             "FROM students " +
-                             "LEFT JOIN groups " +
-                             "ON students.group_id = groups.id " +
-                             "WHERE students.id = ?")) {
+                     GET_STUDENT)) {
 
             preparedStatement.setInt(1, student.getId());
 
@@ -355,10 +389,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id AS groupId, " +
-                             "groups.name AS groupName " +
-                             "FROM groups " +
-                             "WHERE id = ?")) {
+                     GET_GROUP)) {
 
             preparedStatement.setInt(1, group.getId());
 
@@ -383,11 +414,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS teacherId, " +
-                             "teachers.name AS teacherName, " +
-                             "teachers.experience AS teacherExperience " +
-                             "FROM teachers " +
-                             "WHERE id = ?")) {
+                     GET_TEACHER)) {
 
 
             preparedStatement.setInt(1, teacher.getId());
@@ -413,15 +440,7 @@ public class CRUDQueryImpl implements CRUDQuery {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS subjectId, " +
-                             "subjects.name AS subjectName, " +
-                             "category_id AS subjectCategoryId, " +
-                             "subject_categorys.title AS categoryTitle, " +
-                             "subjects.description AS subjectDescription " +
-                             "FROM subjects " +
-                             "LEFT JOIN subject_categorys " +
-                             "ON subjects.category_id = subject_categorys.id " +
-                             "WHERE subjects.id = ?")) {
+                     GET_SUBJECT)) {
 
             preparedStatement.setInt(1, subject.getId());
 

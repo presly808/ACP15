@@ -16,6 +16,108 @@ import static university.util.convertor.ToObjectConverter.*;
 
 public class QueryCreatorImpl implements QueryCreator {
 
+    private static final String GET_STUDENTS_LIST = "SELECT students.id AS studentId, " +
+            "students.name AS studentName, " +
+            "students.group_id AS studentGroupId, " +
+            "groups.name AS groupName " +
+            "FROM students " +
+            "INNER JOIN groups " +
+            "ON students.group_id = groups.id " +
+            "LIMIT ? OFFSET ?";
+    private static final String GET_SUBJECT_LIST = "SELECT subjects.id AS subjectId, " +
+            "subjects.name AS subjectName, " +
+            "category_id AS subjectCategoryId, " +
+            "subject_categorys.title AS categoryTitle, " +
+            "subjects.description AS subjectDescriptions " +
+            "FROM subjects " +
+            "INNER JOIN subject_categorys " +
+            "ON subjects.category_id=subject_categorys.id " +
+            "LIMIT ? " +
+            "OFFSET ?";
+    private static final String GET_GROUPS_LIST = "SELECT groups.id AS groupId, " +
+            "groups.name AS groupName " +
+            "FROM groups " +
+            "LIMIT ? " +
+            "OFFSET ?";
+    private static final String GET_TEACHERS_LIST = "SELECT teachers.id AS teacherId, " +
+            "teachers.name AS teacherName, " +
+            "teachers.experience AS teacherExperience " +
+            "FROM teachers " +
+            "LIMIT ? " +
+            "OFFSET ?";
+    private static final String GET_STUDENTS_OF_GROUP = "SELECT students.id AS studentId, " +
+            "students.name AS studentName, " +
+            "students.group_id AS studentGroupId, " +
+            "groups.name AS groupName " +
+            "FROM students " +
+            "INNER JOIN groups " +
+            "ON students.group_id = groups.id " +
+            "WHERE students.group_id = ?";
+    private static final String GET_GROUPS_BY_SUBJECT = "SELECT groups.id AS groupId, " +
+            "groups.name AS groupName " +
+            "FROM groups " +
+            "INNER JOIN study " +
+            "ON groups.id = study.group_id " +
+            "WHERE study.subject_id = ? " +
+            "LIMIT ? " +
+            "OFFSET ?";
+    private static final String GET_SUBJECTS_THAT_STUDY_ALL_GROUPS = "SELECT tempTable.id AS subjectId, " +
+            "tempTable.name AS subjectName, " +
+            "tempTable.category_id AS subjectCategoryId, " +
+            "subject_categorys.title AS categoryTitle, " +
+            "tempTable.description AS subjectDescriptions " +
+            "FROM (SELECT * " +
+            "FROM (SELECT subjects.id, subjects.name, " +
+            "subjects.category_id, " +
+            "subjects.description, count(DISTINCT group_id) AS subjectCount " +
+            "FROM subjects " +
+            "RIGHT JOIN study " +
+            "ON subjects.id = study.subject_id " +
+            "GROUP BY study.subject_id) AS subjectsWithCountGroups " +
+            "INNER JOIN (SELECT count(groups.id) AS totalCount " +
+            "FROM groups) AS totalCountGroups " +
+            "ON subjectsWithCountGroups.subjectCount = totalCountGroups.totalCount) AS tempTable " +
+            "INNER JOIN subject_categorys " +
+            "ON tempTable.category_id = subject_categorys.id";
+    private static final String GET_TEACHER_WITH_MAX_EXPERIENCE = "SELECT teachers.id AS teacherId, " +
+            "teachers.name AS teacherName, " +
+            "teachers.experience AS teacherExperience " +
+            "FROM teachers " +
+            "GROUP BY id " +
+            "ORDER BY experience DESC " +
+            "LIMIT 1";
+    private static final String GET_TEACHER_WITH_MIN_EXPERIENCE = "SELECT teachers.id AS teacherId, " +
+            "teachers.name AS teacherName, " +
+            "teachers.experience AS teacherExperience " +
+            "FROM teachers " +
+            "GROUP BY id " +
+            "ORDER BY experience ASC " +
+            "LIMIT 1";
+    private static final String GET_TEACHER_WITH_EXPERIENCE_MORE_THAN = "SELECT teachers.id AS teacherId, " +
+            "teachers.name AS teacherName, " +
+            "teachers.experience AS teacherExperience " +
+            "FROM teachers " +
+            "GROUP BY id " +
+            "HAVING experience > ?";
+    private static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY = "SELECT subjects.id AS subjectId, " +
+            "subjects.name AS subjectName, " +
+            "category_id AS subjectCategoryId, " +
+            "subject_categorys.title AS categoryTitle, " +
+            "subjects.description AS subjectDescriptions " +
+            "FROM subjects " +
+            "INNER JOIN subject_categorys " +
+            "ON subjects.category_id = subject_categorys.id " +
+            "WHERE subjects.category_id = ?";
+    private static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME = "SELECT subjects.id AS subjectId, " +
+            "subjects.name AS subjectName, " +
+            "category_id AS subjectCategoryId, " +
+            "subject_categorys.title AS categoryTitle, " +
+            "subjects.description AS subjectDescriptions " +
+            "FROM subjects " +
+            "INNER JOIN subject_categorys " +
+            "ON subjects.category_id = subject_categorys.id " +
+            "WHERE subject_categorys.title = ?";
+
     private CRUDQuery crudQuery;
     private DBConnector dbConnector;
 
@@ -31,14 +133,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS studentId, " +
-                             "students.name AS studentName, " +
-                             "students.group_id AS studentGroupId, " +
-                             "groups.name AS groupName " +
-                             "FROM students " +
-                             "INNER JOIN groups " +
-                             "ON students.group_id = groups.id " +
-                             "LIMIT ? OFFSET ?")) {
+                     GET_STUDENTS_LIST)) {
 
             preparedStatement.setInt(1, length);
             preparedStatement.setInt(2, offset);
@@ -57,16 +152,7 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Subject> getSubjectsList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS subjectId, " +
-                             "subjects.name AS subjectName, " +
-                             "category_id AS subjectCategoryId, " +
-                             "subject_categorys.title AS categoryTitle, " +
-                             "subjects.description AS subjectDescriptions " +
-                             "FROM subjects " +
-                             "INNER JOIN subject_categorys " +
-                             "ON subjects.category_id=subject_categorys.id " +
-                             "LIMIT ? " +
-                             "OFFSET ?")) {
+                     GET_SUBJECT_LIST)) {
 
             preparedStatement.setInt(1, length);
             preparedStatement.setInt(2, offset);
@@ -85,11 +171,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id AS groupId, " +
-                             "groups.name AS groupName " +
-                             "FROM groups " +
-                             "LIMIT ? " +
-                             "OFFSET ?")) {
+                     GET_GROUPS_LIST)) {
 
             preparedStatement.setInt(1, length);
             preparedStatement.setInt(2, offset);
@@ -107,12 +189,7 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Teacher> getTeachersList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS teacherId, " +
-                             "teachers.name AS teacherName, " +
-                             "teachers.experience AS teacherExperience " +
-                             "FROM teachers " +
-                             "LIMIT ? " +
-                             "OFFSET ?")) {
+                     GET_TEACHERS_LIST)) {
 
             preparedStatement.setInt(1, length);
             preparedStatement.setInt(2, offset);
@@ -131,14 +208,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS studentId, " +
-                             "students.name AS studentName, " +
-                             "students.group_id AS studentGroupId, " +
-                             "groups.name AS groupName " +
-                             "FROM students " +
-                             "INNER JOIN groups " +
-                             "ON students.group_id = groups.id " +
-                             "WHERE students.group_id = ?")) {
+                     GET_STUDENTS_OF_GROUP)) {
 
             preparedStatement.setInt(1, group.getId());
 
@@ -156,14 +226,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id AS groupId, " +
-                             "groups.name AS groupName " +
-                             "FROM groups " +
-                             "INNER JOIN study " +
-                             "ON groups.id = study.group_id " +
-                             "WHERE study.subject_id = ? " +
-                             "LIMIT ? " +
-                             "OFFSET ?")) {
+                     GET_GROUPS_BY_SUBJECT)) {
 
             preparedStatement.setInt(1, subject.getId());
             preparedStatement.setInt(2, length);
@@ -181,37 +244,10 @@ public class QueryCreatorImpl implements QueryCreator {
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
 
-        /*SELECT subjects.id AS ?, subjects.name AS ?, " +
-        "subjects.category_id AS ?, subject_categorys.title AS ?, " +
-                "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
-                "FROM subjects " +
-                "INNER JOIN subject_categorys " +
-                "ON subjects.category_id = subject_categorys.id " +
-                "RIGHT JOIN study " +
-                "ON subjects.id = study.subject_id " +
-                */
-
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
 
-                     "SELECT tempTable.id AS subjectId, " +
-                             "tempTable.name AS subjectName, " +
-                             "tempTable.category_id AS subjectCategoryId, " +
-                             "subject_categorys.title AS categoryTitle, " +
-                             "tempTable.description AS subjectDescriptions " +
-                             "FROM (SELECT * " +
-                             "FROM (SELECT subjects.id, subjects.name, " +
-                             "subjects.category_id, " +
-                             "subjects.description, count(DISTINCT group_id) AS subjectCount " +
-                             "FROM subjects " +
-                             "RIGHT JOIN study " +
-                             "ON subjects.id = study.subject_id " +
-                             "GROUP BY study.subject_id) AS subjectsWithCountGroups " +
-                             "INNER JOIN (SELECT count(groups.id) AS totalCount " +
-                             "FROM groups) AS totalCountGroups " +
-                             "ON subjectsWithCountGroups.subjectCount = totalCountGroups.totalCount) AS tempTable " +
-                             "INNER JOIN subject_categorys " +
-                             "ON tempTable.category_id = subject_categorys.id")) {
+                     GET_SUBJECTS_THAT_STUDY_ALL_GROUPS)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -226,13 +262,7 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS teacherId, " +
-                             "teachers.name AS teacherName, " +
-                             "teachers.experience AS teacherExperience " +
-                             "FROM teachers " +
-                             "GROUP BY id " +
-                             "ORDER BY experience DESC " +
-                             "LIMIT 1")) {
+                     GET_TEACHER_WITH_MAX_EXPERIENCE)) {
 
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -249,13 +279,7 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMinExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS teacherId, " +
-                             "teachers.name AS teacherName, " +
-                             "teachers.experience AS teacherExperience " +
-                             "FROM teachers " +
-                             "GROUP BY id " +
-                             "ORDER BY experience ASC " +
-                             "LIMIT 1")) {
+                     GET_TEACHER_WITH_MIN_EXPERIENCE)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -271,12 +295,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS teacherId, " +
-                             "teachers.name AS teacherName, " +
-                             "teachers.experience AS teacherExperience " +
-                             "FROM teachers " +
-                             "GROUP BY id " +
-                             "HAVING experience > ?")) {
+                     GET_TEACHER_WITH_EXPERIENCE_MORE_THAN)) {
 
             preparedStatement.setInt(1, years);
 
@@ -302,15 +321,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS subjectId, " +
-                             "subjects.name AS subjectName, " +
-                             "category_id AS subjectCategoryId, " +
-                             "subject_categorys.title AS categoryTitle, " +
-                             "subjects.description AS subjectDescriptions " +
-                             "FROM subjects " +
-                             "INNER JOIN subject_categorys " +
-                             "ON subjects.category_id = subject_categorys.id " +
-                             "WHERE subjects.category_id = ?")) {
+                     GET_LIST_OF_SUBJECTS_BY_CATEGORY)) {
 
             preparedStatement.setInt(1, category.getId());
 
@@ -329,15 +340,7 @@ public class QueryCreatorImpl implements QueryCreator {
         try (Connection connection = dbConnector.getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS subjectId, " +
-                             "subjects.name AS subjectName, " +
-                             "category_id AS subjectCategoryId, " +
-                             "subject_categorys.title AS categoryTitle, " +
-                             "subjects.description AS subjectDescriptions " +
-                             "FROM subjects " +
-                             "INNER JOIN subject_categorys " +
-                             "ON subjects.category_id = subject_categorys.id " +
-                             "WHERE subject_categorys.title = ?")) {
+                     GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME)) {
 
             preparedStatement.setString(1, categoryName);
 
