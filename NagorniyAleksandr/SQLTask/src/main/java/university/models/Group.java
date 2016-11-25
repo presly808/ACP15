@@ -1,8 +1,17 @@
 package university.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "groups")
 public class Group {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name", nullable = false, unique = true, length = 20)
     private String name;
 
 

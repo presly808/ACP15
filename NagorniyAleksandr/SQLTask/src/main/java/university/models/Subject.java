@@ -1,11 +1,25 @@
 package university.models;
 
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "subjects")
 public class Subject {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name", nullable = false, unique = true, length = 20)
     private String name;
+
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private SubjectCategory category;
+
+    @Column(name = "description")
     private String description;
 
     public Subject() {

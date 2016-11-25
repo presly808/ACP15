@@ -1,9 +1,16 @@
 package university.models;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "subject_categorys")
 public class SubjectCategory {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "title", nullable = false, unique = true, length = 15)
     private String title;
 
     public SubjectCategory() {

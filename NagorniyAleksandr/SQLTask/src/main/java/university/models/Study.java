@@ -1,7 +1,19 @@
 package university.models;
 
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "study")
 public class Study {
 
+
+    // TODO: 26.11.16 QUESTION. what field name paste????
+    // TODO: 26.11.16 OR chenge fields to Lists? and reference to ManyToOne?
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Group group;
     private Subject subject;
     private Teacher teacher;

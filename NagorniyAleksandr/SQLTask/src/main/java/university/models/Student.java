@@ -1,9 +1,22 @@
 package university.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "students")
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name", nullable = false, length = 40)
     private String name;
+
+
+    // TODO: 26.11.16 check cascade
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
     public Student() {

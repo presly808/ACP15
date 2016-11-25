@@ -1,9 +1,18 @@
 package university.models;
 
-public class Teacher {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "teachers")
+public class Teacher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name", length = 40, nullable = false)
     private String name;
+
+    @Column(name = "experience")
     private int experience;
 
     public Teacher() {
