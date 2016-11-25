@@ -42,9 +42,9 @@ public class TestRun {
         System.out.printf("\n   Groups by subject list\n");
         groupsBySubject.forEach(System.out::println);
 
-        //List<Subject> subjectsThatStudyAllStudents = service.getSubjectsThatStudyAllGroups();
-        //System.out.printf("\n   Subjects that study all groups\n");
-        //subjectsThatStudyAllStudents.forEach(System.out::println);
+        List<Subject> subjectsThatStudyAllStudents = service.getSubjectsThatStudyAllGroups();
+        System.out.printf("\n   Subjects that study all groups\n");
+        subjectsThatStudyAllStudents.forEach(System.out::println);
 
         Teacher maxExpTeacher = service.getTeacherWithMaxExperience();
         System.out.printf("\n   Teacher with max experience\n");
@@ -67,9 +67,9 @@ public class TestRun {
         System.out.printf("\n   Subjects list by category: " + testCategory.toString() + "\n");
         subjectsByCategory.forEach(System.out::println);
 
-        //List<Subject> humanitariumSubjects = service.getListOfHumanitarianSubjects();
-        //System.out.printf("\n   Humanitarium subjects list\n");
-        //humanitariumSubjects.forEach(System.out::println);
+        List<Subject> humanitarianSubjects = service.getListOfHumanitarianSubjects();
+        System.out.printf("\n   Humanitarian subjects list\n");
+        humanitarianSubjects.forEach(System.out::println);
 
 
     }

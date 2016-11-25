@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static university.container.TableColumnAliasContainer.getColumnAlias;
 import static university.util.convertor.ToObjectConverter.*;
 
 public class QueryCreatorImpl implements QueryCreator {
@@ -32,20 +31,17 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS ?, students.name AS ?, students.group_id AS ?, groups.name AS ? " +
+                     "SELECT students.id AS studentId, " +
+                             "students.name AS studentName, " +
+                             "students.group_id AS studentGroupId, " +
+                             "groups.name AS groupName " +
                              "FROM students " +
                              "INNER JOIN groups " +
                              "ON students.group_id = groups.id " +
                              "LIMIT ? OFFSET ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("students.id"));
-            preparedStatement.setString(i++, getColumnAlias("students.name"));
-            preparedStatement.setString(i++, getColumnAlias("students.group_id"));
-            preparedStatement.setString(i++, getColumnAlias("groups.name"));
-
-            preparedStatement.setInt(i++, length);
-            preparedStatement.setInt(i++, offset);
+            preparedStatement.setInt(1, length);
+            preparedStatement.setInt(2, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -61,23 +57,19 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Subject> getSubjectsList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ?, " +
-                             "subject_categorys.title AS ?, subjects.description AS ? " +
+                     "SELECT subjects.id AS subjectId, " +
+                             "subjects.name AS subjectName, " +
+                             "category_id AS subjectCategoryId, " +
+                             "subject_categorys.title AS categoryTitle, " +
+                             "subjects.description AS subjectDescriptions " +
                              "FROM subjects " +
                              "INNER JOIN subject_categorys " +
                              "ON subjects.category_id=subject_categorys.id " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
-            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
-
-            preparedStatement.setInt(i++, length);
-            preparedStatement.setInt(i++, offset);
+            preparedStatement.setInt(1, length);
+            preparedStatement.setInt(2, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -93,17 +85,14 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id AS ?, groups.name AS ? " +
+                     "SELECT groups.id AS groupId, " +
+                             "groups.name AS groupName " +
                              "FROM groups " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("groups.id"));
-            preparedStatement.setString(i++, getColumnAlias("groups.name"));
-
-            preparedStatement.setInt(i++, length);
-            preparedStatement.setInt(i++, offset);
+            preparedStatement.setInt(1, length);
+            preparedStatement.setInt(2, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -118,18 +107,15 @@ public class QueryCreatorImpl implements QueryCreator {
     public List<Teacher> getTeachersList(int offset, int length) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
+                     "SELECT teachers.id AS teacherId, " +
+                             "teachers.name AS teacherName, " +
+                             "teachers.experience AS teacherExperience " +
                              "FROM teachers " +
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
-
-            preparedStatement.setInt(i++, length);
-            preparedStatement.setInt(i++, offset);
+            preparedStatement.setInt(1, length);
+            preparedStatement.setInt(2, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -145,20 +131,16 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT students.id AS ?, students.name AS ?, " +
-                             "students.group_id AS ?, groups.name AS ? " +
+                     "SELECT students.id AS studentId, " +
+                             "students.name AS studentName, " +
+                             "students.group_id AS studentGroupId, " +
+                             "groups.name AS groupName " +
                              "FROM students " +
                              "INNER JOIN groups " +
                              "ON students.group_id = groups.id " +
                              "WHERE students.group_id = ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("students.id"));
-            preparedStatement.setString(i++, getColumnAlias("students.name"));
-            preparedStatement.setString(i++, getColumnAlias("students.group_id"));
-            preparedStatement.setString(i++, getColumnAlias("groups.name"));
-
-            preparedStatement.setInt(i++, group.getId());
+            preparedStatement.setInt(1, group.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -174,7 +156,8 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT groups.id AS ?, groups.name AS ? " +
+                     "SELECT groups.id AS groupId, " +
+                             "groups.name AS groupName " +
                              "FROM groups " +
                              "INNER JOIN study " +
                              "ON groups.id = study.group_id " +
@@ -182,13 +165,9 @@ public class QueryCreatorImpl implements QueryCreator {
                              "LIMIT ? " +
                              "OFFSET ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("groups.id"));
-            preparedStatement.setString(i++, getColumnAlias("groups.name"));
-
-            preparedStatement.setInt(i++, subject.getId());
-            preparedStatement.setInt(i++, length);
-            preparedStatement.setInt(i++, offset);
+            preparedStatement.setInt(1, subject.getId());
+            preparedStatement.setInt(2, length);
+            preparedStatement.setInt(3, offset);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -202,27 +181,37 @@ public class QueryCreatorImpl implements QueryCreator {
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
 
+        /*SELECT subjects.id AS ?, subjects.name AS ?, " +
+        "subjects.category_id AS ?, subject_categorys.title AS ?, " +
+                "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
+                "FROM subjects " +
+                "INNER JOIN subject_categorys " +
+                "ON subjects.category_id = subject_categorys.id " +
+                "RIGHT JOIN study " +
+                "ON subjects.id = study.subject_id " +
+                */
+
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, " +
-                             "subjects.category_id AS ?, subject_categorys.title AS ?, " +
-                             "subjects.description AS ?, count(DISTINCT group_id), count(DISTINCT groups.id) " +
+
+                     "SELECT tempTable.id AS subjectId, " +
+                             "tempTable.name AS subjectName, " +
+                             "tempTable.category_id AS subjectCategoryId, " +
+                             "subject_categorys.title AS categoryTitle, " +
+                             "tempTable.description AS subjectDescriptions " +
+                             "FROM (SELECT * " +
+                             "FROM (SELECT subjects.id, subjects.name, " +
+                             "subjects.category_id, " +
+                             "subjects.description, count(DISTINCT group_id) AS subjectCount " +
                              "FROM subjects " +
-                             "INNER JOIN subject_categorys " +
-                             "ON subjects.category_id = subject_categorys.id " +
                              "RIGHT JOIN study " +
                              "ON subjects.id = study.subject_id " +
-                             "LEFT JOIN groups " +
-                             "ON group_id = groups.id " +
-                             "GROUP BY study.subject_id " +
-                             "HAVING count(DISTINCT group_id) = count(DISTINCT groups.id)")) {
-
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
-            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
+                             "GROUP BY study.subject_id) AS subjectsWithCountGroups " +
+                             "INNER JOIN (SELECT count(groups.id) AS totalCount " +
+                             "FROM groups) AS totalCountGroups " +
+                             "ON subjectsWithCountGroups.subjectCount = totalCountGroups.totalCount) AS tempTable " +
+                             "INNER JOIN subject_categorys " +
+                             "ON tempTable.category_id = subject_categorys.id")) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -237,16 +226,14 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
+                     "SELECT teachers.id AS teacherId, " +
+                             "teachers.name AS teacherName, " +
+                             "teachers.experience AS teacherExperience " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "ORDER BY experience DESC " +
                              "LIMIT 1")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -262,16 +249,13 @@ public class QueryCreatorImpl implements QueryCreator {
     public Teacher getTeacherWithMinExperience() throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
+                     "SELECT teachers.id AS teacherId, " +
+                             "teachers.name AS teacherName, " +
+                             "teachers.experience AS teacherExperience " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "ORDER BY experience ASC " +
                              "LIMIT 1")) {
-
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -287,17 +271,14 @@ public class QueryCreatorImpl implements QueryCreator {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT teachers.id AS ?, teachers.name AS ?, teachers.experience AS ? " +
+                     "SELECT teachers.id AS teacherId, " +
+                             "teachers.name AS teacherName, " +
+                             "teachers.experience AS teacherExperience " +
                              "FROM teachers " +
                              "GROUP BY id " +
                              "HAVING experience > ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("teachers.id"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.name"));
-            preparedStatement.setString(i++, getColumnAlias("teachers.experience"));
-
-            preparedStatement.setInt(i++, years);
+            preparedStatement.setInt(1, years);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -315,28 +296,23 @@ public class QueryCreatorImpl implements QueryCreator {
         return getTeachersWithExperienceMoreThanYears(3);
     }
 
-    //+
     @Override
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory category)
             throws AppDBException {
 
         try (Connection connection = dbConnector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, " +
-                             "subjects.category_id AS ?, subject_categorys.title AS ?, subjects.description AS ? " +
+                     "SELECT subjects.id AS subjectId, " +
+                             "subjects.name AS subjectName, " +
+                             "category_id AS subjectCategoryId, " +
+                             "subject_categorys.title AS categoryTitle, " +
+                             "subjects.description AS subjectDescriptions " +
                              "FROM subjects " +
                              "INNER JOIN subject_categorys " +
                              "ON subjects.category_id = subject_categorys.id " +
                              "WHERE subjects.category_id = ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.category_id"));
-            preparedStatement.setString(i++, getColumnAlias("subject_categorys.title"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.description"));
-
-            preparedStatement.setInt(i++, category.getId());
+            preparedStatement.setInt(1, category.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -351,19 +327,19 @@ public class QueryCreatorImpl implements QueryCreator {
     @Override
     public List<Subject> getListOfSubjectsByCategory(String categoryName) throws AppDBException {
         try (Connection connection = dbConnector.getConnection();
+
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT subjects.id AS ?, subjects.name AS ?, subjects.category_id AS ? " +
+                     "SELECT subjects.id AS subjectId, " +
+                             "subjects.name AS subjectName, " +
+                             "category_id AS subjectCategoryId, " +
+                             "subject_categorys.title AS categoryTitle, " +
+                             "subjects.description AS subjectDescriptions " +
                              "FROM subjects " +
                              "INNER JOIN subject_categorys " +
                              "ON subjects.category_id = subject_categorys.id " +
                              "WHERE subject_categorys.title = ?")) {
 
-            int i = 1;
-            preparedStatement.setString(i++, getColumnAlias("subjects.id"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.name"));
-            preparedStatement.setString(i++, getColumnAlias("subjects.experience"));
-
-            preparedStatement.setString(i++, categoryName);
+            preparedStatement.setString(1, categoryName);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
