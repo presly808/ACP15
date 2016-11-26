@@ -16,7 +16,7 @@ public interface IService {
 // service -> get list
 
     List<Student> getAllStudents();
-    List<Student> getAllStudentsByGroup(String nameGroup);
+    List<Student> getAllStudentsByGroup(String nameGroup) throws EmptyException;
     List<Subject> getAllSubjects();
     List<Teacher> getAllTeachers();
     List<Group> getAllGroups();

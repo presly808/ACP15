@@ -5,7 +5,6 @@ package ua.artcode.util;
  */
 public class Contstants {
 
-    public static final String PATH_FOR_PROPERTY_FILE = "/db.properties";
     public static final String PATH_FOR_PROPERTY_FILE_TEST = "/db.properties";
 
 }

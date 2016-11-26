@@ -1,0 +1,252 @@
+2016-11-23 22:45:08 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:45:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:96 - creating Table Teachers in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:101 - Table Teachers was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:83 - droping Table Teachers from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:88 - Table Teachers was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:144 - creating Table Marks in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:149 - Table Marks was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:117 - droping Table Marks from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:122 - Table Marks was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:45:09 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:45:09 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:45:09 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:45:09 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:07 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:07 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:96 - creating Table Teachers in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:101 - Table Teachers was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:83 - droping Table Teachers from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:88 - Table Teachers was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:144 - creating Table Marks in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:149 - Table Marks was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:117 - droping Table Marks from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:122 - Table Marks was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:08 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:08 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:08 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:08 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:15 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:15 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:15 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:15 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:46:15 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:15 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:46:15 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:46:15 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:15 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:46:15 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:15 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:15 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:15 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:15 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:96 - creating Table Teachers in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:101 - Table Teachers was create in DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:83 - droping Table Teachers from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:88 - Table Teachers was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:112 - creating Table Students in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:117 - Table Students was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:144 - creating Table Marks in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:149 - Table Marks was create in DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:117 - droping Table Marks from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:122 - Table Marks was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:66 - droping Table Students from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:71 - Table Students was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:54 - Table Subjects was droped from DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:64 - creating Table Groups in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:69 - Table Groups was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:80 - creating Table Subjects in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:85 - Table Subjects was create in DB SQL
+2016-11-23 22:46:16 INFO  CreateCommands:128 - creating Table Study in DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  CreateCommands:133 - Table Study was create in DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:100 - droping Table Study from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:105 - Table Study was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:32 - droping Table Groups from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:37 - Table Groups was droped from DB SQL
+2016-11-23 22:46:16 INFO  DropCommands:49 - droping Table Subjects from DB SQL
+2016-11-23 22:46:16 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server org.h2.Driver
+2016-11-23 22:46:16 INFO  DropCommands:54 - Table Subjects was droped from DB SQL

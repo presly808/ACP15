@@ -17,6 +17,8 @@ public class TestLogger {
 
     public static void main(String[] args) {
 
+//Logger logger = Logger.getLogger(TestLogger.class);
+
         CreateDAO createDAO = new CreateCommands();
         InsertDAO insertDAO = new InsertCommands();
         UpdateDAO updateDAO = new UpDateCommands();

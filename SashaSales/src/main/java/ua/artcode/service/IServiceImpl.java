@@ -26,13 +26,25 @@ public class IServiceImpl implements IService {
     private UpdateDAO updateDAO;
     private InsertDAO insertDAO;
 
-    public IServiceImpl() throws ClassNotFoundException {
+    public IServiceImpl(SelectDAO selectDAO) {
         LOGGER.trace("Create IServiceImpl instance");
-        this.selectDAO = new SelectCommands();
-        this.deleteDAO = new DeleteCommands();
-        this.insertDAO = new InsertCommands();
-        this.updateDAO = new UpDateCommands();
+        this.selectDAO = selectDAO;
     }
+
+    public IServiceImpl(InsertDAO insertDAO) {
+        LOGGER.trace("Create IServiceImpl instance");
+        this.insertDAO = insertDAO;
+
+    }
+
+    public IServiceImpl(SelectDAO selectDAO, DeleteDAO deleteDAO, UpdateDAO updateDAO, InsertDAO insertDAO) {
+        LOGGER.trace("Create IServiceImpl instance");
+        this.selectDAO = selectDAO;
+        this.deleteDAO = deleteDAO;
+        this.insertDAO = insertDAO;
+        this.updateDAO = updateDAO;
+    }
+
 
     @Override
     public List<Student> getAllStudents() {
@@ -44,9 +56,12 @@ public class IServiceImpl implements IService {
     }
 
     @Override
-    public List<Student> getAllStudentsByGroup(String nameGroup) {
+    public List<Student> getAllStudentsByGroup(String nameGroup) throws EmptyException {
 
         List<Student> students = null;
+        if (nameGroup.isEmpty()){
+            throw new EmptyException("group_name is empty");
+        }
         students = selectDAO.getStudentsByGroup(nameGroup);
         return students;
     }
