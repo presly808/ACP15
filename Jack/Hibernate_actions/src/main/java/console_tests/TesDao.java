@@ -1,7 +1,12 @@
-package model;
+package console_tests;
+
+import dao.StudentDAO;
+import model.Student;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import static dao.LazySingletonEntityManagerfactory.getEntityMangerFactory;
 
 /**
  * Created by serhii on 23.01.16.
@@ -11,8 +16,7 @@ public class TesDao {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory factory =
-                Persistence.createEntityManagerFactory("hibernate-unit");
+        EntityManagerFactory factory = getEntityMangerFactory();
 
         StudentDAO studentDAO = new StudentDAO(factory);
 
@@ -24,12 +28,10 @@ public class TesDao {
         studentDAO.create(student2);
         studentDAO.create(student3);
 
-        System.out.println(studentDAO.findById(1));
-        System.out.println(studentDAO.findById(2));
+//        System.out.println(studentDAO.findById(1));
+//        System.out.println(studentDAO.findById(2));
 
-        System.out.println(studentDAO.getByGroupId(1));
-
-
+        //System.out.println(studentDAO.getByGroupId(1));
 
 
     }
