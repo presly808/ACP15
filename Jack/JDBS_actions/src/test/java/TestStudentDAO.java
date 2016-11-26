@@ -1,4 +1,5 @@
-import controller.dao.StudentDAO;
+
+import dao.StudentDAO;
 import model.Student;
 import org.junit.After;
 import org.junit.Assert;
@@ -40,7 +41,7 @@ public class TestStudentDAO {
     }
 
     @After
-    public void closeConnection(){
+    public void closeConnection() {
 
         try {
             connection.close();
@@ -70,7 +71,7 @@ public class TestStudentDAO {
     @Test
     public void getStudentByID() {
 
-        String expected = "Student{id=2, name='Peta', group_id=1}";
+        String expected = "Student(id=2, name=Peta, group_id=1)";
         Student student = studentDAO.getOneByID(2);
 
         Assert.assertEquals(expected, student.toString());

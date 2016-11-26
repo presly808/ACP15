@@ -1,4 +1,5 @@
-import controller.dao.GroupDAO;
+
+import dao.GroupDAO;
 import model.Group;
 import org.junit.After;
 import org.junit.Assert;
@@ -100,6 +101,28 @@ public class TestGroupDao {
 
         Assert.assertEquals(expected, groups.toString());
 
+    }
+
+    @Test
+    public void selectGroupsWithAllLessons() {
+
+        List<Group> groups = groupDAO.getGroupsWhoLearnAllLessons();
+
+        String expected = "[Group(id=1, name=group1), Group(id=3, name=group3)]";
+
+        Assert.assertEquals(expected, groups.toString());
+
+    }
+
+    @Test
+    public void selectGroupsWithMoreThan3StudentsLearnLesson() {
+
+        String lesson = "philosophy";
+        List<Group> groups = groupDAO.getGroupsWithMoreThan3StudentsLearnLesson(lesson);
+
+        String expected = "[Group(id=1, name=Vasa), Group(id=3, name=Vana)]";
+
+        Assert.assertEquals(expected, groups.toString());
 
     }
 }

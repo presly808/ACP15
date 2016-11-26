@@ -2,9 +2,6 @@ package model;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Jack on 12.11.2016.
  */

@@ -1,8 +1,6 @@
 package model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Created by Jack on 20.11.2016.

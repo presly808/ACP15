@@ -1,4 +1,4 @@
-package controller.dao;
+package dao;
 
 import model.Group;
 import model.Student;
@@ -100,7 +100,6 @@ public class StudentDAO implements CommonDAO<Student, Integer> {
         }
         return true;
     }
-
 
     public List<Student> getStudentsByGroup(Group group) {
 
