@@ -8,10 +8,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Book extends IdEntity {
     @Column
     private String name;
     @Column
@@ -38,13 +35,6 @@ public class Book {
         this.bookType = bookType;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -81,7 +71,6 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", name_author='" + name_author + '\'' +
                 ", pages=" + pages +
@@ -93,16 +82,21 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         Book book = (Book) o;
 
-        return id == book.id;
+        if (name != null ? !name.equals(book.name) : book.name != null) return false;
+        return name_author != null ? name_author.equals(book.name_author) : book.name_author == null;
 
     }
 
     @Override
     public int hashCode() {
-        return id;
+        int result = super.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (name_author != null ? name_author.hashCode() : 0);
+        return result;
     }
 
     public enum BookType {

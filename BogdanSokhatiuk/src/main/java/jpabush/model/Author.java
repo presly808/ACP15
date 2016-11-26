@@ -8,10 +8,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "authors")
-public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private  int id;
+public class Author extends IdEntity {
+
     @Column(length = 20, nullable = false)
     private  String name;
     @Column
@@ -20,24 +18,19 @@ public class Author {
     private Date birthday;
     @Transient
     private String sicret;
+    @ManyToOne
+    @JoinColumn(name="address_id",referencedColumnName = "id")
+    private  Adress adress;
+
 
     public Author() {
     }
 
-    public Author(int id, String name, double salary, Date birthday) {
+    public Author(String name, double salary, Date birthday) {
 
-        this.id = id;
         this.name = name;
         this.salary = salary;
         this.birthday = birthday;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -62,5 +55,13 @@ public class Author {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 }
