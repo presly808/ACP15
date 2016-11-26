@@ -1,10 +1,7 @@
 package dao;
 
 import init.StartInitDB;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import ua.artcode.daoSQL.implementations.CreateCommands;
 import ua.artcode.daoSQL.implementations.DeleteCommands;
 import ua.artcode.daoSQL.implementations.DropCommands;
@@ -22,8 +19,8 @@ import static org.hamcrest.Matchers.not;
  */
 public class TestInsertDeleteDAO {
 
-    private CreateDAO createDAO = null;
     private InsertDAO insertDAO = null;
+    private CreateDAO createDAO = null;
     private DeleteDAO deleteDAO = null;
     private DropDAO dropDAO = null;
 
@@ -73,8 +70,8 @@ public class TestInsertDeleteDAO {
         boolean insertTeacherResult = insertDAO.addTeacher(teacherName, 3, 1);
         boolean deleteTeacherResult = deleteDAO.deleteTeacher(teacherName);
         boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
-        Assert.assertEquals("Test method Add and Delete Teacher", true, insertSubjectResult && insertTeacherResult
-                                && deleteTeacherResult && deleteSubjectResult);
+        Assert.assertThat("Test method Add and Delete Teacher", insertSubjectResult && insertTeacherResult
+                                && deleteTeacherResult && deleteSubjectResult, not(false));
 
     }
 
@@ -84,7 +81,7 @@ public class TestInsertDeleteDAO {
         String studentName = "Grigor";
         boolean insertStudentResult =  insertDAO.addStudent(studentName);
         boolean deleteStudentResult = deleteDAO.deleteStudent(studentName);
-        Assert.assertEquals("Test method Add and Delete Student", true, insertStudentResult && deleteStudentResult);
+        Assert.assertThat("Test method Add and Delete Student", insertStudentResult && deleteStudentResult, not(false));
 
     }
 
@@ -100,8 +97,8 @@ public class TestInsertDeleteDAO {
         boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
         boolean deleteGroupResult = deleteDAO.deleteGroup(groupName);
 
-        Assert.assertEquals("Test method Add and Delete Student", true, insertGroupResult && insertSubjectResult
-            && insertFieldStudyResult && deleteFieldStudyResult && deleteSubjectResult && deleteGroupResult);
+        Assert.assertThat("Test method Add and Delete Student", insertGroupResult && insertSubjectResult
+            && insertFieldStudyResult && deleteFieldStudyResult && deleteSubjectResult && deleteGroupResult, not(false));
 
     }
 

@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.List;
 
+import static org.hamcrest.Matchers.not;
+
 /**
  * Created by work on 23.11.2016.
  */
@@ -73,23 +75,15 @@ public class TestMockito {
         SelectDAO selectDAO = Mockito.mock(SelectDAO.class);
 
         IService service = new IServiceImpl(selectDAO);
-        List<Student> studentList = null;
-
-        studentList = service.getAllStudentsByGroup("");
+        List<Student> studentList = service.getAllStudentsByGroup("");
     }
 
-    @Test
-    public void testNegativeAddStudent() {
+    @Test(expected = EmptyException.class)
+    public void testNegativeAddStudent() throws EmptyException {
 
         InsertDAO insertDAO = Mockito.mock(InsertDAO.class);
         IService iService = new IServiceImpl(insertDAO);
-        boolean res = true;
-        try {
-            iService.addStudent("");
-        } catch (EmptyException e) {
-            res = false;
-        }
-        Assert.assertEquals(false, res);
+        iService.addStudent("");
 
     }
 
@@ -102,11 +96,11 @@ public class TestMockito {
 
         boolean res = false;
         try {
-            res = iService.addStudent("Sergii");
+            res = iService.addStudent("Serhii");
         } catch (EmptyException e) {
             res = false;
         }
-        Assert.assertEquals(true, res);
+        Assert.assertThat("Test Service method Add Student", res, not(false));
 
     }
 

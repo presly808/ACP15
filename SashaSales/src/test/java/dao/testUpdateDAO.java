@@ -14,6 +14,8 @@ import ua.artcode.daoSQL.interfaces.DropDAO;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
 import ua.artcode.daoSQL.interfaces.UpdateDAO;
 
+import static org.hamcrest.Matchers.not;
+
 /**
  * Created by work on 19.11.2016.
  */
@@ -47,7 +49,7 @@ public class TestUpdateDAO {
         public void testUpdateStudentsByGroups() {
 
             boolean updateStudentsByGroupsResult = updateDAO.updateStudentByGroup(2,2);
-            Assert.assertEquals("Test method update Student By Group", true, updateStudentsByGroupsResult);
+            Assert.assertThat("Test method update Student By Group", updateStudentsByGroupsResult, not(false));
 
         }
 
