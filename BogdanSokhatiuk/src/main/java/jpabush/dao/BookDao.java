@@ -54,6 +54,11 @@ public class BookDao implements Dao<Book> {
     }
 
     @Override
+    public boolean delete(Book book, Object id) {
+        return false;
+    }
+
+    @Override
     public Book update(Book book) {
         return null;
     }

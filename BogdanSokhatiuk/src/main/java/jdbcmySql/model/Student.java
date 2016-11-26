@@ -13,9 +13,6 @@ public class Student {
     @SqlDB
     private int group;
 
-
-    private int gfdg;
-
     public Student() {
     }
 

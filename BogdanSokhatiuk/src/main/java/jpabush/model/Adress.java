@@ -18,7 +18,7 @@ public class Adress extends IdEntity {
     private String street;
     @Column
     private String num;
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "adress")
     private List<Author> authors;
 
     public Adress(String city, String street, String num) {
