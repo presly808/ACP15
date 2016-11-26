@@ -21,7 +21,7 @@ import static jdbcmySql.model.SqlScripts.SQLTEST6;
 /**
  * Created by lost on 12.11.2016.
  */
-public class TestJDBCtask {
+public class TestJDBCtask1 {
 
     private JdbcTask jdbcTask;
     private static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
@@ -30,7 +30,7 @@ public class TestJDBCtask {
     public static void setUp() throws Exception {
         Connection con = new SqlConnection().getConnection();
         ScriptRunner scriptRunner = new ScriptRunner(con);
-        InputStream is = TestJDBCtask.class.getResourceAsStream("/sqlsripts.sql");
+        InputStream is = TestJDBCtask1.class.getResourceAsStream("/sqlsripts.sql");
         scriptRunner.runScript(new InputStreamReader(is));
     }
 
