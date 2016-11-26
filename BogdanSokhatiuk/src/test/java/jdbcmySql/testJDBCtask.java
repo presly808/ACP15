@@ -22,6 +22,7 @@ import static jdbcmySql.model.SqlScripts.SQLTEST6;
  * Created by lost on 12.11.2016.
  */
 public class TestJDBCtask {
+
     private JdbcTask jdbcTask;
     private static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
 

@@ -16,6 +16,7 @@ import static jdbcmySql.model.SqlScripts.*;
  * Created by lost on 12.11.2016.
  */
 public class TestSqlSelect {
+
     private Connection connection;
     private static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
 
