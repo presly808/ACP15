@@ -1,10 +1,12 @@
 package dao;
 
 import init.StartInitDB;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
+
 import ua.artcode.daoSQL.implementations.*;
 import ua.artcode.daoSQL.interfaces.*;
 import ua.artcode.model.Group;
@@ -18,18 +20,15 @@ import java.util.List;
  */
 public class TestSelectedDAO {
 
-    private CreateDAO createDAO = null;
-    private InsertDAO insertDAO = null;
-    private UpdateDAO updateDAO = null;
-    private SelectDAO selectDAO = null;
-    private DeleteDAO deleteDAO = null;
-    private DropDAO dropDAO = null;
+    private static CreateDAO createDAO = null;
+    private static InsertDAO insertDAO = null;
+    private static UpdateDAO updateDAO = null;
+    private static SelectDAO selectDAO = null;
+    private static DropDAO dropDAO = null;
 
-    @Before
-    public void setUP(){
-
+    @BeforeClass
+    public static void classSetUp(){
         createDAO = new CreateCommands();
-        deleteDAO = new DeleteCommands();
         insertDAO = new InsertCommands();
         selectDAO = new SelectCommands();
         updateDAO = new UpDateCommands();
@@ -38,8 +37,8 @@ public class TestSelectedDAO {
         StartInitDB.initTables(insertDAO, updateDAO);
     }
 
-    @After
-    public void finished(){
+    @AfterClass
+    public static void finished(){
         StartInitDB.dropTables(dropDAO);
     }
 
@@ -49,15 +48,14 @@ public class TestSelectedDAO {
 
         List<Student> studentList = selectDAO.getStudents();
         int size = studentList.size();
-        Assert.assertEquals("Test method Add and Delete Groups", true, size == 60);
-
+        Assert.assertThat("Test method Add and Delete Groups", 60, equalTo(size));
     }
 
     @Test
     public void testGetTeachersThatWorkMore3Years(){
 
         List<Teacher> teacherList = selectDAO.getTeachersThatWorkMore3Years();
-        Assert.assertEquals("Test method Get Teachers That Work More 3 Years ", true, teacherList.size() == 6);
+        Assert.assertThat("Test method Get Teachers That Work More 3 Years ", 6, equalTo(teacherList.size()));
     }
 
     @Test
@@ -65,7 +63,7 @@ public class TestSelectedDAO {
 
         List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
         int size = studentList.size();
-        Assert.assertEquals("Test method Get Students By Group", true,  size == 6);
+        Assert.assertThat("Test method Get Students By Group", 6,  equalTo(size));
 
     }
 
@@ -75,7 +73,7 @@ public class TestSelectedDAO {
         String subjectName = "Mathematics";
         List<Group> groupsList = selectDAO.getGroupsThatStudySubject(subjectName);
         int size = groupsList.size();
-        Assert.assertEquals("Test method Get Groups That Study Subject ", true,  size == 2);
+        Assert.assertThat("Test method Get Groups That Study Subject ", 1,  equalTo(size));
 
     }
 
@@ -85,18 +83,18 @@ public class TestSelectedDAO {
         String subjectName = "Mathematics";
         double avgMark = selectDAO.avgMarkBySubjectInUniversity(subjectName);
         System.out.println(avgMark);
-        Assert.assertEquals("Test method Get Avg Mark By Subject In University ", true,  avgMark != 0);
+        Assert.assertThat("Test method Get Avg Mark By Subject In University ", avgMark, greaterThan(0.0));
 
     }
 
     @Test
     public void testAvgMarkBySubjectInGroup(){
 
-        String subjectName = "Journalism";
+        String subjectName = "Music";
         String groupName = "Base16";
-        double avgMark = selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
-        System.out.println(avgMark);
-        Assert.assertEquals("Test method Get Avg Mark By Subject In University ", true,  avgMark != 0);
+        double avgMark1 = selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
+        System.out.println(avgMark1);
+        Assert.assertThat("Test method Get Avg Mark By Subject In University ", avgMark1,  not(0));
 
     }
 

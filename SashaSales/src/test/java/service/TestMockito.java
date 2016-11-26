@@ -13,6 +13,7 @@ import ua.artcode.service.IServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
 public class TestMockito {
 
     @Test
-    public void testServiceGetGroups(){
+    public void testServiceGetGroups() {
 
         SelectDAO selectDAO = Mockito.mock(SelectDAO.class);
         Mockito.when(selectDAO.getGroups()).thenReturn(Arrays.asList(new Group(1, "APC11"), new Group(2, "APC12"), new Group(3, "APC13")));
@@ -38,7 +39,7 @@ public class TestMockito {
     }
 
     @Test
-    public void testServiceGetStudents(){
+    public void testServiceGetStudents() {
 
         SelectDAO selectDAO = Mockito.mock(SelectDAO.class);
         Mockito.when(selectDAO.getStudents()).thenReturn(Arrays.asList(new Student(1, "Ivan"), new Student(2, "Petr")));
@@ -66,30 +67,23 @@ public class TestMockito {
 
     }
 
-    @Test
-    public void testServiceNegativeGetStudentsByGroup() {
+    @Test(expected = EmptyException.class)
+    public void testServiceNegativeGetStudentsByGroup() throws EmptyException {
 
         SelectDAO selectDAO = Mockito.mock(SelectDAO.class);
 
         IService service = new IServiceImpl(selectDAO);
         List<Student> studentList = null;
-        boolean res = true;
-        try {
-            studentList = service.getAllStudentsByGroup("");
-        } catch (EmptyException e) {
-            res = false;
-        }
 
-        Assert.assertEquals(false, res);
-
+        studentList = service.getAllStudentsByGroup("");
     }
 
     @Test
     public void testNegativeAddStudent() {
 
-    InsertDAO insertDAO = Mockito.mock(InsertDAO.class);
-    IService iService = new IServiceImpl(insertDAO);
-    boolean res = true;
+        InsertDAO insertDAO = Mockito.mock(InsertDAO.class);
+        IService iService = new IServiceImpl(insertDAO);
+        boolean res = true;
         try {
             iService.addStudent("");
         } catch (EmptyException e) {

@@ -14,6 +14,8 @@ import ua.artcode.daoSQL.interfaces.DeleteDAO;
 import ua.artcode.daoSQL.interfaces.DropDAO;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
 
+import static org.hamcrest.Matchers.not;
+
 
 /**
  * Created by work on 19.11.2016.
@@ -47,7 +49,7 @@ public class TestInsertDeleteDAO {
         String groupName = "RR12";
         boolean insertGroupResult =  insertDAO.addGroup(groupName);
         boolean deleteGroupResult = deleteDAO.deleteGroup(groupName);
-        Assert.assertEquals("Test method Add and Delete Groups", true, insertGroupResult && deleteGroupResult);
+        Assert.assertThat("Test method Add and Delete Groups", insertGroupResult && deleteGroupResult, not(false));
 
     }
 
@@ -58,7 +60,7 @@ public class TestInsertDeleteDAO {
         boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description Terapia");
         boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
 
-        Assert.assertEquals("Test method Add and Delete subject", true, insertSubjectResult && deleteSubjectResult);
+        Assert.assertThat("Test method Add and Delete subject", insertSubjectResult && deleteSubjectResult, not(false));
 
     }
 
