@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Prepod {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private String name;

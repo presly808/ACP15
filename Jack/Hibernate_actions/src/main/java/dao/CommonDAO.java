@@ -62,11 +62,19 @@ public interface CommonDAO<ENTITY_CLASS, ID_TYPE> {
         EntityManager manager = factory.createEntityManager();
 
         TypedQuery<ENTITY_CLASS> query = manager.createQuery("FROM " + entityClass.getName(), entityClass);//worked
+        //TypedQuery<ENTITY_CLASS> query = manager.createQuery("FROM " + manager.unwrap(entityClass), entityClass);//not worked
 
-        query.setMaxResults(22);
-        query.setFirstResult(0);
+        try {
 
-        return query.getResultList();
+            query.setMaxResults(22);
+            query.setFirstResult(0);
+            LOGGER.info("Entities found by class: " + entityClass.getName());
+
+            return query.getResultList();
+
+        } finally {
+            manager.close();
+        }
     }
 
     default List<ENTITY_CLASS> getAllByEntityClassAndParameter(Class<ENTITY_CLASS> entityClass, Object parameter,
@@ -80,6 +88,8 @@ public interface CommonDAO<ENTITY_CLASS, ID_TYPE> {
         query.setParameter(parameter.toString(), valueOfParameter);//ask what is first arg
         query.setMaxResults(22);
         query.setFirstResult(0);
+        LOGGER.info("Entities found by class: " + entityClass.getName() + " and parameter: " + parameter.toString() +
+        " = " + valueOfParameter.toString());
 
         return query.getResultList();
     }

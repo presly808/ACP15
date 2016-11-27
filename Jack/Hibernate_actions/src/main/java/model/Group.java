@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -21,9 +19,16 @@ import javax.persistence.Table;
 @Table(name = "groups")
 public class Group {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private @Getter @Setter int id;
     @Column
     private @Getter @Setter String name;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "learning",
+            joinColumns = {@JoinColumn(name = "group_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "lesson_id", referencedColumnName = "id")})
+    private List<Lesson> lessonList;
 
     public Group() {
     }
@@ -33,4 +38,7 @@ public class Group {
         this.name = name;
     }
 
+    public Group(String name) {
+        this.name = name;
+    }
 }
