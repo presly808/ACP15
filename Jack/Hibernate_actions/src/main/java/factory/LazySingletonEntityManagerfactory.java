@@ -1,4 +1,4 @@
-package dao;
+package factory;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,12 +15,13 @@ public class LazySingletonEntityManagerfactory {
 
     public static EntityManagerFactory getEntityMangerFactory() {
 
-        if (null == factory) {
-            factory = Persistence.createEntityManagerFactory("hibernate-unit");
-        }
+//        if (null == factory) {
+//            factory = Persistence.createEntityManagerFactory("hibernate-unit");
+//        }
 
 
-        return factory;
+        return null == factory ?
+                factory = Persistence.createEntityManagerFactory("hibernate-unit") : factory;
     }
 
 }

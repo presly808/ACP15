@@ -1,30 +1,25 @@
 package dao;
 
+import model.Student;
 import org.apache.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
-import static dao.LazySingletonEntityManagerfactory.getEntityMangerFactory;
+import static factory.LazySingletonEntityManagerfactory.getEntityMangerFactory;
 
 /**
  * Created by Jack on 18.11.2016.
  */
 public interface CommonDAO<ENTITY_CLASS, ID_TYPE> {
 
-//    default Class<ENTITY_CLASS> getClassmn(){
-//
-//
-//        return
-//    }
 
-
-    Logger LOGGER = Logger.getLogger(StudentDAO.class);
-    //EntityManagerFactory factory = getEntityMangerFactory();
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernate-unit");
+    Logger LOGGER = Logger.getLogger(CommonDAO.class);
+    EntityManagerFactory factory = getEntityMangerFactory();
+    //EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernate-unit");
 
     default ENTITY_CLASS create(ENTITY_CLASS entity) {
 
@@ -46,14 +41,14 @@ public interface CommonDAO<ENTITY_CLASS, ID_TYPE> {
         return entity;
     }
 
-    default ENTITY_CLASS findById(ID_TYPE id, Class<ENTITY_CLASS> cl) {
+    default ENTITY_CLASS findById(ID_TYPE id, Class<ENTITY_CLASS> entityClass) {
 
         EntityManager manager = factory.createEntityManager();
-        EntityTransaction transaction = manager.getTransaction();
+        //EntityTransaction transaction = manager.getTransaction();
 
         try {
 
-            ENTITY_CLASS entity = manager.find(cl, id);
+            ENTITY_CLASS entity = manager.find(entityClass, id);
             LOGGER.info("Finded entity with id = " + id);
             return entity;
 
@@ -62,7 +57,32 @@ public interface CommonDAO<ENTITY_CLASS, ID_TYPE> {
         }
     }
 
-    List<ENTITY_CLASS> getAll();
+    default List<ENTITY_CLASS> getAllByEntityClass(Class<ENTITY_CLASS> entityClass) {
+
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<ENTITY_CLASS> query = manager.createQuery("FROM " + entityClass.getName(), entityClass);//worked
+
+        query.setMaxResults(22);
+        query.setFirstResult(0);
+
+        return query.getResultList();
+    }
+
+    default List<ENTITY_CLASS> getAllByEntityClassAndParameter(Class<ENTITY_CLASS> entityClass, Object parameter,
+                                                               Object valueOfParameter) {
+
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<ENTITY_CLASS> query = manager.createQuery("FROM " + entityClass.getName() + " e " +
+                "WHERE " + "e." + parameter + "=:" + parameter, entityClass);//worked
+
+        query.setParameter(parameter.toString(), valueOfParameter);//ask what is first arg
+        query.setMaxResults(22);
+        query.setFirstResult(0);
+
+        return query.getResultList();
+    }
 
     List<ENTITY_CLASS> findAllByParam(Object param);
 

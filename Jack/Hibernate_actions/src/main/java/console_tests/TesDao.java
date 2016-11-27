@@ -4,9 +4,8 @@ import dao.StudentDAO;
 import model.Student;
 
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-import static dao.LazySingletonEntityManagerfactory.getEntityMangerFactory;
+import static factory.LazySingletonEntityManagerfactory.getEntityMangerFactory;
 
 /**
  * Created by serhii on 23.01.16.
