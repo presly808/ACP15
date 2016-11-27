@@ -13,9 +13,7 @@ public class Student {
     @Column(name = "name", nullable = false, length = 40)
     private String name;
 
-
-    // TODO: 26.11.16 check cascade
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne()
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 

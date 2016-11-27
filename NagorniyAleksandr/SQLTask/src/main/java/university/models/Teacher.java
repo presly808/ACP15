@@ -65,7 +65,6 @@ public class Teacher {
         Teacher teacher = (Teacher) o;
 
         return id == teacher.id;
-
     }
 
     @Override

@@ -2,6 +2,7 @@ package university.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "groups")
@@ -15,12 +16,24 @@ public class Group {
     private String name;
 
 
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    private List<Student> studentList;
+
     public Group() {
+    }
+
+    public Group(String name) {
+        this.name = name;
     }
 
     public Group(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Group(String name, List<Student> studentList) {
+        this.name = name;
+        this.studentList = studentList;
     }
 
     public int getId() {
@@ -39,11 +52,20 @@ public class Group {
         this.name = name;
     }
 
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
     @Override
     public String toString() {
         return "Group{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", studentList=" + studentList +
                 '}';
     }
 
@@ -55,7 +77,6 @@ public class Group {
         Group group = (Group) o;
 
         return id == group.id;
-
     }
 
     @Override

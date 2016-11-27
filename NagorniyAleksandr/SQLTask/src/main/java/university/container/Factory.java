@@ -3,7 +3,7 @@ package university.container;
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
 import university.dao.crud.CRUDQuery;
-import university.dao.crud.CRUDQueryImpl;
+import university.dao.crud.CRUDQueryJPAImpl;
 import university.jdbc.DBConnector;
 import university.jdbc.DBConnectorImpl;
 import university.service.Service;
@@ -18,7 +18,7 @@ public class Factory {
 
     static {
         dbConnector = new DBConnectorImpl();
-        crudQuery = new CRUDQueryImpl(dbConnector);
+        crudQuery = new CRUDQueryJPAImpl(AppEntityManagerFactory.getInstance());
         queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
         service = new ServiceImpl(queryCreator);
     }

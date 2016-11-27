@@ -1,8 +1,6 @@
 package university.dao.crud;
 
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Subject;
 import university.models.SubjectCategory;
@@ -10,8 +8,6 @@ import university.models.SubjectCategory;
 import static org.junit.Assert.*;
 
 public class CRUDSubjectTest extends PrepareTestDataBase {
-
-    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Test
     public void CRUDSubject() throws Exception {

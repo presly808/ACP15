@@ -1,8 +1,6 @@
 package university.dao.crud;
 
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Teacher;
 
@@ -10,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class CRUDTeacherTest extends PrepareTestDataBase {
 
-    private QueryCreator queryCreator = Factory.getQueryCreator();
+
 
     @Test
     public void CRUDTeacher() throws Exception {

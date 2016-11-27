@@ -1,26 +1,17 @@
 package university.dao.crud;
 
-import org.h2.tools.RunScript;
-import org.junit.*;
-import university.container.Factory;
-import university.dao.QueryCreator;
-import university.dao.QueryCreatorImpl;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
-import university.jdbc.DBConnectorImpl;
 import university.models.Subject;
 import university.models.SubjectCategory;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class CRUDQuerySubjectTest extends PrepareTestDataBase {
-
-    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     private SubjectCategory validSubjectCategory;
     private Subject testSubject;

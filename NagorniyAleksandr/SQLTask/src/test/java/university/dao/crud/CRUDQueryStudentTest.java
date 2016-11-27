@@ -3,8 +3,6 @@ package university.dao.crud;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Group;
 import university.models.Student;
@@ -14,8 +12,6 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class CRUDQueryStudentTest extends PrepareTestDataBase {
-
-    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     private Group testStudentsGroup;
     private Group groupNotFromDB;

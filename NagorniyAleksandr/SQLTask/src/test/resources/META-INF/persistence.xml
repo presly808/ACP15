@@ -19,13 +19,13 @@
         <class>university.models.Study</class>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <!--data base must be created before init persistence.xml -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/university_hibernate" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:university_hibernate_test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- init DDL operations -->
         </properties>

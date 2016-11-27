@@ -1,7 +1,5 @@
 package university.dao.crud;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import university.container.Factory;
 import university.dao.QueryCreator;
@@ -12,14 +10,14 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDQueryGroupTest extends PrepareTestDataBase {
-
-    private QueryCreator queryCreator = Factory.getQueryCreator();
+public class CRUDQueryGroupTest {
 
     private Group testGroup;
     private Group groupNotFromDB;
 
-    @Before
+    protected QueryCreator queryCreator = Factory.getQueryCreator();
+
+    /*@Before
     public void setUp() throws Exception {
 
         String testGroupName = "Gr" + System.currentTimeMillis();
@@ -30,19 +28,19 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
         int invalidId = -1;
         groupNotFromDB = new Group(invalidId, "Test");
 
-    }
+    }*/
 
-    @After
+    /*@After
     public void tearDown() throws Exception {
         queryCreator.deleteGroup(testGroup);
         groupNotFromDB = null;
-    }
+    }*/
 
     @Test
     public void addGroup() throws Exception {
         String testGroupNameForAddTest = "Gr" + System.currentTimeMillis();
         int testGroupIdForAddTest = -1;
-        Group testGroupForAddTest = new Group(testGroupIdForAddTest, testGroupNameForAddTest);
+        Group testGroupForAddTest = new Group(testGroupNameForAddTest);
 
         assertTrue(queryCreator.addGroup(testGroupForAddTest));
 

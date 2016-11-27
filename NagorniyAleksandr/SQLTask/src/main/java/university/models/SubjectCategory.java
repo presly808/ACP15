@@ -54,7 +54,6 @@ public class SubjectCategory {
         SubjectCategory that = (SubjectCategory) o;
 
         return id == that.id;
-
     }
 
     @Override

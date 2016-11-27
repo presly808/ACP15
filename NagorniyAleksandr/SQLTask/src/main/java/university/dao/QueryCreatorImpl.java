@@ -121,7 +121,7 @@ public class QueryCreatorImpl implements QueryCreator {
     private CRUDQuery crudQuery;
     private DBConnector dbConnector;
 
-    private static final Logger log = Logger.getLogger(QueryCreatorImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(QueryCreatorImpl.class);
 
     public QueryCreatorImpl(DBConnector dbConnector, CRUDQuery crudQuery) {
         this.crudQuery = crudQuery;
@@ -143,7 +143,7 @@ public class QueryCreatorImpl implements QueryCreator {
             return getStudentsAsListFromResultSet(resultSet);
 
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -161,7 +161,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -180,7 +180,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getGroupsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -198,7 +198,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getTeachersAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -216,7 +216,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getStudentsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -236,7 +236,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getGroupsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -253,7 +253,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + ". Throw: AppDBException");
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -269,8 +269,8 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getOneTeacherFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            LOGGER.error(e.getMessage());
+            LOGGER.error("Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -285,7 +285,7 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getOneTeacherFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage() + "Throw: AppDBException");
+            LOGGER.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -303,8 +303,8 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getTeachersAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            LOGGER.error(e.getMessage());
+            LOGGER.error("Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -329,8 +329,8 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            LOGGER.error(e.getMessage());
+            LOGGER.error("Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }
@@ -348,8 +348,8 @@ public class QueryCreatorImpl implements QueryCreator {
 
             return getSubjectsAsListFromResultSet(resultSet);
         } catch (SQLException e) {
-            log.error(e.getMessage());
-            log.error("Throw: AppDBException");
+            LOGGER.error(e.getMessage());
+            LOGGER.error("Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
     }

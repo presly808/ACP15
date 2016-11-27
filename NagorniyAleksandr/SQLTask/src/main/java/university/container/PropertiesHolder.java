@@ -12,26 +12,26 @@ public class PropertiesHolder {
     //PATH config files
     public static final String PROPERTIES_FILE_PATH = "/jdbc.properties";
 
-    private static final Logger log = Logger.getLogger(PropertiesHolder.class);
+    private static final Logger LOGGER = Logger.getLogger(PropertiesHolder.class);
 
     private static Properties properties = load();
 
     private static Properties load() {
         Properties properties = new Properties();
         try {
-            log.info("Load properties");
+            LOGGER.info("Load properties");
             properties.load(PropertiesHolder.class.getResourceAsStream(PROPERTIES_FILE_PATH));
         } catch (IOException e) {
-            log.error(e.getMessage() + ". Throw: AppPropertiesException");
+            LOGGER.error(e.getMessage() + ". Throw: AppPropertiesException");
             throw new AppPropertiesException(e.getMessage());
         }
         return properties;
     }
 
     public static String get(String key) {
-        log.debug("Request for property=" + key);
+        LOGGER.debug("Request for property=" + key);
         if (properties == null) {
-            log.error("Throw: AppPropertiesException, Can't load properties");
+            LOGGER.error("Throw: AppPropertiesException, Can't load properties");
             throw new AppPropertiesException(
                     "Can't load properties");
         }
@@ -39,7 +39,7 @@ public class PropertiesHolder {
         String property = properties.getProperty(key);
 
         if (property == null) {
-            log.error("Throw: AppPropertiesException, " +
+            LOGGER.error("Throw: AppPropertiesException, " +
                     "\"Not found property for key=\"" + key + "\"");
             throw new AppPropertiesException(
                     "Not found property for key=" + key + "\"");

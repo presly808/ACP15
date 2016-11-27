@@ -1,62 +1,44 @@
 package university.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "study")
 public class Study {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    // TODO: 26.11.16 QUESTION. what field name paste????
-    // TODO: 26.11.16 OR chenge fields to Lists? and reference to ManyToOne?
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    private Group group;
-    private Subject subject;
-    private Teacher teacher;
+    @ManyToOne()
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
+    private Group groupList;
+
+    @ManyToOne()
+    @JoinColumn(name = "subject_id", referencedColumnName = "id")
+    private Subject subjectList;
+
+    @ManyToOne()
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    private Teacher teacherList;
 
     public Study() {
     }
 
-    public Study(Group group, Subject subject, Teacher teacher) {
-        this.group = group;
-        this.subject = subject;
-        this.teacher = teacher;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public Study(Group groupList, Subject subjectList, Teacher teacherList) {
+        this.groupList = groupList;
+        this.subjectList = subjectList;
+        this.teacherList = teacherList;
     }
 
     @Override
     public String toString() {
         return "Study{" +
-                "group=" + group +
-                ", subject=" + subject +
-                ", teacher=" + teacher +
+                "id=" + id +
+                ", groupList=" + groupList +
+                ", subjectList=" + subjectList +
+                ", teacherList=" + teacherList +
                 '}';
     }
 
@@ -67,17 +49,11 @@ public class Study {
 
         Study study = (Study) o;
 
-        if (group != null ? !group.equals(study.group) : study.group != null) return false;
-        if (subject != null ? !subject.equals(study.subject) : study.subject != null) return false;
-        return teacher != null ? teacher.equals(study.teacher) : study.teacher == null;
-
+        return id == study.id;
     }
 
     @Override
     public int hashCode() {
-        int result = group != null ? group.hashCode() : 0;
-        result = 31 * result + (subject != null ? subject.hashCode() : 0);
-        result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
-        return result;
+        return id;
     }
 }

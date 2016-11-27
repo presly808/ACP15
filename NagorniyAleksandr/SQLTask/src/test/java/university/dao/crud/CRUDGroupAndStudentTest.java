@@ -1,8 +1,6 @@
 package university.dao.crud;
 
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Group;
 import university.models.Student;
@@ -12,8 +10,6 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
-
-    private QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Test
     public void CRUDGroupAndStudents() throws Exception {

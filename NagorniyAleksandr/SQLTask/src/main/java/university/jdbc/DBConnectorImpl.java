@@ -8,14 +8,14 @@ import java.sql.*;
 
 public class DBConnectorImpl implements DBConnector {
 
-    private static final Logger log = Logger.getLogger(PropertiesHolder.class);
+    private static final Logger LOGGER = Logger.getLogger(PropertiesHolder.class);
 
     @Override
     public Connection getConnection() throws SQLException {
         try {
             Class.forName(PropertiesHolder.get("JDBC_DRIVER_CLASS_NAME"));
         } catch (ClassNotFoundException e) {
-            log.error(e.getMessage() + "Throw: SQLException \"DataBase Driver Class not found\"");
+            LOGGER.error(e.getMessage() + "Throw: SQLException \"DataBase Driver Class not found\"");
             throw new SQLException("DataBase Driver Class not found");
         }
 
