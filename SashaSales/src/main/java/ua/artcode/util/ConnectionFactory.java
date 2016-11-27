@@ -1,7 +1,6 @@
 package ua.artcode.util;
 
 import org.apache.log4j.Logger;
-import ua.artcode.daoSQL.implementations.CreateCommands;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +9,7 @@ import java.sql.SQLException;
 /**
  * Created by work on 12.11.2016.
  */
+
 public class ConnectionFactory {
 
     private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class);
@@ -45,3 +45,4 @@ public class ConnectionFactory {
     }
 
 }
+

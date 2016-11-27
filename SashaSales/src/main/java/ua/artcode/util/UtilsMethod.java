@@ -1,16 +1,19 @@
+
 package ua.artcode.util;
 
-import ua.artcode.model.Group;
-import ua.artcode.model.Student;
+import ua.artcode.model.modelsql.Group;
+import ua.artcode.model.modelsql.Student;
 
 import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+
 /**
  * Created by work on 15.11.2016.
  */
+
 public class UtilsMethod {
 
     public static void utilResultSet(ResultSet resultSet, List<Student> students) throws SQLException {

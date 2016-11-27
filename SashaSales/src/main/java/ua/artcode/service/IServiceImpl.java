@@ -1,22 +1,24 @@
+
 package ua.artcode.service;
 
 import org.apache.log4j.Logger;
-import ua.artcode.daoSQL.implementations.*;
 import ua.artcode.daoSQL.interfaces.DeleteDAO;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
 import ua.artcode.daoSQL.interfaces.SelectDAO;
 import ua.artcode.daoSQL.interfaces.UpdateDAO;
 import ua.artcode.exceptions.EmptyException;
-import ua.artcode.model.Group;
-import ua.artcode.model.Student;
-import ua.artcode.model.Subject;
-import ua.artcode.model.Teacher;
+import ua.artcode.model.modelsql.Group;
+import ua.artcode.model.modelsql.Student;
+import ua.artcode.model.modelsql.Subject;
+import ua.artcode.model.modelsql.Teacher;
 
 import java.util.List;
+
 
 /**
  * Created by work on 12.11.2016.
  */
+
 public class IServiceImpl implements IService {
 
     private static final Logger LOGGER = Logger.getLogger(IServiceImpl.class);

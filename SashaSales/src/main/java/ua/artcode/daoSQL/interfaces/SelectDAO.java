@@ -1,9 +1,9 @@
 package ua.artcode.daoSQL.interfaces;
 
-import ua.artcode.model.Group;
-import ua.artcode.model.Student;
-import ua.artcode.model.Subject;
-import ua.artcode.model.Teacher;
+import ua.artcode.model.modelsql.Group;
+import ua.artcode.model.modelsql.Student;
+import ua.artcode.model.modelsql.Subject;
+import ua.artcode.model.modelsql.Teacher;
 
 import java.util.List;
 
