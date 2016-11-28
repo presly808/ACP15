@@ -2,10 +2,7 @@ package university.dao.crud;
 
 import org.apache.log4j.Logger;
 import university.exceptions.AppDBException;
-import university.models.Group;
-import university.models.Student;
-import university.models.Subject;
-import university.models.Teacher;
+import university.models.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +19,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
     public CRUDQueryJPAImpl(EntityManagerFactory factory) {
         this.factory = factory;
     }
-
 
     @Override
     public boolean addStudent(Student student) throws AppDBException {
@@ -41,7 +37,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             throw new AppDBException(e.getMessage());
         } finally {
             manager.close();
-            factory.close();
         }
 
         return true;
@@ -64,7 +59,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             throw new AppDBException(e.getMessage());
         } finally {
             manager.close();
-            factory.close();
         }
 
         return true;
@@ -76,6 +70,8 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
+/*        SubjectCategory subjectCategory = subject.getCategory();
+        manager.find(SubjectCategory.class, subjectCategory.getId());*/
         try {
             transaction.begin();
             manager.persist(subject);
@@ -87,7 +83,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             throw new AppDBException(e.getMessage());
         } finally {
             manager.close();
-            factory.close();
         }
 
         return true;
@@ -110,7 +105,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             throw new AppDBException(e.getMessage());
         } finally {
             manager.close();
-            factory.close();
         }
 
         return true;
@@ -118,22 +112,115 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
 
     @Override
     public boolean editStudent(Student studentWithNewData) throws AppDBException {
-        return false;
+        LOGGER.info("Edit student");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        if (manager.find(Student.class, studentWithNewData.getId()) == null) {
+            manager.close();
+            String errorMessage = "Student not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.merge(studentWithNewData);
+            transaction.commit();
+            LOGGER.info("Student was edited");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
     public boolean editGroup(Group groupWithNewData) throws AppDBException {
-        return false;
+        LOGGER.info("Edit group");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+
+        if (manager.find(Group.class, groupWithNewData.getId()) == null) {
+            manager.close();
+            String errorMessage = "Group not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.merge(groupWithNewData);
+            transaction.commit();
+            LOGGER.info("Group was edited");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
     public boolean editTeacher(Teacher teacherWithNewData) throws AppDBException {
-        return false;
+        LOGGER.info("Edit teacher");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        if (manager.find(Teacher.class, teacherWithNewData.getId()) == null) {
+            manager.close();
+            String errorMessage = "Teacher not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.merge(teacherWithNewData);
+            transaction.commit();
+            LOGGER.info("Teacher was edited");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
     public boolean editSubject(Subject subjectWithNewData) throws AppDBException {
-        return false;
+        LOGGER.info("Edit subject");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        if (manager.find(Subject.class, subjectWithNewData.getId()) == null) {
+            manager.close();
+            String errorMessage = "Subject not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.merge(subjectWithNewData);
+            transaction.commit();
+            LOGGER.info("Subject was edited");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
@@ -142,13 +229,20 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        student = manager.find(Student.class, student.getId());
+        Student tempStudent = manager.find(Student.class, student.getId());
+        if (tempStudent == null) {
+            manager.close();
+            String errorMessage = "Student not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
 
         try {
             transaction.begin();
-            manager.remove(student);
+            manager.remove(tempStudent);
             transaction.commit();
-            LOGGER.info("Student was deleted to DB");
+            LOGGER.info("Student was deleted from DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -156,8 +250,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
@@ -166,13 +258,20 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        group = manager.find(Group.class, group.getId());
+        Group tempGroup = manager.find(Group.class, group.getId());
+        if (tempGroup == null) {
+            manager.close();
+            String errorMessage = "Group not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
 
         try {
             transaction.begin();
-            manager.remove(group);
+            manager.remove(tempGroup);
             transaction.commit();
-            LOGGER.info("Group was deleted to DB");
+            LOGGER.info("Group was deleted from DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -180,8 +279,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
@@ -190,13 +287,20 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        teacher = manager.find(Teacher.class, teacher.getId());
+        Teacher tempTeacher = manager.find(Teacher.class, teacher.getId());
+        if (tempTeacher == null) {
+            manager.close();
+            String errorMessage = "Teacher not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
 
         try {
             transaction.begin();
-            manager.remove(teacher);
+            manager.remove(tempTeacher);
             transaction.commit();
-            LOGGER.info("Teacher was deleted to DB");
+            LOGGER.info("Teacher was deleted from DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -204,8 +308,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
@@ -214,13 +316,20 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        subject = manager.find(Subject.class, subject.getId());
+        Subject tempSubject = manager.find(Subject.class, subject.getId());
+        if (tempSubject == null) {
+            manager.close();
+            String errorMessage = "Subject not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
 
         try {
             transaction.begin();
-            manager.remove(subject);
+            manager.remove(tempSubject);
             transaction.commit();
-            LOGGER.info("Subject was deleted to DB");
+            LOGGER.info("Subject was deleted from DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -228,27 +337,79 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
     public Student getStudent(Student student) throws AppDBException {
-        return null;
+        LOGGER.info("Get student");
+        EntityManager manager = factory.createEntityManager();
+
+        Student foundedStudent = manager.find(Student.class, student.getId());
+        if (foundedStudent != null) {
+            manager.close();
+            LOGGER.info("Student founded successful");
+            return foundedStudent;
+        } else {
+            manager.close();
+            String errorMessage = "Student not found";
+            LOGGER.error(errorMessage + ". Throw: AppDBException");
+            throw new AppDBException(errorMessage);
+        }
     }
 
     @Override
     public Group getGroup(Group group) throws AppDBException {
-        return null;
+        LOGGER.info("Get group");
+        EntityManager manager = factory.createEntityManager();
+
+
+        Group foundedGroup = manager.find(Group.class, group.getId());
+        if (foundedGroup != null) {
+            manager.close();
+            LOGGER.info("Group founded successful");
+            return foundedGroup;
+        } else {
+            manager.close();
+            String errorMessage = "Group not found";
+            LOGGER.error(errorMessage + ". Throw: AppDBException");
+            throw new AppDBException(errorMessage);
+        }
     }
 
     @Override
     public Teacher getTeacher(Teacher teacher) throws AppDBException {
-        return null;
+        LOGGER.info("Get teacher");
+        EntityManager manager = factory.createEntityManager();
+
+
+        Teacher foundedTeacher = manager.find(Teacher.class, teacher.getId());
+        if (foundedTeacher != null) {
+            manager.close();
+            LOGGER.info("Teacher founded successful");
+            return foundedTeacher;
+        } else {
+            manager.close();
+            String errorMessage = "Teacher not found";
+            LOGGER.error(errorMessage + ". Throw: AppDBException");
+            throw new AppDBException(errorMessage);
+        }
     }
 
     @Override
     public Subject getSubject(Subject subject) throws AppDBException {
-        return null;
+        LOGGER.info("Get subject");
+        EntityManager manager = factory.createEntityManager();
+
+        Subject foundedSubject = manager.find(Subject.class, subject.getId());
+        if (foundedSubject != null) {
+            manager.close();
+            LOGGER.info("Subject founded successful");
+            return foundedSubject;
+        } else {
+            manager.close();
+            String errorMessage = "Subject not found";
+            LOGGER.error(errorMessage + ". Throw: AppDBException");
+            throw new AppDBException(errorMessage);
+        }
     }
 }

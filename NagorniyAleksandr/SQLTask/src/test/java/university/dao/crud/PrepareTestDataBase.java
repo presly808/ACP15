@@ -13,13 +13,13 @@ import java.sql.SQLException;
 
 public class PrepareTestDataBase {
 
-    protected static final DBConnector dbConnector = Factory.getDBConnector();
+    protected static final DBConnector dbConnector = null;
     protected static final String CREATE_TEST_DB_SCRIPT = "/H2StructureScript.sql";
     protected static final String DROP_TEST_DB_SCRIPT = "/H2DropDBScript.sql";
 
     protected QueryCreator queryCreator = Factory.getQueryCreator();
 
-    @BeforeClass
+    //@BeforeClass
     public static void initDB() {
 
         // way #1
@@ -50,7 +50,7 @@ public class PrepareTestDataBase {
 
     }
 
-    @AfterClass
+    //@AfterClass
     public static void dropDB() {
 
         // way #1

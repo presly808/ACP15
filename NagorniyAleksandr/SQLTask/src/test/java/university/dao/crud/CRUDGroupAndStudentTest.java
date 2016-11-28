@@ -1,6 +1,8 @@
 package university.dao.crud;
 
 import org.junit.Test;
+import university.container.Factory;
+import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Group;
 import university.models.Student;
@@ -9,22 +11,25 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
+public class CRUDGroupAndStudentTest {
+
+    protected QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Test
     public void CRUDGroupAndStudents() throws Exception {
 
         String testGroupName = "Gr" + System.currentTimeMillis();
-        int testGroupId = -1;
 
-        Group testGroup = new Group(testGroupId, testGroupName);
+        Group testGroup = new Group();
+        testGroup.setName(testGroupName);
+
+        int defaultId = testGroup.getId();
 
         //test CREATE group
         assertTrue(queryCreator.addGroup(testGroup));
 
         //test auto-generation id
-        assertTrue(testGroup.getId() != testGroupId);
-        assertThat(testGroup.getId(), not(equalTo(testGroupId)));
+        assertThat(testGroup.getId(), not(equalTo(defaultId)));
 
         //test error when duplicate
         try {
@@ -43,7 +48,9 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
         //test error when read invalid
         int invalidId = -1;
-        Group groupNotFromDB = new Group(invalidId, "Test");
+        Group groupNotFromDB = new Group();
+        groupNotFromDB.setId(invalidId);
+        groupNotFromDB.setName("Test");
 
         try {
             queryCreator.getGroup(groupNotFromDB);
@@ -96,25 +103,32 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         //START TESTING FOR STUDENT(contains group which must be in DB)
 
         String testStudentsName = "Student " + System.currentTimeMillis();
-        int testStudentsId = -1;
 
         String testStudentsGroupName = "Gr" + System.currentTimeMillis();
-        int testStudentsGroupId = -1;
-        Group testStudentsGroup = new Group(testStudentsGroupId, testStudentsGroupName);
+
+        Group testStudentsGroup = new Group();
+        testStudentsGroup.setName(testStudentsGroupName);
+
         queryCreator.addGroup(testStudentsGroup);
 
-        Student testStudent = new Student(testStudentsId, testStudentsName, testStudentsGroup);
+        Student testStudent = new Student();
+        testStudent.setName(testStudentsName);
+        testStudent.setGroup(testStudentsGroup);
 
+        int testStudentId = testStudent.getId();
         //test CREATE student
         assertTrue(queryCreator.addStudent(testStudent));
 
         //test auto-generation id
-        assertTrue(testStudent.getId() != testStudentsId);
+        assertTrue(testStudent.getId() != testStudentId);
 
 
         //test error when add student with group not from DB
         try {
-            queryCreator.addStudent(new Student(testStudentsId, testStudentsName, groupNotFromDB));
+            Student testStudentWithGroupNotFromDB = new Student();
+            testStudentWithGroupNotFromDB.setName(testStudentsName);
+            testStudentWithGroupNotFromDB.setGroup(groupNotFromDB);
+            queryCreator.addStudent(testStudentWithGroupNotFromDB);
             assertTrue(false);
 
         } catch (AppDBException e) {
@@ -129,8 +143,9 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         assertEquals(testStudent, addedStudent);
 
         //test error when read invalid student
-        int invalidStudentId = -1;
-        Student studentNotFromDB = new Student(invalidStudentId, testStudentsName, testStudentsGroup);
+        Student studentNotFromDB = new Student();
+        studentNotFromDB.setName(testStudentsName);
+        studentNotFromDB.setGroup(testStudentsGroup);
 
         try {
             queryCreator.getStudent(studentNotFromDB);

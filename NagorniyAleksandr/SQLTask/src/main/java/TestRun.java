@@ -11,9 +11,9 @@ public class TestRun {
     public static void main(String[] args) throws AppDBException {
 
         Service service = Factory.getService();
-        Group testGroup = new Group(1, "ACB17");
-        SubjectCategory testCategory = new SubjectCategory(1, "Exact");
-        Subject testSubject = new Subject(1, "Mathematics",
+        Group testGroup = new Group("ACB17");
+        SubjectCategory testCategory = new SubjectCategory("Exact");
+        Subject testSubject = new Subject("Mathematics",
                 testCategory, "Queen of Sciences");
 
 

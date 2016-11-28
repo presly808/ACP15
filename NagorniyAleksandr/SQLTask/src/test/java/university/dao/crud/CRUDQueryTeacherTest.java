@@ -17,20 +17,27 @@ public class CRUDQueryTeacherTest extends PrepareTestDataBase {
 
     @Before
     public void setUp() throws Exception {
-        int testTeacherId = -1;
+
         String testTeacherName = "Teacher " + System.currentTimeMillis();
         int testTeacherExperience = 10;
 
-        testTeacher = new Teacher(testTeacherId, testTeacherName, testTeacherExperience);
+        testTeacher = new Teacher();
+        testTeacher.setName(testTeacherName);
+        testTeacher.setExperience(testTeacherExperience);
         queryCreator.addTeacher(testTeacher);
 
-        int invalidId = -1;
-        teacherNotFromDB = new Teacher(invalidId, testTeacherName, testTeacherExperience);
+        String testTeacherNotFromDBName = "Teacher " + System.currentTimeMillis();
+        teacherNotFromDB = new Teacher();
+        teacherNotFromDB.setName(testTeacherNotFromDBName);
+        teacherNotFromDB.setExperience(testTeacherExperience);
     }
 
     @After
     public void tearDown() throws Exception {
-        queryCreator.deleteTeacher(testTeacher);
+        try {
+            queryCreator.deleteTeacher(testTeacher);
+        } catch (AppDBException e) {}
+
         teacherNotFromDB = null;
     }
 
@@ -40,16 +47,15 @@ public class CRUDQueryTeacherTest extends PrepareTestDataBase {
         String testTeacherNameForAddTest = "Teacher " + System.currentTimeMillis();
         int testTeacherExperienceForAddTest = 10;
 
-        Teacher testTeacherForAddTest = new Teacher(testTeacherIdForAddTest,
-                testTeacherNameForAddTest, testTeacherExperienceForAddTest);
+        Teacher testTeacherForAddTest = new Teacher();
+        testTeacherForAddTest.setName(testTeacherNameForAddTest);
+        testTeacherForAddTest.setExperience(testTeacherExperienceForAddTest);
 
         assertTrue(queryCreator.addTeacher(testTeacherForAddTest));
 
         //test auto-generation id
-        assertThat(testTeacherForAddTest.getId(), not(equalTo(testTeacherIdForAddTest)));
-
-        //test READ teacher
-        Teacher addedTeacher = queryCreator.getTeacher(testTeacherForAddTest);
+        int defaultId = 0;
+        assertThat(testTeacherForAddTest.getId(), not(equalTo(defaultId)));
 
         queryCreator.deleteTeacher(testTeacherForAddTest);
     }
@@ -91,8 +97,6 @@ public class CRUDQueryTeacherTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-
-        queryCreator.addTeacher(testTeacher);
     }
 
     @Test

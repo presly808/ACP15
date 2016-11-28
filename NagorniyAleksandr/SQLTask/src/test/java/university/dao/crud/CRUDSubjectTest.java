@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class CRUDSubjectTest extends PrepareTestDataBase {
 
-    @Test
+    /*@Test
     public void CRUDSubject() throws Exception {
 
         String testSubjectName = "Sub" + System.currentTimeMillis();
@@ -110,5 +110,5 @@ public class CRUDSubjectTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-    }
+    }*/
 }

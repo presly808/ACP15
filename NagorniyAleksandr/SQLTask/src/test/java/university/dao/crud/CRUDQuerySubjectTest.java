@@ -3,9 +3,12 @@ package university.dao.crud;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import university.container.AppEntityManagerFactory;
 import university.exceptions.AppDBException;
 import university.models.Subject;
 import university.models.SubjectCategory;
+
+import javax.persistence.EntityManager;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
@@ -22,28 +25,42 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
     @Before
     public void setUp() throws Exception {
         String testSubjectName = "Sub" + System.currentTimeMillis();
-        int testSubjectId = -1;
         String testSubjectDescription = "TestDescription";
 
-        validSubjectCategory = new SubjectCategory(1, "Exact");
+        EntityManager entityManager = AppEntityManagerFactory.getEntityManagerFactory().createEntityManager();
+        try {
+            entityManager.createNativeQuery("INSERT INTO SUBJECT_CATEGORYS(ID, TITLE) VALUES (1, 'Exact'),(2, 'Humanities')");
+        } finally {
+            entityManager.close();
+        }
 
-        testSubject = new Subject(testSubjectId, testSubjectName,
-                validSubjectCategory, testSubjectDescription);
+        //String testSubjectCategoryName = "SC" + System.currentTimeMillis();
+        validSubjectCategory = new SubjectCategory("Exact");
+        validSubjectCategory.setId(278);
+
+        testSubject = new Subject();
+        testSubject.setName(testSubjectName);
+        testSubject.setCategory(validSubjectCategory);
+        testSubject.setDescription(testSubjectDescription);
         queryCreator.addSubject(testSubject);
 
 
-        int invalidSubjectCategoryId = -1;
-        subjectCategoryNotFromDB = new SubjectCategory(invalidSubjectCategoryId, null);
+        subjectCategoryNotFromDB = new SubjectCategory("Invalid Name");
 
-        int invalidSubjectId = -1;
-        subjectNotFromDB = new Subject(invalidSubjectId, testSubjectName,
-                validSubjectCategory, testSubjectDescription);
+        String testSubjectNotFromDBName = "Sub" + System.currentTimeMillis();
+        subjectNotFromDB = new Subject();
+        subjectNotFromDB.setName(testSubjectNotFromDBName);
+        subjectNotFromDB.setCategory(validSubjectCategory);
+        subjectNotFromDB.setDescription(testSubjectDescription);
     }
 
     @After
     public void tearDown() throws Exception {
 
-        queryCreator.deleteSubject(testSubject);
+        try {
+            queryCreator.deleteSubject(testSubject);
+        } catch (AppDBException e) {}
+
         subjectNotFromDB = null;
         validSubjectCategory = null;
         subjectCategoryNotFromDB = null;
@@ -52,18 +69,18 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
     @Test
     public void addSubject() throws Exception {
         String testSubjectNameForAddTest = "Sub" + System.currentTimeMillis();
-        int testSubjectIdForAddTest = -1;
         String testSubjectDescriptionForAddTest = "TestDescription";
 
-        validSubjectCategory = new SubjectCategory(1, "Exact");
-
-        Subject testSubjectForAddTest = new Subject(testSubjectIdForAddTest, testSubjectNameForAddTest,
-                validSubjectCategory, testSubjectDescriptionForAddTest);
+        Subject testSubjectForAddTest = new Subject();
+        testSubjectForAddTest.setName(testSubjectNameForAddTest);
+        testSubjectForAddTest.setCategory(validSubjectCategory);
+        testSubjectForAddTest.setDescription(testSubjectDescriptionForAddTest);
 
         assertTrue(queryCreator.addSubject(testSubjectForAddTest));
 
         //test auto-generation id
-        assertThat(testSubject.getId(), not(equalTo(testSubjectIdForAddTest)));
+        int defaultId = 0;
+        assertThat(testSubject.getId(), not(equalTo(defaultId)));
 
         queryCreator.deleteSubject(testSubjectForAddTest);
 
@@ -72,11 +89,12 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
     @Test
     public void addSubjectNegativeInvalidCategory() throws Exception {
         String testSubjectNameForAddTest = "Sub" + System.currentTimeMillis();
-        int testSubjectIdForAddTest = -1;
         String testSubjectDescriptionForAddTest = "TestDescription";
 
-        Subject testSubjectWithInvalidCategory = new Subject(testSubjectIdForAddTest, testSubjectNameForAddTest,
-                subjectCategoryNotFromDB, testSubjectDescriptionForAddTest);
+        Subject testSubjectWithInvalidCategory = new Subject();
+        testSubjectWithInvalidCategory.setName(testSubjectNameForAddTest);
+        testSubjectWithInvalidCategory.setCategory(subjectCategoryNotFromDB);
+        testSubjectWithInvalidCategory.setDescription(testSubjectDescriptionForAddTest);
 
         try {
             queryCreator.addSubject(testSubjectWithInvalidCategory);
@@ -148,8 +166,6 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-
-        queryCreator.addSubject(testSubject);
     }
 
     @Test

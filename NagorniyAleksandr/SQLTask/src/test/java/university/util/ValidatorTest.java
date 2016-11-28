@@ -52,9 +52,9 @@ public class ValidatorTest {
 
     @Test
     public void validateStudent() throws Exception {
-        Group validGroup = new Group(1, "ValidGroup");
+        Group validGroup = new Group("ValidGroup");
         String studentValidName = "Nagorniy Aleksandr";
-        Student validStudent = new Student(1, studentValidName, validGroup);
+        Student validStudent = new Student(studentValidName, validGroup);
         Validator.validateStudent(validStudent);
     }
 
@@ -64,18 +64,18 @@ public class ValidatorTest {
         String validGroupName = "ValidGroupName";
         String invalidName = "1231@#$kldsfjklsms=+";
 
-        Group validGroup = new Group(1, validGroupName);
-        Group invalidGroup1 = new Group(1, null);
-        Group invalidGroup2 = new Group(1, invalidName);
+        Group validGroup = new Group(validGroupName);
+        Group invalidGroup1 = new Group(null);
+        Group invalidGroup2 = new Group(invalidName);
         int invalidGroupId = -4;
-        Group invalidGroup3 = new Group(invalidGroupId, invalidName);
+        Group invalidGroup3 = new Group(invalidName);
 
         String studentValidName = "Test";
-        Student invalidStudent1 = new Student(1, null, validGroup);
-        Student invalidStudent2 = new Student(1, invalidName, validGroup);
-        Student invalidStudent3 = new Student(1, studentValidName, invalidGroup1);
-        Student invalidStudent4 = new Student(1, studentValidName, invalidGroup2);
-        Student invalidStudent5 = new Student(1, studentValidName, invalidGroup3);
+        Student invalidStudent1 = new Student(null, validGroup);
+        Student invalidStudent2 = new Student(invalidName, validGroup);
+        Student invalidStudent3 = new Student(studentValidName, invalidGroup1);
+        Student invalidStudent4 = new Student(studentValidName, invalidGroup2);
+        Student invalidStudent5 = new Student(studentValidName, invalidGroup3);
 
         try {
             Validator.validateStudent(null);
@@ -122,16 +122,16 @@ public class ValidatorTest {
 
     @Test
     public void validateGroup() throws Exception {
-        Group validGroup1 = new Group(1, "ValidGroup");
+        Group validGroup1 = new Group("ValidGroup");
         Validator.validateGroup(validGroup1);
-        Group validGroup2 = new Group(1, "ACP-15");
+        Group validGroup2 = new Group("ACP-15");
         Validator.validateGroup(validGroup2);
     }
 
     @Test
     public void validateGroupNegative() throws Exception {
-        Group invalidGroup1 = new Group(1, null);
-        Group invalidGroup2 = new Group(1, "1231@#$kldsfjklsms=+");
+        Group invalidGroup1 = new Group(null);
+        Group invalidGroup2 = new Group("1231@#$kldsfjklsms=+");
 
         try {
             Validator.validateGroup(null);
@@ -157,10 +157,10 @@ public class ValidatorTest {
 
     @Test
     public void validateSubject() throws Exception {
-        SubjectCategory validSubjectCategory = new SubjectCategory(1, "ValidCategory");
+        SubjectCategory validSubjectCategory = new SubjectCategory("ValidCategory");
         String subjectValidName = "Philosophy";
         String subjectDescription = "Description";
-        Subject validSubject = new Subject(1, subjectValidName, validSubjectCategory, subjectDescription);
+        Subject validSubject = new Subject(subjectValidName, validSubjectCategory, subjectDescription);
         Validator.validateSubject(validSubject);
     }
 
@@ -168,16 +168,16 @@ public class ValidatorTest {
     public void validateSubjectNegative() throws Exception {
 
         String validCategoryTitle = "ValidCategoryTitle";
-        SubjectCategory validSubjectCategory = new SubjectCategory(1, validCategoryTitle);
-        SubjectCategory invalidSubjectCategory1 = new SubjectCategory(1, null);
-        SubjectCategory invalidSubjectCategory2 = new SubjectCategory(-2, validCategoryTitle);
+        SubjectCategory validSubjectCategory = new SubjectCategory(validCategoryTitle);
+        SubjectCategory invalidSubjectCategory1 = new SubjectCategory(null);
+        SubjectCategory invalidSubjectCategory2 = new SubjectCategory(validCategoryTitle);
 
         String subjectDescription = "";
         String subjectValidName = "Test";
-        Subject invalidSubject1 = new Subject(1, null, validSubjectCategory, subjectDescription);
-        Subject invalidSubject2 = new Subject(1, "1231@#$kldsfjklsms=+", validSubjectCategory, subjectDescription);
-        Subject invalidSubject3 = new Subject(1, subjectValidName, invalidSubjectCategory1, subjectDescription);
-        Subject invalidSubject4 = new Subject(1, subjectValidName, invalidSubjectCategory2, subjectDescription);
+        Subject invalidSubject1 = new Subject(null, validSubjectCategory, subjectDescription);
+        Subject invalidSubject2 = new Subject("1231@#$kldsfjklsms=+", validSubjectCategory, subjectDescription);
+        Subject invalidSubject3 = new Subject(subjectValidName, invalidSubjectCategory1, subjectDescription);
+        Subject invalidSubject4 = new Subject(subjectValidName, invalidSubjectCategory2, subjectDescription);
 
         try {
             Validator.validateSubject(null);
@@ -218,14 +218,14 @@ public class ValidatorTest {
     @Test
     public void validateSubjectCategory() throws Exception {
         String validSubjectCategoryTitle = "Humanities";
-        SubjectCategory validSubjectCategory = new SubjectCategory(1, validSubjectCategoryTitle);
+        SubjectCategory validSubjectCategory = new SubjectCategory(validSubjectCategoryTitle);
         Validator.validateSubjectCategory(validSubjectCategory);
     }
 
     @Test
     public void validateSubjectCategoryNegative() throws Exception {
-        SubjectCategory invalidSubjectCategory1 = new SubjectCategory(1, null);
-        SubjectCategory invalidSubjectCategory2 = new SubjectCategory(1, "1231@#$kldsfjklsms=+");
+        SubjectCategory invalidSubjectCategory1 = new SubjectCategory(null);
+        SubjectCategory invalidSubjectCategory2 = new SubjectCategory("1231@#$kldsfjklsms=+");
 
         try {
             Validator.validateSubjectCategory(null);
@@ -253,16 +253,16 @@ public class ValidatorTest {
     public void validateTeacher() throws Exception {
         String validTeacherName = "Valid Teacher";
         int validExperience = 10;
-        Teacher validTeacher = new Teacher(1, validTeacherName, validExperience);
+        Teacher validTeacher = new Teacher(validTeacherName, validExperience);
     }
 
     @Test
     public void validateTeacherNegative() throws Exception {
-        Teacher invalidTeacher1 = new Teacher(1, null, 6);
-        Teacher invalidTeacher2 = new Teacher(1, "1231@#$kldsfjklsms=+", 6);
+        Teacher invalidTeacher1 = new Teacher(null, 6);
+        Teacher invalidTeacher2 = new Teacher("1231@#$kldsfjklsms=+", 6);
 
         int invalidExperience = -7;
-        Teacher invalidTeacher3 = new Teacher(1, "Correct Name", invalidExperience);
+        Teacher invalidTeacher3 = new Teacher("Correct Name", invalidExperience);
 
         try {
             Validator.validateTeacher(null);

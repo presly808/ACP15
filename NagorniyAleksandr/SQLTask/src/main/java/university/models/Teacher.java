@@ -4,10 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "teachers")
-public class Teacher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Teacher extends IdEntity{
 
     @Column(name = "name", length = 40, nullable = false)
     private String name;
@@ -18,18 +15,9 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(int id, String name, int experience) {
-        this.id = id;
+    public Teacher(String name, int experience) {
         this.name = name;
         this.experience = experience;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -51,24 +39,9 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", experience='" + experience + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Teacher teacher = (Teacher) o;
-
-        return id == teacher.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 }

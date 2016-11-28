@@ -2,6 +2,8 @@ import university.container.Factory;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
 import university.models.Group;
+import university.models.Subject;
+import university.models.SubjectCategory;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,12 +18,17 @@ public class TestInitTablesHibernate {
         EntityManagerFactory managerFactory =
                 Persistence.createEntityManagerFactory("jpa-task");
 
-
         CRUDQuery crud = Factory.getCrudQuery();
         try {
-            Group temp = new Group();
-            temp.setName("QCP1234");
-            crud.addGroup(temp);
+
+            SubjectCategory sc = new SubjectCategory("For test3");
+            sc.setId(343);
+
+            Subject subject = new Subject("2SB" + System.currentTimeMillis(), sc, "desc");
+
+            crud.addSubject(subject);
+            System.out.println("test");
+            System.out.println(subject);
         } catch (AppDBException e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package university.container;
 
 import university.dao.QueryCreator;
 import university.dao.QueryCreatorImpl;
+import university.dao.QueryCreatorJPAImpl;
 import university.dao.crud.CRUDQuery;
 import university.dao.crud.CRUDQueryJPAImpl;
 import university.jdbc.DBConnector;
@@ -9,22 +10,24 @@ import university.jdbc.DBConnectorImpl;
 import university.service.Service;
 import university.service.ServiceImpl;
 
+import javax.persistence.EntityManagerFactory;
+
 public class Factory {
 
-    private static DBConnector dbConnector;
+    private static EntityManagerFactory entityManagerFactory;
     private static CRUDQuery crudQuery;
     private static QueryCreator queryCreator;
     private static Service service;
 
     static {
-        dbConnector = new DBConnectorImpl();
-        crudQuery = new CRUDQueryJPAImpl(AppEntityManagerFactory.getInstance());
-        queryCreator = new QueryCreatorImpl(dbConnector, crudQuery);
+        entityManagerFactory = AppEntityManagerFactory.getEntityManagerFactory();
+        crudQuery = new CRUDQueryJPAImpl(entityManagerFactory);
+        queryCreator = new QueryCreatorJPAImpl(entityManagerFactory, crudQuery);
         service = new ServiceImpl(queryCreator);
     }
 
-    public static DBConnector getDBConnector() {
-        return dbConnector;
+    public static EntityManagerFactory getEntityManagerFactory() {
+        return entityManagerFactory;
     }
 
     public static CRUDQuery getCrudQuery() {

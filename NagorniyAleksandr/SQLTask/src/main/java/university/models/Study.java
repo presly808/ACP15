@@ -5,11 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "study")
-public class Study {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Study extends IdEntity {
 
     @ManyToOne()
     @JoinColumn(name = "group_id", referencedColumnName = "id")
@@ -35,25 +31,10 @@ public class Study {
     @Override
     public String toString() {
         return "Study{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", groupList=" + groupList +
                 ", subjectList=" + subjectList +
                 ", teacherList=" + teacherList +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Study study = (Study) o;
-
-        return id == study.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 }

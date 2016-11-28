@@ -10,7 +10,7 @@ public class CRUDTeacherTest extends PrepareTestDataBase {
 
 
 
-    @Test
+    /*@Test
     public void CRUDTeacher() throws Exception {
 
         int testTeacherId = -1;
@@ -85,5 +85,5 @@ public class CRUDTeacherTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-    }
+    }*/
 }

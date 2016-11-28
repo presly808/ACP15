@@ -38,11 +38,6 @@ public class Validator {
         }
 
         validateGroup(student.getGroup());
-
-        if (student.getGroup().getId() < 1) {
-            LOGGER.error("Throw: Invalid students group ID");
-            throw new InvalidValueException("Invalid students group ID");
-        }
     }
 
     public static void validateGroup(Group group) throws InvalidValueException {
@@ -70,11 +65,6 @@ public class Validator {
         }
 
         validateSubjectCategory(subject.getCategory());
-
-        if (subject.getCategory().getId() < 1) {
-            LOGGER.error("Throw: Invalid subject category ID");
-            throw new InvalidValueException("Invalid subject category ID");
-        }
     }
 
     public static void validateSubjectCategory(SubjectCategory subjectCategory) throws

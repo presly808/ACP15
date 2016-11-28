@@ -4,34 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Student extends IdEntity {
 
     @Column(name = "name", nullable = false, length = 40)
     private String name;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
     public Student() {
     }
 
-    public Student(int id, String name, Group group) {
-        this.id = id;
+    public Student(String name, Group group) {
         this.name = name;
         this.group = group;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -53,25 +40,10 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", group=" + group +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Student student = (Student) o;
-
-        return id == student.id;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
 }

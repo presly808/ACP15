@@ -16,7 +16,16 @@ public class ToObjectConverter {
             int groupId = resultSet.getInt("studentGroupId");
             String groupName = resultSet.getString("groupName");
 
-            return new Student(studentId, studentName, new Group(groupId, groupName));
+            Group studentsGroup = new Group();
+            studentsGroup.setId(groupId);
+            studentsGroup.setName(groupName);
+
+            Student student = new Student();
+            student.setId(studentId);
+            student.setName(studentName);
+            student.setGroup(studentsGroup);
+
+            return student;
         } else {
             return null;
         }
@@ -27,7 +36,12 @@ public class ToObjectConverter {
             int groupId = resultSet.getInt("groupId");
             String groupName = resultSet.getString("groupName");
 
-            return new Group(groupId, groupName);
+            Group group = new Group();
+            group.setId(groupId);
+            group.setName(groupName);
+
+
+            return group;
         } else {
             return null;
         }
@@ -39,7 +53,12 @@ public class ToObjectConverter {
             String teacherName = resultSet.getString("teacherName");
             int teacherExperience = resultSet.getInt("teacherExperience");
 
-            return new Teacher(teacherId, teacherName, teacherExperience);
+            Teacher teacher = new Teacher();
+            teacher.setId(teacherId);
+            teacher.setName(teacherName);
+            teacher.setExperience(teacherExperience);
+
+            return teacher;
         } else {
             return null;
         }
@@ -54,7 +73,17 @@ public class ToObjectConverter {
             String categoryTitle = resultSet.getString("categoryTitle");
             String subjectDescription = resultSet.getString("subjectDescription");
 
-            return new Subject(subjectId, subjectName, new SubjectCategory(categoryId, categoryTitle), subjectDescription);
+            SubjectCategory subjectCategory = new SubjectCategory();
+            subjectCategory.setId(categoryId);
+            subjectCategory.setTitle(categoryTitle);
+
+            Subject subject = new Subject();
+            subject.setId(subjectId);
+            subject.setName(subjectName);
+            subject.setCategory(subjectCategory);
+            subject.setDescription(subjectDescription);
+
+            return subject;
         } else {
             return null;
         }
@@ -71,8 +100,17 @@ public class ToObjectConverter {
             int groupId = resultSet.getInt("studentGroupId");
             String groupName = resultSet.getString("groupName");
 
-            result.add(new Student(studentId, studentName,
-                    new Group(groupId, groupName)));
+
+            Group studentsGroup = new Group();
+            studentsGroup.setId(groupId);
+            studentsGroup.setName(groupName);
+
+            Student student = new Student();
+            student.setId(studentId);
+            student.setName(studentName);
+            student.setGroup(studentsGroup);
+
+            result.add(student);
         }
 
         return result;
@@ -85,13 +123,21 @@ public class ToObjectConverter {
 
             int subjectId = resultSet.getInt(1);
             String subjectName = resultSet.getString(2);
-            int categoryID = resultSet.getInt(3);
+            int categoryId = resultSet.getInt(3);
             String categoryTitle = resultSet.getString(4);
             String subjectDescription = resultSet.getString(5);
 
-            result.add(new Subject(subjectId, subjectName,
-                    new SubjectCategory(categoryID, categoryTitle),
-                    subjectDescription));
+            SubjectCategory subjectCategory = new SubjectCategory();
+            subjectCategory.setId(categoryId);
+            subjectCategory.setTitle(categoryTitle);
+
+            Subject subject = new Subject();
+            subject.setId(subjectId);
+            subject.setName(subjectName);
+            subject.setCategory(subjectCategory);
+            subject.setDescription(subjectDescription);
+
+            result.add(subject);
         }
 
         return result;
@@ -105,7 +151,11 @@ public class ToObjectConverter {
             int groupId = resultSet.getInt("groupId");
             String groupName = resultSet.getString("groupName");
 
-            result.add(new Group(groupId, groupName));
+            Group group = new Group();
+            group.setId(groupId);
+            group.setName(groupName);
+
+            result.add(group);
         }
 
         return result;
@@ -120,7 +170,12 @@ public class ToObjectConverter {
             String teacherName = resultSet.getString("teacherName");
             int teacherExperience = resultSet.getInt("teacherExperience");
 
-            result.add(new Teacher(teacherId, teacherName, teacherExperience));
+            Teacher teacher = new Teacher();
+            teacher.setId(teacherId);
+            teacher.setName(teacherName);
+            teacher.setExperience(teacherExperience);
+
+            result.add(teacher);
         }
 
         return result;
