@@ -16,13 +16,6 @@ public class Factory {
     private static QueryCreator queryCreator;
     private static Service service;
 
-    static {
-        entityManagerFactory = AppEntityManagerFactory.getEntityManagerFactory();
-        crudQuery = new CRUDQueryJPAImpl(entityManagerFactory);
-        queryCreator = new QueryCreatorJPAImpl(entityManagerFactory, crudQuery);
-        service = new ServiceImpl(queryCreator);
-    }
-
     public static EntityManagerFactory getEntityManagerFactory() {
         if (entityManagerFactory == null) {
             entityManagerFactory = AppEntityManagerFactory.getEntityManagerFactory();
