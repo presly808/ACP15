@@ -3,7 +3,6 @@ package university.dao;
 import org.apache.log4j.Logger;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
 import university.models.*;
 
 import java.sql.Connection;
@@ -14,8 +13,8 @@ import java.util.List;
 
 import static university.util.convertor.ToObjectConverter.*;
 
-public class QueryCreatorImpl implements QueryCreator {
-
+public class QueryCreatorImpl  {
+/*
     private static final String GET_STUDENTS_LIST = "SELECT students.id AS studentId, " +
             "students.name AS studentName, " +
             "students.group_id AS studentGroupId, " +
@@ -453,5 +452,5 @@ public class QueryCreatorImpl implements QueryCreator {
     public Subject getSubject(Subject subject) throws AppDBException {
 
         return crudQuery.getSubject(subject);
-    }
+    }*/
 }

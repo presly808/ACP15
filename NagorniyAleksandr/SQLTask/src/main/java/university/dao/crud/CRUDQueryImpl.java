@@ -2,7 +2,6 @@ package university.dao.crud;
 
 import org.apache.log4j.Logger;
 import university.exceptions.AppDBException;
-import university.jdbc.DBConnector;
 import university.models.Group;
 import university.models.Student;
 import university.models.Subject;
@@ -12,8 +11,8 @@ import java.sql.*;
 
 import static university.util.convertor.ToObjectConverter.*;
 
-public class CRUDQueryImpl implements CRUDQuery {
-    private static final String ADD_STUDENT = "INSERT INTO students (name, group_id) VALUES (?,?)";
+public class CRUDQueryImpl {
+   /*private static final String ADD_STUDENT = "INSERT INTO students (name, group_id) VALUES (?,?)";
     private static final String ADD_GROUP = "INSERT INTO groups (name) VALUES (?)";
     private static final String ADD_SUBJECT = "INSERT INTO subjects(name, category_id, description) " +
             "VALUES (?, ?, ?)";
@@ -457,5 +456,5 @@ public class CRUDQueryImpl implements CRUDQuery {
             LOGGER.error(e.getMessage() + "Throw: AppDBException");
             throw new AppDBException(e.getMessage());
         }
-    }
+    }*/
 }

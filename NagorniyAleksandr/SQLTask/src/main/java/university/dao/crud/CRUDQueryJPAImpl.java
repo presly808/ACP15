@@ -53,6 +53,7 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             manager.persist(group);
             transaction.commit();
             LOGGER.info("Group was saved to DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -60,8 +61,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
@@ -70,13 +69,12 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-/*        SubjectCategory subjectCategory = subject.getCategory();
-        manager.find(SubjectCategory.class, subjectCategory.getId());*/
         try {
             transaction.begin();
             manager.persist(subject);
             transaction.commit();
             LOGGER.info("Subject was saved to DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -84,8 +82,27 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
+    }
 
-        return true;
+    @Override
+    public boolean addSubjectCategory(SubjectCategory subjectCategory) throws AppDBException {
+        LOGGER.info("Add subject category");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        try {
+            transaction.begin();
+            manager.persist(subjectCategory);
+            transaction.commit();
+            LOGGER.info("Subject category was saved to DB");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
@@ -99,6 +116,7 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             manager.persist(teacher);
             transaction.commit();
             LOGGER.info("Teacher was saved to DB");
+            return true;
         } catch (Exception e) {
             transaction.rollback();
             LOGGER.error(e.getMessage() + ". Throw: AppDBException");
@@ -106,8 +124,6 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } finally {
             manager.close();
         }
-
-        return true;
     }
 
     @Override
@@ -213,6 +229,35 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
             manager.merge(subjectWithNewData);
             transaction.commit();
             LOGGER.info("Subject was edited");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
+    }
+
+    @Override
+    public boolean editSubjectCategory(SubjectCategory subjectCategoryWithNewData) throws AppDBException {
+        LOGGER.info("Edit subject category");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+
+        if (manager.find(SubjectCategory.class, subjectCategoryWithNewData.getId()) == null) {
+            manager.close();
+            String errorMessage = "Subject category not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.merge(subjectCategoryWithNewData);
+            transaction.commit();
+            LOGGER.info("Subject category was edited");
             return true;
         } catch (Exception e) {
             transaction.rollback();
@@ -340,6 +385,35 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
     }
 
     @Override
+    public boolean deleteSubjectCategory(SubjectCategory subjectCategory) throws AppDBException {
+        LOGGER.info("Delete subject category");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction transaction = manager.getTransaction();
+
+        SubjectCategory tempSubjectCategory = manager.find(SubjectCategory.class, subjectCategory.getId());
+        if (tempSubjectCategory == null) {
+            manager.close();
+            String errorMessage = "Subject category not found";
+            LOGGER.error(errorMessage);
+            throw new AppDBException(errorMessage);
+        }
+
+        try {
+            transaction.begin();
+            manager.remove(tempSubjectCategory);
+            transaction.commit();
+            LOGGER.info("Subject category was deleted from DB");
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            LOGGER.error(e.getMessage() + ". Throw: AppDBException");
+            throw new AppDBException(e.getMessage());
+        } finally {
+            manager.close();
+        }
+    }
+
+    @Override
     public Student getStudent(Student student) throws AppDBException {
         LOGGER.info("Get student");
         EntityManager manager = factory.createEntityManager();
@@ -408,6 +482,24 @@ public class CRUDQueryJPAImpl implements CRUDQuery {
         } else {
             manager.close();
             String errorMessage = "Subject not found";
+            LOGGER.error(errorMessage + ". Throw: AppDBException");
+            throw new AppDBException(errorMessage);
+        }
+    }
+
+    @Override
+    public SubjectCategory getSubjectCategory(SubjectCategory subjectCategory) throws AppDBException {
+        LOGGER.info("Subject category group");
+        EntityManager manager = factory.createEntityManager();
+
+        SubjectCategory foundedSubjectCategory = manager.find(SubjectCategory.class, subjectCategory.getId());
+        if (foundedSubjectCategory != null) {
+            manager.close();
+            LOGGER.info("Subject category founded successful");
+            return foundedSubjectCategory;
+        } else {
+            manager.close();
+            String errorMessage = "Subject category not found";
             LOGGER.error(errorMessage + ". Throw: AppDBException");
             throw new AppDBException(errorMessage);
         }

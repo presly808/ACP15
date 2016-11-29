@@ -27,16 +27,10 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
         String testSubjectName = "Sub" + System.currentTimeMillis();
         String testSubjectDescription = "TestDescription";
 
-        EntityManager entityManager = AppEntityManagerFactory.getEntityManagerFactory().createEntityManager();
-        try {
-            entityManager.createNativeQuery("INSERT INTO SUBJECT_CATEGORYS(ID, TITLE) VALUES (1, 'Exact'),(2, 'Humanities')");
-        } finally {
-            entityManager.close();
-        }
-
-        //String testSubjectCategoryName = "SC" + System.currentTimeMillis();
-        validSubjectCategory = new SubjectCategory("Exact");
-        validSubjectCategory.setId(278);
+        String testSubjectCategoryName = "SC" + System.currentTimeMillis();
+        validSubjectCategory = new SubjectCategory();
+        validSubjectCategory.setTitle(testSubjectCategoryName);
+        queryCreator.addSubjectCategory(validSubjectCategory);
 
         testSubject = new Subject();
         testSubject.setName(testSubjectName);
@@ -61,6 +55,10 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
             queryCreator.deleteSubject(testSubject);
         } catch (AppDBException e) {}
 
+        try {
+            queryCreator.deleteSubjectCategory(validSubjectCategory);
+        } catch (AppDBException e) {}
+
         subjectNotFromDB = null;
         validSubjectCategory = null;
         subjectCategoryNotFromDB = null;
@@ -80,7 +78,7 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
 
         //test auto-generation id
         int defaultId = 0;
-        assertThat(testSubject.getId(), not(equalTo(defaultId)));
+        assertThat(testSubjectForAddTest.getId(), not(equalTo(defaultId)));
 
         queryCreator.deleteSubject(testSubjectForAddTest);
 

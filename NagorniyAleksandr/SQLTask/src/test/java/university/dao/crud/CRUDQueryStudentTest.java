@@ -14,15 +14,13 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDQueryStudentTest {
+public class CRUDQueryStudentTest extends PrepareTestDataBase {
 
     private Group testStudentsGroup;
     private Group groupNotFromDB;
 
     private Student testStudent;
     private Student studentNotFromDB;
-
-    protected QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Before
     public void setUp() throws Exception {

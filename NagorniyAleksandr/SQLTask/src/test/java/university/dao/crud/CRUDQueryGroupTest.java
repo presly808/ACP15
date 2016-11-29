@@ -12,12 +12,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDQueryGroupTest {
+public class CRUDQueryGroupTest extends PrepareTestDataBase {
 
     private Group testGroup;
     private Group groupNotFromDB;
-
-    protected QueryCreator queryCreator = Factory.getQueryCreator();
 
     @Before
     public void setUp() throws Exception {

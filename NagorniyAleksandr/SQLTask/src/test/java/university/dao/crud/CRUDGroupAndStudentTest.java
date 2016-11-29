@@ -11,9 +11,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class CRUDGroupAndStudentTest {
-
-    protected QueryCreator queryCreator = Factory.getQueryCreator();
+public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
     @Test
     public void CRUDGroupAndStudents() throws Exception {
@@ -42,9 +40,9 @@ public class CRUDGroupAndStudentTest {
         //test READ group
         Group addedGroup = queryCreator.getGroup(testGroup);
 
-        assertEquals(testGroup.getId(), addedGroup.getId());
-        assertEquals(testGroup.getName(), addedGroup.getName());
-        assertEquals(testGroup, addedGroup);
+        assertThat(testGroup.getId(), equalTo(addedGroup.getId()));
+        assertThat(testGroup.getName(), equalTo(addedGroup.getName()));
+        assertThat(testGroup, equalTo(addedGroup));
 
         //test error when read invalid
         int invalidId = -1;
@@ -67,8 +65,8 @@ public class CRUDGroupAndStudentTest {
 
         Group updatedGroup = queryCreator.getGroup(testGroup);
 
-        assertEquals(newTestGroupName, updatedGroup.getName());
-        assertEquals(testGroup.getId(), updatedGroup.getId());
+        assertThat(newTestGroupName, equalTo(updatedGroup.getName()));
+        assertThat(testGroup.getId(), equalTo(updatedGroup.getId()));
 
         //test error when update
         try {
@@ -120,8 +118,7 @@ public class CRUDGroupAndStudentTest {
         assertTrue(queryCreator.addStudent(testStudent));
 
         //test auto-generation id
-        assertTrue(testStudent.getId() != testStudentId);
-
+        assertThat(testStudent.getId(), not(equalTo(testStudentId)));
 
         //test error when add student with group not from DB
         try {
@@ -138,9 +135,9 @@ public class CRUDGroupAndStudentTest {
         //test READ student
         Student addedStudent = queryCreator.getStudent(testStudent);
 
-        assertEquals(testStudent.getId(), addedStudent.getId());
-        assertEquals(testStudent.getName(), addedStudent.getName());
-        assertEquals(testStudent, addedStudent);
+        assertThat(testStudent.getId(), equalTo(addedStudent.getId()));
+        assertThat(testStudent.getName(), equalTo(addedStudent.getName()));
+        assertThat(testStudent, equalTo(addedStudent));
 
         //test error when read invalid student
         Student studentNotFromDB = new Student();
@@ -154,6 +151,8 @@ public class CRUDGroupAndStudentTest {
             assertTrue(true);
         }
 
+
+
         //test UPDATE student
         String newTestStudentName = "Student " + System.currentTimeMillis();
         testStudent.setName(newTestStudentName);
@@ -162,10 +161,10 @@ public class CRUDGroupAndStudentTest {
 
         Student updatedStudent = queryCreator.getStudent(testStudent);
 
-        assertEquals(newTestStudentName, updatedStudent.getName());
-        assertEquals(testStudent.getId(), updatedStudent.getId());
-        assertEquals(testStudent.getGroup().getId(), updatedStudent.getGroup().getId());
-        assertEquals(testStudent.getGroup().getName(), updatedStudent.getGroup().getName());
+        assertThat(newTestStudentName, equalTo(updatedStudent.getName()));
+        assertThat(testStudent.getId(), equalTo(updatedStudent.getId()));
+        assertThat(testStudent.getGroup().getId(), equalTo(updatedStudent.getGroup().getId()));
+        assertThat(testStudent.getGroup().getName(), equalTo(updatedStudent.getGroup().getName()));
 
         //test error when update(student not from DB)
         try {
@@ -204,5 +203,8 @@ public class CRUDGroupAndStudentTest {
         } catch (AppDBException e) {
             assertTrue(true);
         }
+
+        //clear test data
+        queryCreator.deleteGroup(testStudentsGroup);
     }
 }
