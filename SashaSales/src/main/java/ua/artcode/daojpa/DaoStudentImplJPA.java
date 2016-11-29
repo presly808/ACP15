@@ -2,6 +2,9 @@ package ua.artcode.daojpa;
 
 import ua.artcode.model.modeljpa.Group;
 import ua.artcode.model.modeljpa.Student;
+import ua.artcode.model.modeljpa.Subject;
+import ua.artcode.util.utilsql.UtilsMethod;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,30 +17,23 @@ import java.util.List;
 public class DaoStudentImplJPA implements DaoStudent<Student> {
 
     private EntityManagerFactory managerFactory;
+    private DaoGroup daoGroup;
 
     public DaoStudentImplJPA(EntityManagerFactory managerFactory) {
         this.managerFactory = managerFactory;
+
     }
 
     @Override
     public Student create(Student student) {
         EntityManager entityManager = managerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
-        Group group = student.getGroup();
-        boolean res = containsGroupByName(group.getName());
 
         try {
 
-            if (!res){
-                entityTransaction.begin();
-                entityManager.persist(group);
-                entityManager.persist(student);
-                entityTransaction.commit();
-            } else {
                 entityTransaction.begin();
                 entityManager.persist(student);
                 entityTransaction.commit();
-            }
 
         } catch (Exception e){
             entityTransaction.rollback();
@@ -70,8 +66,30 @@ public class DaoStudentImplJPA implements DaoStudent<Student> {
     }
 
     @Override
-    public Student update(Student student) {
-        return null;
+    public Student updateByGroup(String student_name, String group_name) {
+        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        Student student = null;
+        Group group = null;
+
+        try {
+
+            entityTransaction.begin();
+
+            int idG = UtilsMethod.getIdOfGroup(group_name, managerFactory);
+            int idS = UtilsMethod.getIdOfStudent(student_name, managerFactory);
+            student = entityManager.find(Student.class, idS);
+            group = entityManager.find(Group.class, idG);
+            student.setGroup(group);
+            entityTransaction.commit();
+
+        } catch (Exception e){
+            entityTransaction.rollback();
+            return null;
+        } finally {
+            entityManager.close();
+        }
+        return student;
     }
 
     @Override
@@ -90,19 +108,6 @@ public class DaoStudentImplJPA implements DaoStudent<Student> {
         EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Student> query = entityManager.createQuery("SELECT t FROM Student t", Student.class);
         return query.getResultList();
-    }
-
-    public boolean containsGroupByName(String group_name) {
-
-        EntityManager entityManager = managerFactory.createEntityManager();
-
-        TypedQuery<Group> query = entityManager.createQuery(String.format("SELECT g FROM Group g WHERE g.name LIKE '%s'",group_name), Group.class);
-        List<Group> groupList = query.getResultList();
-        if (groupList.size() > 0){
-            return true;
-        }
-
-        return false;
     }
 
 }

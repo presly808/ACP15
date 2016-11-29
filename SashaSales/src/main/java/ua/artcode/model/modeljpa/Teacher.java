@@ -19,13 +19,23 @@ public class Teacher extends IdEntity{
     private Subject subject;
 
     public Teacher() {
+        super();
     }
 
     public Teacher(String name, int experience, Subject subject) {
+        super();
         this.name = name;
         this.experience = experience;
         this.subject = subject;
     }
+
+    public Teacher(int id, String name, int experience, Subject subject) {
+        super(id);
+        this.name = name;
+        this.experience = experience;
+        this.subject = subject;
+    }
+
 
     public String getName() {
         return name;

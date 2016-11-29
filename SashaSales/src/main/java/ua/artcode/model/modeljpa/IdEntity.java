@@ -7,11 +7,20 @@ import javax.persistence.*;
  */
 
 @MappedSuperclass
-public abstract class IdEntity {
+public class IdEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    public IdEntity() {
+        super();
+    }
+
+    public IdEntity(int id) {
+    super();
+        this.id = id;
+    }
 
     public int getId() {
         return id;

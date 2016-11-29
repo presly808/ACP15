@@ -7,8 +7,8 @@ import ua.artcode.model.modelsql.Group;
 import ua.artcode.model.modelsql.Student;
 import ua.artcode.model.modelsql.Subject;
 import ua.artcode.model.modelsql.Teacher;
-import ua.artcode.util.ConnectionFactory;
-import ua.artcode.util.UtilsMethod;
+import ua.artcode.util.utilsql.ConnectionFactory;
+import ua.artcode.util.utilsql.UtilsMethod;
 
 import java.sql.*;
 import java.util.ArrayList;

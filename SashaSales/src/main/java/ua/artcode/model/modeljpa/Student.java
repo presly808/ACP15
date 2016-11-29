@@ -14,9 +14,16 @@ public class Student extends IdEntity {
     private Group group;
 
     public Student() {
+        super();
     }
 
     public Student(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Student(int id, String name){
+        super(id);
         this.name = name;
     }
 

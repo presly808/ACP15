@@ -24,16 +24,14 @@ public class TestDao {
         EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
         DaoTeacher<Teacher> daoTeacher = new DaoTeacherImplJPA(managerFactory);
         DaoStudent<Student> daoStudent = new DaoStudentImplJPA(managerFactory);
+        DaoGroup<Group> daoGroup = new DaoGroupImplJPA(managerFactory);
+
+      //  StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
 
 
 
-        StartInitJPADB.initTables(daoTeacher, daoStudent);
-        List<Teacher> groupList = daoTeacher.getAllTeacher();
-        System.out.println(groupList.size());
-        groupList.forEach(System.out::print);
-        List<Student> studentList = daoStudent.getAllStudents();
-        System.out.println(studentList.size());
-        studentList.forEach(System.out::print);
+        //daoStudent.updateByGroup("Artur Zelenskiy", "ACO16");
+        StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
 
 /*        EntityManager entityManager = managerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();

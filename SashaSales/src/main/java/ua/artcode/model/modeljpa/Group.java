@@ -18,9 +18,16 @@ public class Group extends IdEntity {
     private List<Student> students;
 
     public Group() {
+        super();
     }
 
     public Group(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Group(int id, String name) {
+        super(id);
         this.name = name;
     }
 

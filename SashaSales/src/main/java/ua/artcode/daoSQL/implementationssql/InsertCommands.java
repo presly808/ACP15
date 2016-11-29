@@ -3,7 +3,7 @@ package ua.artcode.daoSQL.implementationssql;
 
 import org.apache.log4j.Logger;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
-import ua.artcode.util.ConnectionFactory;
+import ua.artcode.util.utilsql.ConnectionFactory;
 
 import java.sql.*;
 

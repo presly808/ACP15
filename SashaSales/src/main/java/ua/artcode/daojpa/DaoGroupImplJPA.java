@@ -1,6 +1,7 @@
 package ua.artcode.daojpa;
 
 import ua.artcode.model.modeljpa.Group;
+import ua.artcode.model.modeljpa.Student;
 
 import javax.persistence.*;
 import java.util.List;

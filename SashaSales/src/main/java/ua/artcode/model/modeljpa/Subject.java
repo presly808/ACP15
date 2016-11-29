@@ -19,9 +19,16 @@ public class Subject extends IdEntity {
     private List<Teacher> teachers;
 
     public Subject() {
+        super();
     }
 
     public Subject(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Subject(int id, String name) {
+        super(id);
         this.name = name;
     }
 
@@ -53,6 +60,15 @@ public class Subject extends IdEntity {
     public void setTeacher(List<Teacher> teachers) {
         this.teachers = teachers;
     }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
 
     @Override
     public String toString() {

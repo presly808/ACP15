@@ -35,7 +35,7 @@ public class TestSelectedDAO {
         daoStudent = new DaoStudentImplJPA(managerFactory);
         daoGroup = new DaoGroupImplJPA(managerFactory);
         daoTeacher = new DaoTeacherImplJPA(managerFactory);
-        StartInitJPADB.initTables(daoTeacher, daoStudent);
+        StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
     }
 
     @AfterClass
@@ -77,51 +77,4 @@ public class TestSelectedDAO {
     }
 
 
-   /* @Test
-    public void testGetTeachersThatWorkMore3Years(){
-
-        List<Teacher> teacherList = selectDAO.getTeachersThatWorkMore3Years();
-        Assert.assertThat("Test method Get Teachers That Work More 3 Years ", 6, equalTo(teacherList.size()));
-    }
-*/
-    /*@Test
-    public void testGetStudentsByGroup(){
-
-        List<Student> studentList = selectDAO.getStudentsByGroup("ACP16");
-        int size = studentList.size();
-        Assert.assertThat("Test method Get Students By Group", 6,  equalTo(size));
-
-    }
-
-    @Test
-    public void testGetGroupsThatStudySubject(){
-
-        String subjectName = "Mathematics";
-        List<Group> groupsList = selectDAO.getGroupsThatStudySubject(subjectName);
-        int size = groupsList.size();
-        Assert.assertThat("Test method Get Groups That Study Subject ", 2,  equalTo(size));
-
-    }
-
-    @Test
-    public void testAvgMarkBySubjectInUniversity(){
-
-        String subjectName = "Mathematics";
-        double avgMark = selectDAO.avgMarkBySubjectInUniversity(subjectName);
-        System.out.println(avgMark);
-        Assert.assertThat("Test method Get Avg Mark By Subject In University ", avgMark, greaterThan(0.0));
-
-    }
-
-    @Test
-    public void testAvgMarkBySubjectInGroup(){
-
-        String subjectName = "Music";
-        String groupName = "Base16";
-        double avgMark = selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
-        System.out.println(avgMark);
-        Assert.assertThat("Test method Get Avg Mark By Subject In University ", avgMark, greaterThan(0.0));
-
-    }
-*/
 }
