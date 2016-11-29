@@ -1,37 +1,29 @@
 package init;
 
-import ua.artcode.daoSQL.interfaces.CreateDAO;
-import ua.artcode.daoSQL.interfaces.DropDAO;
 import ua.artcode.daoSQL.interfaces.InsertDAO;
-import ua.artcode.daoSQL.interfaces.UpdateDAO;
 import ua.artcode.daojpa.DaoGroup;
-import ua.artcode.daojpa.DaoSubject;
+import ua.artcode.daojpa.DaoStudent;
 import ua.artcode.daojpa.DaoTeacher;
 import ua.artcode.model.modeljpa.Group;
+import ua.artcode.model.modeljpa.Student;
 import ua.artcode.model.modeljpa.Subject;
 import ua.artcode.model.modeljpa.Teacher;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 
 /**
  * Created by work on 13.11.2016.
  */
 public class StartInitJPADB {
 
-    public static void initTables (DaoGroup daoGroup, DaoTeacher daoTeacher) {
-
-        // Добавляем группы
-        addGroups(daoGroup);
+    public static void initTables (DaoTeacher daoTeacher, DaoStudent daoStudent) {
 
         // Добавляем преподователей и предметы
-        addTeachersSubjects(daoTeacher);
+        addTeachersAndSubjects(daoTeacher);
 
-        /*// Добавляем студентов
-        addStudents(insertDAO);
+        // Добавляем группы
+      //  addStudentsAndGroups(daoStudent);
 
-        //Добавляем студента к группе
+
+  /*      //Добавляем студента к группе
         addStudentToGroup(updateDAO);
 
         //Заполняем таблицу study
@@ -40,14 +32,7 @@ public class StartInitJPADB {
     }
 
 
-    private static void addGroups(DaoGroup daoGroup) {
-        String [] groups = init.TestDataForDBSQL.generateGroupName();
-        for (int i = 0; i < 10; i++) {
-            daoGroup.create(new Group(groups[i]));
-        }
-    }
-
-    private static void addTeachersSubjects(DaoTeacher daoTeacher) {
+    private static void addTeachersAndSubjects(DaoTeacher daoTeacher) {
         String[] teacherNames = init.TestDataForDBSQL.generateTeacherName();
         String[] subjects = init.TestDataForDBSQL.generateSubjectName();
         for (int i = 0; i < 20; i++) {
@@ -68,36 +53,51 @@ public class StartInitJPADB {
         }
     }
 
+    private static void addStudentsAndGroups(DaoStudent daoStudent) {
 
-    private static void addStudents(InsertDAO insertDAO) {
         String[] studentNames = init.TestDataForDBSQL.generateStudentName();
-        for (int i = 0; i < 60; i++) {
-            insertDAO.addStudent(studentNames[i]);
-        }
-    }
-
-    private static void addStudentToGroup(UpdateDAO updateDAO) {
+        String [] groups = init.TestDataForDBSQL.generateGroupName();
         for (int i = 0; i < 60; i++) {
             if (i < 6){
-                updateDAO.updateStudentByGroup(i+1, 1);
+                Group group = new Group(groups[0]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 5 && i < 12){
-                updateDAO.updateStudentByGroup(i+1, 2);
+                Group group = new Group(groups[1]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 11 && i < 18){
-                updateDAO.updateStudentByGroup(i+1, 3);
+                Group group = new Group(groups[2]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 17 && i < 24){
-                updateDAO.updateStudentByGroup(i+1, 4);
+                Group group = new Group(groups[3]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 23 && i < 30){
-                updateDAO.updateStudentByGroup(i+1, 5);
+                Group group = new Group(groups[4]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 29 && i < 36){
-                updateDAO.updateStudentByGroup(i+1, 6);
+                Group group = new Group(groups[5]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 35 && i < 42){
-                updateDAO.updateStudentByGroup(i+1, 7);
+                Group group = new Group(groups[6]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 41 && i < 48){
-                updateDAO.updateStudentByGroup(i+1, 8);
+                Group group = new Group(groups[7]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 47 && i < 54){
-                updateDAO.updateStudentByGroup(i+1, 9);
+                Group group = new Group(groups[8]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             } else if (i > 53 && i < 60){
-                updateDAO.updateStudentByGroup(i+1, 10);
+                Group group = new Group(groups[9]);
+                Student student = new Student(studentNames[i], group);
+                daoStudent.create(student);
             }
         }
     }

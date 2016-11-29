@@ -21,7 +21,7 @@ public class Subject extends IdEntity {
     public Subject() {
     }
 
-       public Subject(String name) {
+    public Subject(String name) {
         this.name = name;
     }
 

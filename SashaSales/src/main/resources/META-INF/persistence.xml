@@ -13,6 +13,8 @@
 
         <class>ua.artcode.model.modeljpa.Subject</class>
         <class>ua.artcode.model.modeljpa.Group</class>
+        <class>ua.artcode.model.modeljpa.Teacher</class>
+        <class>ua.artcode.model.modeljpa.Student</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

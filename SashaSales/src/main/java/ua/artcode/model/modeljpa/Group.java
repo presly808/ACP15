@@ -1,6 +1,7 @@
 package ua.artcode.model.modeljpa;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by work on 12.11.2016.
@@ -12,6 +13,9 @@ public class Group extends IdEntity {
 
     @Column(name = "group_name", nullable = false, length = 40, unique = true)
     private String name;
+
+    @OneToMany(mappedBy = "group")
+    private List<Student> students;
 
     public Group() {
     }
@@ -26,6 +30,14 @@ public class Group extends IdEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     @Override
@@ -51,4 +63,5 @@ public class Group extends IdEntity {
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
     }
+
 }

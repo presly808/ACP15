@@ -3319,3 +3319,1540 @@
 2016-11-22 22:52:30 INFO  InsertCommands:131 - adding Field in Marks to DB where id_student - 60 and id_subject - 20 and mark5
 2016-11-22 22:52:30 INFO  ConnectionFactory:36 - getting driver to Connection To DB SQL named Test on SQL server com.mysql.jdbc.Driver
 2016-11-22 22:52:30 INFO  InsertCommands:139 - Field in Marks to DB where id_student - 60 and id_subject - 20 and mark5was add
+2016-11-27 11:34:26 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:34:28 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:34:28 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:34:28 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:34:28 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:34:30 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:34:30 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testDBForUniversity]
+2016-11-27 11:34:30 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:34:30 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:34:30 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:34:31 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:34:33 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 11:36:24 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:36:25 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:36:25 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:36:25 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:36:25 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:36:26 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:36:26 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 11:36:26 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:36:26 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:36:26 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:36:27 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:36:29 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 11:36:57 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:36:58 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:36:58 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:36:58 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:36:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:36:59 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:36:59 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 11:36:59 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:36:59 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:36:59 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:37:00 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:37:02 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 11:37:03 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-27 11:37:03 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'group_name'
+2016-11-27 11:39:26 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:39:27 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:39:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:39:27 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:39:28 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:39:28 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:39:28 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 11:39:28 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:39:28 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:39:28 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:39:29 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:39:31 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 11:39:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 11:39:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 11:39:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 11:39:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 11:40:11 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:40:11 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:40:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:40:11 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:40:12 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:40:12 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:40:12 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 11:40:12 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:40:12 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:40:12 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:40:13 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:40:16 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 11:40:58 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 11:41:00 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 11:41:00 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 11:41:00 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 11:41:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 11:41:01 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 11:41:01 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 11:41:01 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 11:41:01 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 11:41:01 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 11:41:01 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 11:41:03 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 12:29:59 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 12:30:00 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 12:30:00 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 12:30:00 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 12:30:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 12:30:01 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 12:30:01 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 12:30:01 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 12:30:01 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 12:30:01 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 12:30:01 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 12:30:03 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 12:32:59 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 12:33:01 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 12:33:01 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 12:33:01 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 12:33:02 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 12:33:03 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 12:33:03 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 12:33:03 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 12:33:03 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 12:33:03 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 12:33:03 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 12:33:05 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 12:33:05 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 13:16:35 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 13:16:36 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 13:16:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 13:16:36 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 13:16:36 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 13:16:37 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 13:16:37 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 13:16:37 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 13:16:37 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 13:16:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 13:16:38 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 13:16:40 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 17:02:40 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:02:41 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:02:41 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:02:41 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:02:41 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:02:42 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:02:42 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:02:42 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:02:42 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:02:42 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:02:42 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:03:59 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:03:59 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:03:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:03:59 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:03:59 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:03:59 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:03:59 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:03:59 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:03:59 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:03:59 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:04:00 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:05:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:05:44 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:05:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:05:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:05:44 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:05:44 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:05:44 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:05:44 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:05:44 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:05:44 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:05:45 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:06:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:06:44 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:06:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:06:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:06:44 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:06:44 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:06:44 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:06:44 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:06:44 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:06:44 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:06:45 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:07:07 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:07:07 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:07:07 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:07:07 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:07:07 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:07:08 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:07:08 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:07:08 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:07:08 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:07:08 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:07:08 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:08:07 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:08:07 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:08:07 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:08:07 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:08:07 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:08:07 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:08:07 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:08:07 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:08:07 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:08:07 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:08:08 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:09:35 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:09:36 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:09:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:09:36 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:09:36 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:09:36 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:09:36 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:09:36 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:09:36 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:09:36 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:09:37 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:10:01 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:10:02 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:10:02 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:10:02 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:10:02 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:10:02 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:10:02 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:10:02 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:10:02 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:10:02 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:10:03 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:10:36 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:10:36 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:10:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:10:36 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:10:36 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:10:37 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:10:37 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:10:37 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:10:37 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:10:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:10:38 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:11:33 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:11:33 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:11:33 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:11:33 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:11:33 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:11:34 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:11:34 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:11:34 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:11:34 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:11:34 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:11:34 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:13:41 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 17:13:41 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 17:13:41 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 17:13:41 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 17:13:41 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 17:13:42 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 17:13:42 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 17:13:42 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 17:13:42 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 17:13:42 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 17:13:42 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 17:13:43 WARN  AnnotationBinder:611 - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ua.artcode.model.modeljpa.Group
+2016-11-27 17:13:43 WARN  AnnotationBinder:611 - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ua.artcode.model.modeljpa.Subject
+2016-11-27 17:13:43 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 17:13:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 17:13:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 17:13:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: IdEntity
+2016-11-27 17:13:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: IdEntity
+2016-11-27 17:13:45 WARN  SqlExceptionHelper:127 - SQL Error: 1364, SQLState: HY000
+2016-11-27 17:13:45 ERROR SqlExceptionHelper:129 - Field 'subject_description' doesn't have a default value
+2016-11-27 17:13:45 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 18:46:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:46:52 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:46:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:46:52 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:46:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:46:52 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:46:52 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:46:52 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:46:52 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:46:52 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:46:53 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:46:54 WARN  AnnotationBinder:611 - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ua.artcode.model.modeljpa.Group
+2016-11-27 18:46:54 WARN  AnnotationBinder:611 - HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ua.artcode.model.modeljpa.Subject
+2016-11-27 18:46:54 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:51:27 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:51:27 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:51:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:51:27 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:51:27 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:51:28 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:51:28 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:51:28 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:51:28 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:51:28 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:51:29 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:51:30 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 18:51:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 18:56:46 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:56:47 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:56:47 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:56:47 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:56:47 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:56:47 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:56:47 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:56:47 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:56:47 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:56:47 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:56:48 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:56:49 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:57:42 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:57:42 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:57:42 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:57:42 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:57:43 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:57:43 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:57:43 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:57:43 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:57:43 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:57:43 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:57:44 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:57:45 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:59:12 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:59:12 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:59:12 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:59:12 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:59:12 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:59:12 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:59:12 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:59:12 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:59:12 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:59:12 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:59:13 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:59:15 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:59:15 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 18:59:15 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 18:59:15 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-27 18:59:15 ERROR SqlExceptionHelper:129 - Duplicate entry '1' for key 'PRIMARY'
+2016-11-27 18:59:15 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 18:59:34 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 18:59:34 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 18:59:34 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 18:59:34 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 18:59:34 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 18:59:35 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 18:59:35 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 18:59:35 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 18:59:35 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 18:59:35 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 18:59:36 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 18:59:37 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 18:59:37 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-27 18:59:37 ERROR SqlExceptionHelper:129 - Duplicate entry '2' for key 'PRIMARY'
+2016-11-27 18:59:37 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 19:00:40 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:00:40 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:00:40 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:00:40 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:00:40 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:00:40 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:00:40 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:00:40 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:00:40 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:00:40 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:00:41 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:00:42 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 19:01:11 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:01:11 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:01:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:01:11 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:01:11 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:01:11 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:01:11 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:01:11 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:01:11 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:01:11 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:01:12 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:01:13 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 19:02:25 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:02:26 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:02:26 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:02:26 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:02:26 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:02:26 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:02:26 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:02:26 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:02:26 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:02:26 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:02:27 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:02:28 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 19:02:28 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-27 19:02:28 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base68' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-27 19:02:28 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 19:02:57 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:02:57 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:02:57 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:02:57 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:02:57 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:02:58 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:02:58 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:02:58 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:02:58 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:02:58 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:02:59 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:03:00 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 19:03:00 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 19:04:55 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:04:55 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:04:55 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:04:55 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:04:56 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:04:56 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:04:56 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:04:56 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:04:56 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:04:56 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:04:57 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:04:58 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 19:04:58 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 19:19:37 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 19:19:37 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 19:19:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 19:19:37 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 19:19:37 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 19:19:37 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 19:19:37 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 19:19:37 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 19:19:37 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 19:19:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 19:19:38 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 19:19:39 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:50:23 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:50:23 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:50:23 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:50:23 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:50:23 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:50:24 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:50:24 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:50:24 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:50:24 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:50:24 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:50:24 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:50:25 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:53:35 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:53:35 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:53:35 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:53:35 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:53:35 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:53:36 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:53:36 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:53:36 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:53:36 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:53:36 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:53:37 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:53:38 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 20:53:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 20:53:40 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 20:55:37 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:55:37 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:55:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:55:37 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:55:37 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:55:37 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:55:37 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:55:37 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:55:37 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:55:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:55:38 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:55:39 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:55:39 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 20:56:33 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:56:33 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:56:33 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:56:33 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:56:33 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:56:34 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:56:34 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:56:34 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:56:34 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:56:34 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:56:35 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:56:36 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:56:36 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 20:56:36 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:57:43 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:57:43 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:57:43 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:57:43 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:57:43 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:57:43 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:57:43 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:57:43 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:57:43 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:57:43 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:57:44 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:57:46 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:57:46 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 20:57:46 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:58:16 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 20:58:16 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 20:58:16 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 20:58:16 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 20:58:16 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 20:58:16 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 20:58:16 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 20:58:16 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 20:58:16 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 20:58:16 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 20:58:17 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 20:58:18 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 20:58:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 20:58:19 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 22:54:48 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 22:54:48 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 22:54:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 22:54:48 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 22:54:48 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 22:54:48 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 22:54:48 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 22:54:48 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 22:54:48 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 22:54:49 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 22:54:49 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 22:54:50 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 22:54:50 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 22:54:50 ERROR SchemaExport:483 - HHH000389: Unsuccessful: alter table groups drop foreign key FKg9g15d9vjhs8odqq4x5ci6fgs
+2016-11-27 22:54:50 ERROR SchemaExport:484 - Table 'testdbforuniversity.groups' doesn't exist
+2016-11-27 22:54:52 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 22:54:53 WARN  SqlExceptionHelper:127 - SQL Error: 1364, SQLState: HY000
+2016-11-27 22:54:53 ERROR SqlExceptionHelper:129 - Field 'teacher_name' doesn't have a default value
+2016-11-27 22:54:53 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 23:00:04 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:00:04 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:00:04 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:00:04 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:00:04 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:00:05 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:00:05 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:00:05 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:00:05 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:00:05 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:00:05 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:00:06 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:00:06 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:00:06 ERROR SchemaExport:483 - HHH000389: Unsuccessful: alter table groups drop foreign key FKg9g15d9vjhs8odqq4x5ci6fgs
+2016-11-27 23:00:06 ERROR SchemaExport:484 - Table 'testdbforuniversity.groups' doesn't exist
+2016-11-27 23:00:09 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:00:09 WARN  SqlExceptionHelper:127 - SQL Error: 1364, SQLState: HY000
+2016-11-27 23:00:09 ERROR SqlExceptionHelper:129 - Field 'group_name' doesn't have a default value
+2016-11-27 23:00:09 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 23:04:55 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:04:55 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:04:55 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:04:55 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:04:55 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:04:55 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:04:55 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:04:55 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:04:55 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:04:55 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:04:56 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:04:57 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:04:57 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:04:57 ERROR SchemaExport:483 - HHH000389: Unsuccessful: alter table teachers drop foreign key FKsahkj7ew9hfs6byrpl75br5lx
+2016-11-27 23:04:57 ERROR SchemaExport:484 - Table 'testdbforuniversity.teachers' doesn't exist
+2016-11-27 23:04:59 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:05:00 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:05:00 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:05:00 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:06:59 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:06:59 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:06:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:06:59 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:06:59 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:07:00 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:07:00 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:07:00 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:07:00 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:07:00 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:07:00 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:07:01 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:07:02 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:07:02 ERROR SchemaExport:483 - HHH000389: Unsuccessful: alter table teachers drop foreign key FKsahkj7ew9hfs6byrpl75br5lx
+2016-11-27 23:07:02 ERROR SchemaExport:484 - Table 'testdbforuniversity.teachers' doesn't exist
+2016-11-27 23:07:05 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:07:05 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:07:06 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:07:06 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:13:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:13:52 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:13:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:13:52 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:13:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:13:53 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:13:53 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:13:53 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:13:53 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:13:53 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:13:53 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:13:54 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:13:54 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:13:54 ERROR SchemaExport:483 - HHH000389: Unsuccessful: alter table teachers drop foreign key FKsahkj7ew9hfs6byrpl75br5lx
+2016-11-27 23:13:54 ERROR SchemaExport:484 - Table 'testdbforuniversity.teachers' doesn't exist
+2016-11-27 23:13:57 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:13:57 INFO  SchemaExport:400 - HHH000227: Running hbm2ddl schema export
+2016-11-27 23:13:58 INFO  SchemaExport:463 - HHH000230: Schema export complete
+2016-11-27 23:13:58 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:14:31 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:14:31 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:14:31 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:14:31 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:14:31 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:14:32 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:14:32 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:14:32 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:14:32 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:14:32 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:14:32 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:14:33 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:14:33 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:14:33 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:14:33 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:14:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:14:36 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:16:04 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:16:04 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:16:04 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:16:04 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:16:05 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:16:05 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:16:05 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:16:05 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:16:05 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:16:05 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:16:06 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:16:06 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:16:07 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:16:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:16:09 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:17:55 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:17:55 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:17:55 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:17:55 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:17:55 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:17:55 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:17:55 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:17:55 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:17:55 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:17:55 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:17:56 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:17:57 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:17:57 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:17:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:17:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:17:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:18:00 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:20:08 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:20:08 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:20:08 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:20:08 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:20:08 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:20:09 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:20:09 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:20:09 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:20:09 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:20:09 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:20:09 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:20:10 INFO  PojoInstantiator:66 - HHH000182: No default (no-argument) constructor for class: ua.artcode.model.modeljpa.Teacher (class must be instantiated by Interceptor)
+2016-11-27 23:20:10 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:20:13 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 23:21:12 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:21:12 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:21:12 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:21:12 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:21:12 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:21:13 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:21:13 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:21:13 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:21:13 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:21:13 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:24:30 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:24:30 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:24:30 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:24:30 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:24:30 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:24:30 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:24:30 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:24:30 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:24:30 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:24:30 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:24:31 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:24:32 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:25:00 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:25:01 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:25:01 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:25:01 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:25:01 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:25:01 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:25:01 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:25:01 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:25:01 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:25:01 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:25:02 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:25:02 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:25:03 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-27 23:25:03 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-27 23:25:03 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-27 23:26:51 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:26:51 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:26:51 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:26:51 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:26:51 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:26:51 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:26:51 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:26:51 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:26:51 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:26:51 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:26:52 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:26:53 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:26:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:26:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-27 23:26:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:26:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-27 23:26:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:26:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-27 23:26:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:26:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-27 23:26:58 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-27 23:26:58 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:47:28 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:47:28 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:47:28 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:47:28 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:47:28 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:47:28 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:47:28 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:47:28 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:47:28 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:47:28 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:47:29 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:47:30 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:47:30 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:48:10 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-27 23:48:10 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-27 23:48:10 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-27 23:48:10 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-27 23:48:10 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-27 23:48:10 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-27 23:48:10 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-27 23:48:10 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-27 23:48:10 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-27 23:48:10 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-27 23:48:11 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-27 23:48:12 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-27 23:48:12 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:07:32 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:07:32 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:07:32 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:07:32 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:07:32 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:07:33 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:07:33 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:07:33 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:07:33 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:07:33 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:07:33 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:07:34 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:07:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:07:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:07:35 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 00:07:35 ERROR SqlExceptionHelper:129 - Duplicate entry 'ACO16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 00:07:35 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 00:10:59 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:10:59 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:10:59 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:10:59 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:11:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:11:00 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:11:00 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:11:00 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:11:00 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:11:00 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:11:00 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:11:01 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:11:01 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:11:01 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:11:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:11:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:11:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:11:05 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 00:11:05 ERROR SqlExceptionHelper:129 - Duplicate entry 'ACO16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 00:11:05 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 00:21:26 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:21:27 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:21:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:21:27 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:21:27 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:21:27 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:21:27 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:21:27 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:21:27 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:21:27 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:21:28 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:21:29 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:21:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:21:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:21:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:22:50 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:22:50 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:22:50 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:22:50 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:22:51 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:22:51 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:22:51 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:22:51 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:22:51 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:22:51 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:22:52 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:22:53 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:22:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:22:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:22:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:22:57 INFO  DriverManagerConnectionProviderImpl:236 - HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:40:00 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:40:01 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:40:01 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:40:01 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:40:01 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:40:01 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:40:01 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:40:01 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:40:01 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:40:01 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:40:02 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:40:03 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:40:03 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 00:40:03 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 00:40:03 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 00:40:45 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:40:45 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:40:45 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:40:45 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:40:45 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:40:46 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:40:46 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:40:46 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:40:46 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:40:46 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:40:46 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:40:47 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:40:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:40:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:40:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:40:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: hibernate_sequence
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:40:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 00:43:13 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 00:43:13 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 00:43:13 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 00:44:58 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:44:58 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:44:58 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:44:58 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:44:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:44:58 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:44:58 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:44:58 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:44:58 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:44:58 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:44:59 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:45:00 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:45:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:45:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:45:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:45:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:52:54 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:52:54 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:52:54 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:52:54 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:52:54 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:52:55 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:52:55 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:52:55 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:52:55 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:52:55 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:52:55 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:52:57 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:52:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:52:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:52:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:52:57 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:58:10 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:58:10 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:58:10 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:58:10 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:58:10 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:58:11 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:58:11 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:58:11 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:58:11 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:58:11 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:58:11 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:58:13 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:58:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:58:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:58:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:58:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:58:18 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 00:58:18 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 00:58:18 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 00:58:43 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 00:58:43 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 00:58:43 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 00:58:43 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 00:58:43 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 00:58:44 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 00:58:44 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 00:58:44 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 00:58:44 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 00:58:44 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 00:58:45 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 00:58:46 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 00:58:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:58:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 00:58:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 00:58:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:00:33 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:00:33 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 01:00:33 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 01:00:53 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:00:53 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:00:53 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:00:53 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:00:53 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:00:54 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:00:54 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:00:54 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:00:54 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:00:54 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:00:54 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:00:55 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:00:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:00:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:00:56 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:00:56 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:18:50 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:18:50 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:18:50 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:18:50 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:18:50 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:18:51 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:18:51 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:18:51 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:18:51 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:18:51 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:18:52 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:18:53 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:18:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:18:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:18:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:18:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:19:19 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:19:20 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:19:20 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:19:20 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:19:20 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:19:20 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:19:20 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:19:20 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:19:20 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:19:20 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:19:21 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:19:22 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:19:55 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:20:03 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:20:03 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:20:03 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:20:03 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:20:03 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:20:03 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:20:03 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:20:03 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:20:03 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:20:03 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:20:04 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:20:05 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:20:16 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:24:29 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:24:30 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:24:30 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:24:30 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:24:30 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:24:30 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:24:30 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:24:30 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:24:30 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:24:30 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:24:31 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:24:32 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:25:09 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:25:09 ERROR ErrorCounter:60 -  Invalid path: 'groups.group_name'
+2016-11-29 01:25:09 ERROR ErrorCounter:55 -  Invalid path: 'groups.group_name'
+ Invalid path: 'groups.group_name'
+	at org.hibernate.hql.internal.ast.util.LiteralProcessor.lookupConstant(LiteralProcessor.java:114)
+	at org.hibernate.hql.internal.ast.tree.DotNode.resolve(DotNode.java:214)
+	at org.hibernate.hql.internal.ast.tree.FromReferenceNode.resolve(FromReferenceNode.java:109)
+	at org.hibernate.hql.internal.ast.tree.FromReferenceNode.resolve(FromReferenceNode.java:104)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.resolve(HqlSqlWalker.java:942)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.expr(HqlSqlBaseWalker.java:1267)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.exprOrSubquery(HqlSqlBaseWalker.java:4686)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:4156)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:2104)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:796)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:597)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:301)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:249)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:262)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:190)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:142)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:76)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:150)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:298)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1836)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:305)
+	at ua.artcode.daojpa.DaoStudentImplJPA.containsGroupByName(DaoStudentImplJPA.java:97)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:27)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:14)
+	at init.StartInitJPADB.addStudentsAndGroups(StartInitJPADB.java:65)
+	at init.StartInitJPADB.initTables(StartInitJPADB.java:21)
+	at jpa.TestDao.main(TestDao.java:30)
+2016-11-29 01:25:09 ERROR ErrorCounter:60 - <AST>:0:0: unexpected end of subtree
+2016-11-29 01:25:09 ERROR ErrorCounter:55 - <AST>:0:0: unexpected end of subtree
+<AST>:0:0: unexpected end of subtree
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.exprOrSubquery(HqlSqlBaseWalker.java:4768)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:4159)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:2104)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:796)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:597)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:301)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:249)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:262)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:190)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:142)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:76)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:150)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:298)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1836)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:305)
+	at ua.artcode.daojpa.DaoStudentImplJPA.containsGroupByName(DaoStudentImplJPA.java:97)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:27)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:14)
+	at init.StartInitJPADB.addStudentsAndGroups(StartInitJPADB.java:65)
+	at init.StartInitJPADB.initTables(StartInitJPADB.java:21)
+	at jpa.TestDao.main(TestDao.java:30)
+2016-11-29 01:25:09 ERROR ErrorCounter:60 -  left-hand operand of a binary operator was null
+2016-11-29 01:25:09 ERROR ErrorCounter:55 -  left-hand operand of a binary operator was null
+ left-hand operand of a binary operator was null
+	at org.hibernate.hql.internal.ast.tree.BinaryLogicOperatorNode.initialize(BinaryLogicOperatorNode.java:39)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.prepareLogicOperator(HqlSqlWalker.java:1298)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:4630)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:2104)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:796)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:597)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:301)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:249)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:262)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:190)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:142)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:115)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:76)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:150)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:298)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:236)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1836)
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.createQuery(AbstractEntityManagerImpl.java:305)
+	at ua.artcode.daojpa.DaoStudentImplJPA.containsGroupByName(DaoStudentImplJPA.java:97)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:27)
+	at ua.artcode.daojpa.DaoStudentImplJPA.create(DaoStudentImplJPA.java:14)
+	at init.StartInitJPADB.addStudentsAndGroups(StartInitJPADB.java:65)
+	at init.StartInitJPADB.initTables(StartInitJPADB.java:21)
+	at jpa.TestDao.main(TestDao.java:30)
+2016-11-29 01:29:23 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:29:24 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:29:24 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:29:24 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:29:24 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:29:24 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:29:24 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:29:24 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:29:24 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:29:24 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:29:25 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:29:26 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:29:42 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:31:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:31:44 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:31:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:31:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:31:44 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:31:44 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:31:44 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:31:44 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:31:44 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:31:44 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:31:45 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:31:46 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:31:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:31:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:31:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:31:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:31:47 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:32:41 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:32:42 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:32:42 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:32:42 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:32:42 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:32:42 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:32:42 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:32:42 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:32:42 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:32:42 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:32:43 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:32:44 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:32:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:32:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:32:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:32:44 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:32:54 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:36:28 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:36:28 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:36:28 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:36:29 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:36:29 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:36:29 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:36:29 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:36:29 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:36:29 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:36:29 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:36:30 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:36:31 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:36:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:36:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:36:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:36:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:36:43 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:39:12 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:39:12 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:39:12 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:39:12 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:39:12 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:39:13 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:39:13 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:39:13 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:39:13 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:39:13 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:39:13 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:39:14 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:40:12 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:41:49 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:41:49 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:41:49 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:41:49 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:41:49 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:41:50 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:41:50 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:41:50 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:41:50 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:41:50 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:41:50 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:41:51 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:41:51 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:41:51 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:41:52 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:42:28 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:48:04 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:48:04 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:48:04 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:48:04 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:48:05 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:48:05 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:48:05 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:48:05 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:48:05 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:48:05 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:48:06 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:48:07 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:48:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:48:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:48:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:48:17 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:50:27 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:50:27 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:50:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:50:27 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:50:27 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:50:28 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:50:28 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:50:28 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:50:28 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:50:28 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:50:28 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:50:29 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:50:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:50:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:50:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:50:29 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:50:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:50:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:50:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:50:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:50:34 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:50:35 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:50:35 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 01:50:35 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 01:54:12 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:54:13 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:54:13 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:54:13 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:54:13 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:54:13 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:54:13 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:54:13 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:54:13 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:54:13 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:54:14 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:54:15 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:54:15 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:54:15 ERROR SqlExceptionHelper:129 - Duplicate entry 'Mathematics' for key 'UK_gaix2pna1ulbxhdl4kbq9yglt'
+2016-11-29 01:54:15 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 01:54:37 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:54:37 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:54:37 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:54:37 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:54:37 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:54:37 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:54:37 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:54:37 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:54:37 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:54:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:54:38 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:54:39 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:54:39 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:54:39 ERROR SqlExceptionHelper:129 - Duplicate entry 'Mathematics' for key 'UK_gaix2pna1ulbxhdl4kbq9yglt'
+2016-11-29 01:54:39 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 01:55:11 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:55:11 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:55:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:55:11 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:55:12 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:55:12 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:55:12 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:55:12 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:55:12 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:55:12 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:55:12 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:55:13 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:55:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:55:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:55:14 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:55:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:55:18 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:55:18 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 01:55:18 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 01:56:56 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:56:56 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:56:56 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:56:56 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:56:56 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:56:56 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:56:56 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:56:56 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:56:56 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:56:57 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:56:57 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:56:58 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:56:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:56:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:57:40 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 01:57:40 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 01:57:40 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 01:57:40 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 01:57:40 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 01:57:41 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 01:57:41 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 01:57:41 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 01:57:41 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 01:57:41 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 01:57:41 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 01:57:42 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 01:57:42 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:57:42 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: groups
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: students
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: subjects
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:57:43 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:338 - HHH000262: Table not found: teachers
+2016-11-29 01:57:47 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 01:57:48 WARN  SqlExceptionHelper:127 - SQL Error: 1062, SQLState: 23000
+2016-11-29 01:57:48 ERROR SqlExceptionHelper:129 - Duplicate entry 'Base16' for key 'UK_7o859iyhxd19rv4hywgdvu2v4'
+2016-11-29 01:57:48 INFO  AbstractBatchImpl:193 - HHH000010: On release of batch it still contained JDBC statements
+2016-11-29 02:02:24 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 02:02:24 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 02:02:24 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 02:02:24 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 02:02:24 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 02:02:25 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 02:02:25 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 02:02:25 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 02:02:25 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 02:02:25 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 02:02:25 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 02:02:26 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 02:02:26 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-11-29 02:03:06 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: hibernate-unit
+	...]
+2016-11-29 02:03:06 INFO  Version:37 - HHH000412: Hibernate Core {5.0.3.Final}
+2016-11-29 02:03:06 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-11-29 02:03:06 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2016-11-29 02:03:06 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.0.Final}
+2016-11-29 02:03:07 WARN  DriverManagerConnectionProviderImpl:72 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-11-29 02:03:07 INFO  DriverManagerConnectionProviderImpl:128 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/testdbforuniversity]
+2016-11-29 02:03:07 INFO  DriverManagerConnectionProviderImpl:137 - HHH000046: Connection properties: {user=root, password=****}
+2016-11-29 02:03:07 INFO  DriverManagerConnectionProviderImpl:142 - HHH000006: Autocommit mode: false
+2016-11-29 02:03:07 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-11-29 02:03:07 INFO  Dialect:154 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2016-11-29 02:03:08 INFO  SchemaUpdate:101 - HHH000228: Running hbm2ddl schema update
+2016-11-29 02:03:30 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory

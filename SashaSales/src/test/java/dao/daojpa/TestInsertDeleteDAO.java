@@ -6,6 +6,7 @@ import ua.artcode.daoSQL.implementationssql.*;
 import ua.artcode.daoSQL.interfaces.*;
 import ua.artcode.daojpa.*;
 import ua.artcode.model.modeljpa.Group;
+import ua.artcode.model.modeljpa.Student;
 import ua.artcode.model.modeljpa.Subject;
 import ua.artcode.model.modeljpa.Teacher;
 
@@ -24,6 +25,7 @@ public class TestInsertDeleteDAO {
     private static DaoSubject daoSubject;
     private static DaoGroup daoGroup;
     private static DaoTeacher daoTeacher;
+    private static DaoStudent daoStudent;
     private static EntityManagerFactory managerFactory;
 
     @BeforeClass
@@ -31,6 +33,7 @@ public class TestInsertDeleteDAO {
         managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
         daoSubject = new DaoSubjectImplJPA(managerFactory);
         daoGroup = new DaoGroupImplJPA(managerFactory);
+        daoStudent = new DaoStudentImplJPA(managerFactory);
         daoTeacher = new DaoTeacherImplJPA(managerFactory);
     }
 
@@ -64,7 +67,7 @@ public class TestInsertDeleteDAO {
     @Test
     public void testCreateDeleteTeacher() {
 
-        Subject subject = new Subject("HomosupiensFree", "Description Homosupiens");
+        Subject subject = new Subject("Imunologia", "Description Imunologia");
         Teacher teacher = new Teacher("Timur", 2, subject);
         Teacher teacherRes1 = (Teacher) daoTeacher.create(teacher);
         boolean res1 = daoTeacher.delete(teacher);
@@ -73,31 +76,21 @@ public class TestInsertDeleteDAO {
 
     }
 
-  /*  @Test
-    public void testAddDeleteTeacher(){
+    @Test
+    public void testCreateDeleteStudent() {
 
-        String subjectName = "Terapia";
-        String teacherName = "Grigor";
-        boolean insertSubjectResult =  insertDAO.addSubject(subjectName, "Description Terapia");
-        boolean insertTeacherResult = insertDAO.addTeacher(teacherName, 3, 1);
-        boolean deleteTeacherResult = deleteDAO.deleteTeacher(teacherName);
-        boolean deleteSubjectResult = deleteDAO.deleteSubject(subjectName);
-        Assert.assertThat("Test method Add and Delete Teacher", insertSubjectResult && insertTeacherResult
-                                && deleteTeacherResult && deleteSubjectResult, not(false));
+        Group group = new Group("Deputies");
+        Student student = new Student("Tamerlan", group);
+        Student studentRes1 = (Student) daoStudent.create(student);
+        boolean res1 = daoStudent.delete(student);
+        boolean res2 = daoGroup.delete(group);
+        Assert.assertThat("Test method Create Delete Subject", true, equalTo((studentRes1 != null) && res2 && res1));
 
     }
 
-    @Test
-    public void testAddDeleteStudent(){
 
-        String studentName = "Grigor";
-        boolean insertStudentResult =  insertDAO.addStudent(studentName);
-        boolean deleteStudentResult = deleteDAO.deleteStudent(studentName);
-        Assert.assertThat("Test method Add and Delete Student", insertStudentResult && deleteStudentResult, not(false));
 
-    }
-
-    @Test
+   /* @Test
     public void testAddDeleteFieldStudy(){
 
         String groupName = "RR12";
@@ -113,6 +106,7 @@ public class TestInsertDeleteDAO {
             && insertFieldStudyResult && deleteFieldStudyResult && deleteSubjectResult && deleteGroupResult, not(false));
 
     }*/
+
 
 
 }

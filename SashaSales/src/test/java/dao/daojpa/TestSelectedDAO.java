@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.artcode.daojpa.*;
 import ua.artcode.model.modeljpa.Group;
+import ua.artcode.model.modeljpa.Student;
 import ua.artcode.model.modeljpa.Subject;
 import ua.artcode.model.modeljpa.Teacher;
 
@@ -24,15 +25,17 @@ public class TestSelectedDAO {
     private static DaoSubject daoSubject;
     private static DaoGroup daoGroup;
     private static DaoTeacher daoTeacher;
+    private static DaoStudent daoStudent;
     private static EntityManagerFactory managerFactory;
 
     @BeforeClass
     public static void connectManagerFactory(){
         managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
         daoSubject = new DaoSubjectImplJPA(managerFactory);
+        daoStudent = new DaoStudentImplJPA(managerFactory);
         daoGroup = new DaoGroupImplJPA(managerFactory);
         daoTeacher = new DaoTeacherImplJPA(managerFactory);
-        StartInitJPADB.initTables(daoGroup, daoTeacher);
+        StartInitJPADB.initTables(daoTeacher, daoStudent);
     }
 
     @AfterClass
@@ -65,15 +68,15 @@ public class TestSelectedDAO {
 
     }
 
+    @Test
+    public void testGetstudents(){
 
-   /* @Test
-    public void testGetStudents(){
+        List<Student> studentList = daoStudent.getAllStudents();
+        Assert.assertThat("Test method get All Students", 60, equalTo(studentList.size()));
 
-        List<Student> studentList = selectDAO.getStudents();
-        int size = studentList.size();
-        Assert.assertThat("Test method Add and Delete Groups", 60, equalTo(size));
     }
-*/
+
+
    /* @Test
     public void testGetTeachersThatWorkMore3Years(){
 

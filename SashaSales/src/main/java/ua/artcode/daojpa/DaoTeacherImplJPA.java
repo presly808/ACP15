@@ -1,5 +1,6 @@
 package ua.artcode.daojpa;
 
+import ua.artcode.model.modeljpa.Group;
 import ua.artcode.model.modeljpa.Subject;
 import ua.artcode.model.modeljpa.Teacher;
 
@@ -78,11 +79,9 @@ public class DaoTeacherImplJPA implements DaoTeacher<Teacher> {
     @Override
     public Teacher findById(Object id) {
         EntityManager entityManager = managerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
-            Teacher teacher = entityManager.find(Teacher.class, id);
-            return teacher;
+            return entityManager.find(Teacher.class, id);
         } finally {
             entityManager.close();
         }
@@ -94,4 +93,18 @@ public class DaoTeacherImplJPA implements DaoTeacher<Teacher> {
         TypedQuery<Teacher> query = entityManager.createQuery("SELECT t FROM Teacher t", Teacher.class);
         return query.getResultList();
     }
+
+    public boolean containsSubjectByName(String subject_name) {
+
+        EntityManager entityManager = managerFactory.createEntityManager();
+
+        TypedQuery<Subject> query = entityManager.createQuery(String.format("SELECT s FROM Subject s WHERE s.name LIKE '%s'",subject_name), Subject.class);
+        List<Subject> subjectList = query.getResultList();
+        if (subjectList.size() > 0){
+            return true;
+        }
+
+        return false;
+    }
+
 }

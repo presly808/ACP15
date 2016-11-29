@@ -66,17 +66,16 @@ public class DaoGroupImplJPA implements DaoGroup<Group> {
     public Group findById(Object id) {
 
         EntityManager entityManager = managerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
-            Group group = entityManager.find(Group.class, id);
-            return group;
+            return entityManager.find(Group.class, id);
         } finally {
             entityManager.close();
         }
-        //return null;
+
     }
 
+    @Override
     public List<Group> getAllGroup() {
 
         EntityManager entityManager = managerFactory.createEntityManager();

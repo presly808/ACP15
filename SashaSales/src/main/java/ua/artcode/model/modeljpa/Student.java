@@ -1,34 +1,28 @@
 package ua.artcode.model.modeljpa;
 
-/**
- * Created by work on 12.11.2016.
- */
-public class Student {
+import javax.persistence.*;
 
-    private int id;
+@Entity
+@Table(name = "students")
+public class Student extends IdEntity {
+
+    @Column(name = "student_name", nullable = false, length = 40, unique = true)
     private String name;
+
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
     public Student() {
     }
 
-    public Student(int id, String name) {
-        this.id = id;
+    public Student(String name) {
         this.name = name;
     }
 
-    public Student(int id, String name, Group group) {
-        this.id = id;
+    public Student(String name, Group group) {
         this.name = name;
         this.group = group;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -50,8 +44,30 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Student student = (Student) o;
+
+        if (name != null ? !name.equals(student.name) : student.name != null) return false;
+        return group != null ? group.equals(student.group) : student.group == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        return result;
+    }
+
 }
