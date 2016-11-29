@@ -1,7 +1,5 @@
 package jpabush;
 
-import jpabush.dao.Dao;
-import jpabush.dao.GeneralDao;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -12,7 +10,7 @@ import javax.persistence.Persistence;
 /**
  * Created by lost on 26.11.2016.
  */
-public class DaoTexture {
+public class DaoTextureTest {
     protected static EntityManagerFactory managerFactory;
     protected static EntityManager manager;
 
@@ -20,10 +18,12 @@ public class DaoTexture {
     @BeforeClass
     public static void setUp() throws Exception {
         managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
-        manager=managerFactory.createEntityManager();
-
+        manager = managerFactory.createEntityManager();
     }
 
-
+    @AfterClass
+    public static void tearDown() throws Exception {
+        manager.close();
+    }
 
 }

@@ -7,13 +7,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "students")
-public class Student extends IdEntity {
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column(nullable = false)
     private String name;
     @ManyToOne
-    @JoinColumn(name="group_id",referencedColumnName = "id")
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
-
+    @Transient
+    private double avrMark;
     public Student() {
     }
 
@@ -25,7 +29,7 @@ public class Student extends IdEntity {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + getId() +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", group=" + group +
                 '}';
@@ -46,6 +50,16 @@ public class Student extends IdEntity {
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 }
 
 

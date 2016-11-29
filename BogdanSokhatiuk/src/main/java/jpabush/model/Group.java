@@ -1,28 +1,26 @@
 package jpabush.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by lost on 12.11.2016.
  */
 @Entity
 @Table(name = "groups")
-public class Group extends IdEntity {
+public class Group {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column
     private String name;
 
     public Group() {
     }
 
-    public Group(String name) {
-        this.name = name;
-    }
 
     public Group(String name, int id) {
         this.name = name;
-        setId(id);
+        this.id = id;
     }
 
     public String getName() {
@@ -31,6 +29,14 @@ public class Group extends IdEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

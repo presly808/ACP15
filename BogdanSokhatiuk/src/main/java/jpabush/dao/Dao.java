@@ -7,9 +7,8 @@ import jpabush.model.Book;
  */
 public interface Dao<T> {
     T create(T t);
-    boolean delete (T t);
-    boolean delete (T t, Object id);
+    boolean delete (T t, int id);
     T update (T t);
-    T findbyId(Object id);
+    T findbyId(int id);
 
 }

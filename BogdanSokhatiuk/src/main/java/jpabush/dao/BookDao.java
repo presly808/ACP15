@@ -34,10 +34,10 @@ public class BookDao implements Dao<Book> {
     }
 
     @Override
-    public boolean delete(Book book) {
+    public boolean delete(Book book, int id) {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
-        book=manager.find(Book.class,book.getId());
+        book=manager.find(Book.class,id);
 
         try {
 
@@ -54,17 +54,12 @@ public class BookDao implements Dao<Book> {
     }
 
     @Override
-    public boolean delete(Book book, Object id) {
-        return false;
-    }
-
-    @Override
     public Book update(Book book) {
         return null;
     }
 
     @Override
-    public Book findbyId(Object id) {
+    public Book findbyId(int id) {
         EntityManager manager = factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 

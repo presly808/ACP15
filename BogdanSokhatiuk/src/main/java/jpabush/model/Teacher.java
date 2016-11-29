@@ -8,12 +8,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "teachers")
-public class Teacher extends IdEntity {
+public class Teacher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column
     private String name;
     @Column
     private int experience;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="subject_id",referencedColumnName = "id")
     private Subject subject;
 
@@ -48,5 +51,13 @@ public class Teacher extends IdEntity {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

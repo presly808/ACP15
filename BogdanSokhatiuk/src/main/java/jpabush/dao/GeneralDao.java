@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
  * Created by lost on 26.11.2016.
  */
 public class GeneralDao<T> implements Dao<T> {
-    private static EntityManager manager;
+    protected static EntityManager manager;
     private Class<T> tClass;
 
     public GeneralDao(EntityManager manager, Class<T> tClass) {
@@ -37,18 +37,12 @@ public class GeneralDao<T> implements Dao<T> {
         return t;
     }
 
-    @Override
-    public boolean delete(T t) {
-        return false;
-    }
 
     @Override
-    public boolean delete(T t, Object id) {
+    public boolean delete(T t, int id) {
         EntityTransaction transaction = manager.getTransaction();
         t = manager.find(tClass, id);
-
         try {
-
             transaction.begin();
             manager.remove(t);
             transaction.commit();
@@ -61,11 +55,19 @@ public class GeneralDao<T> implements Dao<T> {
 
     @Override
     public T update(T t) {
-        return null;
+        EntityTransaction transaction = manager.getTransaction();
+        try {
+            transaction.begin();
+            manager.merge(t);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+        return t;
     }
 
     @Override
-    public T findbyId(Object id) {
+    public T findbyId(int id) {
         EntityTransaction transaction = manager.getTransaction();
 
         try {
@@ -76,7 +78,8 @@ public class GeneralDao<T> implements Dao<T> {
         }
         return null;
     }
-    public static void close(){
+
+    public static void close() {
         manager.close();
     }
 }

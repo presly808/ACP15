@@ -1,21 +1,28 @@
 package jpabush.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by lost on 12.11.2016.
  */
 @Entity
 @Table(name = "subjects")
-public class Subject extends IdEntity {
+public class Subject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @Column
     private String name;
     @Column
     private String description;
 
     public Subject() {
+    }
+
+    public Subject(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     public Subject(String name, String description) {
@@ -37,6 +44,14 @@ public class Subject extends IdEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
