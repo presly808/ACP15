@@ -35,7 +35,7 @@ public class TestSelectedDAO {
         daoStudent = new DaoStudentImplJPA(managerFactory);
         daoGroup = new DaoGroupImplJPA(managerFactory);
         daoTeacher = new DaoTeacherImplJPA(managerFactory);
-        StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
+        StartInitJPADB.initTables(daoGroup, daoSubject, daoTeacher, daoStudent, managerFactory);
     }
 
     @AfterClass

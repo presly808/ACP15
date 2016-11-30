@@ -2,6 +2,8 @@ package ua.artcode.daojpa;
 
 import ua.artcode.model.modeljpa.Group;
 import ua.artcode.model.modeljpa.Student;
+import ua.artcode.model.modeljpa.Subject;
+import ua.artcode.util.UtilsMethod;
 
 import javax.persistence.*;
 import java.util.List;
@@ -82,6 +84,17 @@ public class DaoGroupImplJPA implements DaoGroup<Group> {
         EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Group> query = entityManager.createQuery("SELECT g FROM Group g", Group.class);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Group> getGroupsThatStudySubject(String subject_name) {
+        /*EntityManager entityManager = managerFactory.createEntityManager();
+        int id = UtilsMethod.getIdOfSubject(subject_name, managerFactory);
+        TypedQuery<Group> query = entityManager.createQuery("SELECT g FROM Group g WHERE s.name = : ids", Group.class);
+        query.setParameter("ids", subject_name);
+        return query.getResultList();*/
+        return  null;
+
     }
 
 }

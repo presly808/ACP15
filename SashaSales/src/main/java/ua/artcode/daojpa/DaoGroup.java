@@ -1,5 +1,7 @@
 package ua.artcode.daojpa;
 
+import ua.artcode.model.modelsql.Group;
+
 import java.util.List;
 
 /**
@@ -12,5 +14,6 @@ public interface DaoGroup<T> {
     T update(T group);
     T findById(Object id);
     List<T> getAllGroup();
+    List<T> getGroupsThatStudySubject(String subject_name);
 
 }
