@@ -1,3 +1,4 @@
+
 package university.dao.crud;
 
 import org.junit.After;
@@ -15,8 +16,6 @@ import static org.junit.Assert.*;
 
 public class CRUDQueryStudentTest extends PrepareTestDataBase {
 
-    private QueryCreator queryCreator = Factory.getQueryCreator();
-
     private Group testStudentsGroup;
     private Group groupNotFromDB;
 
@@ -26,54 +25,68 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
     @Before
     public void setUp() throws Exception {
 
-        String testStudentsName = "Student " + System.currentTimeMillis();
-        int testStudentsId = -1;
-
         String testStudentsGroupName = "Gr" + System.currentTimeMillis();
 
-        int testStudentsGroupId = -1;
-        testStudentsGroup = new Group(testStudentsGroupId, testStudentsGroupName);
+        testStudentsGroup = new Group();
+        testStudentsGroup.setName(testStudentsGroupName);
         queryCreator.addGroup(testStudentsGroup);
 
-        testStudent = new Student(testStudentsId, testStudentsName, testStudentsGroup);
+        String testStudentsName = "Student " + System.currentTimeMillis();
+
+        testStudent = new Student();
+        testStudent.setName(testStudentsName);
+        testStudent.setGroup(testStudentsGroup);
         queryCreator.addStudent(testStudent);
 
-        int invalidGroupId = -1;
-        groupNotFromDB = new Group(invalidGroupId, "Test");
+        groupNotFromDB = new Group();
+        groupNotFromDB.setName("Gr" + System.currentTimeMillis());
 
         int invalidStudentId = -1;
-        studentNotFromDB = new Student(invalidStudentId, testStudentsName, testStudentsGroup);
-
+        studentNotFromDB = new Student();
+        studentNotFromDB.setId(invalidStudentId);
+        studentNotFromDB.setName(testStudentsName);
+        studentNotFromDB.setGroup(testStudentsGroup);
+        studentNotFromDB.setId(invalidStudentId);
     }
 
     @After
     public void tearDown() throws Exception {
-        queryCreator.deleteStudent(testStudent);
+        try {
+            queryCreator.deleteStudent(testStudent);
+        } catch (AppDBException e) {}
+
+        try {
+            queryCreator.deleteGroup(testStudentsGroup);
+        } catch (AppDBException e) {}
+
         studentNotFromDB = null;
-        queryCreator.deleteGroup(testStudentsGroup);
         groupNotFromDB = null;
     }
 
     @Test
     public void addStudent() throws Exception {
         String testStudentsNameForAddTest = "Student " + System.currentTimeMillis();
-        int testStudentsIdForAddTest = -1;
-        Student testStudentForAddTest = new Student(testStudentsIdForAddTest, testStudentsNameForAddTest, testStudentsGroup);
+
+        Student testStudentForAddTest = new Student();
+        testStudentForAddTest.setName(testStudentsNameForAddTest);
+        testStudentForAddTest.setGroup(testStudentsGroup);
 
         assertTrue(queryCreator.addStudent(testStudentForAddTest));
-        queryCreator.getStudent(testStudentForAddTest);
 
         //test auto-generation id
-        assertThat(testStudentForAddTest.getId(), not(equalTo(testStudentsIdForAddTest)));
+        int defaultStudentId = 0;
+        assertThat(testStudentForAddTest.getId(), not(equalTo(defaultStudentId)));
 
         queryCreator.deleteStudent(testStudentForAddTest);
     }
 
     @Test
     public void addStudentNegative() throws Exception {
-        int testStudentsId = -1;
+
         String testStudentsName = "Name";
-        Student studentWithInvalidGroup = new Student(testStudentsId, testStudentsName, groupNotFromDB);
+        Student studentWithInvalidGroup = new Student();
+        studentWithInvalidGroup.setName(testStudentsName);
+        studentWithInvalidGroup.setGroup(groupNotFromDB);
 
         try {
             queryCreator.addStudent(studentWithInvalidGroup);
@@ -130,8 +143,6 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-
-        queryCreator.addStudent(testStudent);
     }
 
     @Test

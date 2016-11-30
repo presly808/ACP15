@@ -13,22 +13,21 @@ import static org.junit.Assert.*;
 
 public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
-    private QueryCreator queryCreator = Factory.getQueryCreator();
-
     @Test
     public void CRUDGroupAndStudents() throws Exception {
 
         String testGroupName = "Gr" + System.currentTimeMillis();
-        int testGroupId = -1;
 
-        Group testGroup = new Group(testGroupId, testGroupName);
+        Group testGroup = new Group();
+        testGroup.setName(testGroupName);
+
+        int defaultId = testGroup.getId();
 
         //test CREATE group
         assertTrue(queryCreator.addGroup(testGroup));
 
         //test auto-generation id
-        assertTrue(testGroup.getId() != testGroupId);
-        assertThat(testGroup.getId(), not(equalTo(testGroupId)));
+        assertThat(testGroup.getId(), not(equalTo(defaultId)));
 
         //test error when duplicate
         try {
@@ -41,13 +40,15 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         //test READ group
         Group addedGroup = queryCreator.getGroup(testGroup);
 
-        assertEquals(testGroup.getId(), addedGroup.getId());
-        assertEquals(testGroup.getName(), addedGroup.getName());
-        assertEquals(testGroup, addedGroup);
+        assertThat(testGroup.getId(), equalTo(addedGroup.getId()));
+        assertThat(testGroup.getName(), equalTo(addedGroup.getName()));
+        assertThat(testGroup, equalTo(addedGroup));
 
         //test error when read invalid
         int invalidId = -1;
-        Group groupNotFromDB = new Group(invalidId, "Test");
+        Group groupNotFromDB = new Group();
+        groupNotFromDB.setId(invalidId);
+        groupNotFromDB.setName("Test");
 
         try {
             queryCreator.getGroup(groupNotFromDB);
@@ -64,8 +65,8 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
         Group updatedGroup = queryCreator.getGroup(testGroup);
 
-        assertEquals(newTestGroupName, updatedGroup.getName());
-        assertEquals(testGroup.getId(), updatedGroup.getId());
+        assertThat(newTestGroupName, equalTo(updatedGroup.getName()));
+        assertThat(testGroup.getId(), equalTo(updatedGroup.getId()));
 
         //test error when update
         try {
@@ -100,25 +101,31 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         //START TESTING FOR STUDENT(contains group which must be in DB)
 
         String testStudentsName = "Student " + System.currentTimeMillis();
-        int testStudentsId = -1;
 
         String testStudentsGroupName = "Gr" + System.currentTimeMillis();
-        int testStudentsGroupId = -1;
-        Group testStudentsGroup = new Group(testStudentsGroupId, testStudentsGroupName);
+
+        Group testStudentsGroup = new Group();
+        testStudentsGroup.setName(testStudentsGroupName);
+
         queryCreator.addGroup(testStudentsGroup);
 
-        Student testStudent = new Student(testStudentsId, testStudentsName, testStudentsGroup);
+        Student testStudent = new Student();
+        testStudent.setName(testStudentsName);
+        testStudent.setGroup(testStudentsGroup);
 
+        int testStudentId = testStudent.getId();
         //test CREATE student
         assertTrue(queryCreator.addStudent(testStudent));
 
         //test auto-generation id
-        assertTrue(testStudent.getId() != testStudentsId);
-
+        assertThat(testStudent.getId(), not(equalTo(testStudentId)));
 
         //test error when add student with group not from DB
         try {
-            queryCreator.addStudent(new Student(testStudentsId, testStudentsName, groupNotFromDB));
+            Student testStudentWithGroupNotFromDB = new Student();
+            testStudentWithGroupNotFromDB.setName(testStudentsName);
+            testStudentWithGroupNotFromDB.setGroup(groupNotFromDB);
+            queryCreator.addStudent(testStudentWithGroupNotFromDB);
             assertTrue(false);
 
         } catch (AppDBException e) {
@@ -128,13 +135,14 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         //test READ student
         Student addedStudent = queryCreator.getStudent(testStudent);
 
-        assertEquals(testStudent.getId(), addedStudent.getId());
-        assertEquals(testStudent.getName(), addedStudent.getName());
-        assertEquals(testStudent, addedStudent);
+        assertThat(testStudent.getId(), equalTo(addedStudent.getId()));
+        assertThat(testStudent.getName(), equalTo(addedStudent.getName()));
+        assertThat(testStudent, equalTo(addedStudent));
 
         //test error when read invalid student
-        int invalidStudentId = -1;
-        Student studentNotFromDB = new Student(invalidStudentId, testStudentsName, testStudentsGroup);
+        Student studentNotFromDB = new Student();
+        studentNotFromDB.setName(testStudentsName);
+        studentNotFromDB.setGroup(testStudentsGroup);
 
         try {
             queryCreator.getStudent(studentNotFromDB);
@@ -142,6 +150,8 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
+
+
 
         //test UPDATE student
         String newTestStudentName = "Student " + System.currentTimeMillis();
@@ -151,10 +161,10 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
 
         Student updatedStudent = queryCreator.getStudent(testStudent);
 
-        assertEquals(newTestStudentName, updatedStudent.getName());
-        assertEquals(testStudent.getId(), updatedStudent.getId());
-        assertEquals(testStudent.getGroup().getId(), updatedStudent.getGroup().getId());
-        assertEquals(testStudent.getGroup().getName(), updatedStudent.getGroup().getName());
+        assertThat(newTestStudentName, equalTo(updatedStudent.getName()));
+        assertThat(testStudent.getId(), equalTo(updatedStudent.getId()));
+        assertThat(testStudent.getGroup().getId(), equalTo(updatedStudent.getGroup().getId()));
+        assertThat(testStudent.getGroup().getName(), equalTo(updatedStudent.getGroup().getName()));
 
         //test error when update(student not from DB)
         try {
@@ -193,5 +203,8 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
+
+        //clear test data
+        queryCreator.deleteGroup(testStudentsGroup);
     }
 }

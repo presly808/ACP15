@@ -14,8 +14,6 @@ import static org.junit.Assert.*;
 
 public class CRUDQueryGroupTest extends PrepareTestDataBase {
 
-    private QueryCreator queryCreator = Factory.getQueryCreator();
-
     private Group testGroup;
     private Group groupNotFromDB;
 
@@ -23,32 +21,36 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
     public void setUp() throws Exception {
 
         String testGroupName = "Gr" + System.currentTimeMillis();
-        int testGroupId = -1;
-        testGroup = new Group(testGroupId, testGroupName);
+        testGroup = new Group(testGroupName);
         queryCreator.addGroup(testGroup);
 
         int invalidId = -1;
-        groupNotFromDB = new Group(invalidId, "Test");
-
+        groupNotFromDB = new Group();
+        groupNotFromDB.setId(invalidId);
+        groupNotFromDB.setName("Gr" + System.currentTimeMillis());
     }
 
     @After
     public void tearDown() throws Exception {
-        queryCreator.deleteGroup(testGroup);
+        try {
+            queryCreator.deleteGroup(testGroup);
+        } catch (AppDBException e) {}
+
         groupNotFromDB = null;
     }
 
     @Test
     public void addGroup() throws Exception {
+        int defaultId = 0;
         String testGroupNameForAddTest = "Gr" + System.currentTimeMillis();
-        int testGroupIdForAddTest = -1;
-        Group testGroupForAddTest = new Group(testGroupIdForAddTest, testGroupNameForAddTest);
+        Group testGroupForAddTest = new Group();
+        testGroupForAddTest.setName(testGroupNameForAddTest);
 
         assertTrue(queryCreator.addGroup(testGroupForAddTest));
 
         //test auto-generation id
-        int groupIdAfterAddToDB = testGroup.getId();
-        assertThat(groupIdAfterAddToDB, not(equalTo(testGroupIdForAddTest)));
+        int groupIdAfterAddToDB = testGroupForAddTest.getId();
+        assertThat(groupIdAfterAddToDB, not(equalTo(defaultId)));
 
         queryCreator.deleteGroup(testGroupForAddTest);
     }
@@ -99,7 +101,6 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
             assertTrue(false);
         } catch (AppDBException e) {
             assertTrue(true);
-            queryCreator.addGroup(testGroup);
         }
     }
 

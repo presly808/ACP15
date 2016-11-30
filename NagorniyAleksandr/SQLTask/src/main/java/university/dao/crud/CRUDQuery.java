@@ -1,10 +1,7 @@
 package university.dao.crud;
 
 import university.exceptions.*;
-import university.models.Group;
-import university.models.Student;
-import university.models.Subject;
-import university.models.Teacher;
+import university.models.*;
 
 public interface CRUDQuery {
 
@@ -13,6 +10,8 @@ public interface CRUDQuery {
     boolean addGroup(Group group) throws AppDBException;
 
     boolean addSubject(Subject subject) throws AppDBException;
+
+    boolean addSubjectCategory(SubjectCategory subjectCategory) throws AppDBException;
 
     boolean addTeacher(Teacher teacher) throws AppDBException;
 
@@ -24,6 +23,8 @@ public interface CRUDQuery {
 
     boolean editSubject(Subject subjectWithNewData) throws AppDBException;
 
+    boolean editSubjectCategory(SubjectCategory subjectCategoryWithNewData) throws AppDBException;
+
     boolean deleteStudent(Student student) throws AppDBException;
 
     boolean deleteGroup(Group group) throws AppDBException;
@@ -32,6 +33,8 @@ public interface CRUDQuery {
 
     boolean deleteSubject(Subject subject) throws AppDBException;
 
+    boolean deleteSubjectCategory(SubjectCategory subjectCategory) throws AppDBException;
+
     Student getStudent(Student student) throws AppDBException;
 
     Group getGroup(Group group) throws AppDBException;
@@ -39,4 +42,6 @@ public interface CRUDQuery {
     Teacher getTeacher(Teacher teacher) throws AppDBException;
 
     Subject getSubject(Subject subject) throws AppDBException;
+
+    SubjectCategory getSubjectCategory(SubjectCategory subjectCategory) throws AppDBException;
 }

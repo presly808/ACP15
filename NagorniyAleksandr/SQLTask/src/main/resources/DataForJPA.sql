@@ -1,26 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `university` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `university`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
---
--- Host: localhost    Database: university
--- ------------------------------------------------------
--- Server version	5.7.16-log
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Dumping data for table `groups`
---
-
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` VALUES (1,'ACB17'),(2,'ACO16'),(4,'ACP14'),(3,'ACP15'),(5,'Math-1'),(6,'Math-2'),(7,'PY-314');
@@ -43,8 +20,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `study` WRITE;
 /*!40000 ALTER TABLE `study` DISABLE KEYS */;
-INSERT INTO `study` VALUES (1,1,4),(2,1,4),(3,1,4),(4,1,4),(5,1,4),(6,1,4),(7,1,1),(1,2,1),(2,2,4),(3,2,8),(4,2,8),(5,2,9),(6,2,6),(1,3,1),(2,3,3),(7,3,4),(1,4,5),(2,4,6),(3,4,7),(4,4,1),(5,4,5),(6,4,6),(7,4,7),(1,5,1),(2,5,1),(3,5,1),(4,5,1),(5,5,1),(6,5,1),(7,5,1),(1,6,7),(2,6,1),(3,6,9),(4,6,10),(5,6,11),(6,6,12),(7,7,1);
-/*!40000 ALTER TABLE `study` ENABLE KEYS */;
+INSERT INTO `study`(id, group_id, subject_id, teacher_id) VALUES (1,1,1,4),(2,2,1,4),(3,3,1,4),(4,4,1,4),(5,5,1,4),(6,6,1,4),(7,7,1,1),(8,1,2,1),(9,2,2,4),(10,3,2,8),(11,4,2,8),(12,5,2,9),(13,6,2,6),(14,1,3,1),(15,2,3,3),(16,7,3,4),(17,1,4,5),(18,2,4,6),(19,3,4,7),(20,4,4,1),(21,5,4,5),(22,6,4,6),(23,7,4,7),(24,1,5,1),(25,2,5,1),(26,3,5,1),(27,4,5,1),(28,5,5,1),(29,6,5,1),(30,7,5,1),(31,1,6,7),(32,2,6,1),(33,3,6,9),(34,4,6,10),(35,5,6,11),(36,6,6,12),(37,7,7,1);/*!40000 ALTER TABLE `study` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -63,7 +39,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `subjects` WRITE;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
-INSERT INTO `subjects` VALUES (1,'Mathematics',1,'Queen of Sciences'),(2,'Physics',1,'Foundation of the world'),(3,'Biology',2,'Something not important'),(4,'English',2,'Most important international language'),(5,'JAVA',1,'Strongly typed object-oriented programming language'),(6,'Python',1,'High-level general purpose programming language'),(7,'Philosophy',2,'Special form of knowledge of the world that produces a system of knowledge about the most common characteristics of maximum generalizing concepts and fundamental principles of reality (being) and cognition, human being, the relation of man and the world');
+INSERT INTO `subjects`(id, name, category_id, description) VALUES (1,'Mathematics',1,'Queen of Sciences'),(2,'Physics',1,'Foundation of the world'),(3,'Biology',2,'Something not important'),(4,'English',2,'Most important international language'),(5,'JAVA',1,'Strongly typed object-oriented programming language'),(6,'Python',1,'High-level general purpose programming language'),(7,'Philosophy',2,'Special form of knowledge of the world that produces a system of knowledge about the most common characteristics of maximum generalizing concepts and fundamental principles of reality (being) and cognition, human being, the relation of man and the world');
 /*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,17 +49,6 @@ UNLOCK TABLES;
 
 LOCK TABLES `teachers` WRITE;
 /*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
-INSERT INTO `teachers` VALUES (1,'Serhii Bilobrov',3),(2,'Ivan Petrov',2),(3,'Ivan Abdulin',5),(4,'Dow Jones',20),(5,'Ocheretjanij Volodimir',5),(6,'Matvіev Іgor',6),(7,'Prikidev Oleg',4),(8,'Lіshhuk Sergіj',10),(9,'Bіrjuk Volodimir',15),(10,'Kuharchuk Marina',20),(11,'Sergeev Oleksandr',13),(12,'Horіshman evgen',12);
+INSERT INTO `teachers`(id, name, experience) VALUES (1,'Serhii Bilobrov',3),(2,'Ivan Petrov',2),(3,'Ivan Abdulin',5),(4,'Dow Jones',20),(5,'Ocheretjanij Volodimir',5),(6,'Matvіev Іgor',6),(7,'Prikidev Oleg',4),(8,'Lіshhuk Sergіj',10),(9,'Bіrjuk Volodimir',15),(10,'Kuharchuk Marina',20),(11,'Sergeev Oleksandr',13),(12,'Horіshman evgen',12);
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-11-17 18:14:13

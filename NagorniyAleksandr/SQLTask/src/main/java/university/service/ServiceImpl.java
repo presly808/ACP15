@@ -14,7 +14,7 @@ public class ServiceImpl implements Service {
 
     private QueryCreator queryCreator;
 
-    private static final Logger log = Logger.getLogger(ServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(ServiceImpl.class);
 
     public ServiceImpl(QueryCreator queryCreator) {
         this.queryCreator = queryCreator;
@@ -26,7 +26,7 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        log.info("Request: get students list");
+        LOGGER.info("Request: get students list");
         return queryCreator.getStudentsList(offset, length);
     }
 
@@ -36,7 +36,7 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        log.info("Request: get subjects list");
+        LOGGER.info("Request: get subjects list");
         return queryCreator.getSubjectsList(offset, length);
     }
 
@@ -46,7 +46,7 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        log.info("Request: get group list");
+        LOGGER.info("Request: get group list");
         return queryCreator.getGroupList(offset, length);
     }
 
@@ -56,7 +56,7 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        log.info("Request: get teachers list");
+        LOGGER.info("Request: get teachers list");
         return queryCreator.getTeachersList(offset, length);
     }
 
@@ -66,7 +66,7 @@ public class ServiceImpl implements Service {
 
         validateStudent(student);
 
-        log.info("Request: add student");
+        LOGGER.info("Request: add student");
         return queryCreator.addStudent(student);
     }
 
@@ -76,7 +76,7 @@ public class ServiceImpl implements Service {
 
         validateGroup(group);
 
-        log.info("Request: add group");
+        LOGGER.info("Request: add group");
         return queryCreator.addGroup(group);
     }
 
@@ -86,7 +86,7 @@ public class ServiceImpl implements Service {
 
         validateSubject(subject);
 
-        log.info("Request: add subject");
+        LOGGER.info("Request: add subject");
         return queryCreator.addSubject(subject);
     }
 
@@ -95,7 +95,7 @@ public class ServiceImpl implements Service {
 
         validateTeacher(teacher);
 
-        log.info("Request: add teacher");
+        LOGGER.info("Request: add teacher");
         return queryCreator.addTeacher(teacher);
     }
 
@@ -105,7 +105,7 @@ public class ServiceImpl implements Service {
 
         validateStudent(studentWithNewData);
 
-        log.info("Request: edit student");
+        LOGGER.info("Request: edit student");
         return queryCreator.editStudent(studentWithNewData);
     }
 
@@ -114,7 +114,7 @@ public class ServiceImpl implements Service {
 
         validateGroup(groupWithNewData);
 
-        log.info("Request: edit group");
+        LOGGER.info("Request: edit group");
         return queryCreator.editGroup(groupWithNewData);
     }
 
@@ -124,7 +124,7 @@ public class ServiceImpl implements Service {
 
         validateTeacher(teacherWithNewData);
 
-        log.info("Request: edit teacher");
+        LOGGER.info("Request: edit teacher");
         return queryCreator.editTeacher(teacherWithNewData);
     }
 
@@ -134,7 +134,7 @@ public class ServiceImpl implements Service {
 
         validateSubject(subjectWithNewData);
 
-        log.info("Request: edit subject");
+        LOGGER.info("Request: edit subject");
         return queryCreator.editSubject(subjectWithNewData);
     }
 
@@ -144,7 +144,7 @@ public class ServiceImpl implements Service {
 
         validateGroup(group);
 
-        log.info("Request: get student of group");
+        LOGGER.info("Request: get student of group");
         return queryCreator.getStudentOfGroup(group);
     }
 
@@ -161,21 +161,21 @@ public class ServiceImpl implements Service {
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
 
-        log.info("Request: get subject that study all groups");
+        LOGGER.info("Request: get subject that study all groups");
         return queryCreator.getSubjectsThatStudyAllGroups();
     }
 
     @Override
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
 
-        log.info("Request: get teacher with max experience");
+        LOGGER.info("Request: get teacher with max experience");
         return queryCreator.getTeacherWithMaxExperience();
     }
 
     @Override
     public Teacher getTeacherWithMinExperience() throws AppDBException {
 
-        log.info("Request: get teacher with min experience");
+        LOGGER.info("Request: get teacher with min experience");
         return queryCreator.getTeacherWithMinExperience();
     }
 
@@ -184,18 +184,18 @@ public class ServiceImpl implements Service {
             InvalidValueException, AppDBException {
 
         if (years < 0) {
-            log.error("Throw: Invalid input data");
+            LOGGER.error("Throw: Invalid input data");
             throw new InvalidValueException("Param \"years\" is incorrect");
         }
 
-        log.info("Request: get teacher with experience more than" + years + " years");
+        LOGGER.info("Request: get teacher with experience more than" + years + " years");
         return queryCreator.getTeachersWithExperienceMoreThanYears(years);
     }
 
     @Override
     public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws AppDBException {
 
-        log.info("Request: get teacher with experience more than three years");
+        LOGGER.info("Request: get teacher with experience more than three years");
         return queryCreator.getTeachersWithExperienceMoreThanThreeYears();
     }
 
@@ -205,14 +205,14 @@ public class ServiceImpl implements Service {
 
         validateSubjectCategory(subjectCategory);
 
-        log.info("Request: get of subjects by category" + subjectCategory.getTitle());
+        LOGGER.info("Request: get of subjects by category" + subjectCategory.getTitle());
         return queryCreator.getListOfSubjectsByCategory(subjectCategory);
     }
 
     @Override
     public List<Subject> getListOfHumanitarianSubjects() throws AppDBException {
 
-        log.info("Request: get humanitarian subjects");
+        LOGGER.info("Request: get humanitarian subjects");
         return queryCreator.getListOfHumanitarianSubjects();
     }
 }

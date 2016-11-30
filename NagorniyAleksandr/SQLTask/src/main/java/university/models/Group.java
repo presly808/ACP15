@@ -1,26 +1,27 @@
 package university.models;
 
-public class Group {
 
-    private int id;
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "groups")
+public class Group extends IdEntity {
+
+    @Column(name = "name", nullable = false, unique = true, length = 20)
     private String name;
 
+
+    //@OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+    //private List<Student> studentList;
 
     public Group() {
     }
 
-    public Group(int id, String name) {
-        this.id = id;
+    public Group(String name) {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -33,24 +34,8 @@ public class Group {
     @Override
     public String toString() {
         return "Group{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Group group = (Group) o;
-
-        return id == group.id;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 }
