@@ -4,11 +4,20 @@ import ua.artcode.daoSQL.interfaces.InsertDAO;
 import ua.artcode.daoSQL.interfaces.UpdateDAO;
 import ua.artcode.daojpa.DaoGroup;
 import ua.artcode.daojpa.DaoStudent;
+import ua.artcode.daojpa.DaoSubject;
 import ua.artcode.daojpa.DaoTeacher;
 import ua.artcode.model.modeljpa.Group;
 import ua.artcode.model.modeljpa.Student;
 import ua.artcode.model.modeljpa.Subject;
 import ua.artcode.model.modeljpa.Teacher;
+import ua.artcode.util.UtilsMethod;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by work on 13.11.2016.
@@ -20,7 +29,7 @@ public class StartInitJPADB {
     private  static String[] teacherNames = init.TestDataForDBSQL.generateTeacherName();
     private  static String[] subjects = init.TestDataForDBSQL.generateSubjectName();
 
-    public static void initTables (DaoGroup daoGroup, DaoTeacher daoTeacher, DaoStudent daoStudent) {
+    public static void initTables (DaoGroup daoGroup, DaoSubject daoSubject, DaoTeacher daoTeacher, DaoStudent daoStudent, EntityManagerFactory managerFactory) {
 
         // Добавляем преподователей, предметы, группы и студентов
         addTeachersAndSubjects(daoTeacher);
@@ -31,6 +40,7 @@ public class StartInitJPADB {
         addStudentToGroup(daoStudent);
 
         //Заполняем таблицу study
+        initJoinStudy(daoGroup, daoSubject, managerFactory);
 
     }
 
@@ -94,6 +104,84 @@ public class StartInitJPADB {
             }
         }
     }
+
+
+    private static void initJoinStudy(DaoGroup daoGroup, DaoSubject daoSubject,EntityManagerFactory managerFactory){
+
+        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+
+        List[] arraylists = new List[10];
+        for (int i = 0; i < 10; i++) {
+            List<Subject> subjectList = new ArrayList<>();
+            arraylists[i] = subjectList;
+        }
+
+        for (int i = 5; i < 20; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[0].add(subject);
+        }
+
+        for (int i = 10; i < 20; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[1].add(subject);
+
+        }
+
+        List<Subject> subjectList3 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[2].add(subject);
+        }
+
+        for (int i = 4; i < 18; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[3].add(subject);
+        }
+
+        for (int i = 6; i < 20; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[4].add(subject);
+        }
+
+        for (int i = 8; i < 19; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[5].add(subject);
+        }
+
+        for (int i = 1; i < 16; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[6].add(subject);
+        }
+
+        for (int i = 3; i < 12; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[7].add(subject);
+        }
+
+        for (int i = 2; i < 17; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[8].add(subject);
+        }
+
+        for (int i = 0; i < 20; i++) {
+            Subject subject = new Subject(subjects[i]);
+            arraylists[9].add(subject);
+        }
+
+        int group_id = 0;
+        Group group = null;
+        for (int i = 0; i < 10; i++) {
+            group_id = UtilsMethod.getIdOfGroup(groups[i], managerFactory);
+            group = entityManager.find(Group.class, group_id);
+            group.setSubjectList(arraylists[i]);
+        }
+
+        entityTransaction.commit();
+
+    }
+
 
 
     private static void initStudy(InsertDAO insertDAO) {

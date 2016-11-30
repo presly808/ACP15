@@ -1,8 +1,9 @@
 
-package ua.artcode.util.utilsql;
+package ua.artcode.util;
 
-import ua.artcode.model.modelsql.Group;
-import ua.artcode.model.modelsql.Student;
+import ua.artcode.model.modeljpa.Group;
+import ua.artcode.model.modeljpa.Student;
+import ua.artcode.model.modeljpa.Subject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,9 +24,9 @@ public class UtilsMethod {
 
         EntityManager entityManager = managerFactory.createEntityManager();
 
-        TypedQuery<ua.artcode.model.modeljpa.Group> query = entityManager.createQuery("SELECT g FROM Group g WHERE g.name = :group_name", ua.artcode.model.modeljpa.Group.class);
+        TypedQuery<Group> query = entityManager.createQuery("SELECT g FROM Group g WHERE g.name = :group_name", Group.class);
         query.setParameter("group_name", group_name);
-        ua.artcode.model.modeljpa.Group group = query.getSingleResult();
+        Group group = query.getSingleResult();
         return group.getId();
     }
 
@@ -33,21 +34,32 @@ public class UtilsMethod {
 
         EntityManager entityManager = managerFactory.createEntityManager();
 
-        TypedQuery<ua.artcode.model.modeljpa.Student> query = entityManager.createQuery("SELECT s FROM Student s WHERE s.name = :student_name", ua.artcode.model.modeljpa.Student.class);
+        TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s WHERE s.name = :student_name", Student.class);
         query.setParameter("student_name", student_name);
         ua.artcode.model.modeljpa.Student student = query.getSingleResult();
         return student.getId();
     }
 
-    public static void utilResultSet(ResultSet resultSet, List<Student> students) throws SQLException {
+    public static int getIdOfSubject(String subject_name, EntityManagerFactory managerFactory) {
+
+        EntityManager entityManager = managerFactory.createEntityManager();
+
+        TypedQuery<Subject> query = entityManager.createQuery("SELECT s FROM Subject s WHERE s.name = :subject_name", Subject.class);
+        query.setParameter("subject_name", subject_name);
+        Subject subject = query.getSingleResult();
+        return subject.getId();
+    }
+
+
+    public static void utilResultSet(ResultSet resultSet, List<ua.artcode.model.modelsql.Student> students) throws SQLException {
 
         while (resultSet.next()) {
             int id_student = resultSet.getInt("id");
             String student_name = resultSet.getString("student_name");
             int id_group = resultSet.getInt("group_id");
             String group_name = resultSet.getString("group_name");
-            Group group = new Group(id_group, group_name);
-            Student student = new Student(id_student, student_name, group);
+            ua.artcode.model.modelsql.Group group = new ua.artcode.model.modelsql.Group(id_group, group_name);
+            ua.artcode.model.modelsql.Student student = new ua.artcode.model.modelsql.Student(id_student, student_name, group);
             students.add(student);
         }
     }

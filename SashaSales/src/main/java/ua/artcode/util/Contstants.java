@@ -1,4 +1,4 @@
-package ua.artcode.util.utilsql;
+package ua.artcode.util;
 
 /**
  * Created by work on 19.11.2016.

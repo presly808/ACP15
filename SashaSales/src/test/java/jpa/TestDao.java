@@ -25,13 +25,11 @@ public class TestDao {
         DaoTeacher<Teacher> daoTeacher = new DaoTeacherImplJPA(managerFactory);
         DaoStudent<Student> daoStudent = new DaoStudentImplJPA(managerFactory);
         DaoGroup<Group> daoGroup = new DaoGroupImplJPA(managerFactory);
+        DaoSubject<Subject> daoSubject = new DaoSubjectImplJPA(managerFactory);
 
-      //  StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
+        StartInitJPADB.initTables(daoGroup, daoSubject, daoTeacher, daoStudent, managerFactory);
 
 
-
-        //daoStudent.updateByGroup("Artur Zelenskiy", "ACO16");
-        StartInitJPADB.initTables(daoGroup, daoTeacher, daoStudent);
 
 /*        EntityManager entityManager = managerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();

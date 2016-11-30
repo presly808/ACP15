@@ -17,6 +17,9 @@ public class Group extends IdEntity {
     @OneToMany(mappedBy = "group")
     private List<Student> students;
 
+    @ManyToMany(targetEntity = Subject.class)
+    private List<Subject> subjectList;
+
     public Group() {
         super();
     }
@@ -45,6 +48,14 @@ public class Group extends IdEntity {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public List<Subject> getSubjectList() {
+        return subjectList;
+    }
+
+    public void setSubjectList(List<Subject> subjectList) {
+        this.subjectList = subjectList;
     }
 
     @Override

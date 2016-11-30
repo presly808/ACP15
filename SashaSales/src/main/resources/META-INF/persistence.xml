@@ -15,7 +15,6 @@
         <class>ua.artcode.model.modeljpa.Group</class>
         <class>ua.artcode.model.modeljpa.Teacher</class>
         <class>ua.artcode.model.modeljpa.Student</class>
-        <class>ua.artcode.model.modeljpa.Study</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -26,7 +25,7 @@
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
             <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" /> <!-- init DDL operations -->
+            <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- init DDL operations -->
 
         </properties>
 

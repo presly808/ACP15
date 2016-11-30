@@ -1,4 +1,4 @@
-package ua.artcode.util.utilsql;
+package ua.artcode.util;
 
 import java.io.*;
 import java.util.Properties;

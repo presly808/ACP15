@@ -2,8 +2,7 @@ package ua.artcode.daojpa;
 
 import ua.artcode.model.modeljpa.Group;
 import ua.artcode.model.modeljpa.Student;
-import ua.artcode.model.modeljpa.Subject;
-import ua.artcode.util.utilsql.UtilsMethod;
+import ua.artcode.util.UtilsMethod;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
