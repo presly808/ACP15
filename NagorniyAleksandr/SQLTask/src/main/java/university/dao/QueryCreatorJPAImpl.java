@@ -2,6 +2,7 @@ package university.dao;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import university.dao.crud.CRUDQuery;
 import university.dao.crud.CRUDQueryJPAImpl;
@@ -35,6 +36,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
     private EntityManagerFactory factory;
 
     @Autowired
+    @Qualifier("CRUDQueryJPAImpl")
     private CRUDQuery crudQuery;
 
     public QueryCreatorJPAImpl() {

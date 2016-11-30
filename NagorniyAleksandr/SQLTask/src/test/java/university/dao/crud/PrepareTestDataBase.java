@@ -10,7 +10,17 @@ import university.dao.QueryCreator;
 @ContextConfiguration(locations = {"classpath:app-context.xml"})
 public abstract class PrepareTestDataBase {
 
-    @Autowired
-    protected static QueryCreator queryCreator;
+    @Autowired()
+    protected QueryCreator queryCreator;
 
+    public PrepareTestDataBase() {
+    }
+
+    public QueryCreator getQueryCreator() {
+        return queryCreator;
+    }
+
+    public void setQueryCreator(QueryCreator queryCreator) {
+        this.queryCreator = queryCreator;
+    }
 }
