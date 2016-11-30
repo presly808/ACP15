@@ -1,11 +1,13 @@
 package university.dao;
 
+import org.springframework.stereotype.Component;
 import university.dao.crud.CRUDQuery;
 import university.exceptions.AppDBException;
 import university.models.*;
 
 import java.util.List;
 
+@Component
 public interface QueryCreator extends CRUDQuery {
 
     List<Student> getStudentsList(int offset, int length) throws AppDBException;

@@ -36,7 +36,8 @@ public class CRUDQueryTeacherTest extends PrepareTestDataBase {
     public void tearDown() throws Exception {
         try {
             queryCreator.deleteTeacher(testTeacher);
-        } catch (AppDBException e) {}
+        } catch (AppDBException e) {
+        }
 
         teacherNotFromDB = null;
     }

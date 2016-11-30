@@ -1,6 +1,8 @@
 package university.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.exceptions.InvalidValueException;
@@ -10,8 +12,10 @@ import java.util.List;
 
 import static university.util.Validator.*;
 
+@Component
 public class ServiceImpl implements Service {
 
+    @Autowired
     private QueryCreator queryCreator;
 
     private static final Logger LOGGER = Logger.getLogger(ServiceImpl.class);

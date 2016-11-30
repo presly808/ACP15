@@ -1,6 +1,8 @@
 package university.dao;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import university.dao.crud.CRUDQuery;
 import university.dao.crud.CRUDQueryJPAImpl;
 import university.exceptions.AppDBException;
@@ -11,9 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by nagornyyalek on 28.11.2016.
- */
+@Component
 public class QueryCreatorJPAImpl implements QueryCreator {
 
 
@@ -31,8 +31,30 @@ public class QueryCreatorJPAImpl implements QueryCreator {
     public static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY = "SELECT s FROM Subject s WHERE s.category =:parameter";
     public static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME = "SELECT s FROM Subject s WHERE s.category.title =:parameter";
 
+    @Autowired
     private EntityManagerFactory factory;
+
+    @Autowired
     private CRUDQuery crudQuery;
+
+    public QueryCreatorJPAImpl() {
+    }
+
+    public EntityManagerFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(EntityManagerFactory factory) {
+        this.factory = factory;
+    }
+
+    public CRUDQuery getCrudQuery() {
+        return crudQuery;
+    }
+
+    public void setCrudQuery(CRUDQuery crudQuery) {
+        this.crudQuery = crudQuery;
+    }
 
     public QueryCreatorJPAImpl(EntityManagerFactory factory, CRUDQuery crudQuery) {
         this.factory = factory;

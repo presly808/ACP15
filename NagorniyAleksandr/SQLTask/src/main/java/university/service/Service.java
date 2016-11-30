@@ -15,12 +15,14 @@ package university.service;
 	  -показать группу, в которой более 3-х студентов изучают философию (и выгнать с универа)
  */
 
+import org.springframework.stereotype.Component;
 import university.exceptions.AppDBException;
 import university.exceptions.InvalidValueException;
 import university.models.*;
 
 import java.util.List;
 
+@Component
 public interface Service {
 
     List<Student> getStudentsList(int offset, int length) throws AppDBException, InvalidValueException;

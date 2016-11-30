@@ -1,8 +1,6 @@
 package university.dao.crud;
 
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Group;
 import university.models.Student;
@@ -150,7 +148,6 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         } catch (AppDBException e) {
             assertTrue(true);
         }
-
 
 
         //test UPDATE student

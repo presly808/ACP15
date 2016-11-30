@@ -3,12 +3,9 @@ package university.dao.crud;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import university.container.AppEntityManagerFactory;
 import university.exceptions.AppDBException;
 import university.models.Subject;
 import university.models.SubjectCategory;
-
-import javax.persistence.EntityManager;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
@@ -53,11 +50,13 @@ public class CRUDQuerySubjectTest extends PrepareTestDataBase {
 
         try {
             queryCreator.deleteSubject(testSubject);
-        } catch (AppDBException e) {}
+        } catch (AppDBException e) {
+        }
 
         try {
             queryCreator.deleteSubjectCategory(validSubjectCategory);
-        } catch (AppDBException e) {}
+        } catch (AppDBException e) {
+        }
 
         subjectNotFromDB = null;
         validSubjectCategory = null;
