@@ -3,6 +3,7 @@ package university.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.exceptions.InvalidValueException;
@@ -13,12 +14,24 @@ import java.util.List;
 import static university.util.Validator.*;
 
 @Component
+@Transactional
 public class ServiceImpl implements Service {
 
     @Autowired
     private QueryCreator queryCreator;
 
+    public ServiceImpl() {
+    }
+
     public ServiceImpl(QueryCreator queryCreator) {
+        this.queryCreator = queryCreator;
+    }
+
+    public QueryCreator getQueryCreator() {
+        return queryCreator;
+    }
+
+    public void setQueryCreator(QueryCreator queryCreator) {
         this.queryCreator = queryCreator;
     }
 

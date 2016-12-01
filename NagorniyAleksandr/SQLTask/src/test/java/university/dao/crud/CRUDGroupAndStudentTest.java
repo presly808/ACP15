@@ -31,7 +31,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.addGroup(testGroup);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -70,7 +70,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.editGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -126,7 +126,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
             queryCreator.addStudent(testStudentWithGroupNotFromDB);
             assertTrue(false);
 
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -167,7 +167,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.editStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -176,7 +176,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.editStudent(testStudent);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -189,7 +189,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.getStudent(testStudent);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 
@@ -197,7 +197,7 @@ public class CRUDGroupAndStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.deleteStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
 

@@ -59,7 +59,7 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
         try {
             queryCreator.addGroup(testGroup);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -82,7 +82,7 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
         try {
             queryCreator.editGroup(groupNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }

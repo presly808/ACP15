@@ -80,7 +80,7 @@ public class CRUDQueryTeacherTest extends PrepareTestDataBase {
         try {
             queryCreator.editTeacher(teacherNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }

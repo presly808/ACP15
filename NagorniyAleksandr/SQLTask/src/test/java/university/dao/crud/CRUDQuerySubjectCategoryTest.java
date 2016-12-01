@@ -71,7 +71,7 @@ public class CRUDQuerySubjectCategoryTest extends PrepareTestDataBase {
         try {
             queryCreator.addSubjectCategory(testSubjectCategoryWithInvalidCategory);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -81,7 +81,7 @@ public class CRUDQuerySubjectCategoryTest extends PrepareTestDataBase {
         try {
             queryCreator.addSubjectCategory(validSubjectCategory);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -104,7 +104,7 @@ public class CRUDQuerySubjectCategoryTest extends PrepareTestDataBase {
         try {
             queryCreator.editSubjectCategory(subjectCategoryNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }

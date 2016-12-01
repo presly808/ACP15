@@ -56,7 +56,7 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
 
         try {
             queryCreator.deleteGroup(testStudentsGroup);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
         }
 
         studentNotFromDB = null;
@@ -91,7 +91,7 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.addStudent(studentWithInvalidGroup);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -117,7 +117,7 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.editStudent(testStudent);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -127,7 +127,7 @@ public class CRUDQueryStudentTest extends PrepareTestDataBase {
         try {
             queryCreator.editStudent(studentNotFromDB);
             assertTrue(false);
-        } catch (AppDBException e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }

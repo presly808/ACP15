@@ -11,6 +11,7 @@ import university.models.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -30,8 +31,9 @@ public class QueryCreatorJPAImpl implements QueryCreator {
     public static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY = "SELECT s FROM Subject s WHERE s.category =:parameter";
     public static final String GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME = "SELECT s FROM Subject s WHERE s.category.title =:parameter";
 
-    @Autowired
-    private EntityManagerFactory factory;
+    @PersistenceContext
+    private EntityManager manager;
+
 
     @Autowired
     @Qualifier("CRUDQueryJPAImpl")
@@ -40,12 +42,12 @@ public class QueryCreatorJPAImpl implements QueryCreator {
     public QueryCreatorJPAImpl() {
     }
 
-    public EntityManagerFactory getFactory() {
-        return factory;
+    public EntityManager getManager() {
+        return manager;
     }
 
-    public void setFactory(EntityManagerFactory factory) {
-        this.factory = factory;
+    public void setManager(EntityManager manager) {
+        this.manager = manager;
     }
 
     public CRUDQuery getCrudQuery() {
@@ -56,14 +58,9 @@ public class QueryCreatorJPAImpl implements QueryCreator {
         this.crudQuery = crudQuery;
     }
 
-    public QueryCreatorJPAImpl(EntityManagerFactory factory, CRUDQuery crudQuery) {
-        this.factory = factory;
-        this.crudQuery = crudQuery;
-    }
-
     @Override
     public List<Student> getStudentsList(int offset, int length) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Student> query = manager.createQuery(GET_STUDENTS_LIST, Student.class);
         query.setMaxResults(length);
         query.setFirstResult(offset);
@@ -73,7 +70,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Subject> getSubjectsList(int offset, int length) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Subject> query = manager.createQuery(GET_SUBJECTS_LIST, Subject.class);
         query.setMaxResults(length);
         query.setFirstResult(offset);
@@ -83,7 +80,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Group> getGroupList(int offset, int length) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Group> query = manager.createQuery(GET_GROUPS_LIST, Group.class);
         query.setMaxResults(length);
         query.setFirstResult(offset);
@@ -93,7 +90,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Teacher> getTeachersList(int offset, int length) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Teacher> query = manager.createQuery(GET_TEACHERS_LIST, Teacher.class);
         query.setMaxResults(length);
         query.setFirstResult(offset);
@@ -103,7 +100,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Student> getStudentOfGroup(Group group) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Student> query = manager.createQuery(
                 GET_STUDENTS_OF_GROUP, Student.class);
         query.setParameter("parameter", group);
@@ -113,7 +110,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Group> getGroupsBySubject(Subject subject, int offset, int length) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Group> query = manager.createQuery(
                 GET_GROUPS_BY_SUBJECT, Group.class);
         query.setParameter("parameter", subject);
@@ -125,7 +122,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Subject> query = manager.createQuery(
                 GET_SUBJECTS_THAT_STUDY_ALL_GROUPS, Subject.class);
 
@@ -134,7 +131,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Teacher> query = manager.createQuery(GET_TEACHER_WITH_MAX_EXPERIENCE, Teacher.class);
         query.setMaxResults(1);
 
@@ -143,7 +140,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public Teacher getTeacherWithMinExperience() throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Teacher> query = manager.createQuery(GET_TEACHER_WITH_MIN_EXPERIENCE, Teacher.class);
         query.setMaxResults(1);
 
@@ -152,7 +149,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Teacher> getTeachersWithExperienceMoreThanYears(int years) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Teacher> query = manager.createQuery(GET_TEACHER_WITH_EXPERIENCE_MORE_THAN + " ", Teacher.class);
         query.setParameter("parameter", years);
 
@@ -166,7 +163,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Subject> getListOfSubjectsByCategory(SubjectCategory category) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Subject> query = manager.createQuery(
                 GET_LIST_OF_SUBJECTS_BY_CATEGORY, Subject.class);
         query.setParameter("parameter", category);
@@ -176,7 +173,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Subject> getListOfSubjectsByCategory(String categoryName) throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Subject> query = manager.createQuery(
                 GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME, Subject.class);
         query.setParameter("parameter", categoryName);
@@ -186,7 +183,7 @@ public class QueryCreatorJPAImpl implements QueryCreator {
 
     @Override
     public List<Subject> getListOfHumanitarianSubjects() throws AppDBException {
-        EntityManager manager = factory.createEntityManager();
+
         TypedQuery<Subject> query = manager.createQuery(
                 GET_LIST_OF_SUBJECTS_BY_CATEGORY_NAME, Subject.class);
         query.setParameter("parameter", "Humanities");
