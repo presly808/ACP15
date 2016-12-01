@@ -18,8 +18,6 @@ public class ServiceImpl implements Service {
     @Autowired
     private QueryCreator queryCreator;
 
-    private static final Logger LOGGER = Logger.getLogger(ServiceImpl.class);
-
     public ServiceImpl(QueryCreator queryCreator) {
         this.queryCreator = queryCreator;
     }
@@ -30,7 +28,6 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        LOGGER.info("Request: get students list");
         return queryCreator.getStudentsList(offset, length);
     }
 
@@ -40,7 +37,6 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        LOGGER.info("Request: get subjects list");
         return queryCreator.getSubjectsList(offset, length);
     }
 
@@ -50,7 +46,6 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        LOGGER.info("Request: get group list");
         return queryCreator.getGroupList(offset, length);
     }
 
@@ -60,7 +55,6 @@ public class ServiceImpl implements Service {
 
         validateOffsetAndLength(offset, length);
 
-        LOGGER.info("Request: get teachers list");
         return queryCreator.getTeachersList(offset, length);
     }
 
@@ -69,8 +63,7 @@ public class ServiceImpl implements Service {
             throws InvalidValueException, AppDBException {
 
         validateStudent(student);
-
-        LOGGER.info("Request: add student");
+;
         return queryCreator.addStudent(student);
     }
 
@@ -80,7 +73,6 @@ public class ServiceImpl implements Service {
 
         validateGroup(group);
 
-        LOGGER.info("Request: add group");
         return queryCreator.addGroup(group);
     }
 
@@ -90,7 +82,6 @@ public class ServiceImpl implements Service {
 
         validateSubject(subject);
 
-        LOGGER.info("Request: add subject");
         return queryCreator.addSubject(subject);
     }
 
@@ -99,7 +90,6 @@ public class ServiceImpl implements Service {
 
         validateTeacher(teacher);
 
-        LOGGER.info("Request: add teacher");
         return queryCreator.addTeacher(teacher);
     }
 
@@ -109,7 +99,6 @@ public class ServiceImpl implements Service {
 
         validateStudent(studentWithNewData);
 
-        LOGGER.info("Request: edit student");
         return queryCreator.editStudent(studentWithNewData);
     }
 
@@ -118,7 +107,6 @@ public class ServiceImpl implements Service {
 
         validateGroup(groupWithNewData);
 
-        LOGGER.info("Request: edit group");
         return queryCreator.editGroup(groupWithNewData);
     }
 
@@ -128,7 +116,6 @@ public class ServiceImpl implements Service {
 
         validateTeacher(teacherWithNewData);
 
-        LOGGER.info("Request: edit teacher");
         return queryCreator.editTeacher(teacherWithNewData);
     }
 
@@ -138,7 +125,6 @@ public class ServiceImpl implements Service {
 
         validateSubject(subjectWithNewData);
 
-        LOGGER.info("Request: edit subject");
         return queryCreator.editSubject(subjectWithNewData);
     }
 
@@ -148,7 +134,6 @@ public class ServiceImpl implements Service {
 
         validateGroup(group);
 
-        LOGGER.info("Request: get student of group");
         return queryCreator.getStudentOfGroup(group);
     }
 
@@ -165,21 +150,18 @@ public class ServiceImpl implements Service {
     @Override
     public List<Subject> getSubjectsThatStudyAllGroups() throws AppDBException {
 
-        LOGGER.info("Request: get subject that study all groups");
         return queryCreator.getSubjectsThatStudyAllGroups();
     }
 
     @Override
     public Teacher getTeacherWithMaxExperience() throws AppDBException {
 
-        LOGGER.info("Request: get teacher with max experience");
         return queryCreator.getTeacherWithMaxExperience();
     }
 
     @Override
     public Teacher getTeacherWithMinExperience() throws AppDBException {
 
-        LOGGER.info("Request: get teacher with min experience");
         return queryCreator.getTeacherWithMinExperience();
     }
 
@@ -188,18 +170,15 @@ public class ServiceImpl implements Service {
             InvalidValueException, AppDBException {
 
         if (years < 0) {
-            LOGGER.error("Throw: Invalid input data");
             throw new InvalidValueException("Param \"years\" is incorrect");
         }
 
-        LOGGER.info("Request: get teacher with experience more than" + years + " years");
         return queryCreator.getTeachersWithExperienceMoreThanYears(years);
     }
 
     @Override
     public List<Teacher> getTeachersWithExperienceMoreThanThreeYears() throws AppDBException {
 
-        LOGGER.info("Request: get teacher with experience more than three years");
         return queryCreator.getTeachersWithExperienceMoreThanThreeYears();
     }
 
@@ -209,14 +188,12 @@ public class ServiceImpl implements Service {
 
         validateSubjectCategory(subjectCategory);
 
-        LOGGER.info("Request: get of subjects by category" + subjectCategory.getTitle());
         return queryCreator.getListOfSubjectsByCategory(subjectCategory);
     }
 
     @Override
     public List<Subject> getListOfHumanitarianSubjects() throws AppDBException {
 
-        LOGGER.info("Request: get humanitarian subjects");
         return queryCreator.getListOfHumanitarianSubjects();
     }
 }

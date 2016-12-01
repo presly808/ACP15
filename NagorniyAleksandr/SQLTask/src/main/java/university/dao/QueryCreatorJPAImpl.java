@@ -17,8 +17,6 @@ import java.util.List;
 @Component
 public class QueryCreatorJPAImpl implements QueryCreator {
 
-
-    private static final Logger LOGGER = Logger.getLogger(CRUDQueryJPAImpl.class);
     public static final String GET_STUDENTS_LIST = "FROM Student";
     public static final String GET_SUBJECTS_LIST = "FROM Subject";
     public static final String GET_GROUPS_LIST = "FROM Group";
