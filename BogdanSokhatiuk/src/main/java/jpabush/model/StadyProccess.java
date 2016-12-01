@@ -11,23 +11,40 @@ import java.util.List;
 @Table(name = "stady_process")
 public class StadyProccess {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @ManyToOne()
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
     @ManyToOne
-    @JoinColumn(name = "subject_id", referencedColumnName = "id")
-    private Subject subjects;
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
     @Column(name = "mark")
     private int mark;
 
     public StadyProccess() {
     }
 
-    public StadyProccess(Student student, Subject subjects, int mark) {
+    public StadyProccess(Student student, Subject subject, int mark) {
         this.student = student;
-        this.subjects = subjects;
+        this.subject = subject;
         this.mark = mark;
+    }
+
+    public StadyProccess(int id, Student student, Subject subject, int mark) {
+
+        this.id = id;
+        this.student = student;
+        this.subject = subject;
+        this.mark = mark;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Student getStudent() {
@@ -38,12 +55,12 @@ public class StadyProccess {
         this.student = student;
     }
 
-    public Subject getSubjects() {
-        return subjects;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjects(Subject subjects) {
-        this.subjects = subjects;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     public int getMark() {
@@ -52,13 +69,5 @@ public class StadyProccess {
 
     public void setMark(int mark) {
         this.mark = mark;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
