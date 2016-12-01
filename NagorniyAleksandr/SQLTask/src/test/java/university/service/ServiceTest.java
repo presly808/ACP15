@@ -2,6 +2,9 @@ package university.service;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import university.dao.QueryCreator;
 import university.models.*;
 
@@ -9,6 +12,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-context.xml"})
 public class ServiceTest {
 
     private static QueryCreator mockedQueryCreator;

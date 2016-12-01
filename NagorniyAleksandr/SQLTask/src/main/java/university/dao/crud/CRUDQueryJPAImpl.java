@@ -1,6 +1,8 @@
 package university.dao.crud;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import university.exceptions.AppDBException;
 import university.models.*;
 
@@ -8,13 +10,25 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-
+@Component
 public class CRUDQueryJPAImpl implements CRUDQuery {
 
 
     private static final Logger LOGGER = Logger.getLogger(CRUDQueryJPAImpl.class);
 
+    @Autowired
     private EntityManagerFactory factory;
+
+    public CRUDQueryJPAImpl() {
+    }
+
+    public EntityManagerFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(EntityManagerFactory factory) {
+        this.factory = factory;
+    }
 
     public CRUDQueryJPAImpl(EntityManagerFactory factory) {
         this.factory = factory;

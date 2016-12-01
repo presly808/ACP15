@@ -1,8 +1,9 @@
 package university.dao.crud;
 
+import org.springframework.stereotype.Component;
 import university.exceptions.*;
 import university.models.*;
-
+@Component
 public interface CRUDQuery {
 
     boolean addStudent(Student student) throws AppDBException;

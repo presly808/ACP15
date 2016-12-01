@@ -3,20 +3,12 @@ package university.dao.crud;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import university.container.AppEntityManagerFactory;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
-import university.models.Subject;
 import university.models.SubjectCategory;
-
-import javax.persistence.EntityManager;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by nagornyyalek on 29.11.2016.
@@ -44,7 +36,8 @@ public class CRUDQuerySubjectCategoryTest extends PrepareTestDataBase {
 
         try {
             queryCreator.deleteSubjectCategory(validSubjectCategory);
-        } catch (AppDBException e) {}
+        } catch (AppDBException e) {
+        }
 
         validSubjectCategory = null;
         subjectCategoryNotFromDB = null;

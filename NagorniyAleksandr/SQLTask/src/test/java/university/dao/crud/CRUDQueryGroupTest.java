@@ -3,8 +3,6 @@ package university.dao.crud;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import university.container.Factory;
-import university.dao.QueryCreator;
 import university.exceptions.AppDBException;
 import university.models.Group;
 
@@ -34,7 +32,8 @@ public class CRUDQueryGroupTest extends PrepareTestDataBase {
     public void tearDown() throws Exception {
         try {
             queryCreator.deleteGroup(testGroup);
-        } catch (AppDBException e) {}
+        } catch (AppDBException e) {
+        }
 
         groupNotFromDB = null;
     }

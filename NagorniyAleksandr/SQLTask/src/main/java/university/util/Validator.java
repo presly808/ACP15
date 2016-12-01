@@ -1,11 +1,13 @@
 package university.util;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 import university.exceptions.InvalidValueException;
 import university.models.*;
 
 import java.util.regex.Pattern;
 
+@Component
 public class Validator {
 
     private static final Pattern PATTERN_FOR_PEOPLE_NAME = Pattern.compile("[a-zA-Z\\-\\s]{1,40}");

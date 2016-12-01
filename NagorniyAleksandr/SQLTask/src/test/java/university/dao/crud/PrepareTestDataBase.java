@@ -1,21 +1,26 @@
 package university.dao.crud;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import university.container.Factory;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import university.dao.QueryCreator;
 
-public class PrepareTestDataBase {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-context.xml"})
+public abstract class PrepareTestDataBase {
 
-    protected static QueryCreator queryCreator;
+    @Autowired()
+    protected QueryCreator queryCreator;
 
-    @BeforeClass
-    public static void initDB() {
-        queryCreator = Factory.getQueryCreator();
+    public PrepareTestDataBase() {
     }
 
-    @AfterClass
-    public static void dropDB() {
-        queryCreator = null;
+    public QueryCreator getQueryCreator() {
+        return queryCreator;
+    }
+
+    public void setQueryCreator(QueryCreator queryCreator) {
+        this.queryCreator = queryCreator;
     }
 }

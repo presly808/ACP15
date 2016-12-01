@@ -1,4 +1,5 @@
-import university.container.Factory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import university.exceptions.AppDBException;
 import university.models.*;
 import university.service.Service;
@@ -10,7 +11,9 @@ public class TestRun {
 
     public static void main(String[] args) throws AppDBException {
 
-        Service service = Factory.getService();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("app-context.xml");
+        Service service = applicationContext.getBean(Service.class);
+
         Group testGroup = new Group("ACB17");
         testGroup.setId(1);
         SubjectCategory testCategory = new SubjectCategory("Exact");
@@ -19,7 +22,6 @@ public class TestRun {
         Subject testSubject = new Subject("Mathematics",
                 testCategory, "Queen of Sciences");
         testSubject.setId(1);
-
 
         List<Group> listGroup = service.getGroupList(0, 10);
         System.out.printf("\n   Group list\n");
