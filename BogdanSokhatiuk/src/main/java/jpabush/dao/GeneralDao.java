@@ -1,5 +1,8 @@
 package jpabush.dao;
 
+import jdbcmySql.utils.PropertiesHolder;
+import org.apache.log4j.Logger;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -9,6 +12,7 @@ import javax.persistence.EntityTransaction;
 public class GeneralDao<T> implements Dao<T> {
     protected static EntityManager manager;
     private Class<T> tClass;
+    protected static final Logger LOG = Logger.getLogger(PropertiesHolder.class);
 
     public GeneralDao(EntityManager manager, Class<T> tClass) {
         this.manager = manager;
@@ -26,12 +30,13 @@ public class GeneralDao<T> implements Dao<T> {
     @Override
     public T create(T t) {
         EntityTransaction transaction = manager.getTransaction();
-
+        LOG.debug("Create transaction");
         try {
             transaction.begin();
             manager.persist(t);
             transaction.commit();
         } catch (Exception e) {
+            LOG.error(e);
             transaction.rollback();
         }
         return t;
@@ -42,11 +47,13 @@ public class GeneralDao<T> implements Dao<T> {
     public boolean delete(T t, int id) {
         EntityTransaction transaction = manager.getTransaction();
         t = manager.find(tClass, id);
+        LOG.debug("Create transaction");
         try {
             transaction.begin();
             manager.remove(t);
             transaction.commit();
         } catch (Exception e) {
+            LOG.error(e);
             transaction.rollback();
             return false;
         }
@@ -56,11 +63,13 @@ public class GeneralDao<T> implements Dao<T> {
     @Override
     public T update(T t) {
         EntityTransaction transaction = manager.getTransaction();
+        LOG.debug("Create transaction");
         try {
             transaction.begin();
             manager.merge(t);
             transaction.commit();
         } catch (Exception e) {
+            LOG.error(e);
             transaction.rollback();
         }
         return t;
@@ -74,6 +83,7 @@ public class GeneralDao<T> implements Dao<T> {
             T t = manager.find(tClass, id);
             return t;
         } catch (Exception e) {
+            LOG.error(e);
             transaction.rollback();
         }
         return null;
@@ -81,5 +91,6 @@ public class GeneralDao<T> implements Dao<T> {
 
     public static void close() {
         manager.close();
+        LOG.debug("Close connection");
     }
 }

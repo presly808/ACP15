@@ -2,7 +2,6 @@ package jpabush.dao;
 
 import jpabush.model.StadyProccess;
 import jpabush.model.Student;
-import jpabush.model.Teacher;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -16,7 +15,7 @@ public class StadyProccessDao extends GeneralDao<StadyProccess> {
         super(manager, StadyProccess.class);
     }
 
-    public List<Student> getBestStudent(){
+    public List<Student> getBestStudent() {
         TypedQuery<Student> query = manager.createQuery("SELECT b.student FROM StadyProccess  b WHERE b.mark= (SELECT max(b.mark) FROM StadyProccess  b))", Student.class);
         return query.getResultList();
     }

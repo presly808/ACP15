@@ -1,6 +1,5 @@
 package jpabush.dao;
 
-import jpabush.model.Group;
 import jpabush.model.Subject;
 import jpabush.model.Teacher;
 

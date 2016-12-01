@@ -1,6 +1,5 @@
 package jpabush;
 
-import jpabush.dao.GeneralDao;
 import jpabush.dao.StudentDao;
 import jpabush.model.Group;
 import jpabush.model.Student;

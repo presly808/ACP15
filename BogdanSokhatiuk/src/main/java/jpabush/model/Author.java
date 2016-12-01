@@ -11,16 +11,16 @@ import java.util.Date;
 public class Author extends IdEntity {
 
     @Column(length = 20, nullable = false)
-    private  String name;
+    private String name;
     @Column
-    private  double salary;
+    private double salary;
     @Temporal(TemporalType.DATE)
     private Date birthday;
     @Transient
     private String sicret;
     @ManyToOne
-    @JoinColumn(name="address_id",referencedColumnName = "id")
-    private  Adress adress;
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Adress adress;
 
 
     public Author() {

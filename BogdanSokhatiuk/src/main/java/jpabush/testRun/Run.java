@@ -8,6 +8,6 @@ import javax.persistence.Persistence;
  */
 public class Run {
     public static void main(String[] args) {
-        EntityManagerFactory managerFactory= Persistence.createEntityManagerFactory("hibernate-unit");
+        EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
     }
 }

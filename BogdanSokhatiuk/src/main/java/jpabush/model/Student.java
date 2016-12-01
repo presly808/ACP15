@@ -16,16 +16,16 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
-
-
     @Transient
     private double avrMark;
 
     public Student() {
     }
 
+
     public Student(String name, Group group) {
         this.name = name;
+
         this.group = group;
     }
 
@@ -66,6 +66,14 @@ public class Student {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public double getAvrMark() {
+        return avrMark;
+    }
+
+    public void setAvrMark(double avrMark) {
+        this.avrMark = avrMark;
     }
 
 

@@ -17,7 +17,7 @@ public class Teacher {
     @Column
     private int experience;
     @OneToOne
-    @JoinColumn(name="subject_id",referencedColumnName = "id")
+    @JoinColumn(name = "subject_id", referencedColumnName = "id")
     private Subject subject;
 
     public Teacher() {

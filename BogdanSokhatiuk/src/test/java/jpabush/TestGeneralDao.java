@@ -16,7 +16,7 @@ public class TestGeneralDao extends DaoTextureTest {
 
     @Before
     public void init() {
-        newgroup = new Group("APC15",14);
+        newgroup = new Group("APC15", 14);
         dao = new GeneralDao<>(manager, Group.class);
     }
 

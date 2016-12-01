@@ -1,7 +1,6 @@
 package jpabush;
 
 import jpabush.dao.TeacherDao;
-import jpabush.model.Group;
 import jpabush.model.Subject;
 import jpabush.model.Teacher;
 import org.hamcrest.MatcherAssert;

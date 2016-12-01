@@ -57,7 +57,7 @@ public class TestProccessDao extends DaoTextureTest {
     @Test
     public void TestBestStudent() {
         List<Student> list = dao.getBestStudent();
-        MatcherAssert.assertThat(list.size(), Matchers.equalTo(2));
+        MatcherAssert.assertThat(list.size(), Matchers.equalTo(6));
     }
 
     @After
