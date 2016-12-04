@@ -47,7 +47,7 @@ public class TestSelectedDAO {
     @Test
     public void testGetSubjects(){
 
-        List<Subject> subjectList = daoSubject.getAllSubject();
+        List<Subject> subjectList = daoSubject.getAll();
         Assert.assertThat("Test method get All Subject", 20, equalTo(subjectList.size()));
 
     }
@@ -55,7 +55,7 @@ public class TestSelectedDAO {
     @Test
     public void testGetGroups(){
 
-        List<Group> groupList = daoGroup.getAllGroup();
+        List<Group> groupList = daoGroup.getAll();
         Assert.assertThat("Test method get All Groups", 10, equalTo(groupList.size()));
 
     }
@@ -63,7 +63,7 @@ public class TestSelectedDAO {
     @Test
     public void testGetTeachers(){
 
-        List<Teacher> teacherList = daoTeacher.getAllTeacher();
+        List<Teacher> teacherList = daoTeacher.getAll();
         Assert.assertThat("Test method get All Teachers", 20, equalTo(teacherList.size()));
 
     }
@@ -71,10 +71,17 @@ public class TestSelectedDAO {
     @Test
     public void testGetstudents(){
 
-        List<Student> studentList = daoStudent.getAllStudents();
+        List<Student> studentList = daoStudent.getAll();
         Assert.assertThat("Test method get All Students", 60, equalTo(studentList.size()));
 
     }
 
+    @Test
+    public void testGetGroupBySubject(){
+
+        List<Group> groupList = daoGroup.getGroupsThatStudySubject("History");
+        Assert.assertThat("Test method get Group By Subject", 7, equalTo(groupList.size()));
+
+    }
 
 }

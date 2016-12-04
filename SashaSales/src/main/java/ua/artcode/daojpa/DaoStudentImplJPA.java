@@ -103,7 +103,7 @@ public class DaoStudentImplJPA implements DaoStudent<Student> {
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> getAll() {
         EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Student> query = entityManager.createQuery("SELECT t FROM Student t", Student.class);
         return query.getResultList();

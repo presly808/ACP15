@@ -5,12 +5,9 @@ import java.util.List;
 /**
  * Created by work on 27.11.2016.
  */
-public interface DaoSubject<T> {
+public interface DaoSubject<T> extends Dao<T>{
 
-    T create (T subject);
-    boolean delete(T subject);
     T update(T subject);
     T findById(Object id);
-    List<T> getAllSubject();
 
 }

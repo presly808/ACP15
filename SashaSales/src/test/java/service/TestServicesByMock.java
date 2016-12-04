@@ -35,7 +35,7 @@ public class TestServicesByMock {
 
         Assert.assertEquals("Test service get Groups", 3, groupList.size());
 
- DeleteDAO deleteDAO = Mockito.mock(DeleteDAO.class);
+        DeleteDAO deleteDAO = Mockito.mock(DeleteDAO.class);
         InsertDAO insertDAO = Mockito.mock(InsertDAO.class);
         UpdateDAO updateDAO = Mockito.mock(UpdateDAO.class);
         Mockito.when(selectDAO.getStudents()).thenReturn(Arrays.asList(new Student(1, "Ivan"), new Student(2, "Petr")));
@@ -55,19 +55,15 @@ public class TestServicesByMock {
     }
 
     @Test
-    public void testServiceGetStudentsByGroup() {
+    public void testServiceGetStudentsByGroup() throws EmptyException {
 
         SelectDAO selectDAO = Mockito.mock(SelectDAO.class);
         Mockito.when(selectDAO.getStudentsByGroup("ACO11")).thenReturn(Arrays.asList(new Student(1, "Ivan")));
 
         IService service = new IServiceImpl(selectDAO);
-        List<Student> studentList = null;
-        try {
-            studentList = service.getAllStudentsByGroup("ACO11");
-        } catch (EmptyException e) {
-            e.printStackTrace();
-        }
-        Assert.assertEquals("Test service get Groups", 1, studentList.size());
+        List<Student> studentList = service.getAllStudentsByGroup("ACO11");
+            Assert.assertEquals("Test service get Groups", 1, studentList.size());
+
 
     }
 

@@ -1,19 +1,13 @@
 package ua.artcode.daojpa;
 
-import ua.artcode.model.modelsql.Group;
-
 import java.util.List;
 
 /**
- * Created by work on 27.11.2016.
+ * Created by work on 03.12.2016.
  */
-public interface DaoGroup<T> {
+public interface DaoGroup<T> extends Dao<T> {
 
-    T create (T group);
-    boolean delete(T group);
-    T update(T group);
-    T findById(Object id);
-    List<T> getAllGroup();
+    T update(T t);
     List<T> getGroupsThatStudySubject(String subject_name);
 
 }

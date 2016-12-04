@@ -78,7 +78,7 @@ public class DaoSubjectImplJPA implements DaoSubject<Subject> {
     }
 
     @Override
-    public List<Subject> getAllSubject() {
+    public List<Subject> getAll() {
         EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Subject> query = entityManager.createQuery("SELECT s FROM Subject s", Subject.class);
         return query.getResultList();

@@ -29,9 +29,11 @@ public class TestDao {
         DaoSubject<Subject> daoSubject = new DaoSubjectImplJPA(managerFactory);
 
         //StartInitJPADB.initTables(daoGroup, daoSubject, daoTeacher, daoStudent, managerFactory);
-
-        List<Group> groupList = daoGroup.getGroupsThatStudySubject("Base16");
+        //List<Group> groupList = daoGroup.getAll();
+       List<Group> groupList = daoGroup.getGroupsThatStudySubject("History");
         groupList.forEach(System.out::print);
+        System.out.println();
+        System.out.println(groupList.size());
 
        /* EntityManager entityManager = managerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();

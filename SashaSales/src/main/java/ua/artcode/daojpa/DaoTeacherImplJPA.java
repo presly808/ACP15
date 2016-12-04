@@ -88,23 +88,10 @@ public class DaoTeacherImplJPA implements DaoTeacher<Teacher> {
     }
 
     @Override
-    public List<Teacher> getAllTeacher() {
+    public List<Teacher> getAll() {
         EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Teacher> query = entityManager.createQuery("SELECT t FROM Teacher t", Teacher.class);
         return query.getResultList();
-    }
-
-    public boolean containsSubjectByName(String subject_name) {
-
-        EntityManager entityManager = managerFactory.createEntityManager();
-
-        TypedQuery<Subject> query = entityManager.createQuery(String.format("SELECT s FROM Subject s WHERE s.name LIKE '%s'",subject_name), Subject.class);
-        List<Subject> subjectList = query.getResultList();
-        if (subjectList.size() > 0){
-            return true;
-        }
-
-        return false;
     }
 
 }
