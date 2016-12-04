@@ -1,5 +1,7 @@
 package ua.artcode.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Teacher;
@@ -11,13 +13,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by work on 28.11.2016.
- */
+@Repository
 public class DaoStudentImplJPA implements DaoStudent<Student> {
 
+    @Autowired
     private EntityManagerFactory managerFactory;
-    private DaoGroup daoGroup;
+
+    public DaoStudentImplJPA() {
+    }
 
     public DaoStudentImplJPA(EntityManagerFactory managerFactory) {
         this.managerFactory = managerFactory;

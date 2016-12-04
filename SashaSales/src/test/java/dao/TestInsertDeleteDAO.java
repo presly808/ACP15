@@ -3,21 +3,41 @@ package dao;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.artcode.dao.DaoGroup;
+import ua.artcode.dao.DaoStudent;
+import ua.artcode.dao.DaoSubject;
+import ua.artcode.dao.DaoTeacher;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Subject;
 import ua.artcode.model.Teacher;
 
+import javax.persistence.EntityManagerFactory;
+
 import static org.hamcrest.Matchers.equalTo;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-test-context.xml"})
+public class TestInsertDeleteDAO{
 
-public class TestInsertDeleteDAO extends FixturesForTest {
+    @Autowired
+    private DaoSubject daoSubject;
+    @Autowired
+    private DaoGroup daoGroup;
+    @Autowired
+    private DaoTeacher daoTeacher;
+    @Autowired
+    private DaoStudent daoStudent;
 
 
     @Test
     public void testAddDeleteGroups(){
 
-        Group group = new Group("Vedushie");
+        Group group = new Group("VedushieVremya");
         Group groupRes1 = (Group) daoGroup.create(group);
         boolean res2 = daoGroup.delete(group.getName());
         Assert.assertThat("Test method Create Delete Groups", true, equalTo((groupRes1 != null) && res2));

@@ -2,10 +2,11 @@
 package dao;
 
 import init.StartInitJPADB;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.artcode.dao.*;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
@@ -18,31 +19,18 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-test-context.xml"})
+public class TestSelectedDAO {
 
-public class TestSelectedDAO extends FixturesForTest {
-
-    private static EntityManagerFactory managerFactory;
-    private static DaoSubject daoSubject;
-    private static DaoGroup daoGroup;
-    private static DaoTeacher daoTeacher;
-    private static DaoStudent daoStudent;
-
-    @BeforeClass
-    public static void connectManagerFactory(){
-        managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
-        daoSubject = new DaoSubjectImplJPA(managerFactory);
-        daoGroup = new DaoGroupImplJPA(managerFactory);
-        daoStudent = new DaoStudentImplJPA(managerFactory);
-        daoTeacher = new DaoTeacherImplJPA(managerFactory);
-        StartInitJPADB.initTables(daoGroup, daoSubject, daoTeacher, daoStudent, managerFactory);
-    }
-
-    @AfterClass
-    public static void closeManagerFactory(){
-        managerFactory.close();
-    }
-
-
+    @Autowired
+    private DaoSubject daoSubject;
+    @Autowired
+    private DaoGroup daoGroup;
+    @Autowired
+    private DaoTeacher daoTeacher;
+    @Autowired
+    private DaoStudent daoStudent;
 
     @Test
     public void testGetSubjects() {

@@ -2,6 +2,8 @@
 package ua.artcode.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ua.artcode.dao.DaoGroup;
 import ua.artcode.dao.DaoStudent;
 import ua.artcode.dao.DaoSubject;
@@ -21,12 +23,18 @@ import java.util.List;
  * Created by work on 12.11.2016.
  */
 
+@Component
 public class IServiceImpl implements IService {
 
     private static final Logger LOGGER = Logger.getLogger(IServiceImpl.class);
+
+    @Autowired
     private DaoGroup daoGroup;
+    @Autowired
     private DaoStudent daoStudent;
+    @Autowired
     private DaoSubject daoSubject;
+    @Autowired
     private DaoTeacher daoTeacher;
 
     public IServiceImpl() {

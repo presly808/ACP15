@@ -1,16 +1,31 @@
 package dao;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.artcode.dao.DaoGroup;
+import ua.artcode.dao.DaoStudent;
+import ua.artcode.dao.DaoSubject;
+import ua.artcode.dao.DaoTeacher;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 
+import javax.persistence.EntityManagerFactory;
+
 import static org.hamcrest.Matchers.equalTo;
 
-/**
- * Created by work on 29.11.2016.
- */
-public class TestUpdateDao extends FixturesForTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-test-context.xml"})
+public class TestUpdateDao {
+
+    @Autowired
+    public  EntityManagerFactory managerFactory;
+    @Autowired
+    public  DaoGroup daoGroup;
+    @Autowired
+    public  DaoStudent daoStudent;
 
     @Test
     public void testUpdateStudentByGroup(){
