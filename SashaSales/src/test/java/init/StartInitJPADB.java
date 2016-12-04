@@ -1,19 +1,16 @@
 package init;
 
-import ua.artcode.daoSQL.interfaces.InsertDAO;
-import ua.artcode.daojpa.DaoGroup;
-import ua.artcode.daojpa.DaoStudent;
-import ua.artcode.daojpa.DaoSubject;
-import ua.artcode.daojpa.DaoTeacher;
-import ua.artcode.model.modeljpa.Group;
-import ua.artcode.model.modeljpa.Student;
-import ua.artcode.model.modeljpa.Subject;
-import ua.artcode.model.modeljpa.Teacher;
+import ua.artcode.dao.DaoGroup;
+import ua.artcode.dao.DaoStudent;
+import ua.artcode.dao.DaoSubject;
+import ua.artcode.dao.DaoTeacher;
+import ua.artcode.model.Group;
+import ua.artcode.model.Student;
+import ua.artcode.model.Subject;
+import ua.artcode.model.Teacher;
 import ua.artcode.util.UtilsMethod;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,12 +1,13 @@
 
 package ua.artcode.util;
 
-import ua.artcode.model.modeljpa.Group;
-import ua.artcode.model.modeljpa.Student;
-import ua.artcode.model.modeljpa.Subject;
+import ua.artcode.model.Group;
+import ua.artcode.model.Student;
+import ua.artcode.model.Subject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.io.*;
 import java.sql.ResultSet;
@@ -30,13 +31,31 @@ public class UtilsMethod {
         return group.getId();
     }
 
+/*     public static <T> T getEntityByName(T t, String t_name, EntityManagerFactory managerFactory) {
+
+        EntityManager entityManager = managerFactory.createEntityManager();
+        Query query1 = entityManager.createQuery("SELECT t FROM T t WHERE t.name = :t_name");
+        query1.setParameter("t_name", t_name);
+        t = (T) query1.getSingleResult();
+         return t;
+    }*/
+
+     public static Group getGroupByName(String group_name, EntityManagerFactory managerFactory) {
+
+        EntityManager entityManager = managerFactory.createEntityManager();
+        TypedQuery<Group> query1 = entityManager.createQuery("SELECT g FROM Group g WHERE g.name = :group_name", Group.class);
+        query1.setParameter("group_name", group_name);
+        Group group = (Group) query1.getSingleResult();
+         return group;
+    }
+
     public static int getIdOfStudent(String student_name, EntityManagerFactory managerFactory) {
 
         EntityManager entityManager = managerFactory.createEntityManager();
 
         TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s WHERE s.name = :student_name", Student.class);
         query.setParameter("student_name", student_name);
-        ua.artcode.model.modeljpa.Student student = query.getSingleResult();
+        Student student = query.getSingleResult();
         return student.getId();
     }
 
@@ -48,20 +67,6 @@ public class UtilsMethod {
         query.setParameter("subject_name", subject_name);
         Subject subject = query.getSingleResult();
         return subject.getId();
-    }
-
-
-    public static void utilResultSet(ResultSet resultSet, List<ua.artcode.model.modelsql.Student> students) throws SQLException {
-
-        while (resultSet.next()) {
-            int id_student = resultSet.getInt("id");
-            String student_name = resultSet.getString("student_name");
-            int id_group = resultSet.getInt("group_id");
-            String group_name = resultSet.getString("group_name");
-            ua.artcode.model.modelsql.Group group = new ua.artcode.model.modelsql.Group(id_group, group_name);
-            ua.artcode.model.modelsql.Student student = new ua.artcode.model.modelsql.Student(id_student, student_name, group);
-            students.add(student);
-        }
     }
 
     public static final String PATH_FOR_PROPERTY_NAME = "src/main/resources/propertyName.txt";

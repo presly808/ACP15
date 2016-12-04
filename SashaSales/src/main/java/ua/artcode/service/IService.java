@@ -1,10 +1,10 @@
 package ua.artcode.service;
 
 import ua.artcode.exceptions.EmptyException;
-import ua.artcode.model.modelsql.Group;
-import ua.artcode.model.modelsql.Student;
-import ua.artcode.model.modelsql.Subject;
-import ua.artcode.model.modelsql.Teacher;
+import ua.artcode.model.Group;
+import ua.artcode.model.Student;
+import ua.artcode.model.Subject;
+import ua.artcode.model.Teacher;
 
 import java.util.List;
 
@@ -16,17 +16,17 @@ public interface IService {
 // service -> get list
 
     List<Student> getAllStudents();
-    List<Student> getAllStudentsByGroup(String nameGroup) throws EmptyException;
+   // List<Student> getAllStudentsByGroup(String nameGroup) throws EmptyException;
     List<Subject> getAllSubjects();
     List<Teacher> getAllTeachers();
     List<Group> getAllGroups();
 
 // service -> add
 
-    boolean addStudent(String student_name) throws EmptyException;
-    boolean addSubject(String subject_name, String subjects_description) throws EmptyException;
-    boolean addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException;
-    boolean addGroup(String group_name) throws EmptyException;
+    Student addStudent(String student_name) throws EmptyException;
+    Subject addSubject(String subject_name, String subjects_description) throws EmptyException;
+    Teacher addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException;
+    Group addGroup(String group_name) throws EmptyException;
 
 // service -> delete
 
@@ -37,7 +37,7 @@ public interface IService {
 
 // service -> upDate
 
-    boolean upDateByGroup(int student_id, int group_id);
+    Student upDateByGroup(String student_name, String group_name)  throws EmptyException;
 
 // -узнать какие группы изучают математику
 
@@ -63,5 +63,4 @@ public interface IService {
 //  -показать группу, в которой более 3-х студентов изучают философию (и выгнать с универа)
 
     List<Group> groupsInThatMore3StudentsStudyphilosophy();
-
 }

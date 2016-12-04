@@ -11,10 +11,10 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>ua.artcode.model.modeljpa.Subject</class>
-        <class>ua.artcode.model.modeljpa.Group</class>
-        <class>ua.artcode.model.modeljpa.Teacher</class>
-        <class>ua.artcode.model.modeljpa.Student</class>
+        <class>ua.artcode.model.Subject</class>
+        <class>ua.artcode.model.Group</class>
+        <class>ua.artcode.model.Teacher</class>
+        <class>ua.artcode.model.Student</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

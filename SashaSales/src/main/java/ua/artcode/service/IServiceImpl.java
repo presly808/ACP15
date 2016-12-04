@@ -2,16 +2,18 @@
 package ua.artcode.service;
 
 import org.apache.log4j.Logger;
-import ua.artcode.daoSQL.interfaces.DeleteDAO;
-import ua.artcode.daoSQL.interfaces.InsertDAO;
-import ua.artcode.daoSQL.interfaces.SelectDAO;
-import ua.artcode.daoSQL.interfaces.UpdateDAO;
+import ua.artcode.dao.DaoGroup;
+import ua.artcode.dao.DaoStudent;
+import ua.artcode.dao.DaoSubject;
+import ua.artcode.dao.DaoTeacher;
 import ua.artcode.exceptions.EmptyException;
-import ua.artcode.model.modelsql.Group;
-import ua.artcode.model.modelsql.Student;
-import ua.artcode.model.modelsql.Subject;
-import ua.artcode.model.modelsql.Teacher;
+import ua.artcode.model.Group;
+import ua.artcode.model.Student;
+import ua.artcode.model.Subject;
+import ua.artcode.model.Teacher;
+import ua.artcode.util.UtilsMethod;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 
@@ -22,42 +24,30 @@ import java.util.List;
 public class IServiceImpl implements IService {
 
     private static final Logger LOGGER = Logger.getLogger(IServiceImpl.class);
+    private DaoGroup daoGroup;
+    private DaoStudent daoStudent;
+    private DaoSubject daoSubject;
+    private DaoTeacher daoTeacher;
 
-    private SelectDAO selectDAO;
-    private DeleteDAO deleteDAO;
-    private UpdateDAO updateDAO;
-    private InsertDAO insertDAO;
-
-    public IServiceImpl(SelectDAO selectDAO) {
-        LOGGER.trace("Create IServiceImpl instance");
-        this.selectDAO = selectDAO;
+    public IServiceImpl() {
     }
 
-    public IServiceImpl(InsertDAO insertDAO) {
+    public IServiceImpl(DaoGroup daoGroup, DaoStudent daoStudent, DaoSubject daoSubject, DaoTeacher daoTeacher) {
         LOGGER.trace("Create IServiceImpl instance");
-        this.insertDAO = insertDAO;
-
-    }
-
-    public IServiceImpl(SelectDAO selectDAO, DeleteDAO deleteDAO, UpdateDAO updateDAO, InsertDAO insertDAO) {
-        LOGGER.trace("Create IServiceImpl instance");
-        this.selectDAO = selectDAO;
-        this.deleteDAO = deleteDAO;
-        this.insertDAO = insertDAO;
-        this.updateDAO = updateDAO;
+        this.daoGroup = daoGroup;
+        this.daoStudent = daoStudent;
+        this.daoSubject = daoSubject;
+        this.daoTeacher = daoTeacher;
     }
 
 
     @Override
     public List<Student> getAllStudents() {
 
-        List<Student> students = null;
-
-        students = selectDAO.getStudents();
-        return students;
+        return daoStudent.getAll();
     }
 
-    @Override
+   /* @Override
     public List<Student> getAllStudentsByGroup(String nameGroup) throws EmptyException {
 
         List<Student> students = null;
@@ -66,69 +56,67 @@ public class IServiceImpl implements IService {
         }
         students = selectDAO.getStudentsByGroup(nameGroup);
         return students;
-    }
+    }*/
 
     @Override
     public List<Subject> getAllSubjects() {
 
-        List<Subject> subjects = null;
-        subjects = selectDAO.getSubjects();
-        return subjects;
+        return daoSubject.getAll();
     }
 
     @Override
     public List<Teacher> getAllTeachers() {
 
-        List<Teacher> teachers = null;
-        teachers = selectDAO.getTeachers();
-        return teachers;
+        return daoTeacher.getAll();
     }
 
     @Override
     public List<Group> getAllGroups() {
 
-        List<Group> groups = null;
-        groups = selectDAO.getGroups();
-        return groups;
+        return daoGroup.getAll();
     }
 
     @Override
-    public boolean addStudent(String student_name) throws EmptyException {
+    public Student addStudent(String student_name) throws EmptyException {
 
         if (student_name.isEmpty()){
             throw new EmptyException("student_name is empty");
         }
-        return insertDAO.addStudent(student_name);
+
+        return (Student) daoStudent.create(new Student(student_name));
 
     }
 
     @Override
-    public boolean addSubject(String subject_name, String subjects_description) throws EmptyException {
+    public Subject addSubject(String subject_name, String subjects_description) throws EmptyException {
 
-        if (subject_name.isEmpty()){
+        if (subject_name.isEmpty()) {
             throw new EmptyException("subject_name is empty");
         }
-        return insertDAO.addSubject(subject_name, subjects_description);
+        return (Subject) daoSubject.create(new Subject(subject_name, subjects_description));
     }
 
     @Override
-    public boolean addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException {
+    public Teacher addTeacher(String teacher_name, int experience, int subject_id) throws EmptyException {
 
         if (teacher_name.isEmpty()){
             throw new EmptyException("teacher_name is empty");
         }
 
-        return insertDAO.addTeacher(teacher_name, experience, subject_id);
+        Subject subject = (Subject) daoSubject.findById(subject_id);
+        Teacher teacher = new Teacher(teacher_name, experience, subject);
+        return (Teacher) daoTeacher.create(teacher);
 
     }
 
     @Override
-    public boolean addGroup(String group_name) throws EmptyException {
+    public Group addGroup(String group_name) throws EmptyException {
 
         if (group_name.isEmpty()){
             throw new EmptyException("group_name is empty");
         }
-        return insertDAO.addGroup(group_name);
+
+        return (Group) daoGroup.create(new Group(group_name));
     }
 
     @Override
@@ -137,7 +125,7 @@ public class IServiceImpl implements IService {
         if (student_name.isEmpty()){
             throw new EmptyException("student_name is empty");
         }
-        return deleteDAO.deleteStudent(student_name);
+        return daoStudent.delete(student_name);
     }
 
     @Override
@@ -146,7 +134,8 @@ public class IServiceImpl implements IService {
         if (subject_name.isEmpty()){
             throw new EmptyException("subject_name is empty");
         }
-        return deleteDAO.deleteSubject(subject_name);
+
+        return daoSubject.delete(subject_name);
     }
 
     @Override
@@ -155,7 +144,7 @@ public class IServiceImpl implements IService {
         if (teacher_name.isEmpty()){
             throw new EmptyException("teacher_name is empty");
         }
-        return deleteDAO.deleteTeacher(teacher_name);
+        return daoTeacher.delete(teacher_name);
     }
 
     @Override
@@ -164,15 +153,15 @@ public class IServiceImpl implements IService {
         if (group_name.isEmpty()){
             throw new EmptyException("group_name is empty");
         }
-        return deleteDAO.deleteGroup(group_name);
+        return daoGroup.delete(group_name);
     }
 
     @Override
-    public boolean upDateByGroup(int student_id, int group_id) {
-        if (student_id <= 0){
-            return false;
+    public Student upDateByGroup(String student_name, String group_name) throws EmptyException {
+        if (student_name.isEmpty() || group_name.isEmpty()){
+            throw new EmptyException("group_name is empty");
         }
-        return updateDAO.updateStudentByGroup(student_id, group_id);
+        return (Student) daoStudent.updateByGroup(student_name, group_name);
     }
 
     @Override
@@ -181,7 +170,7 @@ public class IServiceImpl implements IService {
             throw new EmptyException("group_name is empty");
         }
 
-        return selectDAO.getGroupsThatStudySubject(subject_name);
+        return daoGroup.getGroupsThatStudySubject(subject_name);
     }
 
     @Override
@@ -191,7 +180,7 @@ public class IServiceImpl implements IService {
 
     @Override
     public List<Teacher> getTeachersThatWorkMore3Years() {
-        return selectDAO.getTeachersThatWorkMore3Years();
+        return null;
     }
 
     @Override
@@ -205,7 +194,7 @@ public class IServiceImpl implements IService {
         if (subject_name.isEmpty()){
             throw new EmptyException("subject_name is empty");
         }
-        return selectDAO.avgMarkBySubjectInUniversity(subject_name);
+        return 0.00;
     }
 
     @Override
@@ -214,11 +203,12 @@ public class IServiceImpl implements IService {
         if (subjectName.isEmpty() || groupName.isEmpty()){
             throw new EmptyException("subject_name is empty");
         }
-        return selectDAO.avgMarkBySubjectInGroup(groupName, subjectName);
+        return 0.00;
     }
 
     @Override
     public List<Group> groupsInThatMore3StudentsStudyphilosophy() {
         return null;
     }
+
 }
