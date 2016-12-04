@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>1fdf214f-2b55-4f0e-acc4-4f34d5d4e146</OriginalElement>
+  <nodes>
+    <node x="177.0" y="0.0">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.subject_categorys</node>
+    <node x="373.5" y="292.0">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.students</node>
+    <node x="352.0" y="146.0">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.groups</node>
+    <node x="154.0" y="292.5">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.study</node>
+    <node x="0.0" y="135.0">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.teachers</node>
+    <node x="166.0" y="124.0">1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.subjects</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.study" target="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.groups">
+      <point x="63.333333333333314" y="-47.5" />
+      <point x="312.3333333333333" y="267.0" />
+      <point x="383.5" y="267.0" />
+      <point x="-31.5" y="37.0" />
+    </edge>
+    <edge source="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.study" target="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.teachers">
+      <point x="-63.33333333333334" y="-47.5" />
+      <point x="185.66666666666666" y="267.0" />
+      <point x="73.0" y="267.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.study" target="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.subjects">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.students" target="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.groups">
+      <point x="0.0" y="-48.0" />
+      <point x="31.5" y="37.0" />
+    </edge>
+    <edge source="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.subjects" target="1fdf214f-2b55-4f0e-acc4-4f34d5d4e146.TABLE:university.subject_categorys">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="260.0" y="194.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
