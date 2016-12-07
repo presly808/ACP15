@@ -1,9 +1,12 @@
-package controller.dao;
+package dao;
 
 import model.Group;
 import model.Student;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +39,7 @@ public class StudentDAO implements CommonDAO<Student, Integer> {
             SQLquery = "SELECT * FROM students WHERE students.id = " + id + ";";
         } else throw new NullPointerException("Передано значение null");
 
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(SQLquery)) {
+        try (ResultSet resultSet = connection.prepareStatement(SQLquery).executeQuery(SQLquery)) {
 
             Student student = new Student();
             while (resultSet.next()) {
@@ -64,9 +66,7 @@ public class StudentDAO implements CommonDAO<Student, Integer> {
             SQLquery = "INSERT INTO students(name, group_id) VALUES (?, ?)";
         } else return false;
 
-        if (executeQueryInPreparedStatement(entity, SQLquery)) return false;
-
-        return true;
+        return (executeQueryInPreparedStatement(entity, SQLquery)) ? true : false;
     }
 
     @Override
@@ -101,7 +101,6 @@ public class StudentDAO implements CommonDAO<Student, Integer> {
         return true;
     }
 
-
     public List<Student> getStudentsByGroup(Group group) {
 
         String SQLquery;
@@ -122,8 +121,7 @@ public class StudentDAO implements CommonDAO<Student, Integer> {
             throw new NullPointerException("Передан пустой SQLquery");
         }
 
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(SQLquery)) {
+        try (ResultSet resultSet = connection.prepareStatement(SQLquery).executeQuery(SQLquery)) {
 
             List<Student> students = new ArrayList<>();
 

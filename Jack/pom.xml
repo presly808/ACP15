@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>JDBS_actions</module>
+        <module>Hibernate_actions</module>
+
+
     </modules>
     <artifactId>Jack</artifactId>
 
