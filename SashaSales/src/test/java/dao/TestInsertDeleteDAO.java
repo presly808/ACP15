@@ -57,8 +57,8 @@ public class TestInsertDeleteDAO{
     @Test
     public void testCreateDeleteTeacher() {
 
-        Subject subject = new Subject("Phisica", "Description Phisica");
-        Teacher teacher = new Teacher("Timurchik", 2, subject);
+        Subject subject = new Subject("Phisica2", "Description Phisica");
+        Teacher teacher = new Teacher("Timurchik2", 2, subject);
         Teacher teacherRes1 = (Teacher) daoTeacher.create(teacher);
         boolean res1 = daoTeacher.delete(teacher.getName());
         boolean res2 = daoSubject.delete(subject.getName());

@@ -18,9 +18,7 @@ import java.util.List;
 
 public class UtilsMethod {
 
-    public static int getIdOfGroup(String group_name, EntityManagerFactory managerFactory) {
-
-        EntityManager entityManager = managerFactory.createEntityManager();
+    public static int getIdOfGroup(String group_name, EntityManager entityManager) {
 
         TypedQuery<Group> query = entityManager.createQuery("SELECT g FROM Group g WHERE g.name = :group_name", Group.class);
         query.setParameter("group_name", group_name);
@@ -46,9 +44,7 @@ public class UtilsMethod {
          return group;
     }
 
-    public static int getIdOfStudent(String student_name, EntityManagerFactory managerFactory) {
-
-        EntityManager entityManager = managerFactory.createEntityManager();
+    public static int getIdOfStudent(String student_name, EntityManager entityManager) {
 
         TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s WHERE s.name = :student_name", Student.class);
         query.setParameter("student_name", student_name);

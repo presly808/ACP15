@@ -2,113 +2,63 @@ package ua.artcode.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Teacher;
 import ua.artcode.util.UtilsMethod;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository
 public class DaoStudentImplJPA implements DaoStudent<Student> {
 
-    @Autowired
-    private EntityManagerFactory managerFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public DaoStudentImplJPA() {
     }
 
-    public DaoStudentImplJPA(EntityManagerFactory managerFactory) {
-        this.managerFactory = managerFactory;
-
-    }
-
     @Override
+    @Transactional
     public Student create(Student student) {
-        EntityManager entityManager = managerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
 
-        try {
-
-                entityTransaction.begin();
-                entityManager.persist(student);
-                entityTransaction.commit();
-
-        } catch (Exception e){
-            entityTransaction.rollback();
-            return null;
-        } finally {
-            entityManager.close();
-        }
-
+        entityManager.persist(student);
         return student;
     }
 
     @Override
+    @Transactional
     public boolean delete(String entity_name) {
-        EntityManager entityManager = managerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
 
         Student student = getEntityByName(entity_name, entityManager);
-
-        try {
-            entityTransaction.begin();
-            entityManager.remove(student);
-            entityTransaction.commit();
-        } catch (Exception e){
-            entityTransaction.rollback();
-            return false;
-        } finally {
-            entityManager.close();
-        }
+        entityManager.remove(student);
         return true;
     }
 
     @Override
+    @Transactional
     public Student updateByGroup(String student_name, String group_name) {
-        EntityManager entityManager = managerFactory.createEntityManager();
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        Student student = null;
-        Group group = null;
 
-        try {
+        int idG = UtilsMethod.getIdOfGroup(group_name, entityManager);
+        int idS = UtilsMethod.getIdOfStudent(student_name, entityManager);
+        Student student = entityManager.find(Student.class, idS);
+        Group group = entityManager.find(Group.class, idG);
+        student.setGroup(group);
 
-            entityTransaction.begin();
-
-            int idG = UtilsMethod.getIdOfGroup(group_name, managerFactory);
-            int idS = UtilsMethod.getIdOfStudent(student_name, managerFactory);
-            student = entityManager.find(Student.class, idS);
-            group = entityManager.find(Group.class, idG);
-            student.setGroup(group);
-            entityTransaction.commit();
-
-        } catch (Exception e){
-            entityTransaction.rollback();
-            return null;
-        } finally {
-            entityManager.close();
-        }
         return student;
     }
 
     @Override
     public Student findById(Object id) {
-        EntityManager entityManager = managerFactory.createEntityManager();
 
-        try {
-            return entityManager.find(Student.class, id);
-        } finally {
-            entityManager.close();
-        }
+        return entityManager.find(Student.class, id);
     }
 
     @Override
     public List<Student> getAll() {
-        EntityManager entityManager = managerFactory.createEntityManager();
+
         TypedQuery<Student> query = entityManager.createQuery("SELECT t FROM Student t", Student.class);
         return query.getResultList();
     }
@@ -116,7 +66,6 @@ public class DaoStudentImplJPA implements DaoStudent<Student> {
     @Override
     public Student getEntityByName(String student_name) {
 
-        EntityManager entityManager = managerFactory.createEntityManager();
         TypedQuery<Student> query = entityManager.createQuery("SELECT s FROM Student s WHERE s.name = :student_name", Student.class);
         query.setParameter("student_name", student_name);
         return query.getSingleResult();
