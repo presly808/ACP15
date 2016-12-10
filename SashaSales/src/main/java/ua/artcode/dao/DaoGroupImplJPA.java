@@ -24,7 +24,6 @@ public class DaoGroupImplJPA implements DaoGroup<Group> {
     }
 
 
-
     @Override
     @Transactional
     public Group create(Group group) {

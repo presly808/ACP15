@@ -15,11 +15,8 @@ import javax.persistence.PersistenceContext;
  */
 public class RunInit {
 
-
-
     public static void main(String[] args) {
 
-        //ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:app-test-context.xml");
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:app-test-context.xml");
 
         EntityManagerFactory managerFactory = ctx.getBean(EntityManagerFactory.class);

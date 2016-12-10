@@ -4,6 +4,7 @@ package ua.artcode.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ua.artcode.dao.DaoGroup;
 import ua.artcode.dao.DaoStudent;
 import ua.artcode.dao.DaoSubject;
@@ -23,7 +24,7 @@ import java.util.List;
  * Created by work on 12.11.2016.
  */
 
-@Component
+@Service
 public class IServiceImpl implements IService {
 
     private static final Logger LOGGER = Logger.getLogger(IServiceImpl.class);
@@ -124,7 +125,10 @@ public class IServiceImpl implements IService {
             throw new EmptyException("group_name is empty");
         }
 
-        return (Group) daoGroup.create(new Group(group_name));
+        daoGroup.create(new Group(group_name));
+
+
+        return (Group) daoGroup.getEntityByName(group_name);
     }
 
     @Override

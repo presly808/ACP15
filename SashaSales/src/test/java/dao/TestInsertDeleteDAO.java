@@ -11,10 +11,12 @@ import ua.artcode.dao.DaoGroup;
 import ua.artcode.dao.DaoStudent;
 import ua.artcode.dao.DaoSubject;
 import ua.artcode.dao.DaoTeacher;
+import ua.artcode.exceptions.EmptyException;
 import ua.artcode.model.Group;
 import ua.artcode.model.Student;
 import ua.artcode.model.Subject;
 import ua.artcode.model.Teacher;
+import ua.artcode.service.IService;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -24,6 +26,8 @@ import static org.hamcrest.Matchers.equalTo;
 @ContextConfiguration(locations = {"classpath:app-test-context.xml"})
 public class TestInsertDeleteDAO{
 
+    @Autowired
+    private IService service;
     @Autowired
     private DaoSubject daoSubject;
     @Autowired
@@ -41,6 +45,16 @@ public class TestInsertDeleteDAO{
         Group groupRes1 = (Group) daoGroup.create(group);
         boolean res2 = daoGroup.delete(group.getName());
         Assert.assertThat("Test method Create Delete Groups", true, equalTo((groupRes1 != null) && res2));
+
+    }
+
+    @Test
+    public void testServiceAddDeleteGroups() throws EmptyException {
+
+        String group_name = "VedushieVremya111";
+        Group groupRes1 = service.addGroup(group_name);
+        boolean res2 = daoGroup.delete(group_name);
+        Assert.assertThat("Test method Service Create Delete Groups", true, equalTo(groupRes1 != null && res2 && group_name.equals(groupRes1.getName())));
 
     }
 
