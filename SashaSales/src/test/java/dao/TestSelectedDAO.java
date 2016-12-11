@@ -1,4 +1,3 @@
-/*
 
 package dao;
 
@@ -73,5 +72,12 @@ public class TestSelectedDAO {
 
     }
 
+    @Test
+    public void testGet() {
+
+        List<Group> groupList = daoGroup.getFirstLimitResuliList(4, 5);
+        Assert.assertThat("Test method get First 2 Group By GroupList From 4 Element", 2, equalTo(groupList.size()));
+
+    }
+
 }
-*/

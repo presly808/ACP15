@@ -20,6 +20,7 @@ public interface IService {
     List<Subject> getAllSubjects();
     List<Teacher> getAllTeachers();
     List<Group> getAllGroups();
+    List<Group> getAllFirstFiveGroupsFromIndex(int index, int size);
 
 // service -> add
 

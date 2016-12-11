@@ -1,5 +1,7 @@
 package ua.artcode.dao;
 
+import ua.artcode.model.Group;
+
 import java.util.List;
 
 /**
@@ -9,5 +11,5 @@ public interface DaoGroup<T> extends Dao<T> {
 
     T update(T t);
     List<T> getGroupsThatStudySubject(String subject_name);
-
+    List<Group> getFirstLimitResuliList(int i, int size);
 }

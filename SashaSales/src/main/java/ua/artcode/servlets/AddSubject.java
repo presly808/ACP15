@@ -42,8 +42,9 @@ public class AddSubject extends HttpServlet {
         String subject_description = req.getParameter("subject_description");
 
         if(subject_name == null){
-            // redirect
-            resp.sendRedirect("http/error.jsp");
+            req.setAttribute("errorTitle", "Empty");
+            req.setAttribute("errorMessage", "Invalid name");
+            req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
 
             try {

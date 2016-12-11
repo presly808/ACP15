@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,7 +7,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="left-container">
 
     <h1>Add Group to DB University</h1>
     <form method="post" action="addgroup">
@@ -22,8 +23,9 @@
 
     </form>
 
-</div>
+    <a href="/index.jsp">Back</a>
 
+</div>
 
 </body>
 </html>

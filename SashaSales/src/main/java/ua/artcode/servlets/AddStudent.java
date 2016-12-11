@@ -40,8 +40,9 @@ public class AddStudent  extends HttpServlet {
         String student_name = req.getParameter("student_name");
 
         if(student_name == null){
-            // redirect
-            resp.sendRedirect("http/error.jsp");
+            req.setAttribute("errorTitle", "Empty");
+            req.setAttribute("errorMessage", "Invalid name");
+            req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
 
             try {

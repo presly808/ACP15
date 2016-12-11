@@ -45,8 +45,9 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
         int subject_id = Integer.parseInt(req.getParameter("subject_id"));
 
         if(teacher_name == null){
-        // redirect
-        resp.sendRedirect("http/error.jsp");
+                req.setAttribute("errorTitle", "Empty");
+                req.setAttribute("errorMessage", "Invalid name");
+                req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
 
         try {

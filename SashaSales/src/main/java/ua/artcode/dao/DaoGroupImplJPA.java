@@ -9,6 +9,7 @@ import ua.artcode.model.Subject;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by work on 27.11.2016.
@@ -57,7 +58,20 @@ public class DaoGroupImplJPA implements DaoGroup<Group> {
     public List<Group> getAll() {
 
         TypedQuery<Group> query = manager.createQuery("SELECT g FROM Group g", Group.class);
+
         return query.getResultList();
+    }
+
+    @Override
+    public List<Group> getFirstLimitResuliList(int i, int size) {
+
+        int n = size;
+        TypedQuery<Group> query = manager.createQuery("SELECT g FROM Group g", Group.class);
+        query.setFirstResult(i);
+        List<Group> groupList = query.getResultList();
+        List<Group> groupListLimit = groupList.stream().limit(n).collect(Collectors.toList());
+
+        return groupListLimit;
     }
 
     @Override

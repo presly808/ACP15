@@ -31,6 +31,10 @@
         <li><a href="addsubject">Create Subject</a></li>
         <li><a href="addstudent">Create Student</a></li>
         <li><a href="addteacher">Create Teacher</a></li>
+        <li><a href="getgroups?page=1&size=4">Show groups in University</a></li>
+        <li><a href="getstudents">Show students in University</a></li>
+        <li><a href="getsubjects">Show subjects in University</a></li>
+        <li><a href="getteachers">Show teachers in University</a></li>
     </ul>
 
 

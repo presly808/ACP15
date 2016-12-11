@@ -28,8 +28,10 @@
 
     </form>
 
+    <a href="/index.jsp">Back</a>
+
 </div>
 
 
 </body>
-</html>>
+</html>

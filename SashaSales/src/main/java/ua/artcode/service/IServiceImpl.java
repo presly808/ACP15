@@ -86,6 +86,12 @@ public class IServiceImpl implements IService {
     }
 
     @Override
+    public List<Group> getAllFirstFiveGroupsFromIndex(int index, int size) {
+
+        return daoGroup.getFirstLimitResuliList(index, size);
+    }
+
+    @Override
     public Student addStudent(String student_name) throws EmptyException {
 
         if (student_name.isEmpty()){

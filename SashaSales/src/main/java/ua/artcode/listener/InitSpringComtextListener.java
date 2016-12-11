@@ -12,8 +12,9 @@ public class InitSpringComtextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
+        String springLocation = sce.getServletContext().getInitParameter("springLocation");
         ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("app-context.xml");
+                new ClassPathXmlApplicationContext(springLocation);
 
         sce.getServletContext().setAttribute("app-context",applicationContext);
     }

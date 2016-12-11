@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+
+<button id="getUserInfo" onclick="getUserAjax">Get User</button>
+
+<h1>User Info</h1>
+
+<div id="userDiv"></div>
+
+</body>
+
+<script>
+
+    function getUserAjax() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById("userDiv").innerHTML = xhr.responseText;
+            }
+
+        };
+
+        xhr.open("GET", "http://localhost:8080/getteachers", true);
+        xhr.send();
+    }
+
+</script>
+
+</html>

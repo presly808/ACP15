@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create group</title>
+    <script src="/WEB-INF/node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+<form id="formId" name="person">
+    <label>Create group</label>
+    <input name="group_name" type="text">
+</form>
+
+<button id="sendButton">Send</button>
+<div id="groupDiv"></div>
+
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        $("#sendButton").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/addgroup",
+                data: $("#formId").serialize(),
+                succes: function (responce) {
+                    $("#groupDiv").html(responce);
+                }
+            })
+        })
+    })
+
+</script>
+
+</html>

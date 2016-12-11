@@ -22,6 +22,8 @@
 
     </form>
 
+    <a href="/index.jsp">Back</a>
+
 </div>
 
 

@@ -46,8 +46,9 @@ public class Add_Group extends HttpServlet {
         String group_name = req.getParameter("group_name");
 
         if(group_name == null){
-            // redirect
-            resp.sendRedirect("http/error.jsp");
+            req.setAttribute("errorTitle", "Empty");
+            req.setAttribute("errorMessage", "Invalid name");
+            req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
 
             try {
