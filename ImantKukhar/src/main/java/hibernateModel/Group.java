@@ -1,21 +1,29 @@
-package model;
+package hibernateModel;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Imant on 19.11.16.
  */
-public class Student {
 
+@Entity
+@Table(name = "groups")
+public class Group implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
-    private Group group;
 
-    public Student() {
+    @Column(name = "group_name", length = 32, unique = true)
+    private String name;
+
+    public Group() {
     }
 
-    public Student(int id, String name, Group group) {
+    public Group(int id, String name) {
         this.id = id;
         this.name = name;
-        this.group = group;
     }
 
     public int getId() {
@@ -34,20 +42,11 @@ public class Student {
         this.name = name;
     }
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
     @Override
     public String toString() {
-        return "Student{" +
+        return "Group{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", group=" + group +
                 '}';
     }
 }

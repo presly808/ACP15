@@ -3,17 +3,17 @@ package model;
 /**
  * Created by Imant on 19.11.16.
  */
-public class Theacher {
+public class Teacher {
 
     private int id;
     private String name;
     private int experience;
     private Subject subject;
 
-    public Theacher() {
+    public Teacher() {
     }
 
-    public Theacher(int id, String name, int experience, Subject subject) {
+    public Teacher(int id, String name, int experience, Subject subject) {
         this.id = id;
         this.name = name;
         this.experience = experience;
@@ -54,7 +54,7 @@ public class Theacher {
 
     @Override
     public String toString() {
-        return "Theacher{" +
+        return "Teacher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", experience=" + experience +
