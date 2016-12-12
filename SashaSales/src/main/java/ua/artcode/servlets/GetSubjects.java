@@ -24,6 +24,14 @@ public class GetSubjects extends HttpServlet {
     private ApplicationContext applicationContext;
     private IService service;
 
+
+    @Override
+    public void init() throws ServletException {
+        applicationContext =
+                (ApplicationContext) getServletContext().getAttribute("app-context");
+        service = applicationContext.getBean(IService.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -33,16 +41,10 @@ public class GetSubjects extends HttpServlet {
             req.setAttribute("errorMessage", "Invalid name");
             req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
-
             req.setAttribute("subjectlist", subjectlist);
+            resp.getWriter().print(subjectlist.toString());
             req.getRequestDispatcher("/WEB-INF/pages/get-subjects.jsp").forward(req, resp);
         }
     }
 
-    @Override
-    public void init() throws ServletException {
-        applicationContext =
-                (ApplicationContext) getServletContext().getAttribute("app-context");
-        service = applicationContext.getBean(IService.class);
-    }
 }

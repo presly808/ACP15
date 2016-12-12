@@ -43,6 +43,7 @@ public class GetGroups extends HttpServlet {
                 req.setAttribute("sizePageToSite", sizePageToSite);
                 req.setAttribute("grouplist", grouplist);
                 req.setAttribute("grouplistPart", grouplistPart);
+                resp.getWriter().print(grouplist.toString());
                 req.getRequestDispatcher("/WEB-INF/pages/get-groups.jsp").forward(req, resp);
         }
     }

@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 
-    <h1>Group list</h1>
+    <h3>Group list</h3>
 
     <table cellspacing="2" border="1" cellpadding="5" width="120">
         <tr>
@@ -26,14 +26,14 @@
         </c:forEach>
     </table>
 
-</div>
 
-<div>
-    <c:forEach var="i" begin="1" end="${sizePageToSite}">
-        <a href="getgroups?page=${i}&size=4" name="${i}">${i}</a>
-    </c:forEach>
+      <br>
+        <c:forEach var="i" begin="1" end="${sizePageToSite}">
+            <a href="getgroups?page=${i}&size=4" name="${i}">${i}</a>
+        </c:forEach>
 
-    <a href="/index.jsp">Back to Main Page</a>
+        <a href="/index.jsp">Back to Main Page</a>
+
 
 </div>
 

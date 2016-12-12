@@ -12,7 +12,7 @@
 
 <div class="container">
 
-    <h1>Created teacher</h1>
+    <h3>Created teacher</h3>
     <ul>
         <li>
             <div class="column">

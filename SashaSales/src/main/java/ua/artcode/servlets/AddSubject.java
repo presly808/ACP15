@@ -38,8 +38,10 @@ public class AddSubject extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // waiting data from the form
-        String subject_name = req.getParameter("subject_name");
-        String subject_description = req.getParameter("subject_description");
+  /*      String subject_name = req.getParameter("subject_name");
+        String subject_description = req.getParameter("subject_description");*/
+        String subject_name = req.getParameter("name");
+        String subject_description = req.getParameter("description");
 
         if(subject_name == null){
             req.setAttribute("errorTitle", "Empty");
@@ -50,6 +52,7 @@ public class AddSubject extends HttpServlet {
             try {
                 Subject created = service.addSubject(subject_name, subject_description);
                 req.setAttribute("subject", created);
+                resp.getWriter().print(created.toString());
                 req.getRequestDispatcher("/WEB-INF/pages/subject-info.jsp").forward(req, resp);
             } catch (EmptyException e) {
                 LOG.error(e);

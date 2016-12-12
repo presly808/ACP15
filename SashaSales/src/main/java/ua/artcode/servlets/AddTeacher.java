@@ -20,46 +20,47 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/addteacher"})
 public class AddTeacher extends HttpServlet {
 
-private static final Logger LOG = Logger.getLogger(AddTeacher.class);
+    private static final Logger LOG = Logger.getLogger(AddTeacher.class);
 
-private ApplicationContext applicationContext;
-private IService service;
+    private ApplicationContext applicationContext;
+    private IService service;
 
-@Override
-public void init() throws ServletException {
+    @Override
+    public void init() throws ServletException {
         applicationContext =
-        (ApplicationContext) getServletContext().getAttribute("app-context");
+                (ApplicationContext) getServletContext().getAttribute("app-context");
         service = applicationContext.getBean(IService.class);
-        }
+    }
 
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/add-teacher.jsp").forward(req,resp);
-        }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/pages/add-teacher.jsp").forward(req, resp);
+    }
 
-@Override
-protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // waiting data from the form
-        String teacher_name = req.getParameter("teacher_name");
+        String teacher_name = req.getParameter("name");
         int experience = Integer.parseInt(req.getParameter("experience"));
         int subject_id = Integer.parseInt(req.getParameter("subject_id"));
 
-        if(teacher_name == null){
-                req.setAttribute("errorTitle", "Empty");
-                req.setAttribute("errorMessage", "Invalid name");
-                req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
+        if (teacher_name == null) {
+            req.setAttribute("errorTitle", "Empty");
+            req.setAttribute("errorMessage", "Invalid name");
+            req.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(req, resp);
         } else {
 
-        try {
-        Teacher created = service.addTeacher(teacher_name, experience, subject_id);
-        req.setAttribute("teacher", created);
-        req.getRequestDispatcher("/WEB-INF/pages/teacher-info.jsp").forward(req, resp);
-        } catch (EmptyException e) {
-        LOG.error(e);
-        }
-        }
-
-
+            try {
+                Teacher created = service.addTeacher(teacher_name, experience, subject_id);
+                req.setAttribute("teacher", created);
+                resp.getWriter().print(created.toString());
+                req.getRequestDispatcher("/WEB-INF/pages/teacher-info.jsp").forward(req, resp);
+            } catch (EmptyException e) {
+                LOG.error(e);
+            }
         }
 
-        }
+
+    }
+
+}

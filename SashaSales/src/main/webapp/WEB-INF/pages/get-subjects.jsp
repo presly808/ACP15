@@ -7,23 +7,25 @@
     <title>Subject list</title>
 </head>
 
-
-<c:set var="transfered" value="${subjectlist}"/>
-
 <div class="container">
 
-    <h1>Subject list</h1>
-    <ul>
-        <li>
-            <div class="column">
-                list : ${transfered.toString()}
-            </div>
-        </li>
+    <h3>Subject list</h3>
 
-    </ul>
+    <table cellspacing="2" border="1" cellpadding="5" width="200">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
 
-
-   <a href="/index.jsp">Back</a>
+        <c:forEach var="subjectIter" items="${subjectlist}">
+            <tr>
+                <td>${subjectIter.id}</td>
+                <td>${subjectIter.name}</td>
+                <td>${subjectIter.description}</td>
+            </tr>
+        </c:forEach>
+    </table>
 
 
 </div>

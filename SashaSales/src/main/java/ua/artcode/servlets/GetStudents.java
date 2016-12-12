@@ -23,6 +23,14 @@ public class GetStudents extends HttpServlet {
     private ApplicationContext applicationContext;
     private IService service;
 
+
+    @Override
+    public void init() throws ServletException {
+        applicationContext =
+                (ApplicationContext) getServletContext().getAttribute("app-context");
+        service = applicationContext.getBean(IService.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -34,14 +42,10 @@ public class GetStudents extends HttpServlet {
         } else {
 
             req.setAttribute("studentlist", studentlist);
+            resp.getWriter().print(studentlist.toString());
             req.getRequestDispatcher("/WEB-INF/pages/get-students.jsp").forward(req, resp);
         }
     }
 
-    @Override
-    public void init() throws ServletException {
-        applicationContext =
-                (ApplicationContext) getServletContext().getAttribute("app-context");
-        service = applicationContext.getBean(IService.class);
-    }
+
 }

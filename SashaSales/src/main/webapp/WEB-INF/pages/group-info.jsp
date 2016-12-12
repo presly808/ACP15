@@ -12,7 +12,7 @@
 
 <div class="container">
 
-    <h1>Created group</h1>
+    <h3>Created group</h3>
     <ul>
         <li>
             <div class="column">

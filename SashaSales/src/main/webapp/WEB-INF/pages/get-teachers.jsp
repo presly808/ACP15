@@ -7,23 +7,25 @@
     <title>Teacher list</title>
 </head>
 
-
-<c:set var="transfered" value="${teacherlist}"/>
-
 <div class="container">
 
-    <h1>Teacher list</h1>
-    <ul>
-        <li>
-            <div class="column">
-                list : ${transfered.toString()}
-            </div>
-        </li>
+    <h3>Teacher list</h3>
 
-    </ul>
+    <table cellspacing="2" border="1" cellpadding="5" width="400">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Experience</th>
+        </tr>
 
-
-    <a href="/index.jsp">Back</a>
+        <c:forEach var="teacherIter" items="${teacherlist}">
+            <tr>
+                <td>${teacherIter.id}</td>
+                <td>${teacherIter.name}</td>
+                <td>${teacherIter.experience}</td>
+            </tr>
+        </c:forEach>
+    </table>
 
 </div>
 

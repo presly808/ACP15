@@ -37,7 +37,8 @@ public class AddStudent  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // waiting data from the form
-        String student_name = req.getParameter("student_name");
+        //String student_name = req.getParameter("student_name");
+        String student_name = req.getParameter("name");
 
         if(student_name == null){
             req.setAttribute("errorTitle", "Empty");
@@ -48,7 +49,9 @@ public class AddStudent  extends HttpServlet {
             try {
                 Student created = service.addStudent(student_name);
                 req.setAttribute("student", created);
+                resp.getWriter().print(created.toString());
                 req.getRequestDispatcher("/WEB-INF/pages/student-info.jsp").forward(req, resp);
+
             } catch (EmptyException e) {
                 LOG.error(e);
             }

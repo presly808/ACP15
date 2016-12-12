@@ -43,7 +43,8 @@ public class Add_Group extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // waiting data from the form
-        String group_name = req.getParameter("group_name");
+       // String group_name = req.getParameter("group_name");
+        String group_name = req.getParameter("name");
 
         if(group_name == null){
             req.setAttribute("errorTitle", "Empty");
@@ -54,6 +55,7 @@ public class Add_Group extends HttpServlet {
             try {
                 Group created = service.addGroup(group_name);
                 req.setAttribute("group", created);
+                resp.getWriter().print(created.toString());
                 req.getRequestDispatcher("/WEB-INF/pages/group-info.jsp").forward(req, resp);
             } catch (EmptyException e) {
                 LOG.error(e);
