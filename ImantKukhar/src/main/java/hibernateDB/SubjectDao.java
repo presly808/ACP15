@@ -1,38 +1,37 @@
 package hibernateDB;
 
-import hibernateModel.Group;
 import hibernateModel.Subject;
 import utils.EntityManagerFactoryService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Imant on 30.11.16.
  */
-public class GroupDao {
+public class SubjectDao {
 
-    private static GroupDao instance;
+    private static SubjectDao instance;
 
-    public static final String GET_GROUPS_LIST = "SELECT g FROM Group g";
-    public static final String GET_GROUPS_LIST_BY_SUBJECT = "SELECT st.groupList FROM Study st WHERE st.subjectList =:parameter ";
+   public static final String GET_SUBJECTS_LIST = "SELECT s FROM Subject s";
 
-
-    public static GroupDao getInstance() {
+    public static SubjectDao getInstance() {
         if (instance == null)
-            instance = new GroupDao();
+            instance = new SubjectDao();
         return instance;
     }
 
-    public boolean addNewGroup(Group group) {
+    public boolean addNewSubject(Subject subject) {
         EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
         try {
             transaction.begin();
-            manager.persist(group);
+            manager.persist(subject);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -43,18 +42,18 @@ public class GroupDao {
         return false;
     }
 
-    public boolean deleteGroup(Group group) {
+    public boolean deleteSubject(Subject subject) {
         EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        Group removedGroup = manager.find(Group.class, group.getId());
-        if (removedGroup == null) {
+        Subject tempSubject = manager.find(Subject.class, subject.getId());
+        if (tempSubject == null) {
             manager.close();
         }
 
         try {
             transaction.begin();
-            manager.remove(removedGroup);
+            manager.remove(tempSubject);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -65,29 +64,29 @@ public class GroupDao {
         return false;
     }
 
-    public Group getGroup(Group group) {
+    public Subject getSubject(Subject subject) {
         EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
 
-        Group foundedGroup = manager.find(Group.class, group.getId());
-        if (foundedGroup != null) {
+        Subject gettingSubject = manager.find(Subject.class, subject.getId());
+        if (gettingSubject != null) {
             manager.close();
         } else {
             manager.close();
         }
-        return foundedGroup;
+        return gettingSubject;
     }
 
-    public boolean editGroup(Group updatedGroup) {
+    public boolean editSubject(Subject updatedSubject) {
         EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
 
-        if (manager.find(Group.class, updatedGroup.getId()) == null) {
+        if (manager.find(Subject.class, updatedSubject.getId()) == null) {
             manager.close();
         }
 
         try {
             transaction.begin();
-            manager.merge(updatedGroup);
+            manager.merge(updatedSubject);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -98,19 +97,11 @@ public class GroupDao {
         return false;
     }
 
-    public List<Group> getGroupsList(int limit, int offset) {
+    public List<Subject> getSubjectsList(int limit, int offset) {
         EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
-        TypedQuery<Group> query = manager.createQuery(GET_GROUPS_LIST, Group.class);
-
+        TypedQuery<Subject> query = manager.createQuery(GET_SUBJECTS_LIST, Subject.class);
         query.setMaxResults(limit);
         query.setFirstResult(offset);
-        return query.getResultList();
-    }
-
-    public List<Group> getGroupsListBySubject(Subject subject) {
-        EntityManager manager = EntityManagerFactoryService.getManagerFactory().createEntityManager();
-        TypedQuery<Group> query = manager.createQuery(GET_GROUPS_LIST_BY_SUBJECT, Group.class);
-        query.setParameter("parameter", subject);
 
         return query.getResultList();
     }

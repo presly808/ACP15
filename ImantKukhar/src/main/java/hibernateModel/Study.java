@@ -8,56 +8,45 @@ import java.util.List;
  */
 @Entity
 @Table(name = "study")
-public class Study {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Study extends IdEntity {
 
     @ManyToOne()
     @JoinColumn(name = "group_id", referencedColumnName = "id")
-    private Group group;
+    private Group groupList;
 
     @ManyToOne()
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
-    private Subject subject;
+    private Subject subjectList;
 
     public Study() {
     }
 
-    public Study(int id, Group group, Subject subject) {
-        this.group = group;
-        this.subject = subject;
+    public Study(Group groupList, Subject subjectList) {
+        this.groupList = groupList;
+        this.subjectList = subjectList;
     }
 
-    public int getId() {
-        return id;
+    public Group getGroupList() {
+        return groupList;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setGroupList(Group groupList) {
+        this.groupList = groupList;
     }
 
-    public Group getGroup() {
-        return group;
+    public Subject getSubjectList() {
+        return subjectList;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectList(Subject subjectList) {
+        this.subjectList = subjectList;
     }
 
     @Override
     public String toString() {
         return "Study{" +
-                "group=" + group +
+                "subjectList=" + subjectList +
+                ", groupList=" + groupList +
                 '}';
     }
 }

@@ -7,13 +7,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "subjects")
-public class Subject {
+public class Subject extends IdEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(name = "subject_name")
+    @Column(name = "subject_name", nullable = false, unique = true, length = 20)
     private String name;
 
     @Column(name = "description")
@@ -22,17 +18,9 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(int id, String name, String description) {
+    public Subject(String name, String description) {
         this.name = name;
         this.description = description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -54,7 +42,6 @@ public class Subject {
     @Override
     public String toString() {
         return "Subject{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

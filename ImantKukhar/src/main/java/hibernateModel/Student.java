@@ -1,7 +1,5 @@
 package hibernateModel;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 
 /**
@@ -9,17 +7,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "students")
-public class Student {
+public class Student extends IdEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(name = "student_name", length = 32)
+    @Column(name = "student_name", nullable = false, length = 40)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "group_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
 
     public Student() {
@@ -28,14 +22,6 @@ public class Student {
     public Student(int id, String name, Group group) {
         this.name = name;
         this.group = group;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -57,7 +43,6 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", group=" + group +
                 '}';

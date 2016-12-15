@@ -1,7 +1,7 @@
 package hibernateModel;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Imant on 19.11.16.
@@ -9,29 +9,19 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "groups")
-public class Group implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Group extends IdEntity{
 
     @Column(name = "group_name", length = 32, unique = true)
     private String name;
+
+//    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
+//    private List<Student> studentList;
 
     public Group() {
     }
 
     public Group(int id, String name) {
-        this.id = id;
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,7 +35,6 @@ public class Group implements Serializable {
     @Override
     public String toString() {
         return "Group{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

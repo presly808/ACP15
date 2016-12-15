@@ -19,10 +19,4 @@ public class StudyService {
     public boolean deleteStudent(Study study) {
         return studyDao.deleteStudy(study);
     }
-
-//    public Student getStudent(Study study) {
-//    }
-//
-//    public boolean editStudy(Study studyWithNewInfo) {
-//    }
 }

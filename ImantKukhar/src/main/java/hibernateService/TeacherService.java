@@ -1,7 +1,7 @@
-package service;
+package hibernateService;
 
-import db.TeacherDao;
-import model.Teacher;
+import hibernateDB.TeacherDao;
+import hibernateModel.Teacher;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class TeacherService {
         return teacherDao.getTeacherWithMinExperience();
     }
 
-    public List<Teacher> getTeacherListWithExperienceMoreThanYears(int yearsValue, int limit, int offset) {
-        return teacherDao.getTeacherListWithExperienceMoreThanYears(yearsValue, limit, offset);
+    public Teacher getTeacherListWithExperienceMoreThanYears(int yearsValue) {
+        return teacherDao.getTeacherListWithExperienceMoreThanYears(yearsValue);
     }
 }

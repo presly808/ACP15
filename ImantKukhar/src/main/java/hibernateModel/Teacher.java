@@ -7,21 +7,18 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "teachers")
-public class Teacher {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Teacher extends IdEntity {
 
     @Column(name = "teacher_name")
     private String name;
 
-    @Column
+    @Column(name = "experience")
     private int experience;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
+
 
     public Teacher() {
     }
@@ -30,14 +27,6 @@ public class Teacher {
         this.name = name;
         this.experience = experience;
         this.subject = subject;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -67,7 +56,6 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", experience=" + experience +
                 ", subject=" + subject +

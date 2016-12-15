@@ -8,16 +8,26 @@ import javax.persistence.Persistence;
  */
 public class EntityManagerFactoryService {
 
-    public static EntityManagerFactoryService instance;
+    public static EntityManagerFactory instance;
 
-    public static EntityManagerFactoryService getInstance() {
+    public static EntityManagerFactory getManagerFactory() {
         if (instance == null)
-            instance = new EntityManagerFactoryService();
+            instance = Persistence.createEntityManagerFactory("hibernate-unit");
         return instance;
     }
 
-    public EntityManagerFactory getManagerFactory() {
+
+    public static EntityManagerFactoryService instance2;
+
+    public static EntityManagerFactoryService getInstance() {
+        if (instance2 == null)
+            instance2 = new EntityManagerFactoryService();
+        return instance2;
+    }
+
+    public EntityManagerFactory getManagerFactory2() {
         EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("hibernate-unit");
         return managerFactory;
     }
+
 }

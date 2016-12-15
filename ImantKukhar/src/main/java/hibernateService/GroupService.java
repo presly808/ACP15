@@ -2,6 +2,7 @@ package hibernateService;
 
 import hibernateDB.GroupDao;
 import hibernateModel.Group;
+import hibernateModel.Subject;
 
 import java.util.List;
 
@@ -26,5 +27,9 @@ public class GroupService {
 
     public List<Group> getGroupsList(int limit, int offset) {
         return groupDao.getGroupsList(limit, offset);
+    }
+
+    public List<Group> getGroupsListBySubject(Subject subject){
+        return groupDao.getGroupsListBySubject(subject);
     }
 }
